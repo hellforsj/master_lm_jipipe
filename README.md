@@ -5,6 +5,7 @@ The repository contains the skripts and data that were used throughout the thesi
 Files are separated in implementation skripts (`/programs`) and data. The directory `/data` contains all data, on which basis dataset generation was carried out and all generated datasets. The directory `/envs` holds information regarding library versions that were used for the skripts.
 
 ## Folder structure
+```text
 .
 ├───data
 │   ├───chat_templates
