@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline loads a ROI list from a file. The main steps are to list all files in a folder, then load the ROI list from one of these files.",
+   "nodes": {
+      "d79baa95-7234-4fa7-a475-d84128ca9ad2": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "c678ab03-9023-4692-b97c-fdd25bd09709": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "99c6a081-bebb-4413-bc8d-668588f6710a": {
+         "name": "import-imagej-roi-from-file",
+         "description": "Loads a ROI list from a file. The file can be either a single ROI (.roi extension) or a list of ROI (.zip extension)."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "c678ab03-9023-4692-b97c-fdd25bd09709",
+         "target-node": "99c6a081-bebb-4413-bc8d-668588f6710a",
+         "source-slot": "Annotated paths",
+         "target-slot": "Files"
+      },
+      {
+         "source-node": "d79baa95-7234-4fa7-a475-d84128ca9ad2",
+         "target-node": "c678ab03-9023-4692-b97c-fdd25bd09709",
+         "source-slot": "Files",
+         "target-slot": "Paths"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline annotates incoming data with values from a table and then adds new columns to the annotated data, allowing for optional replacement of existing columns if needed, resulting in a modified dataset with enhanced information.",
+   "nodes": {
+      "8cd283d6-7885-49de-b1a7-a016f44f1bbb": {
+         "name": "table-add-columns-generate",
+         "description": "Adds a new column. By default no changes are applied if the column already exists. Can be optionally configured to replace existing columns."
+      },
+      "352b8a99-195d-46b6-a95e-931b6e579389": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "352b8a99-195d-46b6-a95e-931b6e579389",
+         "target-node": "8cd283d6-7885-49de-b1a7-a016f44f1bbb",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      }
+   ]
+}

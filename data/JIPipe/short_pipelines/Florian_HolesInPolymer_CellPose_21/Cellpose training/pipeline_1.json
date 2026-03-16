@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes files by first converting provided paths into file data, and then utilizes this data to import a specific model from one of the files, enabling further analysis or processing.",
+   "nodes": {
+      "f49dd41f-3e8b-4e1d-930c-fd92decc682d": {
+         "name": "import-file-list",
+         "description": "Converts each provided path into file data."
+      },
+      "db416625-94c7-4bfb-a058-be38349e89cd": {
+         "name": "import-cellpose-model",
+         "description": "Imports a Cellpose model from a file"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f49dd41f-3e8b-4e1d-930c-fd92decc682d",
+         "target-node": "db416625-94c7-4bfb-a058-be38349e89cd",
+         "source-slot": "Filenames",
+         "target-slot": "Input"
+      }
+   ]
+}

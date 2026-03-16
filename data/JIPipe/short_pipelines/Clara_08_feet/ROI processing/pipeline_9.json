@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes input data by splitting it based on specific annotations, and then filters the resulting data by testing for mutual overlap between different sets of regions of interest, ultimately grouping the data into categories based on these overlaps.",
+   "nodes": {
+      "a5eaeaf4-f2b0-4960-b3f2-e385a0099198": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "df07ba4f-293f-46ae-bc7a-9092ebc524e8": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "a5eaeaf4-f2b0-4960-b3f2-e385a0099198",
+         "target-node": "df07ba4f-293f-46ae-bc7a-9092ebc524e8",
+         "source-slot": "4 channels",
+         "target-slot": "Reference"
+      }
+   ]
+}

@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline appears to be designed for image processing and analysis, specifically focusing on overlaying and combining different image components, such as spores and macrophages, to generate output images that highlight specific features or regions of interest. The pipeline takes input images, applies various operations to segment and combine them, and produces final output images that can be used for further analysis or visualization.",
+   "nodes": {
+      "961d3685-5557-4dc8-84f6-2c093cbfd0e9": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

@@ -1,0 +1,25 @@
+{
+   "description": "This pipeline reads in a model file, applies the model to input images, and saves the results. The main steps include reading in the model file, applying the model, and then saving the resulting images.",
+   "nodes": {
+      "34e0965b-91da-4fd7-9fca-fdbc3eb0f9fb": {
+         "name": "import-weka-model-from-file",
+         "description": "Imports a Trainable Weka Segmentation model from a *.model/*.arff file<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b2ed58b3-6c0c-4b9e-82ad-1d7e8189b0e8": {
+         "name": "weka-classification-2d",
+         "description": "Classifies an image with a Weka model. If higher-dimensional data is provided, the classification is applied per slice. To obtain ROI from the generated labels, utilize the 'Labels to ROI' node.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d6efebd6-e889-43a6-9b1a-e2120e911f1a": {
+         "name": "generate-unique-annotation",
+         "description": "Generates a unique annotation for each row based on its index. The annotations will have the format (Base name)[(row index)]"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "34e0965b-91da-4fd7-9fca-fdbc3eb0f9fb",
+         "target-node": "b2ed58b3-6c0c-4b9e-82ad-1d7e8189b0e8",
+         "source-slot": "Output",
+         "target-slot": "Model"
+      }
+   ]
+}

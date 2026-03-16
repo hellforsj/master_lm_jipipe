@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline filters tracks based on certain criteria using TrackMate filter tracks. The main steps involve reading in the tracks, applying the filter to remove unwanted tracks, and then renaming the annotations of the filtered tracks.",
+   "nodes": {
+      "7ee4378a-f7b8-4020-ab6a-20bdcae228e9": {
+         "name": "rename-annotation",
+         "description": "Renames one or multiple annotations."
+      },
+      "7e3f1b95-c942-4769-96f1-65b8584f2d55": {
+         "name": "trackmate-filter-tracks",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "7e3f1b95-c942-4769-96f1-65b8584f2d55",
+         "target-node": "7ee4378a-f7b8-4020-ab6a-20bdcae228e9",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1",
+         "target-node": "7e3f1b95-c942-4769-96f1-65b8584f2d55",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      }
+   ]
+}

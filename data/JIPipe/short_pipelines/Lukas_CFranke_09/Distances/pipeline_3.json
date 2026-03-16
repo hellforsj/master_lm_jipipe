@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline generates a results table containing 3D ROI statistics. The main steps involve measuring the statistics of a set of ROIs and generating a results table.",
+   "nodes": {
+      "96d3838e-d093-4bb8-9f20-50765c0a796f": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d5d915ce-8aee-4d23-9fef-6a9b9715ac3e": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b8b564a4-834d-4d9a-911c-3848425d6697": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b8b564a4-834d-4d9a-911c-3848425d6697",
+         "target-node": "96d3838e-d093-4bb8-9f20-50765c0a796f",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b8b564a4-834d-4d9a-911c-3848425d6697",
+         "target-node": "d5d915ce-8aee-4d23-9fef-6a9b9715ac3e",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      }
+   ]
+}

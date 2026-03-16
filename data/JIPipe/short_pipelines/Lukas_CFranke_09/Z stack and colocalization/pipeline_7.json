@@ -1,0 +1,323 @@
+{
+   "description": "This pipeline performs a complex image processing task that involves multiple steps, including data annotation, filtering, transformation, and analysis. It starts by applying various operations to the input images, such as thresholding, blurring, and calibration, to enhance and standardize the data. The processed images are then used to generate 3D ROI lists, which are further analyzed to extract statistics and measurements. The pipeline also involves overlaying and combining different image channels, as well as converting label images to ROI lists. Additionally, it performs Z-projections, dimension equalization, and other spatial operations to prepare the data for downstream analysis. The ultimate goal of the pipeline appears to be the generation of annotated data and statistical measurements from the input images, which can be used for further scientific analysis and interpretation.",
+   "nodes": {
+      "dc48f818-a1ff-4ef5-bd6e-3c903de63840": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "32342ea1-d153-4bb2-99fd-7c95f291df59": {
+         "name": "ij1-dimensions-expression-slicer",
+         "description": "Uses expressions to create custom stacks. There are three expressions, one for each Z, channel and frame plane that return numeric indices of slices that should be generated. You can optionally enable to iterate over all incoming slices of the image to generate multiple stacks. If no iteration is enabled (default), each expression is only executed for z=0,c=0,t=0."
+      },
+      "68dd34f2-a23c-4639-be8d-f7bfa1baa1f8": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "2d0960fa-3547-4cdd-9446-0c99c8dd595d": {
+         "name": "ij1-math-fast-image-arithmetics",
+         "description": "Applies standard arithmetic and logical operations including, addition, subtraction, division, multiplication, GAMMA, EXP, LOG, SQR, SQRT, ABS, AND, OR, XOR, minimum, maximum, and more.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f38d555e-c87e-42c5-9ca1-1ad2d51f6938": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5bd2d21c-05a2-4476-a803-89e0f740b4f1": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8398880e-fa5b-4473-8bba-6006df02eacf": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "92c3e78f-fa19-4c6b-8e9f-0a5e4f28e271": {
+         "name": "ij1-dimensions-zproject-2",
+         "description": "Performs a Z-Projection. Also supports other axes C-Project/T-Project."
+      },
+      "f8f07d4a-6324-42be-8502-4099eebcaba6": {
+         "name": "ij1-math-fast-image-arithmetics",
+         "description": "Applies standard arithmetic and logical operations including, addition, subtraction, division, multiplication, GAMMA, EXP, LOG, SQR, SQRT, ABS, AND, OR, XOR, minimum, maximum, and more.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f37ac6c3-6a51-4d61-8ff6-533245cd7e98": {
+         "name": "ij1-dimensions-expression-slicer",
+         "description": "Uses expressions to create custom stacks. There are three expressions, one for each Z, channel and frame plane that return numeric indices of slices that should be generated. You can optionally enable to iterate over all incoming slices of the image to generate multiple stacks. If no iteration is enabled (default), each expression is only executed for z=0,c=0,t=0."
+      },
+      "64a9bfab-aabd-4ba5-8985-a7dbc704b0e5": {
+         "name": "ij1-transform-equalize-dimensions",
+         "description": "Makes the input image have the same dimensions as the reference image. You can choose to make them equal in width/height, and hyperstack dimensions (Z, C, T)<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f15d4406-c319-4136-86ff-2a0d477cee87": {
+         "name": "ij3d-roi-filter-by-overlap",
+         "description": "Filters the 3D ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "57ecfe51-817e-4ee7-b472-3e5c24eadbca": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f6283caf-b4e9-4c23-8eff-fef72d0dc2be": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "16153347-9053-4e19-8119-9fc5231a1b8d": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "68696860-2191-402f-b8f3-ea34be0ae365": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "242adff0-f18b-4300-9c1a-1350752e0dc3": {
+         "name": "ij1-dimensions-zproject-2",
+         "description": "Performs a Z-Projection. Also supports other axes C-Project/T-Project."
+      },
+      "5bc7b811-0217-4d99-9a7e-697d4a18844b": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "a9368afa-d65e-4497-b11e-eefa5e843161": {
+         "name": "ij1-transform-equalize-dimensions",
+         "description": "Makes the input image have the same dimensions as the reference image. You can choose to make them equal in width/height, and hyperstack dimensions (Z, C, T)<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "993c6850-6646-4624-ac40-dfa83e22fe24": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c6b94702-a848-4bf1-a08d-65ddd06189c1": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "c1783b84-5c2d-42ff-9196-30b237b4fc11": {
+         "name": "ij1-generate-zero-image",
+         "description": "Creates a new image that is black."
+      },
+      "ef9c716e-4a56-409a-8695-5809611f56ec": {
+         "name": "ij3d-roi-change-properties",
+         "description": "Sets the properties of all 3D ROI"
+      },
+      "8fb090a2-6cd2-4efd-9dd0-526d590677ff": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      },
+      "d89219f9-440b-4377-a940-7ba9915db5d5": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "5bd2d21c-05a2-4476-a803-89e0f740b4f1",
+         "target-node": "8fb090a2-6cd2-4efd-9dd0-526d590677ff",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "a9368afa-d65e-4497-b11e-eefa5e843161",
+         "source-slot": "Green raw",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "dc48f818-a1ff-4ef5-bd6e-3c903de63840",
+         "source-slot": "Measurements",
+         "target-slot": "Table"
+      },
+      {
+         "source-node": "242adff0-f18b-4300-9c1a-1350752e0dc3",
+         "target-node": "d89219f9-440b-4377-a940-7ba9915db5d5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2d0960fa-3547-4cdd-9446-0c99c8dd595d",
+         "target-node": "5bd2d21c-05a2-4476-a803-89e0f740b4f1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "f37ac6c3-6a51-4d61-8ff6-533245cd7e98",
+         "source-slot": "Red raw",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "5bc7b811-0217-4d99-9a7e-697d4a18844b",
+         "target-node": "68696860-2191-402f-b8f3-ea34be0ae365",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "target-node": "993c6850-6646-4624-ac40-dfa83e22fe24",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "32342ea1-d153-4bb2-99fd-7c95f291df59",
+         "source-slot": "Green raw",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "2d0960fa-3547-4cdd-9446-0c99c8dd595d",
+         "source-slot": "Green raw",
+         "target-slot": "I1"
+      },
+      {
+         "source-node": "ef9c716e-4a56-409a-8695-5809611f56ec",
+         "target-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "64a9bfab-aabd-4ba5-8985-a7dbc704b0e5",
+         "source-slot": "Red raw",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "target-node": "ef9c716e-4a56-409a-8695-5809611f56ec",
+         "source-slot": "ROI",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "source-slot": "Green raw",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "target-node": "5bc7b811-0217-4d99-9a7e-697d4a18844b",
+         "source-slot": "Output",
+         "target-slot": "Green"
+      },
+      {
+         "source-node": "92c3e78f-fa19-4c6b-8e9f-0a5e4f28e271",
+         "target-node": "16153347-9053-4e19-8119-9fc5231a1b8d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "993c6850-6646-4624-ac40-dfa83e22fe24",
+         "source-slot": "Green raw",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "ef9c716e-4a56-409a-8695-5809611f56ec",
+         "target-node": "c1783b84-5c2d-42ff-9196-30b237b4fc11",
+         "source-slot": "Output",
+         "target-slot": "Annotations"
+      },
+      {
+         "source-node": "8fb090a2-6cd2-4efd-9dd0-526d590677ff",
+         "target-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "source-slot": "Output",
+         "target-slot": "Labels"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "68dd34f2-a23c-4639-be8d-f7bfa1baa1f8",
+         "source-slot": "Red raw",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "64a9bfab-aabd-4ba5-8985-a7dbc704b0e5",
+         "target-node": "f8f07d4a-6324-42be-8502-4099eebcaba6",
+         "source-slot": "Output",
+         "target-slot": "I2"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "57ecfe51-817e-4ee7-b472-3e5c24eadbca",
+         "source-slot": "Red raw",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "f8f07d4a-6324-42be-8502-4099eebcaba6",
+         "source-slot": "Red raw",
+         "target-slot": "I1"
+      },
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "dc48f818-a1ff-4ef5-bd6e-3c903de63840",
+         "source-slot": "Measurements",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "target-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "32342ea1-d153-4bb2-99fd-7c95f291df59",
+         "target-node": "242adff0-f18b-4300-9c1a-1350752e0dc3",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "16153347-9053-4e19-8119-9fc5231a1b8d",
+         "target-node": "64a9bfab-aabd-4ba5-8985-a7dbc704b0e5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f37ac6c3-6a51-4d61-8ff6-533245cd7e98",
+         "target-node": "92c3e78f-fa19-4c6b-8e9f-0a5e4f28e271",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "source-slot": "Green raw",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "68696860-2191-402f-b8f3-ea34be0ae365",
+         "source-slot": "Green raw",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "57ecfe51-817e-4ee7-b472-3e5c24eadbca",
+         "target-node": "f6283caf-b4e9-4c23-8eff-fef72d0dc2be",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "f6283caf-b4e9-4c23-8eff-fef72d0dc2be",
+         "source-slot": "Green raw",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "target-node": "f15d4406-c319-4136-86ff-2a0d477cee87",
+         "source-slot": "ROI",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "d89219f9-440b-4377-a940-7ba9915db5d5",
+         "target-node": "a9368afa-d65e-4497-b11e-eefa5e843161",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a9368afa-d65e-4497-b11e-eefa5e843161",
+         "target-node": "2d0960fa-3547-4cdd-9446-0c99c8dd595d",
+         "source-slot": "Output",
+         "target-slot": "I2"
+      },
+      {
+         "source-node": "57ecfe51-817e-4ee7-b472-3e5c24eadbca",
+         "target-node": "5bc7b811-0217-4d99-9a7e-697d4a18844b",
+         "source-slot": "Output",
+         "target-slot": "Red"
+      }
+   ]
+}

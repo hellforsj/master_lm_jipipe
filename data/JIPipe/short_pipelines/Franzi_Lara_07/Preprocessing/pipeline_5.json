@@ -1,0 +1,127 @@
+{
+   "description": "This pipeline splits multichannel images into multiple greyscale images and then filters data based on annotation values. The main steps include splitting the channels of an image and filtering the output.",
+   "nodes": {
+      "d1dee139-0a70-4031-acee-170317ce1fa3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "f2f41da7-5caf-4a7e-8e85-aa8dd4dc8c01": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "54df5175-5291-46e1-b1b2-9e72807ef878": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "ba08b9f2-319e-4e44-b66e-dd3c534415d2": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      },
+      "75f1c151-0a06-44f4-bc71-c170f653754b": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "target-node": "f2f41da7-5caf-4a7e-8e85-aa8dd4dc8c01",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "ba08b9f2-319e-4e44-b66e-dd3c534415d2",
+         "target-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel3"
+      }
+   ]
+}

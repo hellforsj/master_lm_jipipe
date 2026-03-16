@@ -1,0 +1,37 @@
+{
+   "description": "This pipeline measures various aspects of image data, including spots, edges, and tracks, and outputs the results into tables for further analysis, ultimately providing a comprehensive overview of the image features.",
+   "nodes": {
+      "007b91b8-f237-434a-9574-b5aa33b743f2": {
+         "name": "trackmate-measure-spots",
+         "description": "Measures the spots and outputs the results into a table. If tracked spots are provided, the track ID will also be added."
+      },
+      "db41cbee-3f59-48ca-b195-9e6f14b622cd": {
+         "name": "trackmate-measure-edges",
+         "description": "Measures the edges and outputs the results into a table"
+      },
+      "d6119ca9-8bba-4e72-88dd-38c511a11886": {
+         "name": "trackmate-measure-tracks",
+         "description": "Measures the tracks and outputs the results into a table"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "007b91b8-f237-434a-9574-b5aa33b743f2",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "db41cbee-3f59-48ca-b195-9e6f14b622cd",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "d6119ca9-8bba-4e72-88dd-38c511a11886",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      }
+   ]
+}

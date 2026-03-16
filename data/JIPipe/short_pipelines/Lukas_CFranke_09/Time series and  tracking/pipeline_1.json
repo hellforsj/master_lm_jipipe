@@ -1,0 +1,107 @@
+{
+   "description": "This pipeline performs image and data processing to analyze biomedical microscopic images, starting with image filtering and spot detection, followed by tracking and measurement of spots, and finally annotating and outputting the results, including ROI statistics and track measures, to provide a comprehensive understanding of the image data.",
+   "nodes": {
+      "a5241596-a4e0-47e0-a31b-22dfc4b976e9": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "290df4e8-cfeb-43ab-b3a4-039116d60f87": {
+         "name": "trackmate-filter-spots",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "82792992-a40c-4313-9bc4-313de2321c73": {
+         "name": "annotate-with-data",
+         "description": "Annotates the incoming data with the other data.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c4e266e4-212e-4655-9a7f-7435014d5cfe": {
+         "name": "trackmate-measure-tracks",
+         "description": "Measures the tracks and outputs the results into a table"
+      },
+      "0756c04c-a9e9-41fe-947b-867368424a72": {
+         "name": "ij1-roi-statistics",
+         "description": "Generates a results table containing ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, an empty reference image is automatically generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "4d047cbf-68fb-4178-80d2-cd125e24e390": {
+         "name": "ij1-contrast-illumination-correction2d",
+         "description": "Applies a Gaussian filter to the image and extracts the maximum value. Pixel values are then divided by this value.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "dfa18b8d-4978-4e7e-a189-f0df36a33651": {
+         "name": "trackmate-filter-tracks",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "7f9e0a17-6a1c-4404-b0b0-581ad44b6b8e": {
+         "name": "trackmate-detector",
+         "description": "Detect spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "18936894-d7f4-4f44-8569-05011d52272f": {
+         "name": "trackmate-tracks-to-roi",
+         "description": "Converts TrackMate tracks into ROI lists. Each lists contains the spot ROI of one track."
+      },
+      "eef6b307-271f-4128-9d07-ce822cb7988a": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "dfa18b8d-4978-4e7e-a189-f0df36a33651",
+         "target-node": "18936894-d7f4-4f44-8569-05011d52272f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "7f9e0a17-6a1c-4404-b0b0-581ad44b6b8e",
+         "target-node": "290df4e8-cfeb-43ab-b3a4-039116d60f87",
+         "source-slot": "Spots",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "eef6b307-271f-4128-9d07-ce822cb7988a",
+         "target-node": "0756c04c-a9e9-41fe-947b-867368424a72",
+         "source-slot": "Output",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "18936894-d7f4-4f44-8569-05011d52272f",
+         "target-node": "0756c04c-a9e9-41fe-947b-867368424a72",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "dfa18b8d-4978-4e7e-a189-f0df36a33651",
+         "target-node": "82792992-a40c-4313-9bc4-313de2321c73",
+         "source-slot": "Output",
+         "target-slot": "Annotation"
+      },
+      {
+         "source-node": "eef6b307-271f-4128-9d07-ce822cb7988a",
+         "target-node": "7f9e0a17-6a1c-4404-b0b0-581ad44b6b8e",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "dfa18b8d-4978-4e7e-a189-f0df36a33651",
+         "target-node": "c4e266e4-212e-4655-9a7f-7435014d5cfe",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0756c04c-a9e9-41fe-947b-867368424a72",
+         "target-node": "82792992-a40c-4313-9bc4-313de2321c73",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "290df4e8-cfeb-43ab-b3a4-039116d60f87",
+         "target-node": "a5241596-a4e0-47e0-a31b-22dfc4b976e9",
+         "source-slot": "Output",
+         "target-slot": "Spots"
+      },
+      {
+         "source-node": "a5241596-a4e0-47e0-a31b-22dfc4b976e9",
+         "target-node": "dfa18b8d-4978-4e7e-a189-f0df36a33651",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      }
+   ]
+}

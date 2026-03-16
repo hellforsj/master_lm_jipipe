@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline handles the output of image processing. The main steps include saving results, finalizing output, and preparing for further use.",
+   "nodes": {
+      "e8d5a281-bdd8-4489-874d-e4b7c81447ac": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "fbb186c0-4850-46bb-b5e2-ae803bf42421": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "e8d5a281-bdd8-4489-874d-e4b7c81447ac",
+         "target-node": "fbb186c0-4850-46bb-b5e2-ae803bf42421",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

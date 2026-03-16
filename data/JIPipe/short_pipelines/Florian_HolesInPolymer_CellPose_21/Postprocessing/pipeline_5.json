@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline applies a series of image processing operations to identify and label connected components in an image. It first finds local maxima, then applies morphological operations to refine the image, and finally assigns unique labels to each connected component, allowing for the analysis of complex image structures.",
+   "nodes": {
+      "724eafa3-89ac-48ff-8313-05eb64fc2a7a": {
+         "name": "ij1-binary-connected-component-labeling-2d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "45b29f60-2fb7-4549-8656-caa323a1deda": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "a6ab6284-046d-4684-b57c-e20beddac450": {
+         "name": "ij1-feature-maxima-local-2d",
+         "description": "Finds the local maxima of each image. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "a6ab6284-046d-4684-b57c-e20beddac450",
+         "target-node": "45b29f60-2fb7-4549-8656-caa323a1deda",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "45b29f60-2fb7-4549-8656-caa323a1deda",
+         "target-node": "724eafa3-89ac-48ff-8313-05eb64fc2a7a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

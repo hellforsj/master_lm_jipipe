@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline exports data to a file. The main steps involve reading in the data, exporting it to a file.",
+   "nodes": {
+      "189a96de-f1e2-401f-9a2d-761a1f6a3b93": {
+         "name": "table-add-columns-generate",
+         "description": "Adds a new column. By default no changes are applied if the column already exists. Can be optionally configured to replace existing columns."
+      },
+      "7b582973-2ad0-4850-bef9-1af43d0a6493": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "189a96de-f1e2-401f-9a2d-761a1f6a3b93",
+         "target-node": "7b582973-2ad0-4850-bef9-1af43d0a6493",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

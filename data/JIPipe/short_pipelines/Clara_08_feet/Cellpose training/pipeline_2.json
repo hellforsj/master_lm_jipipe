@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies an auto-thresholding algorithm to incoming data, grouping it based on annotations, and then performs a morphological hole filling operation on the resulting binary images, handling higher-dimensional data by applying the filter to each 2D slice.",
+   "nodes": {
+      "200c5809-536c-408c-82e2-136ba98f7b53": {
+         "name": "ij1-morph-binary-fillholes2d",
+         "description": "Applies a morphological hole filling operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "237b7468-0fcd-4e23-ab20-44a887980d7d": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "237b7468-0fcd-4e23-ab20-44a887980d7d",
+         "target-node": "200c5809-536c-408c-82e2-136ba98f7b53",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline takes input from an unspecified source, processes it with trackmate-measure-spots and then sends the output to compartment-output node for further processing or storage.",
+   "nodes": {
+      "007b91b8-f237-434a-9574-b5aa33b743f2": {
+         "name": "trackmate-measure-spots",
+         "description": "Measures the spots and outputs the results into a table. If tracked spots are provided, the track ID will also be added."
+      }
+   },
+   "edges": []
+}

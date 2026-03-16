@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline saves image parameters to a file. It starts with annotated image data, processes this data, and then outputs the results.",
+   "nodes": {
+      "a582d9a4-9180-4277-960a-aa3bf3e0bb51": {
+         "name": "ij1-math-hessian2d",
+         "description": "Deprecated: Replace with node with the same name. Computes Hessian the eigenvalues of the Hessian, which can be used for example to discriminate locally between plate-like, line-like, and blob-like image structures.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "1307341d-8b22-462c-a02d-c383855ed98c": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "1307341d-8b22-462c-a02d-c383855ed98c",
+         "target-node": "a582d9a4-9180-4277-960a-aa3bf3e0bb51",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      }
+   ]
+}

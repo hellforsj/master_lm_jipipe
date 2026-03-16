@@ -1,0 +1,125 @@
+{
+   "description": "This pipeline performs image processing and analysis tasks, starting from overlaying and blending images, followed by applying auto-thresholding, extracting features, and converting labels to 3D regions of interest (ROI). The pipeline also involves filtering ROI based on statistics, changing their properties, and finally outputting the processed data. Additionally, it includes cell segmentation using a specific algorithm, generating various outputs such as probabilities, flows, and ROI. Overall, the pipeline seems to be designed for biomedical image analysis, focusing on processing and extracting meaningful information from microscopic images.",
+   "nodes": {
+      "bda68d24-2e6a-4d3e-bc69-7c326ef1cb41": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "2653448f-a879-418a-a273-17a1c46e3fa1": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5040ffe8-980a-4f67-8048-8e99597bf8b1": {
+         "name": "ij3d-roi-change-properties",
+         "description": "Sets the properties of all 3D ROI"
+      },
+      "1cac2d3e-49b7-4447-8cca-b698c66af91d": {
+         "name": "ij3d-filter-roi3d-by-statistics",
+         "description": "Filters the 3D ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "6df75662-428a-4ed0-872d-6215e3c3809a": {
+         "name": "ij1-feature-orientationj-2d",
+         "description": "Extracts various orientation-related features from the input image. These are the same features as produced by the OrientationJ Analysis."
+      },
+      "d8a18002-09da-4bf6-813e-840d3a87b58a": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "7d8b3f8e-a9d1-438e-9c4e-78b63c2f5a41": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "e4ecbaa2-cfc8-46df-b088-fb5e656f4de8": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "a32992da-ea0a-4b88-b9d7-788c85adf7a4": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "749c27b6-7ac0-4dd8-a7fa-f20fbe16a1c0": {
+         "name": "cellpose-inference-2.x",
+         "description": "Runs Cellpose on the input image with the given model(s). This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "749c27b6-7ac0-4dd8-a7fa-f20fbe16a1c0",
+         "target-node": "a32992da-ea0a-4b88-b9d7-788c85adf7a4",
+         "source-slot": "Probabilities",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "5040ffe8-980a-4f67-8048-8e99597bf8b1",
+         "target-node": "e4ecbaa2-cfc8-46df-b088-fb5e656f4de8",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "bda68d24-2e6a-4d3e-bc69-7c326ef1cb41",
+         "target-node": "1cac2d3e-49b7-4447-8cca-b698c66af91d",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "70c4d4e2-bcac-4d00-8513-508abc96db37",
+         "target-node": "7d8b3f8e-a9d1-438e-9c4e-78b63c2f5a41",
+         "source-slot": "Red-green overlay",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "e4ecbaa2-cfc8-46df-b088-fb5e656f4de8",
+         "target-node": "d8a18002-09da-4bf6-813e-840d3a87b58a",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "70c4d4e2-bcac-4d00-8513-508abc96db37",
+         "target-node": "749c27b6-7ac0-4dd8-a7fa-f20fbe16a1c0",
+         "source-slot": "Red-green overlay",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "70c4d4e2-bcac-4d00-8513-508abc96db37",
+         "target-node": "6df75662-428a-4ed0-872d-6215e3c3809a",
+         "source-slot": "Red-green overlay",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "70c4d4e2-bcac-4d00-8513-508abc96db37",
+         "target-node": "e4ecbaa2-cfc8-46df-b088-fb5e656f4de8",
+         "source-slot": "Red-green overlay",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "1cac2d3e-49b7-4447-8cca-b698c66af91d",
+         "target-node": "5040ffe8-980a-4f67-8048-8e99597bf8b1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "7d8b3f8e-a9d1-438e-9c4e-78b63c2f5a41",
+         "target-node": "bda68d24-2e6a-4d3e-bc69-7c326ef1cb41",
+         "source-slot": "Output",
+         "target-slot": "Labels"
+      },
+      {
+         "source-node": "a32992da-ea0a-4b88-b9d7-788c85adf7a4",
+         "target-node": "2653448f-a879-418a-a273-17a1c46e3fa1",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "70c4d4e2-bcac-4d00-8513-508abc96db37",
+         "target-node": "d8a18002-09da-4bf6-813e-840d3a87b58a",
+         "source-slot": "Red-green overlay",
+         "target-slot": "Overlay of red and green"
+      },
+      {
+         "source-node": "70c4d4e2-bcac-4d00-8513-508abc96db37",
+         "target-node": "2653448f-a879-418a-a273-17a1c46e3fa1",
+         "source-slot": "Red-green overlay",
+         "target-slot": "Raw image"
+      }
+   ]
+}

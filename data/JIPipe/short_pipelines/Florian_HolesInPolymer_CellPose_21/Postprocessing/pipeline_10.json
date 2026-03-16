@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline performs image segmentation by applying connected component labeling and watershed transformation to identify distinct regions within an image, ultimately visualizing the resulting labels as colored components.",
+   "nodes": {
+      "724eafa3-89ac-48ff-8313-05eb64fc2a7a": {
+         "name": "ij1-binary-connected-component-labeling-2d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "0089aa79-24a4-42ee-b3b7-af434fd73853": {
+         "name": "ij1-labels-to-rgb",
+         "description": "Visualizes a labels image by assigning a color to each label component"
+      },
+      "df5f5bdd-a3fa-49fa-bd17-67390ce06225": {
+         "name": "ij1-segment-seeded-watershed",
+         "description": "Performs segmentation via watershed on a 2D or 3D image using flooding simulations. Please note that this node returns labels instead of masks. The markers need to be labels, so apply a connected components labeling if you only have masks.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "df5f5bdd-a3fa-49fa-bd17-67390ce06225",
+         "target-node": "0089aa79-24a4-42ee-b3b7-af434fd73853",
+         "source-slot": "Labels",
+         "target-slot": "Labels"
+      },
+      {
+         "source-node": "724eafa3-89ac-48ff-8313-05eb64fc2a7a",
+         "target-node": "df5f5bdd-a3fa-49fa-bd17-67390ce06225",
+         "source-slot": "Output",
+         "target-slot": "Markers"
+      }
+   ]
+}

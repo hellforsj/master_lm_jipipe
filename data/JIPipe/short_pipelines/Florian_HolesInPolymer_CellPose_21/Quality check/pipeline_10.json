@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline takes image data, converts it into a mask based on region of interest lists, and then outputs the result for further analysis or processing, allowing for the extraction of specific features from the original images.",
+   "nodes": {
+      "d86dbb26-86df-4b45-a9bd-d461b52c9139": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

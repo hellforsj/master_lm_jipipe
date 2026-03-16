@@ -1,0 +1,281 @@
+{
+   "description": "This pipeline applies filtering to an image. It starts with an input image, applies a filter, and then outputs the filtered image.",
+   "nodes": {
+      "76b3a39a-ee91-48c3-9ffc-02473965d66b": {
+         "name": "ij1-contrast-illumination-correction2d",
+         "description": "Applies a Gaussian filter to the image and extracts the maximum value. Pixel values are then divided by this value.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "8dd21b6b-f66c-4066-b5da-835fa5eed1c6": {
+         "name": "ij1-blur-gaussian3d",
+         "description": "Applies convolution with a Gaussian function in 3D space for smoothing. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "970bb8d4-fb16-4bbb-b632-53aca6ced488": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "d70fbbf7-5afd-49ac-8c5e-b2b132a06910": {
+         "name": "ij1-blur-gaussian3d",
+         "description": "Applies convolution with a Gaussian function in 3D space for smoothing. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "80c4f828-fe53-4fc9-8060-07746aa62c5b": {
+         "name": "ij1-blur-median2d",
+         "description": "Applies a median filter. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "73af0425-25e4-4e30-bbce-2a0bc6df9565": {
+         "name": "ij1-blur-gaussian3d",
+         "description": "Applies convolution with a Gaussian function in 3D space for smoothing. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "16c84c9a-8590-4662-b374-75387229dad6": {
+         "name": "ij1-contrast-clahe",
+         "description": "Applies 'Contrast Limited Adaptive Histogram Equalization' (CLAHE) to enhance contrast. Composite color images are converted into their luminance. If higher-dimensional data is provided, the results are generated for each 2D slice."
+      },
+      "d05e50ce-6389-4cd7-a461-a92bdb7af957": {
+         "name": "ij1-blur-gaussian3d",
+         "description": "Applies convolution with a Gaussian function in 3D space for smoothing. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "ee33a2d1-0319-45be-9ac9-fd46a6debce0": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "c154dce2-67c5-4fe3-a6c7-01d1d3d66e68": {
+         "name": "data-slicer",
+         "description": "Slices the incoming data table into a smaller table with a limited row set according to the selected row."
+      },
+      "410d264d-d3de-413a-af64-ba13fed0f380": {
+         "name": "ij1-background-rollingball2d",
+         "description": "Finds or subtracts the background of a 2D slice via a rolling-ball or paraboloid algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "29229d78-943c-419c-8280-3b2b49f73d7a": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "5f2b5d54-998b-40fc-ace3-53352d4b13cc": {
+         "name": "ij1-convolve-convolve2d-parameter",
+         "description": "Applies a convolution with a user-defined filter kernel. The kernel is defined by a parameter.If higher-dimensional data is provided, the filter is applied to each 2D slice. For the most precise results, we recommend to convert the image to 32-bit before applying a convolution. Otherwise ImageJ will apply conversion from and to 32-bit images itself, which can have unexpected results."
+      },
+      "2dc0e25f-ff7e-4184-b6be-8ac4bbdf6286": {
+         "name": "ij1-math-hessian2d",
+         "description": "Deprecated: Replace with node with the same name. Computes Hessian the eigenvalues of the Hessian, which can be used for example to discriminate locally between plate-like, line-like, and blob-like image structures.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "d81b34dd-0b45-462a-afa2-245fa8dc7cb0": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "a7c4a8b8-5789-44d4-891e-9eb815d81fc1": {
+         "name": "ij1-edge-sobel",
+         "description": "Applies a Sobel edge detector. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "a582d9a4-9180-4277-960a-aa3bf3e0bb51": {
+         "name": "ij1-math-hessian2d",
+         "description": "Deprecated: Replace with node with the same name. Computes Hessian the eigenvalues of the Hessian, which can be used for example to discriminate locally between plate-like, line-like, and blob-like image structures.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "bdef6906-fa8f-47d5-ba56-92f8fd574cc5": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "22a0db0d-f1c1-4b14-8ee6-bc59d2c143f5": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "908669ce-0713-4865-a4a5-31782b477cfa": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f02a69ab-5a4e-43ae-8450-1c28d755b715": {
+         "name": "ij1-math-local-variance3d",
+         "description": "Calculates the local variance around each pixel. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "b7c1b866-23f6-4ebc-9df1-5513a0f912b1": {
+         "name": "ij1-transform-set-dimensions",
+         "description": "Sets the exact hyperstack dimensions of the incoming images. If you provide a lower size, planes will be removed. If you provide a larger dimension, planes are either set to black or copied from the slices with the highest index."
+      },
+      "1307341d-8b22-462c-a02d-c383855ed98c": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "5e3888a6-b365-4b47-8585-a4cd99881878": {
+         "name": "ij1-convolve-convolve2d-parameter",
+         "description": "Applies a convolution with a user-defined filter kernel. The kernel is defined by a parameter.If higher-dimensional data is provided, the filter is applied to each 2D slice. For the most precise results, we recommend to convert the image to 32-bit before applying a convolution. Otherwise ImageJ will apply conversion from and to 32-bit images itself, which can have unexpected results."
+      },
+      "2e20c4fc-f7e7-4c8f-a012-2f72f83c8c60": {
+         "name": "ij1-threshold-local-auto2d-sauvola",
+         "description": "Applies a local auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "803747a9-475c-47de-a5db-ff85487f4577": {
+         "name": "ij1-sharpen-laplacian2d",
+         "description": "Applies a 3x3 sharpening filter. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "af301340-cc47-4728-b441-0c7b6a3bf9de": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "607807de-ee0c-4559-9e09-bc9e5f19fc25": {
+         "name": "ij-convert-image",
+         "description": "Converts an image into another image type"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d70fbbf7-5afd-49ac-8c5e-b2b132a06910",
+         "target-node": "2e20c4fc-f7e7-4c8f-a012-2f72f83c8c60",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2dc0e25f-ff7e-4184-b6be-8ac4bbdf6286",
+         "target-node": "a7c4a8b8-5789-44d4-891e-9eb815d81fc1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "76b3a39a-ee91-48c3-9ffc-02473965d66b",
+         "target-node": "970bb8d4-fb16-4bbb-b632-53aca6ced488",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "5f2b5d54-998b-40fc-ace3-53352d4b13cc",
+         "target-node": "f02a69ab-5a4e-43ae-8450-1c28d755b715",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "80c4f828-fe53-4fc9-8060-07746aa62c5b",
+         "target-node": "607807de-ee0c-4559-9e09-bc9e5f19fc25",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "5e3888a6-b365-4b47-8585-a4cd99881878",
+         "target-node": "5f2b5d54-998b-40fc-ace3-53352d4b13cc",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "76b3a39a-ee91-48c3-9ffc-02473965d66b",
+         "target-node": "803747a9-475c-47de-a5db-ff85487f4577",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c154dce2-67c5-4fe3-a6c7-01d1d3d66e68",
+         "target-node": "5e3888a6-b365-4b47-8585-a4cd99881878",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1307341d-8b22-462c-a02d-c383855ed98c",
+         "target-node": "a582d9a4-9180-4277-960a-aa3bf3e0bb51",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "970bb8d4-fb16-4bbb-b632-53aca6ced488",
+         "target-node": "2dc0e25f-ff7e-4184-b6be-8ac4bbdf6286",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a582d9a4-9180-4277-960a-aa3bf3e0bb51",
+         "target-node": "73af0425-25e4-4e30-bbce-2a0bc6df9565",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d81b34dd-0b45-462a-afa2-245fa8dc7cb0",
+         "target-node": "bdef6906-fa8f-47d5-ba56-92f8fd574cc5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d70fbbf7-5afd-49ac-8c5e-b2b132a06910",
+         "target-node": "908669ce-0713-4865-a4a5-31782b477cfa",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "76b3a39a-ee91-48c3-9ffc-02473965d66b",
+         "target-node": "1307341d-8b22-462c-a02d-c383855ed98c",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "2e20c4fc-f7e7-4c8f-a012-2f72f83c8c60",
+         "target-node": "d05e50ce-6389-4cd7-a461-a92bdb7af957",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "af301340-cc47-4728-b441-0c7b6a3bf9de",
+         "target-node": "29229d78-943c-419c-8280-3b2b49f73d7a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "73af0425-25e4-4e30-bbce-2a0bc6df9565",
+         "target-node": "d81b34dd-0b45-462a-afa2-245fa8dc7cb0",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8dd21b6b-f66c-4066-b5da-835fa5eed1c6",
+         "target-node": "410d264d-d3de-413a-af64-ba13fed0f380",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ee33a2d1-0319-45be-9ac9-fd46a6debce0",
+         "target-node": "c154dce2-67c5-4fe3-a6c7-01d1d3d66e68",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "76b3a39a-ee91-48c3-9ffc-02473965d66b",
+         "target-node": "ee33a2d1-0319-45be-9ac9-fd46a6debce0",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "bdef6906-fa8f-47d5-ba56-92f8fd574cc5",
+         "target-node": "80c4f828-fe53-4fc9-8060-07746aa62c5b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d05e50ce-6389-4cd7-a461-a92bdb7af957",
+         "target-node": "22a0db0d-f1c1-4b14-8ee6-bc59d2c143f5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "410d264d-d3de-413a-af64-ba13fed0f380",
+         "target-node": "af301340-cc47-4728-b441-0c7b6a3bf9de",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "16c84c9a-8590-4662-b374-75387229dad6",
+         "target-node": "d70fbbf7-5afd-49ac-8c5e-b2b132a06910",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "22a0db0d-f1c1-4b14-8ee6-bc59d2c143f5",
+         "target-node": "b7c1b866-23f6-4ebc-9df1-5513a0f912b1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a7c4a8b8-5789-44d4-891e-9eb815d81fc1",
+         "target-node": "8dd21b6b-f66c-4066-b5da-835fa5eed1c6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f02a69ab-5a4e-43ae-8450-1c28d755b715",
+         "target-node": "16c84c9a-8590-4662-b374-75387229dad6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

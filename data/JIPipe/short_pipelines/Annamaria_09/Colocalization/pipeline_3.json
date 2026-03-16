@@ -1,0 +1,107 @@
+{
+   "description": "This pipeline processes images by first filtering and converting 3D regions of interest, then overlaying and blending the resulting images, and finally exporting the output in a non-native format after applying physical pixel sizes and adjusting properties as needed, while also generating label images from the 3D regions of interest.",
+   "nodes": {
+      "3c199696-39ba-4df0-8af0-17318f7a006f": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d59b4c6e-2a61-44c8-a3d9-9ad257b1298a": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "391b5a9d-ebdc-4c5a-a02d-83af33b0dbad": {
+         "name": "ij3d-roi-filter-by-overlap",
+         "description": "Filters the 3D ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9874bb88-95f1-4af4-95a1-14befe8f196b": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "50be24fe-b7f3-4504-9999-c82fc4ddf9a5": {
+         "name": "ij3d-roi-change-properties",
+         "description": "Sets the properties of all 3D ROI"
+      },
+      "920f5f76-6bc5-4190-a754-29d451ccc2ea": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "6868d232-cf2d-4d2d-94a8-c512537ad7fe": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "bc54bb3d-4293-4eb2-b100-f0716a5fc297": {
+         "name": "ij3d-roi-change-properties",
+         "description": "Sets the properties of all 3D ROI"
+      },
+      "340168be-5a87-4d3a-b9ff-b327148f1bac": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "6fe74e15-1881-4c46-a325-fa8fed774d29": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9874bb88-95f1-4af4-95a1-14befe8f196b",
+         "target-node": "920f5f76-6bc5-4190-a754-29d451ccc2ea",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "6868d232-cf2d-4d2d-94a8-c512537ad7fe",
+         "target-node": "9874bb88-95f1-4af4-95a1-14befe8f196b",
+         "source-slot": "Output",
+         "target-slot": "Magenta"
+      },
+      {
+         "source-node": "920f5f76-6bc5-4190-a754-29d451ccc2ea",
+         "target-node": "3c199696-39ba-4df0-8af0-17318f7a006f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "391b5a9d-ebdc-4c5a-a02d-83af33b0dbad",
+         "target-node": "bc54bb3d-4293-4eb2-b100-f0716a5fc297",
+         "source-slot": "ROI 1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6868d232-cf2d-4d2d-94a8-c512537ad7fe",
+         "target-node": "d59b4c6e-2a61-44c8-a3d9-9ad257b1298a",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "50be24fe-b7f3-4504-9999-c82fc4ddf9a5",
+         "target-node": "6868d232-cf2d-4d2d-94a8-c512537ad7fe",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "6fe74e15-1881-4c46-a325-fa8fed774d29",
+         "target-node": "9874bb88-95f1-4af4-95a1-14befe8f196b",
+         "source-slot": "Output",
+         "target-slot": "Green"
+      },
+      {
+         "source-node": "bc54bb3d-4293-4eb2-b100-f0716a5fc297",
+         "target-node": "6fe74e15-1881-4c46-a325-fa8fed774d29",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "6fe74e15-1881-4c46-a325-fa8fed774d29",
+         "target-node": "340168be-5a87-4d3a-b9ff-b327148f1bac",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "391b5a9d-ebdc-4c5a-a02d-83af33b0dbad",
+         "target-node": "50be24fe-b7f3-4504-9999-c82fc4ddf9a5",
+         "source-slot": "ROI 2",
+         "target-slot": "Input"
+      }
+   ]
+}

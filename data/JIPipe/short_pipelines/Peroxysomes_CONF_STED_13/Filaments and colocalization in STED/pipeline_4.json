@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline overlays greyscale or RGB images based on their annotations, grouping incoming data into categories and producing an output that combines specific image channels.",
+   "nodes": {
+      "d44d94f8-d94d-454b-b89e-8ae4f8833865": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

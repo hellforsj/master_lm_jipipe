@@ -1,0 +1,27 @@
+{
+   "description": "This pipeline trains a model with Cellpose. The main steps are to distribute data, then train the model with this distributed data.",
+   "nodes": {
+      "a21e63ab-f72d-4833-ab2a-ed213a79192d": {
+         "name": "distribute-data",
+         "description": "Distributes data across the output slots, so a certain percentage of data is in the specified slot. Please note that negative weights will be replaced by zero. The output data is unique, meaning that there will be no overlaps between different slots.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "1612d438-f3e3-483b-8bb6-800455b8a1cd": {
+         "name": "cellpose-training-2",
+         "description": "Deprecated. Use the node with the same name.<br/><br/>Trains a model with Cellpose. You start from an existing model or train from scratch. Incoming images are automatically converted to greyscale. Only 2D or 3D images are supported. For this node to work, you need to annotate a greyscale 16-bit or 8-bit label image column to each raw data input. To do this, you can use the node 'Annotate with data'. By default, JIPipe will ensure that all connected components of this image are assigned a unique component. You can disable this feature via the parameters.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "a21e63ab-f72d-4833-ab2a-ed213a79192d",
+         "target-node": "1612d438-f3e3-483b-8bb6-800455b8a1cd",
+         "source-slot": "Validate",
+         "target-slot": "Test data"
+      },
+      {
+         "source-node": "a21e63ab-f72d-4833-ab2a-ed213a79192d",
+         "target-node": "1612d438-f3e3-483b-8bb6-800455b8a1cd",
+         "source-slot": "Train",
+         "target-slot": "Training data"
+      }
+   ]
+}

@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline detects spots in an image using TrackMate. The main steps include detecting the spots, filtering the spots, and then tracking the spots.",
+   "nodes": {
+      "ae68dc95-d35e-414d-9763-85136c7abd40": {
+         "name": "trackmate-create-spot-detector-mask-detector",
+         "description": "This detector creates spots from a black and white mask.<p>More precisely, all the pixels in the designated channel that have a value strictly larger than 0 are considered as part of the foreground, and used to build connected regions. In 2D, spots are created with the (possibly simplified) contour of the region. In 3D, a spherical spot is created for each region in its center, with a volume equal to the region volume.<p>The spot quality stores the object area or volume in pixels."
+      },
+      "71956ffa-86dd-4400-b3a0-d3d9f962de5c": {
+         "name": "trackmate-detector",
+         "description": "Detect spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "077d37b5-5a2c-4a07-b90c-28dffd48b8b8": {
+         "name": "trackmate-filter-spots",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "68ff1280-125c-4773-b128-b56229bbf0d2": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "ae68dc95-d35e-414d-9763-85136c7abd40",
+         "target-node": "71956ffa-86dd-4400-b3a0-d3d9f962de5c",
+         "source-slot": "Spot detector",
+         "target-slot": "Spot detector"
+      },
+      {
+         "source-node": "71956ffa-86dd-4400-b3a0-d3d9f962de5c",
+         "target-node": "077d37b5-5a2c-4a07-b90c-28dffd48b8b8",
+         "source-slot": "Spots",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "077d37b5-5a2c-4a07-b90c-28dffd48b8b8",
+         "target-node": "68ff1280-125c-4773-b128-b56229bbf0d2",
+         "source-slot": "Output",
+         "target-slot": "Spots"
+      }
+   ]
+}

@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline plots a histogram of the measurements, it starts with the ij3d-measure-pairwise-roi3d node and ends with the plot-table:plot-histogram node.",
+   "nodes": {
+      "52c87751-acf8-4733-bbdc-9ec022f69a14": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "1ab0c8e2-f7ad-4be7-aa01-fa041f7cab5f": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "981efe86-1d95-46da-b77e-f0bc8df5b387": {
+         "name": "ij3d-measure-pairwise-roi3d",
+         "description": "Extracts all pairwise statistics between the 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9bf34e3c-8684-4f09-992f-372fc2cd7c78": {
+         "name": "export-data-by-parameter-v2",
+         "description": "Exports the input data via JIPipe's standard exporter. The output is the directory that contains the generated file(s)."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "981efe86-1d95-46da-b77e-f0bc8df5b387",
+         "target-node": "52c87751-acf8-4733-bbdc-9ec022f69a14",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9bf34e3c-8684-4f09-992f-372fc2cd7c78",
+         "target-node": "1ab0c8e2-f7ad-4be7-aa01-fa041f7cab5f",
+         "source-slot": "Output path",
+         "target-slot": "Data 1"
+      },
+      {
+         "source-node": "981efe86-1d95-46da-b77e-f0bc8df5b387",
+         "target-node": "9bf34e3c-8684-4f09-992f-372fc2cd7c78",
+         "source-slot": "Measurements",
+         "target-slot": "Data"
+      }
+   ]
+}

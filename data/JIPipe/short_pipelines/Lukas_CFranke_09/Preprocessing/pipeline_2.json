@@ -1,0 +1,63 @@
+{
+   "description": "This pipeline takes preprocessed images and applies thresholding to them. The main steps include taking the filtered images, applying thresholding, and preparing them for saving or further analysis.",
+   "nodes": {
+      "d1dee139-0a70-4031-acee-170317ce1fa3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "75f1c151-0a06-44f4-bc71-c170f653754b": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel3"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel3"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel2"
+      }
+   ]
+}

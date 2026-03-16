@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline takes an image, applies contrast enhancement using the histogram enhancer feature of ImageJ, and then sets the LUT of the image from a predefined color map. The main steps include applying the contrast histogram enhancer and setting the LUT.",
+   "nodes": {
+      "f2f41da7-5caf-4a7e-8e85-aa8dd4dc8c01": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "54df5175-5291-46e1-b1b2-9e72807ef878": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "target-node": "f2f41da7-5caf-4a7e-8e85-aa8dd4dc8c01",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

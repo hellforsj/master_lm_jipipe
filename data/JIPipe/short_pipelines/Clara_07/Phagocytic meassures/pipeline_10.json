@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline appears to perform a series of column removal operations on a table, sequentially processing the data through multiple stages to ultimately produce an output with specific columns removed.",
+   "nodes": {
+      "bf8aa75e-446a-4bfc-9433-e8b1e33d12b1": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "3b23d774-3df6-446a-b842-15589482ba8d": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "6db70f1b-d2ba-4a02-9ad6-7481e3f9301a": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "364f654c-2dda-4e6f-a78d-21ce7e43df46": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "364f654c-2dda-4e6f-a78d-21ce7e43df46",
+         "target-node": "3b23d774-3df6-446a-b842-15589482ba8d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6db70f1b-d2ba-4a02-9ad6-7481e3f9301a",
+         "target-node": "bf8aa75e-446a-4bfc-9433-e8b1e33d12b1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3b23d774-3df6-446a-b842-15589482ba8d",
+         "target-node": "6db70f1b-d2ba-4a02-9ad6-7481e3f9301a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

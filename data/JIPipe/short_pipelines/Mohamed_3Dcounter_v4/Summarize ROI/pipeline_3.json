@@ -1,0 +1,31 @@
+{
+   "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations. This task is solved by applying the 'annotation-merge' node, which takes the input from multiple source nodes and merges their annotations.",
+   "nodes": {
+      "6d0a15d7-1492-4a75-8508-efe51192524b": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "9267ac34-b6af-448f-bbb6-41db5d9c181a": {
+         "name": "annotation-merge",
+         "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "99100e81-cf70-450f-88ea-bd1be9ed8cb6": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "99100e81-cf70-450f-88ea-bd1be9ed8cb6",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "All bacteria"
+      },
+      {
+         "source-node": "6d0a15d7-1492-4a75-8508-efe51192524b",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "Macrophages with phagocytosed bacteria"
+      }
+   ]
+}

@@ -1,0 +1,121 @@
+{
+   "description": "This pipeline processes image data by applying various operations such as connected component labeling, calibration, and measurement extraction. It starts with input images that undergo segmentation and masking, followed by the application of different algorithms to extract statistics and features from the masked regions. The results are then further processed and analyzed through iterative scripts, ultimately generating output measurements and tables containing ROI statistics. The pipeline's overall function is to automate the analysis of biomedical microscopic images, providing a comprehensive workflow for image processing and data extraction.",
+   "nodes": {
+      "96d3838e-d093-4bb8-9f20-50765c0a796f": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b8b564a4-834d-4d9a-911c-3848425d6697": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b5f6352e-2191-4906-a80f-4e6b40027d25": {
+         "name": "ij3d-measure-pairwise-roi3d",
+         "description": "Extracts all pairwise statistics between the 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "02ca0d22-c907-4550-a8e9-c295655e94a3": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9e59676d-af47-4da3-81f8-1f26800bfe2f": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      },
+      "4a20cc31-f6f7-4946-9382-6faf5f8245cc": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "981efe86-1d95-46da-b77e-f0bc8df5b387": {
+         "name": "ij3d-measure-pairwise-roi3d",
+         "description": "Extracts all pairwise statistics between the 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d5d915ce-8aee-4d23-9fef-6a9b9715ac3e": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "95bd30e1-b239-4387-a4f5-6e441801a368": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "a919119c-72f7-4ffe-bb66-a7adc23221e6",
+         "target-node": "b5f6352e-2191-4906-a80f-4e6b40027d25",
+         "source-slot": "Green ROIs",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "9e59676d-af47-4da3-81f8-1f26800bfe2f",
+         "target-node": "95bd30e1-b239-4387-a4f5-6e441801a368",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "a919119c-72f7-4ffe-bb66-a7adc23221e6",
+         "target-node": "9e59676d-af47-4da3-81f8-1f26800bfe2f",
+         "source-slot": "Red segmented",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a919119c-72f7-4ffe-bb66-a7adc23221e6",
+         "target-node": "95bd30e1-b239-4387-a4f5-6e441801a368",
+         "source-slot": "Red-green overlay",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "a919119c-72f7-4ffe-bb66-a7adc23221e6",
+         "target-node": "4a20cc31-f6f7-4946-9382-6faf5f8245cc",
+         "source-slot": "Red mask",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "a919119c-72f7-4ffe-bb66-a7adc23221e6",
+         "target-node": "b8b564a4-834d-4d9a-911c-3848425d6697",
+         "source-slot": "Green mask",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "a919119c-72f7-4ffe-bb66-a7adc23221e6",
+         "target-node": "b8b564a4-834d-4d9a-911c-3848425d6697",
+         "source-slot": "Green ROIs",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "a919119c-72f7-4ffe-bb66-a7adc23221e6",
+         "target-node": "981efe86-1d95-46da-b77e-f0bc8df5b387",
+         "source-slot": "Red ROIs",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "4a20cc31-f6f7-4946-9382-6faf5f8245cc",
+         "target-node": "02ca0d22-c907-4550-a8e9-c295655e94a3",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4a20cc31-f6f7-4946-9382-6faf5f8245cc",
+         "target-node": "d5d915ce-8aee-4d23-9fef-6a9b9715ac3e",
+         "source-slot": "Measurements",
+         "target-slot": "Input 1"
+      },
+      {
+         "source-node": "b8b564a4-834d-4d9a-911c-3848425d6697",
+         "target-node": "96d3838e-d093-4bb8-9f20-50765c0a796f",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a919119c-72f7-4ffe-bb66-a7adc23221e6",
+         "target-node": "4a20cc31-f6f7-4946-9382-6faf5f8245cc",
+         "source-slot": "Red ROIs",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "b8b564a4-834d-4d9a-911c-3848425d6697",
+         "target-node": "d5d915ce-8aee-4d23-9fef-6a9b9715ac3e",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies connected component labeling to an input image, assigning a unique value to each connected component, and then copies the physical pixel sizes from the source image to the target image, grouping data based on annotations.",
+   "nodes": {
+      "496d7cb9-ef0c-429a-abdc-76d70da409ae": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      },
+      "7d8b3f8e-a9d1-438e-9c4e-78b63c2f5a41": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "496d7cb9-ef0c-429a-abdc-76d70da409ae",
+         "target-node": "7d8b3f8e-a9d1-438e-9c4e-78b63c2f5a41",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      }
+   ]
+}

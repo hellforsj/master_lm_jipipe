@@ -1,0 +1,257 @@
+{
+   "description": "This pipeline filters and splits multichannel images into separate channels for individual analysis. The main steps include taking in multichannel images, filtering them, splitting the channels, and preparing each channel for further analysis.",
+   "nodes": {
+      "dd10453e-cfe2-4ceb-998a-8c4b8d283254": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "0681cf12-58ca-4155-bb77-e17addce1bb9": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "a161e875-6599-4d07-963b-c8c6dddbca8a": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "d1dee139-0a70-4031-acee-170317ce1fa3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "67b71662-479b-43a4-b78c-6c9f4a6b6279": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "7b9e2cbc-d192-4850-9e0e-ed99a87abb8a": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "cf528fa7-3ffd-4484-8953-e03ab4f385c3": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "a161e875-6599-4d07-963b-c8c6dddbca8a",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "a161e875-6599-4d07-963b-c8c6dddbca8a",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "a161e875-6599-4d07-963b-c8c6dddbca8a",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "a161e875-6599-4d07-963b-c8c6dddbca8a",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "a161e875-6599-4d07-963b-c8c6dddbca8a",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "a161e875-6599-4d07-963b-c8c6dddbca8a",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "7b9e2cbc-d192-4850-9e0e-ed99a87abb8a",
+         "source-slot": "Channel2",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "7b9e2cbc-d192-4850-9e0e-ed99a87abb8a",
+         "source-slot": "Channel2",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "7b9e2cbc-d192-4850-9e0e-ed99a87abb8a",
+         "source-slot": "Channel2",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "7b9e2cbc-d192-4850-9e0e-ed99a87abb8a",
+         "source-slot": "Channel2",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "7b9e2cbc-d192-4850-9e0e-ed99a87abb8a",
+         "source-slot": "Channel2",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel4",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel3"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "dd10453e-cfe2-4ceb-998a-8c4b8d283254",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel3"
+      },
+      {
+         "source-node": "dd10453e-cfe2-4ceb-998a-8c4b8d283254",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel5",
+         "target-slot": "Channel5"
+      },
+      {
+         "source-node": "dd10453e-cfe2-4ceb-998a-8c4b8d283254",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "dd10453e-cfe2-4ceb-998a-8c4b8d283254",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel4",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel4",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "dd10453e-cfe2-4ceb-998a-8c4b8d283254",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "dd10453e-cfe2-4ceb-998a-8c4b8d283254",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel3"
+      }
+   ]
+}

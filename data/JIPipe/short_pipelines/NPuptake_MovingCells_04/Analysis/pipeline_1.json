@@ -1,0 +1,201 @@
+{
+   "description": "This pipeline reads in files from a folder and applies filtering to the images. The main steps include reading in the filenames, applying a filter to the images, and then outputting the filtered images.",
+   "nodes": {
+      "d6efebd6-e889-43a6-9b1a-e2120e911f1a": {
+         "name": "generate-unique-annotation",
+         "description": "Generates a unique annotation for each row based on its index. The annotations will have the format (Base name)[(row index)]"
+      },
+      "cf8ba4f6-d7dc-4545-a748-30a4d9e1550d": {
+         "name": "ij1-math-math2d",
+         "description": "Applies a mathematical operation to each pixel. Supported operations are SET, ADD, SUBTRACT, MULTIPLY, DIVIDE, GAMMA, MINIMUM, MAXIMUM, LOGICAL OR, LOGICAL AND, and LOGICAL XOR. We recommend to use 'Fast image arithmetics' instead."
+      },
+      "817e44be-fd22-4874-80c3-3c370ff24346": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "6ba646c5-354a-4fff-b2d7-43bb43870639": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "fba9707e-2f52-4f45-b58e-451bc10cb876": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "e09ae905-0732-43ca-8681-ba307729f31b": {
+         "name": "import-file-list",
+         "description": "Converts each provided path into file data."
+      },
+      "c9b96472-4b0f-4610-9d6c-b5ff7c948d4c": {
+         "name": "ij1-threshold-manual2d-8u",
+         "description": "Thresholds the image with a manual threshold. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "4c46d13f-8a90-46ad-a757-fd9a37db8e22": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "7505a194-2450-40fd-8564-ab4abe9b1225": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "b9993bb2-1832-435b-852d-a798a1d2303c": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "37b7a03a-bc02-4242-88e5-1f4d7e401366": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "2847dabf-244e-4e12-b7b0-a9efc6b588cc": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "c7333c3b-b9db-4e1c-9468-c23fb9a7200c": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      },
+      "96fc2483-1424-4a27-b75d-500a2d13775f": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "d6748a27-4fd4-49b0-8537-d2785d630144": {
+         "name": "ij1-threshold-manual2d-8u",
+         "description": "Thresholds the image with a manual threshold. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "7d5b85b1-8a95-47ae-9ea8-6cc3a53e86e2": {
+         "name": "import-imagej-roi-from-file",
+         "description": "Loads a ROI list from a file. The file can be either a single ROI (.roi extension) or a list of ROI (.zip extension)."
+      },
+      "8406ea93-7531-433e-9a1c-6712a198e2db": {
+         "name": "weka-classification-2d",
+         "description": "Classifies an image with a Weka model. If higher-dimensional data is provided, the classification is applied per slice. To obtain ROI from the generated labels, utilize the 'Labels to ROI' node.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "97a56f32-cc31-43a1-bdff-8f5fe59ca780": {
+         "name": "ij1-roi-to-mask",
+         "description": "Converts ROI lists to masks. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "7bb63317-bc53-45d6-9d45-f424f2cfe724": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      },
+      "ec7b2439-232e-48fc-979b-ca7c7450d642": {
+         "name": "weka-training-roi-2d",
+         "description": "Trains a Weka model on 2D image data. The inputs are ROI that are assigned to the classes and trained on the input image. Can only train on a single image. Please convert ROI to labels/masks and use the appropriate nodes if you want to train on multiple images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "e09ae905-0732-43ca-8681-ba307729f31b",
+         "target-node": "7d5b85b1-8a95-47ae-9ea8-6cc3a53e86e2",
+         "source-slot": "Filenames",
+         "target-slot": "Files"
+      },
+      {
+         "source-node": "97a56f32-cc31-43a1-bdff-8f5fe59ca780",
+         "target-node": "7505a194-2450-40fd-8564-ab4abe9b1225",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4c46d13f-8a90-46ad-a757-fd9a37db8e22",
+         "target-node": "c9b96472-4b0f-4610-9d6c-b5ff7c948d4c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b9993bb2-1832-435b-852d-a798a1d2303c",
+         "target-node": "2847dabf-244e-4e12-b7b0-a9efc6b588cc",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6efebd6-e889-43a6-9b1a-e2120e911f1a",
+         "target-node": "37b7a03a-bc02-4242-88e5-1f4d7e401366",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6748a27-4fd4-49b0-8537-d2785d630144",
+         "target-node": "6ba646c5-354a-4fff-b2d7-43bb43870639",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2847dabf-244e-4e12-b7b0-a9efc6b588cc",
+         "target-node": "817e44be-fd22-4874-80c3-3c370ff24346",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c7333c3b-b9db-4e1c-9468-c23fb9a7200c",
+         "target-node": "97a56f32-cc31-43a1-bdff-8f5fe59ca780",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "7d5b85b1-8a95-47ae-9ea8-6cc3a53e86e2",
+         "target-node": "ec7b2439-232e-48fc-979b-ca7c7450d642",
+         "source-slot": "Output",
+         "target-slot": "Bkg"
+      },
+      {
+         "source-node": "c9b96472-4b0f-4610-9d6c-b5ff7c948d4c",
+         "target-node": "fba9707e-2f52-4f45-b58e-451bc10cb876",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6efebd6-e889-43a6-9b1a-e2120e911f1a",
+         "target-node": "4c46d13f-8a90-46ad-a757-fd9a37db8e22",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "37b7a03a-bc02-4242-88e5-1f4d7e401366",
+         "target-node": "d6748a27-4fd4-49b0-8537-d2785d630144",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8406ea93-7531-433e-9a1c-6712a198e2db",
+         "target-node": "cf8ba4f6-d7dc-4545-a748-30a4d9e1550d",
+         "source-slot": "Classified image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "96fc2483-1424-4a27-b75d-500a2d13775f",
+         "target-node": "b9993bb2-1832-435b-852d-a798a1d2303c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ec7b2439-232e-48fc-979b-ca7c7450d642",
+         "target-node": "8406ea93-7531-433e-9a1c-6712a198e2db",
+         "source-slot": "Trained model",
+         "target-slot": "Model"
+      },
+      {
+         "source-node": "7505a194-2450-40fd-8564-ab4abe9b1225",
+         "target-node": "7bb63317-bc53-45d6-9d45-f424f2cfe724",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "817e44be-fd22-4874-80c3-3c370ff24346",
+         "target-node": "c7333c3b-b9db-4e1c-9468-c23fb9a7200c",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "6ba646c5-354a-4fff-b2d7-43bb43870639",
+         "target-node": "96fc2483-1424-4a27-b75d-500a2d13775f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "cf8ba4f6-d7dc-4545-a748-30a4d9e1550d",
+         "target-node": "d6efebd6-e889-43a6-9b1a-e2120e911f1a",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      }
+   ]
+}

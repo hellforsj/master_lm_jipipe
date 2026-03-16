@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline processes folder data by first converting provided paths into folder information, then creating annotations for each path based on its name or full path, and finally listing all subfolders, ultimately generating annotated folder structures from initial path inputs.",
+   "nodes": {
+      "ab21e96c-8dc0-4b9e-9f9e-ad23b3ecbb59": {
+         "name": "import-folder-list",
+         "description": "Converts each provided path into folder data."
+      },
+      "3a4b82b2-9543-4454-a8c5-9b484dfada4c": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "ee82da52-3ca9-4e60-9d22-66e36a75b3fe": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3a4b82b2-9543-4454-a8c5-9b484dfada4c",
+         "target-node": "ee82da52-3ca9-4e60-9d22-66e36a75b3fe",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "ab21e96c-8dc0-4b9e-9f9e-ad23b3ecbb59",
+         "target-node": "3a4b82b2-9543-4454-a8c5-9b484dfada4c",
+         "source-slot": "Folder paths",
+         "target-slot": "Paths"
+      }
+   ]
+}

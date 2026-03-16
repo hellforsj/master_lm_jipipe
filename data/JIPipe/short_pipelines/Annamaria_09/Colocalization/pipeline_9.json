@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline processes image data by copying physical pixel sizes from a source to a target, and then outputs the result, potentially for further analysis or visualization of spatial relationships between different components.",
+   "nodes": {
+      "340168be-5a87-4d3a-b9ff-b327148f1bac": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

@@ -1,0 +1,101 @@
+{
+   "description": "This pipeline applies an expression for each row in a table and then plots the incoming table as a statistical bar category plot. The main steps involve applying the expression, and then plotting the table.",
+   "nodes": {
+      "41ac88f1-59d9-4af0-a617-79a09505f2c4": {
+         "name": "table-apply-expression-per-row-v2",
+         "description": "Applies an expression for each row. The column values are available as variables."
+      },
+      "af26a828-ebd8-4bc6-8d9e-05bbf7ee07ec": {
+         "name": "plot-table:plot-box-and-whisker",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Box plot."
+      },
+      "8b4cb9dc-6dd0-4a70-b9c7-a227b0efee20": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "6cd0a53c-b611-40d7-b56e-8dd7d6b0c1e0": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "13f0cd5c-64b8-4485-ab3b-eb650683fa47": {
+         "name": "plot-table:plot-category-statistical-line",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Statistical line category plot."
+      },
+      "db040415-ba3d-4342-bb8d-6b5fcaea7cf0": {
+         "name": "plot-table:plot-category-statistical-bar",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Statistical bar category plot."
+      },
+      "79bbb6b6-bd46-40d1-bd61-b15996e6796d": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "fc8ecf29-0eb5-4aca-b420-e03357ce86ed": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3d20b4d7-6f95-4c58-8cd7-78f9dffd1b59": {
+         "name": "plot-table:plot-xy-scatter",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart XY scatter plot."
+      },
+      "cf49ddaa-229b-41b5-9360-01b607d1b650": {
+         "name": "plot-table:plot-xy-line",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart XY line plot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "41ac88f1-59d9-4af0-a617-79a09505f2c4",
+         "target-node": "cf49ddaa-229b-41b5-9360-01b607d1b650",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "41ac88f1-59d9-4af0-a617-79a09505f2c4",
+         "target-node": "8b4cb9dc-6dd0-4a70-b9c7-a227b0efee20",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "41ac88f1-59d9-4af0-a617-79a09505f2c4",
+         "target-node": "af26a828-ebd8-4bc6-8d9e-05bbf7ee07ec",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "41ac88f1-59d9-4af0-a617-79a09505f2c4",
+         "target-node": "3d20b4d7-6f95-4c58-8cd7-78f9dffd1b59",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8b4cb9dc-6dd0-4a70-b9c7-a227b0efee20",
+         "target-node": "79bbb6b6-bd46-40d1-bd61-b15996e6796d",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "13f0cd5c-64b8-4485-ab3b-eb650683fa47",
+         "target-node": "6cd0a53c-b611-40d7-b56e-8dd7d6b0c1e0",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "41ac88f1-59d9-4af0-a617-79a09505f2c4",
+         "target-node": "13f0cd5c-64b8-4485-ab3b-eb650683fa47",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "41ac88f1-59d9-4af0-a617-79a09505f2c4",
+         "target-node": "db040415-ba3d-4342-bb8d-6b5fcaea7cf0",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6cd0a53c-b611-40d7-b56e-8dd7d6b0c1e0",
+         "target-node": "fc8ecf29-0eb5-4aca-b420-e03357ce86ed",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      }
+   ]
+}

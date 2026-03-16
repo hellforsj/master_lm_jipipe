@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline annotates data with a unique id. It generates an annotation, then assigns it to the data.",
+   "nodes": {
+      "f76c16df-bef2-4572-88df-80df847ac6b0": {
+         "name": "generate-unique-annotation",
+         "description": "Generates a unique annotation for each row based on its index. The annotations will have the format (Base name)[(row index)]"
+      },
+      "e7bc48e6-b51a-4048-b0d3-f508c42b9128": {
+         "name": "generate-unique-annotation",
+         "description": "Generates a unique annotation for each row based on its index. The annotations will have the format (Base name)[(row index)]"
+      },
+      "5fa5808d-37a7-46cf-9346-1644dd9fd5eb": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "5fa5808d-37a7-46cf-9346-1644dd9fd5eb",
+         "target-node": "f76c16df-bef2-4572-88df-80df847ac6b0",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "e7bc48e6-b51a-4048-b0d3-f508c42b9128",
+         "target-node": "5fa5808d-37a7-46cf-9346-1644dd9fd5eb",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      }
+   ]
+}

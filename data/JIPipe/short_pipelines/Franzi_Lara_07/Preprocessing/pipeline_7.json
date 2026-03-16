@@ -1,0 +1,83 @@
+{
+   "description": "This pipeline processes biomedical microscopic images by first importing them and then extracting relevant metadata, which is subsequently annotated and formatted for further analysis. The images themselves are converted to a suitable format and their properties are added as annotations. Additionally, specific values are extracted from the metadata using XPath expressions and used to further annotate the data, ultimately resulting in a fully processed and annotated image with associated metadata.",
+   "nodes": {
+      "0660eee7-ee6a-4e33-8768-3565de92ee6f": {
+         "name": "ij1-extract-ome-image-xml",
+         "description": "Extracts the OME metadata XML from an OME image"
+      },
+      "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6": {
+         "name": "xml-annotate-with-xml-data",
+         "description": "Extracts a value from the input text data (via XPath) and annotates the data with the result. Please visit https://www.w3schools.com/xml/xpath_intro.asp to learn about XPath."
+      },
+      "4d007d65-1a71-46a3-ac71-b257f4c5edbf": {
+         "name": "xml-prettify",
+         "description": "Prettifies/formats the input XML data"
+      },
+      "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "a0068e3c-838f-40e3-a929-639c5b919bda": {
+         "name": "ij-convert-image-to-32-bit",
+         "description": "Converts an image into 32-bit"
+      },
+      "23c37ca3-351d-4e16-a5a0-44504a934281": {
+         "name": "import-imagej-bioformats",
+         "description": "Imports images via the Bio-Formats plugin"
+      },
+      "e49cfc5b-6a22-4a8a-9401-92983549b0ac": {
+         "name": "ome-annotate-with-metadata",
+         "description": "Annotates an OME image with metadata extracted from the OME metadata"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "23c37ca3-351d-4e16-a5a0-44504a934281",
+         "target-node": "e49cfc5b-6a22-4a8a-9401-92983549b0ac",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0660eee7-ee6a-4e33-8768-3565de92ee6f",
+         "target-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "target-node": "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a0068e3c-838f-40e3-a929-639c5b919bda",
+         "target-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "23c37ca3-351d-4e16-a5a0-44504a934281",
+         "target-node": "a0068e3c-838f-40e3-a929-639c5b919bda",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "23c37ca3-351d-4e16-a5a0-44504a934281",
+         "target-node": "0660eee7-ee6a-4e33-8768-3565de92ee6f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "target-node": "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0660eee7-ee6a-4e33-8768-3565de92ee6f",
+         "target-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

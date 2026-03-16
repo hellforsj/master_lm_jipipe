@@ -1,0 +1,5 @@
+{
+   "description": "This pipeline outputs the result of a compartment. The main steps include taking the output from a previous node and then passing it through the jipipe:compartment-output node to generate the final output.",
+   "nodes": {},
+   "edges": []
+}

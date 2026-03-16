@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies basic image processing to preprocessed images and prepares them for further analysis. The main steps include applying basic processing techniques and preparing the images.",
+   "nodes": {
+      "62c98d84-6246-470a-b68d-b628351d2be4": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "928b376b-2514-4064-b479-2f90fda59378": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "62c98d84-6246-470a-b68d-b628351d2be4",
+         "target-node": "928b376b-2514-4064-b479-2f90fda59378",
+         "source-slot": "Destination",
+         "target-slot": "Input"
+      }
+   ]
+}

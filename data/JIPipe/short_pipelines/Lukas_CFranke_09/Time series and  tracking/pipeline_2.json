@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline detects spots in image data and filters them based on specific expressions, allowing for the selective processing of relevant information.",
+   "nodes": {
+      "290df4e8-cfeb-43ab-b3a4-039116d60f87": {
+         "name": "trackmate-filter-spots",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "7f9e0a17-6a1c-4404-b0b0-581ad44b6b8e": {
+         "name": "trackmate-detector",
+         "description": "Detect spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "7f9e0a17-6a1c-4404-b0b0-581ad44b6b8e",
+         "target-node": "290df4e8-cfeb-43ab-b3a4-039116d60f87",
+         "source-slot": "Spots",
+         "target-slot": "Input"
+      }
+   ]
+}

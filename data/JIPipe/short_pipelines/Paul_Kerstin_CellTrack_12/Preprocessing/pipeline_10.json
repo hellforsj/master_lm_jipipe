@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to list all subfolders in a folder. The pipeline starts by annotating paths, then it lists all subfolders.",
+   "nodes": {
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "target-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

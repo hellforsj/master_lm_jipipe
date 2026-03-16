@@ -1,0 +1,5 @@
+{
+   "description": "This pipeline processes image data from various sources, including overlays and specific regions of interest, to analyze and extract information about different cellular components, such as spores and macrophages, and combines them into comprehensive outputs for further analysis or reference.",
+   "nodes": {},
+   "edges": []
+}

@@ -1,0 +1,827 @@
+{
+   "description": "The main objective of this pipeline is to perform image filtering and saving. The pipeline starts with an input image, applies a filter and then saves the result.",
+   "nodes": {
+      "a1253593-6d21-4db6-a5c9-806adc2cb80d": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "7a92170a-81d1-4dc1-8772-17742c2ac071": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "86713063-8c6f-4054-afbd-c7f2ce208ac3": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "6d9126a7-6b68-4f09-9340-e31b2f0fd551": {
+         "name": "filaments-skeleton-to-filaments-2d",
+         "description": "Applies a simple algorithm that converts a binary skeleton into a filament. This algorithm only supports 2D data and will apply the processing per Z/C/T slice. Please note that by default the Z voxel size is set to zero."
+      },
+      "ecc742a4-02c9-4c2f-b1eb-0298bda9106a": {
+         "name": "ij1-morph-binary-skeletonize2d",
+         "description": "Applies a morphological skeletonization operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "2fa35fc4-7189-45fa-8ef7-ae6aaaf81868": {
+         "name": "ij1-math-imagecalculator2d",
+         "description": "Applies a mathematical operation between two images. If higher-dimensional data is provided, the filter is applied to each 2D slice. Old implementation that directly uses the one provided by ImageJ. We recommend to use 'Fast image arithmetics' instead.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d9f3414a-eaed-427a-8236-514bceb072f0": {
+         "name": "filaments-measure-filaments",
+         "description": "Measures all components in the filament graph. Produces the following measurements: <ul><li>number of vertices</li><li>number of edges</li><li>length (sum of edge lengths)</li><li>skeletonization-corrected length (adding 2 * radius for each vertex with degree 0 and 1 x radius for each vertex with degree 1)</li><li>confinement ratio (length of the simplified graph divided by the length)</li><li>number of vertices with specific degrees</li><li>min/max centroid x/y/z (per vertex) center[min/max][x/y/z]</li><li>min/max x/y/z (with sphere radius) sphere[min/max][x/y/z]</li><li>centroid x/y/z/c/t</li><li>min/max/avg radius/value</li></ul>You can learn more about the generated measurements here: https://jipipe.hki-jena.de/documentation/filament-measurements.html"
+      },
+      "01e01fe4-d017-4fed-b42e-8e833478d0a7": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "73031f5c-ba41-4c77-b832-b815cc94066e": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "53dc93bf-4f64-4179-b0d0-769f346ad393": {
+         "name": "ij1-math-imagecalculator2d",
+         "description": "Applies a mathematical operation between two images. If higher-dimensional data is provided, the filter is applied to each 2D slice. Old implementation that directly uses the one provided by ImageJ. We recommend to use 'Fast image arithmetics' instead.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c2385ced-7b2e-418a-8b9f-227426b288af": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "64d90149-ca5c-41ba-a257-6636715e357c": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "d44d94f8-d94d-454b-b89e-8ae4f8833865": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "324e0c1d-6b74-49f1-a706-3306f0298868": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b5afa6c9-2aff-4629-9d39-3f44242587f1": {
+         "name": "filaments-filter-components-by-properties",
+         "description": "Filters filament connected components by various properties"
+      },
+      "b4197d5d-ea2e-4c7c-8c92-846ab2d69e44": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b99cec25-9a57-42a9-b42e-69b550b17d57": {
+         "name": "ij1-color-set-to-grayscale-value",
+         "description": "Sets all pixels of the input image to the specified grayscale value. If the image is RGB, the value is converted into an integer that is parsed as RGB.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "2287e73b-2d71-401b-bb15-1bf201ce3def": {
+         "name": "ij1-morph-binary-skeletonize2d",
+         "description": "Applies a morphological skeletonization operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "9224bad4-6b8c-450d-9810-79baf49c826e": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "ec6781a3-23cd-495d-9555-64ad9d042a02": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "99a9553e-92b1-419f-96ac-6c1785b6a677": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "131573b7-594b-427a-a4d8-17e8f1c5efb4": {
+         "name": "ij1-set-lut-from-colors",
+         "description": "Generates a LUT from the first to the second color. This does not change the pixel data."
+      },
+      "1338fe7d-788b-4834-b8b6-4c5da00752da": {
+         "name": "filaments-measure-filaments",
+         "description": "Measures all components in the filament graph. Produces the following measurements: <ul><li>number of vertices</li><li>number of edges</li><li>length (sum of edge lengths)</li><li>skeletonization-corrected length (adding 2 * radius for each vertex with degree 0 and 1 x radius for each vertex with degree 1)</li><li>confinement ratio (length of the simplified graph divided by the length)</li><li>number of vertices with specific degrees</li><li>min/max centroid x/y/z (per vertex) center[min/max][x/y/z]</li><li>min/max x/y/z (with sphere radius) sphere[min/max][x/y/z]</li><li>centroid x/y/z/c/t</li><li>min/max/avg radius/value</li></ul>You can learn more about the generated measurements here: https://jipipe.hki-jena.de/documentation/filament-measurements.html"
+      },
+      "1b66e1f7-812c-450c-ae3e-a820df5dbc1e": {
+         "name": "filaments-filter-components-by-properties",
+         "description": "Filters filament connected components by various properties"
+      },
+      "d1da9670-724a-49fe-bf42-86e13448c07c": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "4f89c0a9-d66a-436f-a038-6465a623c79b": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "9a59d406-0460-4416-9de1-9f7bbb90bd2d": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "11d7a07e-e808-4dd8-8411-77ca52e72cdf": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "c2180523-4ac6-4083-bf81-35527f236225": {
+         "name": "ij1-morph-binary-skeletonize2d",
+         "description": "Applies a morphological skeletonization operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "90f44a78-84b8-4e6f-8945-0f9458ff5641": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "2936cfab-2fc0-42c5-8c03-12d0f7f2972a": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "80eb0550-5bd3-402b-b9b3-bb2653a84642": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "b89bd565-b64f-432b-8ce7-98040933a145": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "3ca0f047-857f-4a31-9f27-9b51481a7cb1": {
+         "name": "ij1-color-set-to-grayscale-value",
+         "description": "Sets all pixels of the input image to the specified grayscale value. If the image is RGB, the value is converted into an integer that is parsed as RGB.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "7b3a285b-e2b5-4f77-ae1b-dcd9c93ce36d": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "73018571-b966-4f43-b781-a5288d3d1e15": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "9ebc1bef-caa0-4fe7-9437-dac9f6f9145d": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9fd39c47-e2d7-4d5b-acdc-1d2550013856": {
+         "name": "filaments-convert-to-mask",
+         "description": "Converts filaments into a 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "30636f97-91dd-4ecc-b7e9-e0c41e53a039": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9e711610-c3a8-4f75-bae6-9de725fa9b08": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "e1468610-325b-4c00-a22a-420a789f901c": {
+         "name": "filaments-skeleton-to-filaments-2d",
+         "description": "Applies a simple algorithm that converts a binary skeleton into a filament. This algorithm only supports 2D data and will apply the processing per Z/C/T slice. Please note that by default the Z voxel size is set to zero."
+      },
+      "2489b33b-2334-40f2-a1e3-810dbbbe6153": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "151d0834-5052-4fec-a5ed-8892659edc4d": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "158956c9-f3c0-4678-9cb4-9f9c1781f639": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "a0b24eb1-9e99-41c3-83cd-013db6367916": {
+         "name": "ij1-morph-binary-skeletonize2d",
+         "description": "Applies a morphological skeletonization operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "d5ca37e4-7d3f-43ac-8b8c-33064f42cce0": {
+         "name": "filaments-measure-filaments",
+         "description": "Measures all components in the filament graph. Produces the following measurements: <ul><li>number of vertices</li><li>number of edges</li><li>length (sum of edge lengths)</li><li>skeletonization-corrected length (adding 2 * radius for each vertex with degree 0 and 1 x radius for each vertex with degree 1)</li><li>confinement ratio (length of the simplified graph divided by the length)</li><li>number of vertices with specific degrees</li><li>min/max centroid x/y/z (per vertex) center[min/max][x/y/z]</li><li>min/max x/y/z (with sphere radius) sphere[min/max][x/y/z]</li><li>centroid x/y/z/c/t</li><li>min/max/avg radius/value</li></ul>You can learn more about the generated measurements here: https://jipipe.hki-jena.de/documentation/filament-measurements.html"
+      },
+      "9969e9d6-5d9a-4660-8d85-b6d0bf6bb86e": {
+         "name": "filaments-measure-filaments",
+         "description": "Measures all components in the filament graph. Produces the following measurements: <ul><li>number of vertices</li><li>number of edges</li><li>length (sum of edge lengths)</li><li>skeletonization-corrected length (adding 2 * radius for each vertex with degree 0 and 1 x radius for each vertex with degree 1)</li><li>confinement ratio (length of the simplified graph divided by the length)</li><li>number of vertices with specific degrees</li><li>min/max centroid x/y/z (per vertex) center[min/max][x/y/z]</li><li>min/max x/y/z (with sphere radius) sphere[min/max][x/y/z]</li><li>centroid x/y/z/c/t</li><li>min/max/avg radius/value</li></ul>You can learn more about the generated measurements here: https://jipipe.hki-jena.de/documentation/filament-measurements.html"
+      },
+      "cb4d1195-ff2c-42c4-b6b1-22dc321aa8b8": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "b3ac7a2c-7594-4734-9a64-6a06960f1a9f": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "e0d031e7-070e-4ab6-9bfb-fc3a1458a5b6": {
+         "name": "ij1-set-lut-from-colors",
+         "description": "Generates a LUT from the first to the second color. This does not change the pixel data."
+      },
+      "b425241e-13ec-42ef-b224-9233e1f4f98c": {
+         "name": "filaments-convert-to-mask",
+         "description": "Converts filaments into a 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "073586b2-3ff1-4661-94f8-297099fa916c": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "ef26d28c-7521-45ba-8c0d-1847720c3504": {
+         "name": "filaments-convert-to-mask",
+         "description": "Converts filaments into a 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "4769c1bd-3073-4d7f-a209-18a2083a705f": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "e6da2402-3c4c-42f7-a979-7da816ec88b7": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "f6714ad2-585a-421d-b990-4abf7ec91aba": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "1603d058-02f8-4ded-9b8f-7959e5ad935c": {
+         "name": "ij1-set-lut-from-colors",
+         "description": "Generates a LUT from the first to the second color. This does not change the pixel data."
+      },
+      "4d5fdf1b-10ee-4ec6-8af4-ba184d6be7db": {
+         "name": "filaments-filter-components-by-properties",
+         "description": "Filters filament connected components by various properties"
+      },
+      "e1beb1a0-a436-41a9-a5ff-a012b1ee179c": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "c863d6fc-dfaa-479b-8f32-02a62e41edea": {
+         "name": "filaments-convert-to-mask",
+         "description": "Converts filaments into a 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3079e70c-fa6e-4553-94aa-0d0140592c96": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "1e256011-e646-491b-a5fc-a7cdc160b245": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "6fdef907-41d1-459a-887f-9f93651dde43": {
+         "name": "ij1-color-set-to-grayscale-value",
+         "description": "Sets all pixels of the input image to the specified grayscale value. If the image is RGB, the value is converted into an integer that is parsed as RGB.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f42b7451-fc08-4f25-8a83-2a6443756899": {
+         "name": "ij1-color-set-to-grayscale-value",
+         "description": "Sets all pixels of the input image to the specified grayscale value. If the image is RGB, the value is converted into an integer that is parsed as RGB.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "fa10f88d-dd00-46e5-b411-986047ea231b": {
+         "name": "filaments-skeleton-to-filaments-2d",
+         "description": "Applies a simple algorithm that converts a binary skeleton into a filament. This algorithm only supports 2D data and will apply the processing per Z/C/T slice. Please note that by default the Z voxel size is set to zero."
+      },
+      "67c47f1c-e95a-4da7-a06c-4863da096082": {
+         "name": "filaments-skeleton-to-filaments-2d",
+         "description": "Applies a simple algorithm that converts a binary skeleton into a filament. This algorithm only supports 2D data and will apply the processing per Z/C/T slice. Please note that by default the Z voxel size is set to zero."
+      },
+      "55149fb1-22a2-4873-9e5f-5f7071d00e85": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "524b0ffe-0b41-468a-8a72-5e9135be6d6c": {
+         "name": "ij1-set-lut-from-colors",
+         "description": "Generates a LUT from the first to the second color. This does not change the pixel data."
+      },
+      "8b189bf7-3943-47c8-9f54-c9229fe8d5eb": {
+         "name": "filaments-filter-components-by-properties",
+         "description": "Filters filament connected components by various properties"
+      },
+      "c26ae73c-03af-4c23-8ce5-56a1c0257c13": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d9f3414a-eaed-427a-8236-514bceb072f0",
+         "target-node": "55149fb1-22a2-4873-9e5f-5f7071d00e85",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9e711610-c3a8-4f75-bae6-9de725fa9b08",
+         "target-node": "158956c9-f3c0-4678-9cb4-9f9c1781f639",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b4197d5d-ea2e-4c7c-8c92-846ab2d69e44",
+         "target-node": "151d0834-5052-4fec-a5ed-8892659edc4d",
+         "source-slot": "Results",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ecc742a4-02c9-4c2f-b1eb-0298bda9106a",
+         "target-node": "f42b7451-fc08-4f25-8a83-2a6443756899",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1e256011-e646-491b-a5fc-a7cdc160b245",
+         "target-node": "2489b33b-2334-40f2-a1e3-810dbbbe6153",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9fd39c47-e2d7-4d5b-acdc-1d2550013856",
+         "target-node": "2fa35fc4-7189-45fa-8ef7-ae6aaaf81868",
+         "source-slot": "Output",
+         "target-slot": "Input 1"
+      },
+      {
+         "source-node": "ef26d28c-7521-45ba-8c0d-1847720c3504",
+         "target-node": "9224bad4-6b8c-450d-9810-79baf49c826e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b5afa6c9-2aff-4629-9d39-3f44242587f1",
+         "target-node": "ef26d28c-7521-45ba-8c0d-1847720c3504",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "e6da2402-3c4c-42f7-a979-7da816ec88b7",
+         "source-slot": "ORANGE STED",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "30636f97-91dd-4ecc-b7e9-e0c41e53a039",
+         "source-slot": "Merged RED and ORANGE ROIs in  CONF",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "1b66e1f7-812c-450c-ae3e-a820df5dbc1e",
+         "target-node": "d9f3414a-eaed-427a-8236-514bceb072f0",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "ef26d28c-7521-45ba-8c0d-1847720c3504",
+         "source-slot": "ORANGE STED",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "b99cec25-9a57-42a9-b42e-69b550b17d57",
+         "target-node": "e1468610-325b-4c00-a22a-420a789f901c",
+         "source-slot": "Output",
+         "target-slot": "Skeleton"
+      },
+      {
+         "source-node": "c2180523-4ac6-4083-bf81-35527f236225",
+         "target-node": "3ca0f047-857f-4a31-9f27-9b51481a7cb1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "4f89c0a9-d66a-436f-a038-6465a623c79b",
+         "source-slot": "RED STED",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a1253593-6d21-4db6-a5c9-806adc2cb80d",
+         "target-node": "d1da9670-724a-49fe-bf42-86e13448c07c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "53dc93bf-4f64-4179-b0d0-769f346ad393",
+         "target-node": "f6714ad2-585a-421d-b990-4abf7ec91aba",
+         "source-slot": "Output",
+         "target-slot": "Channel 2"
+      },
+      {
+         "source-node": "53dc93bf-4f64-4179-b0d0-769f346ad393",
+         "target-node": "524b0ffe-0b41-468a-8a72-5e9135be6d6c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b425241e-13ec-42ef-b224-9233e1f4f98c",
+         "target-node": "2fa35fc4-7189-45fa-8ef7-ae6aaaf81868",
+         "source-slot": "Output",
+         "target-slot": "Input 2"
+      },
+      {
+         "source-node": "c863d6fc-dfaa-479b-8f32-02a62e41edea",
+         "target-node": "53dc93bf-4f64-4179-b0d0-769f346ad393",
+         "source-slot": "Output",
+         "target-slot": "Input 2"
+      },
+      {
+         "source-node": "cb4d1195-ff2c-42c4-b6b1-22dc321aa8b8",
+         "target-node": "3079e70c-fa6e-4553-94aa-0d0140592c96",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1603d058-02f8-4ded-9b8f-7959e5ad935c",
+         "target-node": "d44d94f8-d94d-454b-b89e-8ae4f8833865",
+         "source-slot": "Output",
+         "target-slot": "Top"
+      },
+      {
+         "source-node": "d5ca37e4-7d3f-43ac-8b8c-33064f42cce0",
+         "target-node": "cb4d1195-ff2c-42c4-b6b1-22dc321aa8b8",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b425241e-13ec-42ef-b224-9233e1f4f98c",
+         "target-node": "b4197d5d-ea2e-4c7c-8c92-846ab2d69e44",
+         "source-slot": "Output",
+         "target-slot": "Channel 1"
+      },
+      {
+         "source-node": "1b66e1f7-812c-450c-ae3e-a820df5dbc1e",
+         "target-node": "c863d6fc-dfaa-479b-8f32-02a62e41edea",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c863d6fc-dfaa-479b-8f32-02a62e41edea",
+         "target-node": "30636f97-91dd-4ecc-b7e9-e0c41e53a039",
+         "source-slot": "Output",
+         "target-slot": "Channel 2"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "b3ac7a2c-7594-4734-9a64-6a06960f1a9f",
+         "source-slot": "Merged RED and ORANGE ROIs in  CONF",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "a0b24eb1-9e99-41c3-83cd-013db6367916",
+         "source-slot": "ORANGE STED",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9a59d406-0460-4416-9de1-9f7bbb90bd2d",
+         "target-node": "073586b2-3ff1-4661-94f8-297099fa916c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4f89c0a9-d66a-436f-a038-6465a623c79b",
+         "target-node": "64d90149-ca5c-41ba-a257-6636715e357c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2fa35fc4-7189-45fa-8ef7-ae6aaaf81868",
+         "target-node": "f6714ad2-585a-421d-b990-4abf7ec91aba",
+         "source-slot": "Output",
+         "target-slot": "Channel 1"
+      },
+      {
+         "source-node": "2fa35fc4-7189-45fa-8ef7-ae6aaaf81868",
+         "target-node": "b3ac7a2c-7594-4734-9a64-6a06960f1a9f",
+         "source-slot": "Output",
+         "target-slot": "Channel 1"
+      },
+      {
+         "source-node": "4d5fdf1b-10ee-4ec6-8af4-ba184d6be7db",
+         "target-node": "9fd39c47-e2d7-4d5b-acdc-1d2550013856",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "53dc93bf-4f64-4179-b0d0-769f346ad393",
+         "target-node": "b4197d5d-ea2e-4c7c-8c92-846ab2d69e44",
+         "source-slot": "Output",
+         "target-slot": "Channel 2"
+      },
+      {
+         "source-node": "64d90149-ca5c-41ba-a257-6636715e357c",
+         "target-node": "c26ae73c-03af-4c23-8ce5-56a1c0257c13",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c863d6fc-dfaa-479b-8f32-02a62e41edea",
+         "target-node": "b3ac7a2c-7594-4734-9a64-6a06960f1a9f",
+         "source-slot": "Output",
+         "target-slot": "Channel 2"
+      },
+      {
+         "source-node": "324e0c1d-6b74-49f1-a706-3306f0298868",
+         "target-node": "c2180523-4ac6-4083-bf81-35527f236225",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "524b0ffe-0b41-468a-8a72-5e9135be6d6c",
+         "target-node": "7a92170a-81d1-4dc1-8772-17742c2ac071",
+         "source-slot": "Output",
+         "target-slot": "Top"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "c863d6fc-dfaa-479b-8f32-02a62e41edea",
+         "source-slot": "ORANGE STED",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "151d0834-5052-4fec-a5ed-8892659edc4d",
+         "target-node": "1e256011-e646-491b-a5fc-a7cdc160b245",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "f42b7451-fc08-4f25-8a83-2a6443756899",
+         "source-slot": "RED CONF",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "ef26d28c-7521-45ba-8c0d-1847720c3504",
+         "target-node": "53dc93bf-4f64-4179-b0d0-769f346ad393",
+         "source-slot": "Output",
+         "target-slot": "Input 1"
+      },
+      {
+         "source-node": "8b189bf7-3943-47c8-9f54-c9229fe8d5eb",
+         "target-node": "b425241e-13ec-42ef-b224-9233e1f4f98c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "55149fb1-22a2-4873-9e5f-5f7071d00e85",
+         "target-node": "73018571-b966-4f43-b781-a5288d3d1e15",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9fd39c47-e2d7-4d5b-acdc-1d2550013856",
+         "target-node": "99a9553e-92b1-419f-96ac-6c1785b6a677",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "01e01fe4-d017-4fed-b42e-8e833478d0a7",
+         "target-node": "c2385ced-7b2e-418a-8b9f-227426b288af",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6d9126a7-6b68-4f09-9340-e31b2f0fd551",
+         "target-node": "8b189bf7-3943-47c8-9f54-c9229fe8d5eb",
+         "source-slot": "Filaments",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b5afa6c9-2aff-4629-9d39-3f44242587f1",
+         "target-node": "9969e9d6-5d9a-4660-8d85-b6d0bf6bb86e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "158956c9-f3c0-4678-9cb4-9f9c1781f639",
+         "target-node": "86713063-8c6f-4054-afbd-c7f2ce208ac3",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2287e73b-2d71-401b-bb15-1bf201ce3def",
+         "target-node": "6fdef907-41d1-459a-887f-9f93651dde43",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "fa10f88d-dd00-46e5-b411-986047ea231b",
+         "target-node": "4d5fdf1b-10ee-4ec6-8af4-ba184d6be7db",
+         "source-slot": "Filaments",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "073586b2-3ff1-4661-94f8-297099fa916c",
+         "target-node": "9ebc1bef-caa0-4fe7-9437-dac9f6f9145d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "80eb0550-5bd3-402b-b9b3-bb2653a84642",
+         "target-node": "90f44a78-84b8-4e6f-8945-0f9458ff5641",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3ca0f047-857f-4a31-9f27-9b51481a7cb1",
+         "target-node": "fa10f88d-dd00-46e5-b411-986047ea231b",
+         "source-slot": "Output",
+         "target-slot": "Skeleton"
+      },
+      {
+         "source-node": "e0d031e7-070e-4ab6-9bfb-fc3a1458a5b6",
+         "target-node": "7a92170a-81d1-4dc1-8772-17742c2ac071",
+         "source-slot": "Output",
+         "target-slot": "Bottom"
+      },
+      {
+         "source-node": "9969e9d6-5d9a-4660-8d85-b6d0bf6bb86e",
+         "target-node": "80eb0550-5bd3-402b-b9b3-bb2653a84642",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "b425241e-13ec-42ef-b224-9233e1f4f98c",
+         "source-slot": "RED STED",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "9fd39c47-e2d7-4d5b-acdc-1d2550013856",
+         "source-slot": "RED CONF",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "4d5fdf1b-10ee-4ec6-8af4-ba184d6be7db",
+         "target-node": "1338fe7d-788b-4834-b8b6-4c5da00752da",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1e256011-e646-491b-a5fc-a7cdc160b245",
+         "target-node": "e1beb1a0-a436-41a9-a5ff-a012b1ee179c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "73031f5c-ba41-4c77-b832-b815cc94066e",
+         "target-node": "a1253593-6d21-4db6-a5c9-806adc2cb80d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f6714ad2-585a-421d-b990-4abf7ec91aba",
+         "target-node": "9e711610-c3a8-4f75-bae6-9de725fa9b08",
+         "source-slot": "Results",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "99a9553e-92b1-419f-96ac-6c1785b6a677",
+         "target-node": "131573b7-594b-427a-a4d8-17e8f1c5efb4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "158956c9-f3c0-4678-9cb4-9f9c1781f639",
+         "target-node": "b89bd565-b64f-432b-8ce7-98040933a145",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a1253593-6d21-4db6-a5c9-806adc2cb80d",
+         "target-node": "4769c1bd-3073-4d7f-a209-18a2083a705f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f42b7451-fc08-4f25-8a83-2a6443756899",
+         "target-node": "6d9126a7-6b68-4f09-9340-e31b2f0fd551",
+         "source-slot": "Output",
+         "target-slot": "Skeleton"
+      },
+      {
+         "source-node": "e1468610-325b-4c00-a22a-420a789f901c",
+         "target-node": "1b66e1f7-812c-450c-ae3e-a820df5dbc1e",
+         "source-slot": "Filaments",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1338fe7d-788b-4834-b8b6-4c5da00752da",
+         "target-node": "ec6781a3-23cd-495d-9555-64ad9d042a02",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "30636f97-91dd-4ecc-b7e9-e0c41e53a039",
+         "target-node": "73031f5c-ba41-4c77-b832-b815cc94066e",
+         "source-slot": "Results",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "b4197d5d-ea2e-4c7c-8c92-846ab2d69e44",
+         "source-slot": "Merged RED and ORANGE ROIs in  CONF",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "7b3a285b-e2b5-4f77-ae1b-dcd9c93ce36d",
+         "target-node": "01e01fe4-d017-4fed-b42e-8e833478d0a7",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6fdef907-41d1-459a-887f-9f93651dde43",
+         "target-node": "67c47f1c-e95a-4da7-a06c-4863da096082",
+         "source-slot": "Output",
+         "target-slot": "Skeleton"
+      },
+      {
+         "source-node": "c26ae73c-03af-4c23-8ce5-56a1c0257c13",
+         "target-node": "324e0c1d-6b74-49f1-a706-3306f0298868",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "b99cec25-9a57-42a9-b42e-69b550b17d57",
+         "source-slot": "ORANGE CONF",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "9ebc1bef-caa0-4fe7-9437-dac9f6f9145d",
+         "target-node": "2287e73b-2d71-401b-bb15-1bf201ce3def",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "67c47f1c-e95a-4da7-a06c-4863da096082",
+         "target-node": "b5afa6c9-2aff-4629-9d39-3f44242587f1",
+         "source-slot": "Filaments",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "e6da2402-3c4c-42f7-a979-7da816ec88b7",
+         "target-node": "9a59d406-0460-4416-9de1-9f7bbb90bd2d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9224bad4-6b8c-450d-9810-79baf49c826e",
+         "target-node": "1603d058-02f8-4ded-9b8f-7959e5ad935c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "ecc742a4-02c9-4c2f-b1eb-0298bda9106a",
+         "source-slot": "RED STED",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ec6781a3-23cd-495d-9555-64ad9d042a02",
+         "target-node": "2936cfab-2fc0-42c5-8c03-12d0f7f2972a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b425241e-13ec-42ef-b224-9233e1f4f98c",
+         "target-node": "30636f97-91dd-4ecc-b7e9-e0c41e53a039",
+         "source-slot": "Output",
+         "target-slot": "Channel 1"
+      },
+      {
+         "source-node": "8b189bf7-3943-47c8-9f54-c9229fe8d5eb",
+         "target-node": "d5ca37e4-7d3f-43ac-8b8c-33064f42cce0",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "01e01fe4-d017-4fed-b42e-8e833478d0a7",
+         "target-node": "11d7a07e-e808-4dd8-8411-77ca52e72cdf",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b3ac7a2c-7594-4734-9a64-6a06960f1a9f",
+         "target-node": "7b3a285b-e2b5-4f77-ae1b-dcd9c93ce36d",
+         "source-slot": "Results",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "f6714ad2-585a-421d-b990-4abf7ec91aba",
+         "source-slot": "Merged RED and ORANGE ROIs in  CONF",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "6fdef907-41d1-459a-887f-9f93651dde43",
+         "source-slot": "ORANGE CONF",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "131573b7-594b-427a-a4d8-17e8f1c5efb4",
+         "target-node": "d44d94f8-d94d-454b-b89e-8ae4f8833865",
+         "source-slot": "Output",
+         "target-slot": "Bottom"
+      },
+      {
+         "source-node": "2fa35fc4-7189-45fa-8ef7-ae6aaaf81868",
+         "target-node": "e0d031e7-070e-4ab6-9bfb-fc3a1458a5b6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "3ca0f047-857f-4a31-9f27-9b51481a7cb1",
+         "source-slot": "RED CONF",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "a0b24eb1-9e99-41c3-83cd-013db6367916",
+         "target-node": "b99cec25-9a57-42a9-b42e-69b550b17d57",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

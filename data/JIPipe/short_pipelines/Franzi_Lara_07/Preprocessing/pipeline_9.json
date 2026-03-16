@@ -1,0 +1,329 @@
+{
+   "description": "This pipeline performs a complex series of image processing operations, including importing images, extracting metadata, filtering data based on annotations, and applying various enhancements to the images, such as contrast adjustment and color splitting, ultimately resulting in the generation of annotated images with modified properties.",
+   "nodes": {
+      "a4c3f0bf-432f-4756-a3fe-a8bd59413317": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      },
+      "f2f41da7-5caf-4a7e-8e85-aa8dd4dc8c01": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "0660eee7-ee6a-4e33-8768-3565de92ee6f": {
+         "name": "ij1-extract-ome-image-xml",
+         "description": "Extracts the OME metadata XML from an OME image"
+      },
+      "15c7badc-68f6-4700-b859-64d6d4f39f07": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "54df5175-5291-46e1-b1b2-9e72807ef878": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6": {
+         "name": "xml-annotate-with-xml-data",
+         "description": "Extracts a value from the input text data (via XPath) and annotates the data with the result. Please visit https://www.w3schools.com/xml/xpath_intro.asp to learn about XPath."
+      },
+      "a0068e3c-838f-40e3-a929-639c5b919bda": {
+         "name": "ij-convert-image-to-32-bit",
+         "description": "Converts an image into 32-bit"
+      },
+      "23c37ca3-351d-4e16-a5a0-44504a934281": {
+         "name": "import-imagej-bioformats",
+         "description": "Imports images via the Bio-Formats plugin"
+      },
+      "824ac6f2-f1d7-4fd2-8696-f6bbd923d903": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "d1dee139-0a70-4031-acee-170317ce1fa3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "4d007d65-1a71-46a3-ac71-b257f4c5edbf": {
+         "name": "xml-prettify",
+         "description": "Prettifies/formats the input XML data"
+      },
+      "e49cfc5b-6a22-4a8a-9401-92983549b0ac": {
+         "name": "ome-annotate-with-metadata",
+         "description": "Annotates an OME image with metadata extracted from the OME metadata"
+      },
+      "716ab8ea-edff-442f-96e2-338096bb00b6": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      },
+      "ba08b9f2-319e-4e44-b66e-dd3c534415d2": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      },
+      "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "75f1c151-0a06-44f4-bc71-c170f653754b": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "cf528fa7-3ffd-4484-8953-e03ab4f385c3": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "9487bd16-6205-44f0-a9d7-9c9fa3f6eb8e": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "23c37ca3-351d-4e16-a5a0-44504a934281",
+         "target-node": "e49cfc5b-6a22-4a8a-9401-92983549b0ac",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0660eee7-ee6a-4e33-8768-3565de92ee6f",
+         "target-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "35a15e07-6dd1-456e-a58b-d4a4a75d1bc8",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "target-node": "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a0068e3c-838f-40e3-a929-639c5b919bda",
+         "target-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "23c37ca3-351d-4e16-a5a0-44504a934281",
+         "target-node": "a0068e3c-838f-40e3-a929-639c5b919bda",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "23c37ca3-351d-4e16-a5a0-44504a934281",
+         "target-node": "0660eee7-ee6a-4e33-8768-3565de92ee6f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "54df5175-5291-46e1-b1b2-9e72807ef878",
+         "target-node": "f2f41da7-5caf-4a7e-8e85-aa8dd4dc8c01",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "824ac6f2-f1d7-4fd2-8696-f6bbd923d903",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "a4c3f0bf-432f-4756-a3fe-a8bd59413317",
+         "target-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "ba08b9f2-319e-4e44-b66e-dd3c534415d2",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "716ab8ea-edff-442f-96e2-338096bb00b6",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "824ac6f2-f1d7-4fd2-8696-f6bbd923d903",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "15c7badc-68f6-4700-b859-64d6d4f39f07",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "9487bd16-6205-44f0-a9d7-9c9fa3f6eb8e",
+         "target-node": "15c7badc-68f6-4700-b859-64d6d4f39f07",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel4",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "9487bd16-6205-44f0-a9d7-9c9fa3f6eb8e",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "824ac6f2-f1d7-4fd2-8696-f6bbd923d903",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "ba08b9f2-319e-4e44-b66e-dd3c534415d2",
+         "target-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel3"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "a4c3f0bf-432f-4756-a3fe-a8bd59413317",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "15c7badc-68f6-4700-b859-64d6d4f39f07",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel3"
+      },
+      {
+         "source-node": "716ab8ea-edff-442f-96e2-338096bb00b6",
+         "target-node": "824ac6f2-f1d7-4fd2-8696-f6bbd923d903",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "target-node": "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0660eee7-ee6a-4e33-8768-3565de92ee6f",
+         "target-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

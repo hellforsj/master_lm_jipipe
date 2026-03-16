@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline analyzes regions of interest in an image. The main steps are finding the regions, filtering them by size, and then calculating parameters.",
+   "nodes": {
+      "194ad689-a861-4e21-bb36-8b339de37c69": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "20fc6d55-8222-49b3-8e4d-d8339922ad1f": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "194ad689-a861-4e21-bb36-8b339de37c69",
+         "target-node": "20fc6d55-8222-49b3-8e4d-d8339922ad1f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

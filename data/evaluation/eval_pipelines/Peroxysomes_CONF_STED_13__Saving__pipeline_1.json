@@ -1,0 +1,57 @@
+{
+   "description": "This pipeline processes image and data items through a series of operations, including exporting results tables to CSV/XLSX format and images to various file formats, such as PNG, JPEG, BMP, AVI, and TIFF, based on annotations and groupings of incoming data. The pipeline takes in different types of input data, performs various analyses, including measurements and colocalization, and produces multiple output files, providing a comprehensive workflow for image and data analysis.",
+   "nodes": {
+      "bc302e96-319e-46db-8df9-13e67808ff03": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "731f42b6-4656-4429-a41c-40d3c8b4ea44": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "071bf5d5-d159-4022-9494-e8ca0ccd9564": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "65908b24-bc24-429e-863c-b51cecdd4aba": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "6dfe653c-7221-4363-8377-db0af90aeee7": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "c6f139f7-39bc-40e6-9bf9-205c4b9bcda4",
+         "target-node": "071bf5d5-d159-4022-9494-e8ca0ccd9564",
+         "source-slot": "Filament measurments ORANGE STED filaments with gaps",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6f139f7-39bc-40e6-9bf9-205c4b9bcda4",
+         "target-node": "6dfe653c-7221-4363-8377-db0af90aeee7",
+         "source-slot": "Colocalization negative RED vs. positive ORANGE in STED",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6f139f7-39bc-40e6-9bf9-205c4b9bcda4",
+         "target-node": "bc302e96-319e-46db-8df9-13e67808ff03",
+         "source-slot": "Colocalization positive RED vs. positive ORANGE in STED",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6f139f7-39bc-40e6-9bf9-205c4b9bcda4",
+         "target-node": "731f42b6-4656-4429-a41c-40d3c8b4ea44",
+         "source-slot": "Filament measurments RED STED filaments with gaps",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6f139f7-39bc-40e6-9bf9-205c4b9bcda4",
+         "target-node": "65908b24-bc24-429e-863c-b51cecdd4aba",
+         "source-slot": "Overlay of RED and ORANGE",
+         "target-slot": "Input"
+      }
+   ]
+}

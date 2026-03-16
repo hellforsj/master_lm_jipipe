@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline processes binary images by applying an euclidean distance transform and a watershed algorithm, then converts the resulting mask into regions of interest by applying a connected components algorithm and generates measurements. The regions of interest are further processed to create masks with specific line and fill colors, which can be used for visualization or further analysis, requiring a reference image to determine the output size.",
+   "nodes": {
+      "9981ae91-45ca-4b9e-aaea-0d1609f59799": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "02e70774-4ccb-4788-b941-eb56b23ab77b": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "f584372b-e285-4ee9-aa7e-e61dc0817c62": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "02e70774-4ccb-4788-b941-eb56b23ab77b",
+         "target-node": "f584372b-e285-4ee9-aa7e-e61dc0817c62",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "f584372b-e285-4ee9-aa7e-e61dc0817c62",
+         "target-node": "9981ae91-45ca-4b9e-aaea-0d1609f59799",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline removes labels touching the edges of an image and then converts the resulting label map into a set of regions of interest, where each region corresponds to a unique label value greater than zero, preserving spatial information from higher-dimensional data.",
+   "nodes": {
+      "3f58a7b5-659d-4f6b-946e-2aec5585596c": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExcludeLabelsOnEdges",
+         "description": "Removes all labels from a label map which touch the edges of the image (in X, Y and Z if the image is 3D). <br/><br/>Remaining label elements are renumbered afterwards.<br/><br/>Parameters: Image label_map_input, ByRef Image label_map_destination<br/>Available for: 2D, 3D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "65fccf35-d54e-4d77-91f3-4f73eb7c0675": {
+         "name": "ij1-labels-to-roi",
+         "description": "Converts a label image into a set of ROI. Labels must have a value larger than zero to be detected.If higher-dimensional data is provided, the filter is applied to each 2D slice. The Z/C/T coordinates of the source slices are saved inside the ROI."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3f58a7b5-659d-4f6b-946e-2aec5585596c",
+         "target-node": "65fccf35-d54e-4d77-91f3-4f73eb7c0675",
+         "source-slot": "Label Map Destination",
+         "target-slot": "Labels"
+      }
+   ]
+}

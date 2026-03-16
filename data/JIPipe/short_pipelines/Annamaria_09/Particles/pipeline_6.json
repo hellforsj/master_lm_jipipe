@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline measures the properties of objects in an image. The main steps are reading in the input image, applying some processing to segment the objects, and then measuring their properties.",
+   "nodes": {
+      "73acc40e-8da6-4250-a725-440382bc8d39": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f38d555e-c87e-42c5-9ca1-1ad2d51f6938": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "bc04081f-9a72-4f2f-a67b-72487a38d027": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "bda19bde-5bac-4804-8b64-96b2ad809936": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "bda19bde-5bac-4804-8b64-96b2ad809936",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "bc04081f-9a72-4f2f-a67b-72487a38d027",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "73acc40e-8da6-4250-a725-440382bc8d39",
+         "target-node": "bda19bde-5bac-4804-8b64-96b2ad809936",
+         "source-slot": "Measurements",
+         "target-slot": "Input 1"
+      }
+   ]
+}

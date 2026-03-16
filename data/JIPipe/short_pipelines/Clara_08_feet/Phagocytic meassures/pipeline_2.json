@@ -1,0 +1,51 @@
+{
+   "description": "Removes one or multiple columns by name from a table. This pipeline starts with '6194d4b0-f62c-422f-a4d2-73e02e00be88' node, which represents the input table, then it is processed by '7ebf7e30-563d-4c30-b13a-d506a99e336a', '980ce2eb-df41-43ed-9f8a-0d75b6fac90f', and 'cb199793-4b0d-49fd-9954-9c67385c8440' nodes to remove columns, finally ending at 'a9f0183f-cd12-4075-9964-94757b013c6a' node.",
+   "nodes": {
+      "6194d4b0-f62c-422f-a4d2-73e02e00be88": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "a9f0183f-cd12-4075-9964-94757b013c6a": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "cb199793-4b0d-49fd-9954-9c67385c8440": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "980ce2eb-df41-43ed-9f8a-0d75b6fac90f": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "7ebf7e30-563d-4c30-b13a-d506a99e336a": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "cb199793-4b0d-49fd-9954-9c67385c8440",
+         "target-node": "a9f0183f-cd12-4075-9964-94757b013c6a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "980ce2eb-df41-43ed-9f8a-0d75b6fac90f",
+         "target-node": "cb199793-4b0d-49fd-9954-9c67385c8440",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "7ebf7e30-563d-4c30-b13a-d506a99e336a",
+         "target-node": "980ce2eb-df41-43ed-9f8a-0d75b6fac90f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6194d4b0-f62c-422f-a4d2-73e02e00be88",
+         "target-node": "7ebf7e30-563d-4c30-b13a-d506a99e336a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

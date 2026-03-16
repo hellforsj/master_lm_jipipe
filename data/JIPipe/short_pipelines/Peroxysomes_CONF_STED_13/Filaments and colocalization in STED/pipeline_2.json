@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies a morphological operation to an image, followed by generating a look-up table from two colors, effectively creating a customized color mapping without altering the original pixel data.",
+   "nodes": {
+      "1603d058-02f8-4ded-9b8f-7959e5ad935c": {
+         "name": "ij1-set-lut-from-colors",
+         "description": "Generates a LUT from the first to the second color. This does not change the pixel data."
+      },
+      "9224bad4-6b8c-450d-9810-79baf49c826e": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9224bad4-6b8c-450d-9810-79baf49c826e",
+         "target-node": "1603d058-02f8-4ded-9b8f-7959e5ad935c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

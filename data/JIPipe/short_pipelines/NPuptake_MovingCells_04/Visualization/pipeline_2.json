@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline filters image regions by testing for mutual overlap and then sets properties of the resulting regions to a user-defined value, allowing for customized processing and analysis of biomedical microscopic images.",
+   "nodes": {
+      "6a808ed9-ee0c-4a67-b9fc-cf23dc8781f1": {
+         "name": "ij1-roi-set-properties",
+         "description": "Sets properties of all Roi to a user-defined value."
+      },
+      "f4f58751-712a-40bf-a96e-20c4ddbdf8ed": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f4f58751-712a-40bf-a96e-20c4ddbdf8ed",
+         "target-node": "6a808ed9-ee0c-4a67-b9fc-cf23dc8781f1",
+         "source-slot": "ROI 2",
+         "target-slot": "Input"
+      }
+   ]
+}

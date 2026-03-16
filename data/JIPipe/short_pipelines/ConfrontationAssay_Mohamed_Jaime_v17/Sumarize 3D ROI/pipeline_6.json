@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline appears to be designed for data manipulation and processing, starting with the removal of specific columns from a table, followed by further modifications and transformations using custom scripts, and finally merging the processed tables into a single output, allowing for flexible and automated data handling and analysis.",
+   "nodes": {
+      "9fb35325-7f09-4aef-9461-242d7656627a": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "da751847-b501-4139-a46d-e9c9db9167d7": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "d2ce5c39-1686-47a0-aeb9-752d7fc06681": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "2ab77df2-0aed-4826-91f3-3858bb58bb56": {
+         "name": "modify-tables",
+         "description": "Executes a Python-script for each table. Each table is passed as dictionary 'table' with the column name as key and values being an array of strings or doubles. The number of input rows can be accessed via the 'nrow' variable."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9fb35325-7f09-4aef-9461-242d7656627a",
+         "target-node": "d2ce5c39-1686-47a0-aeb9-752d7fc06681",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2ab77df2-0aed-4826-91f3-3858bb58bb56",
+         "target-node": "da751847-b501-4139-a46d-e9c9db9167d7",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d2ce5c39-1686-47a0-aeb9-752d7fc06681",
+         "target-node": "2ab77df2-0aed-4826-91f3-3858bb58bb56",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

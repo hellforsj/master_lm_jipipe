@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline performs image thresholding and then analyzes the resulting mask to extract measurements by applying a connected components algorithm, generating polygonal regions of interest and tracing external object boundaries, ultimately producing statistical data from the processed images.",
+   "nodes": {
+      "ba49283b-0243-4f2e-a0ac-ad69149c718f": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      },
+      "19525bd8-8a31-4b4c-a4e7-78ca8b38a9d6": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "19525bd8-8a31-4b4c-a4e7-78ca8b38a9d6",
+         "target-node": "ba49283b-0243-4f2e-a0ac-ad69149c718f",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      }
+   ]
+}

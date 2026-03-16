@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline detects lines in an image using the ridge detector and then converts the detected lines to a binary mask. The main steps involve detecting the lines, converting to a binary mask, and outputting the result.",
+   "nodes": {
+      "653a145a-533e-47e5-8549-142ea7014d9c": {
+         "name": "ij1-segment-ridge-detector-2d",
+         "description": "A ridge detector that detects lines and outputs a binary mask where lines are detected."
+      },
+      "5263b3cc-afc1-4ce1-8bf6-b6bba179d8eb": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "653a145a-533e-47e5-8549-142ea7014d9c",
+         "target-node": "5263b3cc-afc1-4ce1-8bf6-b6bba179d8eb",
+         "source-slot": "Mask",
+         "target-slot": "Input"
+      }
+   ]
+}

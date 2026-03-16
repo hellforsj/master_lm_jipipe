@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline generates ROI statistics for macrophages. It starts with converting labels to ROI, then calculates the ROI statistics and finally exports the results as a table.",
+   "nodes": {
+      "c25eb7f9-1860-4efd-abf1-3a260d542d61": {
+         "name": "ij1-labels-to-roi",
+         "description": "Converts a label image into a set of ROI. Labels must have a value larger than zero to be detected.If higher-dimensional data is provided, the filter is applied to each 2D slice. The Z/C/T coordinates of the source slices are saved inside the ROI."
+      },
+      "a65b6798-e945-4280-8552-1b731de9915a": {
+         "name": "ij1-roi-statistics",
+         "description": "Generates a results table containing ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, an empty reference image is automatically generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "c25eb7f9-1860-4efd-abf1-3a260d542d61",
+         "target-node": "a65b6798-e945-4280-8552-1b731de9915a",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      }
+   ]
+}

@@ -1,0 +1,27 @@
+{
+   "description": "This pipeline takes multichannel images, splits them into separate greyscale channels, and then passes these channels through without making any changes, effectively preserving the original image data while separating its components.",
+   "nodes": {
+      "d1dee139-0a70-4031-acee-170317ce1fa3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "15c7badc-68f6-4700-b859-64d6d4f39f07": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "15c7badc-68f6-4700-b859-64d6d4f39f07",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "15c7badc-68f6-4700-b859-64d6d4f39f07",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      }
+   ]
+}

@@ -1,0 +1,35 @@
+{
+   "description": "This pipeline normalizes two images by dividing their pixel values by the global maximum, and then performs colocalization analysis. The main steps are normalizing the images, and then analyzing the correlation between them.",
+   "nodes": {
+      "de944f23-c575-4408-9173-22d445112c15": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "977ee4dd-1f2e-45ff-93c0-b9830451fea3": {
+         "name": "ij1-math-divide-by-maximum",
+         "description": "Divides greyscale pixel values by the global maximum across all slices."
+      },
+      "46845d00-46a2-4d3d-9ac9-a8cf66f58976": {
+         "name": "ij1-math-divide-by-maximum",
+         "description": "Divides greyscale pixel values by the global maximum across all slices."
+      },
+      "b20c8d34-ee11-4a59-adee-39cd8d394f4d": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "977ee4dd-1f2e-45ff-93c0-b9830451fea3",
+         "target-node": "de944f23-c575-4408-9173-22d445112c15",
+         "source-slot": "Output",
+         "target-slot": "Channel 2"
+      },
+      {
+         "source-node": "46845d00-46a2-4d3d-9ac9-a8cf66f58976",
+         "target-node": "de944f23-c575-4408-9173-22d445112c15",
+         "source-slot": "Output",
+         "target-slot": "Channel 1"
+      }
+   ]
+}

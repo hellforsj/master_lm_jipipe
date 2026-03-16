@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline processes input data by first listing all files in a given folder, then creating annotations for each file path based on its name or full path, and finally splitting the annotated data into separate groups according to the annotation values, allowing for filtering and organization of the data.",
+   "nodes": {
+      "d6860aaf-47ae-410a-89f9-92f93f3374be": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "55f00b09-07d3-4a02-8b3b-968a8e194674": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "29cbb6f5-1ffc-4b77-98bb-1573321b104f": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "85604ceb-8504-4827-a5a1-530c933dcc30": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "55f00b09-07d3-4a02-8b3b-968a8e194674",
+         "target-node": "d6860aaf-47ae-410a-89f9-92f93f3374be",
+         "source-slot": "Annotated paths",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "85604ceb-8504-4827-a5a1-530c933dcc30",
+         "target-node": "55f00b09-07d3-4a02-8b3b-968a8e194674",
+         "source-slot": "Files",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "29cbb6f5-1ffc-4b77-98bb-1573321b104f",
+         "target-node": "85604ceb-8504-4827-a5a1-530c933dcc30",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

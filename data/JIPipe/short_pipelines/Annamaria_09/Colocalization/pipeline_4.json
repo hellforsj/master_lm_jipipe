@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline generates a black image and then converts 3D regions of interest to a label image, potentially grouping data based on annotations, resulting in an 8-bit, 16-bit, or 32-bit label image depending on the number of objects.",
+   "nodes": {
+      "37b9fc4a-3c04-434f-b373-a1b3a0e1a9fd": {
+         "name": "ij1-generate-zero-image",
+         "description": "Creates a new image that is black."
+      },
+      "6fe74e15-1881-4c46-a325-fa8fed774d29": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "37b9fc4a-3c04-434f-b373-a1b3a0e1a9fd",
+         "target-node": "6fe74e15-1881-4c46-a325-fa8fed774d29",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      }
+   ]
+}

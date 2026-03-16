@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline outputs the ROI lists of macrophages with phagocytosed bacteria. The pipeline starts with the compartment output, takes the macrophage ROIs with phagocytosed bacteria as input, and outputs these ROIs.",
+   "nodes": {
+      "c0e914a8-715d-4c35-8b1e-4676c8a04f0a": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

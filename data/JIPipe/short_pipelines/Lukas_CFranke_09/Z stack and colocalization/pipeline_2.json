@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline applies a smoothing filter to input data, utilizing a Gaussian function to reduce detail and noise, particularly suited for two-dimensional image processing.",
+   "nodes": {
+      "16153347-9053-4e19-8119-9fc5231a1b8d": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": []
+}

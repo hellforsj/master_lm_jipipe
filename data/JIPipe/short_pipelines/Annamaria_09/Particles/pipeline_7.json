@@ -1,0 +1,71 @@
+{
+   "description": "This pipeline overlays two images. The main steps are reading in the two input images and overlaying them.",
+   "nodes": {
+      "b4fa3882-bf0a-47ae-ad1d-90c35c0cc654": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8398880e-fa5b-4473-8bba-6006df02eacf": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "4d2895c7-fbc3-4260-87d8-03d2c8d7b1f2": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "39720f58-8ec6-46ea-9086-bfe6e01b15f2": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "09ca6e22-bb4b-4a44-b3b4-f11d315f8a48": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9cb44934-fc76-4a41-a4ab-8facdfb879c5": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5bc7b811-0217-4d99-9a7e-697d4a18844b": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "target-node": "4d2895c7-fbc3-4260-87d8-03d2c8d7b1f2",
+         "source-slot": "Output",
+         "target-slot": "Green"
+      },
+      {
+         "source-node": "4d2895c7-fbc3-4260-87d8-03d2c8d7b1f2",
+         "target-node": "b4fa3882-bf0a-47ae-ad1d-90c35c0cc654",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "09ca6e22-bb4b-4a44-b3b4-f11d315f8a48",
+         "target-node": "9cb44934-fc76-4a41-a4ab-8facdfb879c5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "target-node": "09ca6e22-bb4b-4a44-b3b4-f11d315f8a48",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "target-node": "5bc7b811-0217-4d99-9a7e-697d4a18844b",
+         "source-slot": "Output",
+         "target-slot": "Green"
+      },
+      {
+         "source-node": "b4fa3882-bf0a-47ae-ad1d-90c35c0cc654",
+         "target-node": "39720f58-8ec6-46ea-9086-bfe6e01b15f2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,471 @@
+{
+   "description": "This pipeline is designed to process and analyze microscopic images, specifically focusing on the detection and labeling of macrophages and their interactions with spores. It begins by annotating and filtering image data, followed by a series of processing steps that enhance and transform the images to facilitate analysis. The pipeline then applies various algorithms to identify and label macrophages, including those with adherent or phagocytosed spores, and generates output files containing these labeled images. Additionally, it performs quality control checks and exports the results in multiple formats for further evaluation and visualization. Overall, the pipeline aims to provide a comprehensive understanding of macrophage-spore interactions through automated image analysis.",
+   "nodes": {
+      "fff1e3bc-454b-48b2-ab76-a86ba11cc5e5": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "a4e6fec3-739f-4da9-94d9-724ee1afaa2e": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExcludeLabelsOnEdges",
+         "description": "Removes all labels from a label map which touch the edges of the image (in X, Y and Z if the image is 3D). <br/><br/>Remaining label elements are renumbered afterwards.<br/><br/>Parameters: Image label_map_input, ByRef Image label_map_destination<br/>Available for: 2D, 3D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "2a4946ca-741f-4593-8899-37d95d207e4c": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "f68686bb-cfcf-4194-a2de-76f6bae7abc4": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "408cc81f-f9ae-4848-96c8-bf2f34f92df1": {
+         "name": "ij1-roi-set-properties",
+         "description": "Sets properties of all Roi to a user-defined value."
+      },
+      "6c37d3a8-832c-479a-af9f-8cbe3f54c897": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "4fe2f134-2692-4ff5-95bd-26c57b298aa9": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "37d942cf-4bc3-4acb-8ccd-00074529d082": {
+         "name": "ij1-roi-set-properties",
+         "description": "Sets properties of all Roi to a user-defined value."
+      },
+      "43347b3b-6d85-4f91-8b31-b8ce664c9697": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8d32a041-9260-4a67-9bf8-cf68ba223664": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "5d1e581c-b6a8-49d9-a73d-5a7df11a2f99": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "31c2f1a6-e3f2-4a2c-b745-213b3aae0223": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "225425ff-45de-44be-93f0-ef65e3962bad": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b0ced1c3-cc6a-497e-82cb-bc8056668d73": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c66437d7-580b-4ba7-a757-37266dcc2fd6": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "596d66a8-829d-4511-9a03-d0959926d8f2": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "2509f56a-0f91-4681-a20f-be34316e8ee0": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f098bd5b-7742-4e6d-9129-7ebfa79f2e25": {
+         "name": "ij1-roi-to-labels-expression",
+         "description": "Converts ROI and an optional reference image into a label image. Each ROI is assigned its own label. Alternatively, the label can be set generated from an expression. If no reference image is provided, the dimensions are estimated from the ROI. The background color (where no ROI is located) is zero.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "e5d03f73-4cb5-47df-abea-f0f681b0cea3": {
+         "name": "ij1-roi-set-properties",
+         "description": "Sets properties of all Roi to a user-defined value."
+      },
+      "4f64b7a4-1acb-4bcb-9fed-7e7a19c0f6ca": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "923e87f3-476d-4716-a1dc-87f8cce8efc7": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "1714ae0b-de8b-4d23-a370-a3393c61ab3d": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "46a04602-d0bb-4af9-a633-52f1993f3e7a": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "fa8454bc-c227-418d-8421-91e701f8f039": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "a33b0f76-0ade-4936-a865-c050b9f93c9f": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "cc2556b5-b1ac-4281-9acc-02aa472993cf": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c1483cec-d93d-402d-b459-ea152c20c59f": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d681e825-1bb8-42da-8274-a0a24436c02a": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "46114100-2f10-4138-8c2c-595e2aa67b22": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "50f15b18-dc8a-475c-b615-8c06561408ba": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "24b70437-c554-43c3-9ac4-0d05d3ccbd34": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "90bfa266-4e4e-48fe-a749-71567fe7250a": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "0954dc76-4470-4dbb-902e-e94ebf3b5ef7": {
+         "name": "ij1-roi-set-properties",
+         "description": "Sets properties of all Roi to a user-defined value."
+      },
+      "3897c187-ea22-43b6-84b0-80384da1a745": {
+         "name": "ij1-roi-set-properties",
+         "description": "Sets properties of all Roi to a user-defined value."
+      },
+      "8c184fad-2eda-4c00-bda7-e0d5a5529c6b": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "01ca1c24-3dfa-4bef-9719-3cede9def69f": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "907e8f92-a480-4727-8ef7-98fa120446e0": {
+         "name": "ij1-roi-set-properties",
+         "description": "Sets properties of all Roi to a user-defined value."
+      },
+      "1d099fd5-1c01-4332-9e07-69194fcc6b05": {
+         "name": "ij1-roi-set-properties",
+         "description": "Sets properties of all Roi to a user-defined value."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "e5d03f73-4cb5-47df-abea-f0f681b0cea3",
+         "source-slot": "Adherent spores",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2a4946ca-741f-4593-8899-37d95d207e4c",
+         "target-node": "c66437d7-580b-4ba7-a757-37266dcc2fd6",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "e5d03f73-4cb5-47df-abea-f0f681b0cea3",
+         "target-node": "50f15b18-dc8a-475c-b615-8c06561408ba",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "3897c187-ea22-43b6-84b0-80384da1a745",
+         "target-node": "b0ced1c3-cc6a-497e-82cb-bc8056668d73",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "46a04602-d0bb-4af9-a633-52f1993f3e7a",
+         "target-node": "225425ff-45de-44be-93f0-ef65e3962bad",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "408cc81f-f9ae-4848-96c8-bf2f34f92df1",
+         "source-slot": "Adherent spores",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "24b70437-c554-43c3-9ac4-0d05d3ccbd34",
+         "target-node": "c1483cec-d93d-402d-b459-ea152c20c59f",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "4fe2f134-2692-4ff5-95bd-26c57b298aa9",
+         "target-node": "2a4946ca-741f-4593-8899-37d95d207e4c",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "37d942cf-4bc3-4acb-8ccd-00074529d082",
+         "target-node": "225425ff-45de-44be-93f0-ef65e3962bad",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "5d1e581c-b6a8-49d9-a73d-5a7df11a2f99",
+         "target-node": "923e87f3-476d-4716-a1dc-87f8cce8efc7",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a4e6fec3-739f-4da9-94d9-724ee1afaa2e",
+         "target-node": "cc2556b5-b1ac-4281-9acc-02aa472993cf",
+         "source-slot": "Label Map Destination",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1714ae0b-de8b-4d23-a370-a3393c61ab3d",
+         "target-node": "5d1e581c-b6a8-49d9-a73d-5a7df11a2f99",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "c1483cec-d93d-402d-b459-ea152c20c59f",
+         "target-node": "2509f56a-0f91-4681-a20f-be34316e8ee0",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "f098bd5b-7742-4e6d-9129-7ebfa79f2e25",
+         "target-node": "f68686bb-cfcf-4194-a2de-76f6bae7abc4",
+         "source-slot": "Labels",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "e5d03f73-4cb5-47df-abea-f0f681b0cea3",
+         "target-node": "4fe2f134-2692-4ff5-95bd-26c57b298aa9",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "b0ced1c3-cc6a-497e-82cb-bc8056668d73",
+         "target-node": "01ca1c24-3dfa-4bef-9719-3cede9def69f",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "e5d03f73-4cb5-47df-abea-f0f681b0cea3",
+         "target-node": "31c2f1a6-e3f2-4a2c-b745-213b3aae0223",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "923e87f3-476d-4716-a1dc-87f8cce8efc7",
+         "target-node": "8d32a041-9260-4a67-9bf8-cf68ba223664",
+         "source-slot": "Exported file",
+         "target-slot": "Data 2"
+      },
+      {
+         "source-node": "907e8f92-a480-4727-8ef7-98fa120446e0",
+         "target-node": "8c184fad-2eda-4c00-bda7-e0d5a5529c6b",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "f098bd5b-7742-4e6d-9129-7ebfa79f2e25",
+         "target-node": "a4e6fec3-739f-4da9-94d9-724ee1afaa2e",
+         "source-slot": "Labels",
+         "target-slot": "Label Map Input"
+      },
+      {
+         "source-node": "46a04602-d0bb-4af9-a633-52f1993f3e7a",
+         "target-node": "8c184fad-2eda-4c00-bda7-e0d5a5529c6b",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "8c184fad-2eda-4c00-bda7-e0d5a5529c6b",
+         "target-node": "50f15b18-dc8a-475c-b615-8c06561408ba",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "50f15b18-dc8a-475c-b615-8c06561408ba",
+         "target-node": "fff1e3bc-454b-48b2-ab76-a86ba11cc5e5",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "4f64b7a4-1acb-4bcb-9fed-7e7a19c0f6ca",
+         "target-node": "46114100-2f10-4138-8c2c-595e2aa67b22",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "596d66a8-829d-4511-9a03-d0959926d8f2",
+         "target-node": "a33b0f76-0ade-4936-a865-c050b9f93c9f",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "fff1e3bc-454b-48b2-ab76-a86ba11cc5e5",
+         "target-node": "1714ae0b-de8b-4d23-a370-a3393c61ab3d",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "46114100-2f10-4138-8c2c-595e2aa67b22",
+         "target-node": "8d32a041-9260-4a67-9bf8-cf68ba223664",
+         "source-slot": "Exported file",
+         "target-slot": "Data 4"
+      },
+      {
+         "source-node": "a33b0f76-0ade-4936-a865-c050b9f93c9f",
+         "target-node": "8d32a041-9260-4a67-9bf8-cf68ba223664",
+         "source-slot": "Exported file",
+         "target-slot": "Data 1"
+      },
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "37d942cf-4bc3-4acb-8ccd-00074529d082",
+         "source-slot": "Confirmed free spores",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "0954dc76-4470-4dbb-902e-e94ebf3b5ef7",
+         "source-slot": "Phagocytosed spores",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "408cc81f-f9ae-4848-96c8-bf2f34f92df1",
+         "target-node": "2509f56a-0f91-4681-a20f-be34316e8ee0",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "c66437d7-580b-4ba7-a757-37266dcc2fd6",
+         "target-node": "8d32a041-9260-4a67-9bf8-cf68ba223664",
+         "source-slot": "Exported file",
+         "target-slot": "Data 3"
+      },
+      {
+         "source-node": "01ca1c24-3dfa-4bef-9719-3cede9def69f",
+         "target-node": "d681e825-1bb8-42da-8274-a0a24436c02a",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1d099fd5-1c01-4332-9e07-69194fcc6b05",
+         "target-node": "46a04602-d0bb-4af9-a633-52f1993f3e7a",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "3897c187-ea22-43b6-84b0-80384da1a745",
+         "source-slot": "Sussy free spores",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "24b70437-c554-43c3-9ac4-0d05d3ccbd34",
+         "source-slot": "All macrophages",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "d681e825-1bb8-42da-8274-a0a24436c02a",
+         "target-node": "8d32a041-9260-4a67-9bf8-cf68ba223664",
+         "source-slot": "Exported file",
+         "target-slot": "Data 5"
+      },
+      {
+         "source-node": "37d942cf-4bc3-4acb-8ccd-00074529d082",
+         "target-node": "fff1e3bc-454b-48b2-ab76-a86ba11cc5e5",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "46a04602-d0bb-4af9-a633-52f1993f3e7a",
+         "target-node": "4fe2f134-2692-4ff5-95bd-26c57b298aa9",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "907e8f92-a480-4727-8ef7-98fa120446e0",
+         "source-slot": "Phagocytosed spores",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "1d099fd5-1c01-4332-9e07-69194fcc6b05",
+         "source-slot": "All macrophages",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "43347b3b-6d85-4f91-8b31-b8ce664c9697",
+         "target-node": "8d32a041-9260-4a67-9bf8-cf68ba223664",
+         "source-slot": "Exported file",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "f68686bb-cfcf-4194-a2de-76f6bae7abc4",
+         "target-node": "6c37d3a8-832c-479a-af9f-8cbe3f54c897",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "46a04602-d0bb-4af9-a633-52f1993f3e7a",
+         "target-node": "fa8454bc-c227-418d-8421-91e701f8f039",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "907e8f92-a480-4727-8ef7-98fa120446e0",
+         "target-node": "90bfa266-4e4e-48fe-a749-71567fe7250a",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "fa8454bc-c227-418d-8421-91e701f8f039",
+         "target-node": "43347b3b-6d85-4f91-8b31-b8ce664c9697",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "225425ff-45de-44be-93f0-ef65e3962bad",
+         "target-node": "4f64b7a4-1acb-4bcb-9fed-7e7a19c0f6ca",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "3897c187-ea22-43b6-84b0-80384da1a745",
+         "target-node": "1714ae0b-de8b-4d23-a370-a3393c61ab3d",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "0954dc76-4470-4dbb-902e-e94ebf3b5ef7",
+         "target-node": "c1483cec-d93d-402d-b459-ea152c20c59f",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "46a04602-d0bb-4af9-a633-52f1993f3e7a",
+         "target-node": "b0ced1c3-cc6a-497e-82cb-bc8056668d73",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "78c9c5de-e668-4d53-8a81-03763c135a1d",
+         "target-node": "f098bd5b-7742-4e6d-9129-7ebfa79f2e25",
+         "source-slot": "All macrophages",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "8c184fad-2eda-4c00-bda7-e0d5a5529c6b",
+         "target-node": "596d66a8-829d-4511-9a03-d0959926d8f2",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      }
+   ]
+}

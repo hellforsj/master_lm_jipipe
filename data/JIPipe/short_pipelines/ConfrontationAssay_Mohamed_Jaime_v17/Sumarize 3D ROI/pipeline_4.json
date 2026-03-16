@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline generates 3D ROI statistics and annotates incoming data with table values, allowing for the calculation of reference image statistics if provided, and grouping data based on annotations to produce a results table.",
+   "nodes": {
+      "5e113b65-3de9-497a-b104-d1b5e92a0b0a": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f12443cc-e2c6-4dbc-b95e-a5c581f5ae28": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "5e113b65-3de9-497a-b104-d1b5e92a0b0a",
+         "target-node": "f12443cc-e2c6-4dbc-b95e-a5c581f5ae28",
+         "source-slot": "Measurements",
+         "target-slot": "Table"
+      }
+   ]
+}

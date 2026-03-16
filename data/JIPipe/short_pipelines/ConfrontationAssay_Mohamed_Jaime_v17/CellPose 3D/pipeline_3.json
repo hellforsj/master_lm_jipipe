@@ -1,0 +1,14 @@
+{
+   "description": "This pipeline appears to be designed for processing and analyzing image data, specifically focusing on the detection and visualization of various cellular components such as macrophages and spores. It takes input data, passes it through multiple stages of processing, and generates several outputs for visualization and further analysis, including data on phagocytosing macrophages, adherent spores, and associated spores. The pipeline also involves reference and ROI (Region of Interest) data, suggesting that it is capable of identifying specific regions within the images for detailed examination. Overall, its primary function seems to be the automated analysis of cellular interactions and behaviors in microscopic images.",
+   "nodes": {
+      "591cf2e3-db9e-4371-821a-36e853d647d3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "3dffa627-59d8-4e7f-b583-5882e3eec6c4": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      }
+   },
+   "edges": []
+}

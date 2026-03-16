@@ -1,0 +1,14 @@
+{
+   "description": "The main objective of this pipeline is to apply a morphological operation and then convert the result into a mask. The pipeline starts with the node '643fc042-53d3-4e97-8d22-a5ed3beea1e6' and ends with the node '603b91f3-1aaf-4d8c-a0ad-caf489d8b9c4'. It takes the input image, applies a morphological operation using '643fc042-53d3-4e97-8d22-a5ed3beea1e6', and then converts the result into a mask.",
+   "nodes": {
+      "603b91f3-1aaf-4d8c-a0ad-caf489d8b9c4": {
+         "name": "ij1-labels-to-mask",
+         "description": "Converts a label image to a mask"
+      },
+      "643fc042-53d3-4e97-8d22-a5ed3beea1e6": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": []
+}

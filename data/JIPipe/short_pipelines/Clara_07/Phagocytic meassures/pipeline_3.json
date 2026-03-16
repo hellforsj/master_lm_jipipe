@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to remove columns from a table. The pipeline starts with the node 'd6ce2132-6d55-4a79-bd00-bf722c6c0193' which provides input for the nodes 'e7414e56-c4c2-45af-bf65-6c07e755e56a', '7ebf7e30-563d-4c30-b13a-d506a99e336a', and '980ce2eb-df41-43ed-9f8a-0d75b6fac90f' that remove columns from a table.",
+   "nodes": {
+      "e7414e56-c4c2-45af-bf65-6c07e755e56a": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "d6ce2132-6d55-4a79-bd00-bf722c6c0193": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d6ce2132-6d55-4a79-bd00-bf722c6c0193",
+         "target-node": "e7414e56-c4c2-45af-bf65-6c07e755e56a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

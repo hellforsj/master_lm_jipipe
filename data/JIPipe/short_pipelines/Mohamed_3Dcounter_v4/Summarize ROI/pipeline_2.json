@@ -1,0 +1,21 @@
+{
+   "description": "Removes one or multiple columns by name from a table. This task is solved by applying the 'table-remove-columns' node, which takes the input from the source node and removes the specified columns.",
+   "nodes": {
+      "103d159f-424f-4d9b-a45b-6b5fec8c6991": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "cf616205-fe5e-4b9a-b355-f713677dd15f": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "103d159f-424f-4d9b-a45b-6b5fec8c6991",
+         "target-node": "cf616205-fe5e-4b9a-b355-f713677dd15f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

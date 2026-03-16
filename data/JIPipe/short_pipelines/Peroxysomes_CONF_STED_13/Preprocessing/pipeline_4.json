@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline sets single annotations based on expressions, allowing for sequential processing where the output of one annotation setting step serves as the input for another, enabling a controlled and organized approach to annotating data.",
+   "nodes": {
+      "ce64cab5-813b-4145-8ae4-91f8e90b8908": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "39b6dd86-517f-401f-938a-3bb00ace618a": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "39b6dd86-517f-401f-938a-3bb00ace618a",
+         "target-node": "ce64cab5-813b-4145-8ae4-91f8e90b8908",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

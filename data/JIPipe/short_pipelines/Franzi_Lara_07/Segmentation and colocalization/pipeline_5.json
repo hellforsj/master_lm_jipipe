@@ -1,0 +1,21 @@
+{
+   "description": "Takes preprocessed images and proceeds to analyze them, the main steps include taking the preprocessed image and analyzing it",
+   "nodes": {
+      "4a75e862-2bcd-49db-89de-e4655ac155cc": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "b4ea2d54-4ff1-4bf5-84b0-d9eeec480dfa": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "4a75e862-2bcd-49db-89de-e4655ac155cc",
+         "target-node": "b4ea2d54-4ff1-4bf5-84b0-d9eeec480dfa",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

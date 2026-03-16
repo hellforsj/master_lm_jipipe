@@ -1,0 +1,51 @@
+{
+   "description": "This pipeline applies image preprocessing to an input image, including filtering and thresholding. The main steps include taking the input image, applying filtering and thresholding, and then outputting the preprocessed image.",
+   "nodes": {
+      "a250c512-8547-4143-97dd-f1c112afe686": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "64bd05c4-df44-4b8b-9842-cd7a1becea25": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "4da1affe-5241-41c1-805c-894723b6033b": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "4f92dc7e-1087-43c3-969b-7b55bf25ac03": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "d0441f0b-05a6-4237-8520-ccc11c7d508d": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "4da1affe-5241-41c1-805c-894723b6033b",
+         "target-node": "d0441f0b-05a6-4237-8520-ccc11c7d508d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "64bd05c4-df44-4b8b-9842-cd7a1becea25",
+         "target-node": "4da1affe-5241-41c1-805c-894723b6033b",
+         "source-slot": "Destination",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a250c512-8547-4143-97dd-f1c112afe686",
+         "target-node": "4da1affe-5241-41c1-805c-894723b6033b",
+         "source-slot": "2D",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a250c512-8547-4143-97dd-f1c112afe686",
+         "target-node": "64bd05c4-df44-4b8b-9842-cd7a1becea25",
+         "source-slot": "Z stack",
+         "target-slot": "Source"
+      }
+   ]
+}

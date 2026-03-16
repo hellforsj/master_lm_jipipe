@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes data by first removing specified columns from a table, and then executes a custom Python script on the resulting table to further modify its contents.",
+   "nodes": {
+      "25ad4dcd-72cf-4862-a784-b77e3423e36f": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "6dc397e7-5d3f-4e20-906b-bfaa63dd377e": {
+         "name": "modify-tables",
+         "description": "Executes a Python-script for each table. Each table is passed as dictionary 'table' with the column name as key and values being an array of strings or doubles. The number of input rows can be accessed via the 'nrow' variable."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "25ad4dcd-72cf-4862-a784-b77e3423e36f",
+         "target-node": "6dc397e7-5d3f-4e20-906b-bfaa63dd377e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,47 @@
+{
+   "description": "This pipeline appears to be designed for image processing and enhancement, specifically tailored for biomedical microscopic images. It begins by accepting input data, which is then split and filtered based on annotations. The processed data is subsequently enhanced through contrast adjustment and histogram normalization. Additionally, the pipeline applies an extended depth of focus projection to maximize intensity in local areas of the image. The output from these processes is further refined through color mapping and lut adjustments, ultimately producing an enhanced image with improved visibility and detail.",
+   "nodes": {
+      "8e0fdf48-e4a9-4989-9c38-8bb0b03f4a6f": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "b5115aea-b37c-46bf-b613-f627f81c56de": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "a6b69345-973e-4c34-bef6-9a6cf89c2016": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "dde194a3-96af-46fd-b70f-5e0788555173": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "a6b69345-973e-4c34-bef6-9a6cf89c2016",
+         "target-node": "b5115aea-b37c-46bf-b613-f627f81c56de",
+         "source-slot": "2D",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "dde194a3-96af-46fd-b70f-5e0788555173",
+         "target-node": "b5115aea-b37c-46bf-b613-f627f81c56de",
+         "source-slot": "Destination",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b5115aea-b37c-46bf-b613-f627f81c56de",
+         "target-node": "8e0fdf48-e4a9-4989-9c38-8bb0b03f4a6f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a6b69345-973e-4c34-bef6-9a6cf89c2016",
+         "target-node": "dde194a3-96af-46fd-b70f-5e0788555173",
+         "source-slot": "Z stack",
+         "target-slot": "Source"
+      }
+   ]
+}

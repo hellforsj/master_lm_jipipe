@@ -1,0 +1,65 @@
+{
+   "description": "This pipeline filters the paths by their name or absolute path and lists all files in a folder. The main steps involve filtering the paths and then listing all files.",
+   "nodes": {
+      "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "550dacf6-c9df-4d7e-856b-c70daeb420c2": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "d64dab14-eb45-4a7b-83f3-1aeb270f3bc8": {
+         "name": "path-filter",
+         "description": "Filters the paths (files/folders) by their name or absolute path"
+      },
+      "9aa0efd7-bcc3-41b5-a346-fa15e23c694b": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "1095c2b6-331f-453d-bf06-811bc113e710": {
+         "name": "path-filter",
+         "description": "Filters the paths (files/folders) by their name or absolute path"
+      },
+      "396f4183-84a8-4ec1-b261-7fdef9ecd5a0": {
+         "name": "import-imagej-imgplus-from-file",
+         "description": "Loads an image via the native ImageJ functions."
+      },
+      "d9f290cd-6685-4a25-83c4-80dc6eac060f": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "396f4183-84a8-4ec1-b261-7fdef9ecd5a0",
+         "target-node": "550dacf6-c9df-4d7e-856b-c70daeb420c2",
+         "source-slot": "Image",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "550dacf6-c9df-4d7e-856b-c70daeb420c2",
+         "target-node": "9aa0efd7-bcc3-41b5-a346-fa15e23c694b",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d64dab14-eb45-4a7b-83f3-1aeb270f3bc8",
+         "target-node": "396f4183-84a8-4ec1-b261-7fdef9ecd5a0",
+         "source-slot": "Output",
+         "target-slot": "Files"
+      },
+      {
+         "source-node": "1095c2b6-331f-453d-bf06-811bc113e710",
+         "target-node": "d64dab14-eb45-4a7b-83f3-1aeb270f3bc8",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "396f4183-84a8-4ec1-b261-7fdef9ecd5a0",
+         "target-node": "d9f290cd-6685-4a25-83c4-80dc6eac060f",
+         "source-slot": "Image",
+         "target-slot": "Input"
+      }
+   ]
+}

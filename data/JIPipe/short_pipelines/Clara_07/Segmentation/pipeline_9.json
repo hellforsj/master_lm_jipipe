@@ -1,0 +1,399 @@
+{
+   "description": "This pipeline processes biomedical microscopic images by applying various operations such as image filtering, thresholding, and feature extraction to detect and analyze specific structures like spores and macrophages. It utilizes Cellpose for segmentation and combines results from multiple processing paths to generate an overlay image, providing a comprehensive analysis of the input data.",
+   "nodes": {
+      "68997ba1-f4a5-445c-b7c2-8e01a22cdafa": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9410cdab-1ebb-4a0d-83c3-3c52c9fc090e": {
+         "name": "ij1-roi-filter-statistics",
+         "description": "Filters the ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "6d2189ec-59b7-4e31-af74-fee77a4e2124": {
+         "name": "ij1-roi-outline",
+         "description": "Applies one of the following operations to all ROI in the list: <ul><li>Convert to closed polygon</li><li>Convert to polygon</li><li>Calculate convex hull</li><li>Convert to bounding rectangle</li><li>Convert to minimum bounding rectangle (rotated rectangle)</li><li>Convert to oriented line</li><li>Convert to fitted circle</li><li>Convert to fitted ellipse</li><li>Apply split fitting to polygons</li></ul>"
+      },
+      "9f3c6cf6-2a6e-4f31-9673-9b8831aac4b7": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "2a245bc3-ddc7-475b-bc62-788d88a95afd": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "961d3685-5557-4dc8-84f6-2c093cbfd0e9": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5213d82a-b375-4af0-911e-763930121d4e": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "a3f69a70-df7a-4eda-9d33-43ee96e3dad1": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      },
+      "513220be-0f29-4363-82dd-603b19e1092c": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "bd229ac9-c112-4b66-b8c5-2da23c0ebd90": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      },
+      "4959e8a3-8852-46d4-91c8-8abbeaab7dd9": {
+         "name": "cellpose-segmentation-inference-3.x",
+         "description": "Runs Cellpose on the input image with the given model(s). This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      },
+      "16856f19-8ea7-4dd7-9f55-0ab1c14a6509": {
+         "name": "ij1-background-rollingball2d",
+         "description": "Finds or subtracts the background of a 2D slice via a rolling-ball or paraboloid algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "f16dcc7e-75da-4671-a665-f7870fe9fcac": {
+         "name": "cellpose-segmentation-inference-3.x",
+         "description": "Runs Cellpose on the input image with the given model(s). This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      },
+      "a81be32b-d707-4915-9569-869433a1c214": {
+         "name": "ij1-roi-explode",
+         "description": "Splits the ROI in a ROI list into individual ROI lists."
+      },
+      "be649d7b-0b1e-42dc-8f3e-a1fe1847f4ad": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "fe98ec61-b3a6-43c3-92ea-fa7014754934": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "e03cb9c5-1732-4db7-8205-29129f9a8234": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3caa2c67-6820-44bc-8086-5a678eb64c7a": {
+         "name": "cellpose-segmentation-inference-3.x",
+         "description": "Runs Cellpose on the input image with the given model(s). This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      },
+      "c1f918c3-b65a-4c08-ae32-7b57076c5e1a": {
+         "name": "ij1-morph-binary-fillholes2d",
+         "description": "Applies a morphological hole filling operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "776ad311-a90b-4e4f-af81-31fb6d4317e4": {
+         "name": "ij1-morph-binary-fillholes2d",
+         "description": "Applies a morphological hole filling operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "b1e3d371-8071-4dfa-845a-c44696562d0e": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "e420819b-048d-404e-a7e8-c722bd9e9149": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "2da81734-be0d-4240-b425-b5a3b82334c7": {
+         "name": "cellpose-segmentation-inference-3.x",
+         "description": "Runs Cellpose on the input image with the given model(s). This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      },
+      "ed7e252f-88e9-4175-b7fa-e332aaf1257a": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "01b217be-8895-4c0e-8562-699a7e7f1246": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "f5a80756-63aa-4131-9993-57bc05b664e4": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "599ca6c9-dee3-492f-ace8-6e5f01439316": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "29eef9ed-6524-4a4f-a083-56e6158844c1": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "26ecfd34-6b8a-4dd0-98cb-5e9c79edf0c8": {
+         "name": "ij1-roi-filter-statistics",
+         "description": "Filters the ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "163c6986-a27f-4e62-a7e9-c3284f48c17a": {
+         "name": "ij1-roi-merge",
+         "description": "Merges multiple ROI lists by using data annotations. By default, ROIs with equivalent annotations are put into the same group and merged into one ROI list for each group. Use the parameters to control how groups are created. To merge all incoming ROI lists into just one list, set the matching strategy to 'Custom' and leave the list of annotation columns empty.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "b363a0cf-90b5-425c-b4e1-d997e3cef6cc": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "218f7700-6085-42e2-b790-70a1d0d1a376": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "b70c26d0-01e8-499c-acc5-7be241dffed5": {
+         "name": "ij1-morph-binary-fillholes2d",
+         "description": "Applies a morphological hole filling operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "fea26e23-75a8-4d81-be77-1fd61e1e11ad": {
+         "name": "ij1-roi-filter-statistics",
+         "description": "Filters the ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "55c26690-330e-4a72-b10c-8d941944b92a": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "fea26e23-75a8-4d81-be77-1fd61e1e11ad",
+         "target-node": "68997ba1-f4a5-445c-b7c2-8e01a22cdafa",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "be649d7b-0b1e-42dc-8f3e-a1fe1847f4ad",
+         "target-node": "961d3685-5557-4dc8-84f6-2c093cbfd0e9",
+         "source-slot": "Output",
+         "target-slot": "Green"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "16856f19-8ea7-4dd7-9f55-0ab1c14a6509",
+         "source-slot": "Red",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "e03cb9c5-1732-4db7-8205-29129f9a8234",
+         "target-node": "c1f918c3-b65a-4c08-ae32-7b57076c5e1a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "5213d82a-b375-4af0-911e-763930121d4e",
+         "target-node": "e420819b-048d-404e-a7e8-c722bd9e9149",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "9f3c6cf6-2a6e-4f31-9673-9b8831aac4b7",
+         "source-slot": "TL",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "a3f69a70-df7a-4eda-9d33-43ee96e3dad1",
+         "target-node": "599ca6c9-dee3-492f-ace8-6e5f01439316",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "16856f19-8ea7-4dd7-9f55-0ab1c14a6509",
+         "target-node": "b1e3d371-8071-4dfa-845a-c44696562d0e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "68997ba1-f4a5-445c-b7c2-8e01a22cdafa",
+         "target-node": "961d3685-5557-4dc8-84f6-2c093cbfd0e9",
+         "source-slot": "Output",
+         "target-slot": "Blues"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "be649d7b-0b1e-42dc-8f3e-a1fe1847f4ad",
+         "source-slot": "Green",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "ed7e252f-88e9-4175-b7fa-e332aaf1257a",
+         "target-node": "b70c26d0-01e8-499c-acc5-7be241dffed5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f16dcc7e-75da-4671-a665-f7870fe9fcac",
+         "target-node": "9410cdab-1ebb-4a0d-83c3-3c52c9fc090e",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "3caa2c67-6820-44bc-8086-5a678eb64c7a",
+         "source-slot": "TL",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3caa2c67-6820-44bc-8086-5a678eb64c7a",
+         "target-node": "218f7700-6085-42e2-b790-70a1d0d1a376",
+         "source-slot": "Probabilities",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "513220be-0f29-4363-82dd-603b19e1092c",
+         "target-node": "a3f69a70-df7a-4eda-9d33-43ee96e3dad1",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "b1e3d371-8071-4dfa-845a-c44696562d0e",
+         "target-node": "2a245bc3-ddc7-475b-bc62-788d88a95afd",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a81be32b-d707-4915-9569-869433a1c214",
+         "target-node": "5213d82a-b375-4af0-911e-763930121d4e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6d2189ec-59b7-4e31-af74-fee77a4e2124",
+         "target-node": "163c6986-a27f-4e62-a7e9-c3284f48c17a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b70c26d0-01e8-499c-acc5-7be241dffed5",
+         "target-node": "29eef9ed-6524-4a4f-a083-56e6158844c1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c1f918c3-b65a-4c08-ae32-7b57076c5e1a",
+         "target-node": "513220be-0f29-4363-82dd-603b19e1092c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "e420819b-048d-404e-a7e8-c722bd9e9149",
+         "target-node": "6d2189ec-59b7-4e31-af74-fee77a4e2124",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4959e8a3-8852-46d4-91c8-8abbeaab7dd9",
+         "target-node": "01b217be-8895-4c0e-8562-699a7e7f1246",
+         "source-slot": "Probabilities",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "163c6986-a27f-4e62-a7e9-c3284f48c17a",
+         "target-node": "9f3c6cf6-2a6e-4f31-9673-9b8831aac4b7",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "29eef9ed-6524-4a4f-a083-56e6158844c1",
+         "target-node": "b363a0cf-90b5-425c-b4e1-d997e3cef6cc",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "218f7700-6085-42e2-b790-70a1d0d1a376",
+         "target-node": "e03cb9c5-1732-4db7-8205-29129f9a8234",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2da81734-be0d-4240-b425-b5a3b82334c7",
+         "target-node": "fea26e23-75a8-4d81-be77-1fd61e1e11ad",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "01b217be-8895-4c0e-8562-699a7e7f1246",
+         "target-node": "ed7e252f-88e9-4175-b7fa-e332aaf1257a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "f16dcc7e-75da-4671-a665-f7870fe9fcac",
+         "source-slot": "Green",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "2da81734-be0d-4240-b425-b5a3b82334c7",
+         "source-slot": "Blue",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "4959e8a3-8852-46d4-91c8-8abbeaab7dd9",
+         "source-slot": "TL",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "fea26e23-75a8-4d81-be77-1fd61e1e11ad",
+         "source-slot": "Blue",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "68997ba1-f4a5-445c-b7c2-8e01a22cdafa",
+         "source-slot": "Blue",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "776ad311-a90b-4e4f-af81-31fb6d4317e4",
+         "target-node": "55c26690-330e-4a72-b10c-8d941944b92a",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "bd229ac9-c112-4b66-b8c5-2da23c0ebd90",
+         "target-node": "a81be32b-d707-4915-9569-869433a1c214",
+         "source-slot": "ROI",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b363a0cf-90b5-425c-b4e1-d997e3cef6cc",
+         "target-node": "bd229ac9-c112-4b66-b8c5-2da23c0ebd90",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      },
+      {
+         "source-node": "55c26690-330e-4a72-b10c-8d941944b92a",
+         "target-node": "26ecfd34-6b8a-4dd0-98cb-5e9c79edf0c8",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "9410cdab-1ebb-4a0d-83c3-3c52c9fc090e",
+         "target-node": "be649d7b-0b1e-42dc-8f3e-a1fe1847f4ad",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "599ca6c9-dee3-492f-ace8-6e5f01439316",
+         "source-slot": "TL",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "2a245bc3-ddc7-475b-bc62-788d88a95afd",
+         "target-node": "fe98ec61-b3a6-43c3-92ea-fa7014754934",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "fe98ec61-b3a6-43c3-92ea-fa7014754934",
+         "target-node": "776ad311-a90b-4e4f-af81-31fb6d4317e4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1c6b61d4-e7ea-4cd2-9754-57f30157317c",
+         "target-node": "26ecfd34-6b8a-4dd0-98cb-5e9c79edf0c8",
+         "source-slot": "Red",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "bd229ac9-c112-4b66-b8c5-2da23c0ebd90",
+         "target-node": "f5a80756-63aa-4131-9993-57bc05b664e4",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      }
+   ]
+}

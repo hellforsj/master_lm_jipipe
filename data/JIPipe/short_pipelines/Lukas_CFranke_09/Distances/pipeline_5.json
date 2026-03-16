@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline converts label images into 3D regions of interest, utilizing an intermediate step that involves copying physical pixel sizes from a source to a target, ensuring accurate calibration and grouping of data based on annotations.",
+   "nodes": {
+      "f833f9f1-e4e8-40a6-8575-1adf1df0073c": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "95bd30e1-b239-4387-a4f5-6e441801a368": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "95bd30e1-b239-4387-a4f5-6e441801a368",
+         "target-node": "f833f9f1-e4e8-40a6-8575-1adf1df0073c",
+         "source-slot": "Output",
+         "target-slot": "Labels"
+      }
+   ]
+}

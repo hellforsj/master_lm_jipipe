@@ -1,0 +1,25 @@
+{
+   "description": "This pipeline performs image processing and analysis, starting with input data that undergoes various transformations, including thresholding, masking, and dimensionality reduction. The data is then processed through multiple paths, involving operations such as trimming, referencing, and annotation, to extract specific features and information. The pipeline ultimately outputs the results of these processes, providing a comprehensive analysis of the input data.",
+   "nodes": {
+      "874a0b0e-1787-4a9a-93b7-ffa38be18ad1": {
+         "name": "ij1-dimensions-zproject-2",
+         "description": "Performs a Z-Projection. Also supports other axes C-Project/T-Project."
+      },
+      "763a2deb-3243-4a45-b885-81c20a7dce69": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5b9a2c6e-02cc-426d-a725-8bd923bb8d07": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "874a0b0e-1787-4a9a-93b7-ffa38be18ad1",
+         "target-node": "763a2deb-3243-4a45-b885-81c20a7dce69",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

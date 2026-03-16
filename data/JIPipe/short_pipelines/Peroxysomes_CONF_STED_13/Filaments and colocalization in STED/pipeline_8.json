@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline processes incoming data by creating a visual representation in the form of a histogram plot, and then outputs the result as part of a larger compartment. The histogram is generated based on the input data, providing a graphical summary of the distribution of values. The output is then made available for further processing or analysis within the compartment.",
+   "nodes": {
+      "86713063-8c6f-4054-afbd-c7f2ce208ac3": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      }
+   },
+   "edges": []
+}

@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline lists all files in a given folder, annotates their paths based on names or full paths, and filters these paths. The main steps involve listing files, annotating file paths, and filtering.",
+   "nodes": {
+      "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "db54ca15-c3c9-470d-90ea-66b8c1ddd28e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "f9ad6726-a0ed-4982-852a-afb6e1af06cb": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f9ad6726-a0ed-4982-852a-afb6e1af06cb",
+         "target-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "target-node": "db54ca15-c3c9-470d-90ea-66b8c1ddd28e",
+         "source-slot": "Files",
+         "target-slot": "Paths"
+      }
+   ]
+}

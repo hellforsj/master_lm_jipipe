@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies a custom thresholding method to input data, and then performs a morphological operation on the resulting greyscale images, allowing for various operations such as erosion, dilation, and gradient calculation, with the ability to handle multi-channel and higher-dimensional data.",
+   "nodes": {
+      "ddbf9d52-40cf-4264-93a2-ace55f45789d": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "05a038ae-3064-4b7a-9f71-063f0391da80": {
+         "name": "ij1-threshold-expression2d-8u",
+         "description": "Allows to implement a custom thresholding method via expressions. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "05a038ae-3064-4b7a-9f71-063f0391da80",
+         "target-node": "ddbf9d52-40cf-4264-93a2-ace55f45789d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

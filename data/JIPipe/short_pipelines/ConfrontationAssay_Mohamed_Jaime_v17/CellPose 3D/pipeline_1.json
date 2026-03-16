@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline appears to be designed for image processing, specifically for converting regions of interest into labeled images, where each region is assigned a unique value based on its characteristics or an optional reference image, and the process handles grouping data items based on annotations.",
+   "nodes": {
+      "9a81ad36-1b1c-4d37-8dc8-b51956d644f8": {
+         "name": "ij1-roi-to-labels-name",
+         "description": "Converts ROI and an optional reference image into a label image. The label value is provided by mapping the name to a value. If no name mapping is provided for a ROI, a unique label is generated. If no reference image is provided, the dimensions are estimated from the ROI. The background color (where no ROI is located) is zero.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

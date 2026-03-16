@@ -1,0 +1,5 @@
+{
+   "description": "This pipeline saves the results of image processing to a folder. The main steps are saving the images and then cleaning up temporary files.",
+   "nodes": {},
+   "edges": []
+}

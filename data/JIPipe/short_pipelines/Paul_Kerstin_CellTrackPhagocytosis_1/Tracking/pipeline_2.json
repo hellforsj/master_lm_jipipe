@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline tracks spots in an image using TrackMate tracking. The main steps involve reading in the image, detecting spots using TrackMate detector, and then applying the TrackMate tracker to track these spots over time.",
+   "nodes": {
+      "d6cd4d5d-730f-4b1d-8697-bfe2956160e6": {
+         "name": "trackmate-filter-spots",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "c40e5d98-8142-4c15-be31-ed779b2fc246": {
+         "name": "trackmate-detector",
+         "description": "Detect spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d6cd4d5d-730f-4b1d-8697-bfe2956160e6",
+         "target-node": "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1",
+         "source-slot": "Output",
+         "target-slot": "Spots"
+      },
+      {
+         "source-node": "c40e5d98-8142-4c15-be31-ed779b2fc246",
+         "target-node": "d6cd4d5d-730f-4b1d-8697-bfe2956160e6",
+         "source-slot": "Spots",
+         "target-slot": "Input"
+      }
+   ]
+}

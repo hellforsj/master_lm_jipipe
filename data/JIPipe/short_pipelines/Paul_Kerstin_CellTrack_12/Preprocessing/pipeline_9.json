@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to get a project user directory and annotate the path. The pipeline starts by getting a project user directory, then it annotates the path.",
+   "nodes": {
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "b29ca8db-f927-4a21-9513-870df90db8a7": {
+         "name": "project-user-directory",
+         "description": "Returns a project user (Project > Project settings > User directories) folder as data"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b29ca8db-f927-4a21-9513-870df90db8a7",
+         "target-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "source-slot": "Output",
+         "target-slot": "Input folder"
+      }
+   ]
+}

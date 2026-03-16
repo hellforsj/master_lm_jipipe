@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline trains a model using training data. The main steps include taking the training data, applying preprocessing, and outputting the trained model.",
+   "nodes": {
+      "a89f5cd6-5ac1-478c-b403-b9613633d950": {
+         "name": "annotate-remove",
+         "description": "Removes annotations by name or value"
+      },
+      "6c8fed14-6388-4ef0-8ca1-bfe278db2c09": {
+         "name": "cellpose-segmentation-training-3.x",
+         "description": "Trains a segmentation model with Cellpose. You start from an existing model or train from scratch. Incoming images are automatically converted to greyscale. Only 2D or 3D images are supported. For this node to work, you need to annotate a greyscale 16-bit or 8-bit label image column to each raw data input. To do this, you can use the node 'Annotate with data'. By default, JIPipe will ensure that all connected components of this image are assigned a unique component. You can disable this feature via the parameters. Does not support the training of image restoration models.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "6c8fed14-6388-4ef0-8ca1-bfe278db2c09",
+         "target-node": "a89f5cd6-5ac1-478c-b403-b9613633d950",
+         "source-slot": "Model",
+         "target-slot": "Input"
+      }
+   ]
+}

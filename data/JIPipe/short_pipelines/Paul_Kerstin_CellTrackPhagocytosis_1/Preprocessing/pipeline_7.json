@@ -1,0 +1,61 @@
+{
+   "description": "The main objective of this pipeline is to get a project user directory and list its contents. The steps are getting the project user directory, listing all files within it, and annotating the file paths.",
+   "nodes": {
+      "eb872e43-2214-4902-b9a2-e540a3f3703e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "f9ad6726-a0ed-4982-852a-afb6e1af06cb": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "b29ca8db-f927-4a21-9513-870df90db8a7": {
+         "name": "project-user-directory",
+         "description": "Returns a project user (Project > Project settings > User directories) folder as data"
+      },
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b29ca8db-f927-4a21-9513-870df90db8a7",
+         "target-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "source-slot": "Output",
+         "target-slot": "Input folder"
+      },
+      {
+         "source-node": "f9ad6726-a0ed-4982-852a-afb6e1af06cb",
+         "target-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "target-node": "eb872e43-2214-4902-b9a2-e540a3f3703e",
+         "source-slot": "Subfolders",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "eb872e43-2214-4902-b9a2-e540a3f3703e",
+         "target-node": "f9ad6726-a0ed-4982-852a-afb6e1af06cb",
+         "source-slot": "Annotated paths",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "target-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

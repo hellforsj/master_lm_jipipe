@@ -1,0 +1,123 @@
+{
+   "description": "This pipeline extracts properties of ROI lists and stores them into annotations, then merges the annotations. It takes ROI lists as input, processes them to extract properties, and outputs the extracted properties as merged annotations.",
+   "nodes": {
+      "d9723300-3df4-4948-b54d-251512b97d34": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "be4425bb-21b2-4b62-ab8e-f0deb1cf79ec": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "9267ac34-b6af-448f-bbb6-41db5d9c181a": {
+         "name": "annotation-merge",
+         "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "99100e81-cf70-450f-88ea-bd1be9ed8cb6": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "f3168235-fcc4-457c-b95c-233967fc62aa": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "80598119-e25d-45a5-8e70-6b09dbdf38dd": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "6d0a15d7-1492-4a75-8508-efe51192524b": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "369fedfb-1ba3-4433-a3c5-06124ece79b3": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "369fedfb-1ba3-4433-a3c5-06124ece79b3",
+         "source-slot": "All macrophages",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "99100e81-cf70-450f-88ea-bd1be9ed8cb6",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "All bacteria"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "99100e81-cf70-450f-88ea-bd1be9ed8cb6",
+         "source-slot": "All bacteria",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6d0a15d7-1492-4a75-8508-efe51192524b",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "Macrophages with phagocytosed bacteria"
+      },
+      {
+         "source-node": "d9723300-3df4-4948-b54d-251512b97d34",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "Associated bacteria"
+      },
+      {
+         "source-node": "80598119-e25d-45a5-8e70-6b09dbdf38dd",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "Macrophages with associated bacteria"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "6d0a15d7-1492-4a75-8508-efe51192524b",
+         "source-slot": "Macrophages with phagocytosed bacteria",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "d9723300-3df4-4948-b54d-251512b97d34",
+         "source-slot": "Associated bacteria",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "be4425bb-21b2-4b62-ab8e-f0deb1cf79ec",
+         "source-slot": "Adherent bacteria",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "be4425bb-21b2-4b62-ab8e-f0deb1cf79ec",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "Adherent bacteria"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "80598119-e25d-45a5-8e70-6b09dbdf38dd",
+         "source-slot": "Macrophages with associated bacteria",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "369fedfb-1ba3-4433-a3c5-06124ece79b3",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "All macrophages"
+      },
+      {
+         "source-node": "f3168235-fcc4-457c-b95c-233967fc62aa",
+         "target-node": "9267ac34-b6af-448f-bbb6-41db5d9c181a",
+         "source-slot": "Output",
+         "target-slot": "Phagocytosed bacteria"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "f3168235-fcc4-457c-b95c-233967fc62aa",
+         "source-slot": "Phagocytosed bacteria",
+         "target-slot": "Input"
+      }
+   ]
+}

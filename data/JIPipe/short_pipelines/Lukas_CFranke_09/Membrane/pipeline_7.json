@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline filters 3D ROI list elements based on statistics and then sets the properties of all resulting 3D ROIs, allowing for customized processing and analysis of biomedical image data.",
+   "nodes": {
+      "5040ffe8-980a-4f67-8048-8e99597bf8b1": {
+         "name": "ij3d-roi-change-properties",
+         "description": "Sets the properties of all 3D ROI"
+      },
+      "1cac2d3e-49b7-4447-8cca-b698c66af91d": {
+         "name": "ij3d-filter-roi3d-by-statistics",
+         "description": "Filters the 3D ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "1cac2d3e-49b7-4447-8cca-b698c66af91d",
+         "target-node": "5040ffe8-980a-4f67-8048-8e99597bf8b1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

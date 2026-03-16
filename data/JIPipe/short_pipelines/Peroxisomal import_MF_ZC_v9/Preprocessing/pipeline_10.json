@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline loads an image, adds data annotations that contain the image properties and splits multichannel images into multiple greyscale images. The main steps involve loading an image, adding data annotations and then splitting the image.",
+   "nodes": {
+      "550dacf6-c9df-4d7e-856b-c70daeb420c2": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "9aa0efd7-bcc3-41b5-a346-fa15e23c694b": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "396f4183-84a8-4ec1-b261-7fdef9ecd5a0": {
+         "name": "import-imagej-imgplus-from-file",
+         "description": "Loads an image via the native ImageJ functions."
+      },
+      "d9f290cd-6685-4a25-83c4-80dc6eac060f": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "396f4183-84a8-4ec1-b261-7fdef9ecd5a0",
+         "target-node": "550dacf6-c9df-4d7e-856b-c70daeb420c2",
+         "source-slot": "Image",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "550dacf6-c9df-4d7e-856b-c70daeb420c2",
+         "target-node": "9aa0efd7-bcc3-41b5-a346-fa15e23c694b",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "396f4183-84a8-4ec1-b261-7fdef9ecd5a0",
+         "target-node": "d9f290cd-6685-4a25-83c4-80dc6eac060f",
+         "source-slot": "Image",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline enhances image contrast using histogram-based normalization methods and then applies a predefined color map to the resulting image, effectively transforming its visual representation without altering the underlying pixel data.",
+   "nodes": {
+      "d0441f0b-05a6-4237-8520-ccc11c7d508d": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "4da1affe-5241-41c1-805c-894723b6033b": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "4da1affe-5241-41c1-805c-894723b6033b",
+         "target-node": "d0441f0b-05a6-4237-8520-ccc11c7d508d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

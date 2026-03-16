@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline creates annotations for folders based on their names or full paths, and then uses these annotated paths to list all subfolders within a project user directory, ultimately providing a comprehensive overview of the folder structure.",
+   "nodes": {
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      },
+      "b29ca8db-f927-4a21-9513-870df90db8a7": {
+         "name": "project-user-directory",
+         "description": "Returns a project user (Project > Project settings > User directories) folder as data"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b29ca8db-f927-4a21-9513-870df90db8a7",
+         "target-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "source-slot": "Output",
+         "target-slot": "Input folder"
+      },
+      {
+         "source-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "target-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

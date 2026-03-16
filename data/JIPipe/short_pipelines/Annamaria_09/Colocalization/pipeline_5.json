@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline performs image processing by first overlaying greyscale or RGB images, and then copying physical pixel sizes from a source to a target, allowing for the grouping of incoming data based on annotations and processing of multiple data items per slot.",
+   "nodes": {
+      "920f5f76-6bc5-4190-a754-29d451ccc2ea": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9874bb88-95f1-4af4-95a1-14befe8f196b": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9874bb88-95f1-4af4-95a1-14befe8f196b",
+         "target-node": "920f5f76-6bc5-4190-a754-29d451ccc2ea",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      }
+   ]
+}

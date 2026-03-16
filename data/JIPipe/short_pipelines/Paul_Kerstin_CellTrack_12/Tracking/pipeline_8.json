@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline filters data based on specific expressions and then renames selected annotations, allowing for customized processing and organization of image or data analysis results.",
+   "nodes": {
+      "7e3f1b95-c942-4769-96f1-65b8584f2d55": {
+         "name": "trackmate-filter-tracks",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "7ee4378a-f7b8-4020-ab6a-20bdcae228e9": {
+         "name": "rename-annotation",
+         "description": "Renames one or multiple annotations."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "7e3f1b95-c942-4769-96f1-65b8584f2d55",
+         "target-node": "7ee4378a-f7b8-4020-ab6a-20bdcae228e9",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

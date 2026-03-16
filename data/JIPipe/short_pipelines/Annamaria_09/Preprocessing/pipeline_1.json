@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline reads in a folder with files and lists all subfolders. It starts by getting the project user directory, then uses this as an input to list all subfolders.",
+   "nodes": {
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "adbeaf5c-4cc7-42ce-94b1-e9d05747710a": {
+         "name": "project-user-directory",
+         "description": "Returns a project user (Project > Project settings > User directories) folder as data"
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "adbeaf5c-4cc7-42ce-94b1-e9d05747710a",
+         "target-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "source-slot": "Output",
+         "target-slot": "Input folder"
+      },
+      {
+         "source-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "target-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes image data by first applying a correction to improve contrast and illumination, and then merging the corrected 2D slices into a hyperstack, allowing for controlled positioning and handling of missing or negative slice positions, ultimately producing a grouped output based on annotations.",
+   "nodes": {
+      "238b2a47-c24b-469f-8623-b1a57d92714c": {
+         "name": "ij1-dimensions-merge-2d-to-hyperstack",
+         "description": "Merges all incoming 2D slices into a hyperstack. The slice positions within the hyperstack can be controlled via expressions. The node can handle missing and negative slice positions due to a remapping procedure. Please ensure that there are no duplicate locations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "5aafdcbd-80d4-4ddf-8db7-82c7368f3911": {
+         "name": "ij1-contrast-illumination-correction2d",
+         "description": "Applies a Gaussian filter to the image and extracts the maximum value. Pixel values are then divided by this value.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "5aafdcbd-80d4-4ddf-8db7-82c7368f3911",
+         "target-node": "238b2a47-c24b-469f-8623-b1a57d92714c",
+         "source-slot": "Output",
+         "target-slot": "Slices"
+      }
+   ]
+}

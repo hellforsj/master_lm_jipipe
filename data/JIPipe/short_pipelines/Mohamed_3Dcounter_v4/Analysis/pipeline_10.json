@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline sets all pixels of the input image to a specified grayscale value, annotates data with table values and runs Cellpose. The main steps are: setting grayscale value, annotating data, running Cellpose.",
+   "nodes": {
+      "f832bc7e-728d-45e0-82dd-612200cca7d7": {
+         "name": "ij1-color-set-to-grayscale-value",
+         "description": "Sets all pixels of the input image to the specified grayscale value. If the image is RGB, the value is converted into an integer that is parsed as RGB.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "520fcda1-4b1f-44dc-835e-b798eac0e092": {
+         "name": "cellpose-2",
+         "description": "Deprecated. Use the node with the same name.<br/><br/>Runs Cellpose on the input image. This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f832bc7e-728d-45e0-82dd-612200cca7d7",
+         "target-node": "520fcda1-4b1f-44dc-835e-b798eac0e092",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

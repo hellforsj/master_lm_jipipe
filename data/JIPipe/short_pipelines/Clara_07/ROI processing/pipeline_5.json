@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline takes input data, splits it based on annotations, and then filters the ROI lists by testing for mutual overlap. The main steps involve taking input data, splitting it, comparing ROIs for overlap, and outputting the overlapping ROIs. It starts with the 'annotate-split-by-annotation' node and ends with the 'ij1-roi-filter-by-overlap' node.",
+   "nodes": {
+      "df07ba4f-293f-46ae-bc7a-9092ebc524e8": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9a96cf17-6c8f-424b-8eb4-6817d55b874e": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9a96cf17-6c8f-424b-8eb4-6817d55b874e",
+         "target-node": "df07ba4f-293f-46ae-bc7a-9092ebc524e8",
+         "source-slot": "4 channels",
+         "target-slot": "ROI 2"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline creates annotations for paths based on their name or full path, and then filters these paths by their name or absolute path, allowing for a targeted selection of files and folders to be processed further.",
+   "nodes": {
+      "db54ca15-c3c9-470d-90ea-66b8c1ddd28e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "dee7af1c-4ffa-4a54-b92f-8aaa9153d6b9": {
+         "name": "path-filter",
+         "description": "Filters the paths (files/folders) by their name or absolute path"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "db54ca15-c3c9-470d-90ea-66b8c1ddd28e",
+         "target-node": "dee7af1c-4ffa-4a54-b92f-8aaa9153d6b9",
+         "source-slot": "Annotated paths",
+         "target-slot": "Input"
+      }
+   ]
+}

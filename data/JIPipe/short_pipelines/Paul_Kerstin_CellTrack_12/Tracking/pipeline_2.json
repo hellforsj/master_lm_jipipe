@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline detects spots in image data, filters them based on specific expressions, and then tracks the filtered spots to analyze their movement and behavior over time, allowing for a comprehensive analysis of spot dynamics in biomedical microscopic images.",
+   "nodes": {
+      "d6cd4d5d-730f-4b1d-8697-bfe2956160e6": {
+         "name": "trackmate-filter-spots",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "c40e5d98-8142-4c15-be31-ed779b2fc246": {
+         "name": "trackmate-detector",
+         "description": "Detect spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d6cd4d5d-730f-4b1d-8697-bfe2956160e6",
+         "target-node": "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1",
+         "source-slot": "Output",
+         "target-slot": "Spots"
+      },
+      {
+         "source-node": "c40e5d98-8142-4c15-be31-ed779b2fc246",
+         "target-node": "d6cd4d5d-730f-4b1d-8697-bfe2956160e6",
+         "source-slot": "Spots",
+         "target-slot": "Input"
+      }
+   ]
+}

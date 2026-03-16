@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline applies a morphological operation to binary images, filling holes in two-dimensional data, and can be applied to higher-dimensional data by processing each 2D slice individually.",
+   "nodes": {
+      "200c5809-536c-408c-82e2-136ba98f7b53": {
+         "name": "ij1-morph-binary-fillholes2d",
+         "description": "Applies a morphological hole filling operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": []
+}

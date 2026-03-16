@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline generates a results table containing ROI statistics and then adds column annotations to the table as new columns. The main steps involve generating the ROI statistics, and then adding the column annotations.",
+   "nodes": {
+      "e33b0212-b077-4da6-b95b-c71911d7f5f0": {
+         "name": "ij1-roi-statistics",
+         "description": "Generates a results table containing ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, an empty reference image is automatically generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "a27a7322-7bb1-4ec6-a4f1-c05b608e4248": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "e33b0212-b077-4da6-b95b-c71911d7f5f0",
+         "target-node": "a27a7322-7bb1-4ec6-a4f1-c05b608e4248",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      }
+   ]
+}

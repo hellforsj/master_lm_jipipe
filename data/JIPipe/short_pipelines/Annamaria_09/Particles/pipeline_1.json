@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies an auto-thresholding algorithm to incoming data, grouping it based on annotations, and then refines the result by applying a median filter to each 2D slice or channel, producing a smoothed output.",
+   "nodes": {
+      "5bd2d21c-05a2-4476-a803-89e0f740b4f1": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "ceb9ac4e-0eba-4e32-acdc-179417756f0f": {
+         "name": "ij1-blur-median2d",
+         "description": "Applies a median filter. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "5bd2d21c-05a2-4476-a803-89e0f740b4f1",
+         "target-node": "ceb9ac4e-0eba-4e32-acdc-179417756f0f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,101 @@
+{
+   "description": "This pipeline takes folder paths, lists files within those folders, and then creates annotations for each file. The main steps involve listing files in folders, creating annotations from file paths.",
+   "nodes": {
+      "2e1e3ac8-696a-446b-8638-727cb46ad560": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      },
+      "2e00b3e1-fe27-41b2-9bb8-315d04ac169f": {
+         "name": "import-imagej-imgplus-from-file",
+         "description": "Loads an image via the native ImageJ functions."
+      },
+      "9ed77cbf-f248-474f-921a-58c3994f68f6": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "98e0b62b-bb17-445c-b4d5-f75c67dea6a1": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "e5189772-16e8-4f99-aafa-3d3a4c70bd47": {
+         "name": "import-folder-list",
+         "description": "Converts each provided path into folder data."
+      },
+      "662d5d82-16e3-4bf7-97d7-0958b1981a56": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "ae487dbb-ce46-4923-a7bc-d3a3bae90061": {
+         "name": "ij1-transform-crop2d",
+         "description": "Crops a 2D image. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "a0bf636b-fc14-4369-91ae-ff2d9c94748f": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "0edc601c-5d2d-4dcc-b87e-34adc3f13fb0": {
+         "name": "ij1-roi-to-mask",
+         "description": "Converts ROI lists to masks. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "dd21494d-1f55-43d0-a301-30eceb970acf": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "2e00b3e1-fe27-41b2-9bb8-315d04ac169f",
+         "target-node": "ae487dbb-ce46-4923-a7bc-d3a3bae90061",
+         "source-slot": "Image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "dd21494d-1f55-43d0-a301-30eceb970acf",
+         "target-node": "2e00b3e1-fe27-41b2-9bb8-315d04ac169f",
+         "source-slot": "Annotated paths",
+         "target-slot": "Files"
+      },
+      {
+         "source-node": "ae487dbb-ce46-4923-a7bc-d3a3bae90061",
+         "target-node": "0edc601c-5d2d-4dcc-b87e-34adc3f13fb0",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "0edc601c-5d2d-4dcc-b87e-34adc3f13fb0",
+         "target-node": "662d5d82-16e3-4bf7-97d7-0958b1981a56",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9ed77cbf-f248-474f-921a-58c3994f68f6",
+         "target-node": "a0bf636b-fc14-4369-91ae-ff2d9c94748f",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "98e0b62b-bb17-445c-b4d5-f75c67dea6a1",
+         "target-node": "dd21494d-1f55-43d0-a301-30eceb970acf",
+         "source-slot": "Files",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "e5189772-16e8-4f99-aafa-3d3a4c70bd47",
+         "target-node": "2e1e3ac8-696a-446b-8638-727cb46ad560",
+         "source-slot": "Folder paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "9ed77cbf-f248-474f-921a-58c3994f68f6",
+         "target-node": "98e0b62b-bb17-445c-b4d5-f75c67dea6a1",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "2e1e3ac8-696a-446b-8638-727cb46ad560",
+         "target-node": "9ed77cbf-f248-474f-921a-58c3994f68f6",
+         "source-slot": "Subfolders",
+         "target-slot": "Paths"
+      }
+   ]
+}

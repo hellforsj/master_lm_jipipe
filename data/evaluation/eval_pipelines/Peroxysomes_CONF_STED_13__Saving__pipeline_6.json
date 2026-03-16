@@ -1,0 +1,67 @@
+{
+   "description": "This pipeline processes images and data through a series of connected steps, ultimately exporting the results in various formats such as images and tables. It starts by processing incoming images, grouping them based on annotations, and then performs multiple operations including overlays and colocalization analyses. The processed data is then exported into non-native formats for further analysis or storage. Additionally, some parts of the pipeline focus on exporting tables to facilitate result interpretation. Overall, the pipeline aims to streamline image and data processing workflows by automating these tasks in a reproducible manner.",
+   "nodes": {
+      "a119c31c-4abb-469a-92fb-a1aadf48dfc6": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d6f0c41a-0efb-44bf-b416-0053113bff51": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3012b6db-2343-4b24-ba61-2b1dcf0d4745": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "120db7d5-7656-4266-91dc-e74dbfe8f161": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3b602fc5-9fdc-4aa0-a399-bdffcb26ea4b": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f23bb93c-fcf8-48fc-929e-421041bd95af": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "3012b6db-2343-4b24-ba61-2b1dcf0d4745",
+         "source-slot": "Coloc STED RED vs ORANGE",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "3b602fc5-9fdc-4aa0-a399-bdffcb26ea4b",
+         "source-slot": "Overlay CONF vs. STED in ORANGE",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "120db7d5-7656-4266-91dc-e74dbfe8f161",
+         "source-slot": "Coloc CONF RED vs ORANGE",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "f23bb93c-fcf8-48fc-929e-421041bd95af",
+         "source-slot": "Overlay RED vs. ORANGE in CONF",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "d6f0c41a-0efb-44bf-b416-0053113bff51",
+         "source-slot": "Overlay CONF vs. STED in RED",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "65819bd7-c825-475f-bbd6-b221b44e18dc",
+         "target-node": "a119c31c-4abb-469a-92fb-a1aadf48dfc6",
+         "source-slot": "Overlay RED vs. ORANGE in STED",
+         "target-slot": "Input"
+      }
+   ]
+}

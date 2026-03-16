@@ -1,0 +1,25 @@
+{
+   "description": "This pipeline saves the output of a processing pipeline to a file. The main steps involve taking the input data and saving it to a file.",
+   "nodes": {
+      "9cb44934-fc76-4a41-a4ab-8facdfb879c5": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "2221e622-981a-40b7-b574-a1593dba2745": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "bd8cf641-b46f-4756-8a53-c72ecf83d5d2": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "2221e622-981a-40b7-b574-a1593dba2745",
+         "target-node": "bd8cf641-b46f-4756-8a53-c72ecf83d5d2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

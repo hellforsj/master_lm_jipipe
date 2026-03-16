@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline processes image data by extracting properties from regions of interest and merging the resulting annotations to generate a comprehensive output, allowing for the analysis of different types of data based on their associated characteristics.",
+   "nodes": {
+      "94879c03-338b-4d5b-a512-499236118ee4": {
+         "name": "annotation-merge",
+         "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "913813a9-5d41-4e46-a3bd-a7271111b2b3": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "8d206cea-d99a-4f86-8740-18abc9ebcb49": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "c2c8943f-1bfc-4a71-9efe-92752e47fde8": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "8d206cea-d99a-4f86-8740-18abc9ebcb49",
+         "target-node": "94879c03-338b-4d5b-a512-499236118ee4",
+         "source-slot": "Output",
+         "target-slot": "Phagocytosed spores"
+      },
+      {
+         "source-node": "913813a9-5d41-4e46-a3bd-a7271111b2b3",
+         "target-node": "94879c03-338b-4d5b-a512-499236118ee4",
+         "source-slot": "Output",
+         "target-slot": "Associated spores"
+      },
+      {
+         "source-node": "c2c8943f-1bfc-4a71-9efe-92752e47fde8",
+         "target-node": "94879c03-338b-4d5b-a512-499236118ee4",
+         "source-slot": "Output",
+         "target-slot": "Adherent spores"
+      }
+   ]
+}

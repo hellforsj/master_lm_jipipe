@@ -1,0 +1,39 @@
+{
+   "description": "This pipeline visualizes image data by processing and grouping it based on annotations, allowing for the identification and tracking of specific features within the images, and ultimately generating a visualization of these features.",
+   "nodes": {
+      "df5227e6-3b64-4b39-9c14-72278078aaa6": {
+         "name": "trackmate-visualize-tracks",
+         "description": "Visualizes tracks<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c2f77656-f722-44ab-95b2-64012cbf0d28": {
+         "name": "trackmate-visualize-spots",
+         "description": "Visualizes spots<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "c2f77656-f722-44ab-95b2-64012cbf0d28",
+         "target-node": "df5227e6-3b64-4b39-9c14-72278078aaa6",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "c2f77656-f722-44ab-95b2-64012cbf0d28",
+         "source-slot": "Tracks",
+         "target-slot": "Spots"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "df5227e6-3b64-4b39-9c14-72278078aaa6",
+         "source-slot": "Tracks",
+         "target-slot": "Tracks"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "c2f77656-f722-44ab-95b2-64012cbf0d28",
+         "source-slot": "Raw",
+         "target-slot": "Image"
+      }
+   ]
+}

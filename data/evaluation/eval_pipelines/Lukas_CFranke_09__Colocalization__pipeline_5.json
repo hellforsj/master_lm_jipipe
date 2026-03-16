@@ -1,0 +1,25 @@
+{
+   "description": "This pipeline performs an image processing task that involves normalizing pixel values by dividing them by a global maximum, followed by a colocalization analysis to measure the correlation between different image channels, which is then further processed based on annotations.",
+   "nodes": {
+      "de944f23-c575-4408-9173-22d445112c15": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "977ee4dd-1f2e-45ff-93c0-b9830451fea3": {
+         "name": "ij1-math-divide-by-maximum",
+         "description": "Divides greyscale pixel values by the global maximum across all slices."
+      },
+      "0531c47e-8e4b-44c7-85a8-55177e5b9cc9": {
+         "name": "overwrite-annotations",
+         "description": "Copies annotations from the source data into the target data.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "977ee4dd-1f2e-45ff-93c0-b9830451fea3",
+         "target-node": "de944f23-c575-4408-9173-22d445112c15",
+         "source-slot": "Output",
+         "target-slot": "Channel 2"
+      }
+   ]
+}

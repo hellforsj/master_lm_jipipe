@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline lists all subfolders in a given folder and then uses these subfolder paths to create annotations. The main steps involve listing subfolders, creating annotations from the subfolder paths.",
+   "nodes": {
+      "2e1e3ac8-696a-446b-8638-727cb46ad560": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      },
+      "9ed77cbf-f248-474f-921a-58c3994f68f6": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "2e1e3ac8-696a-446b-8638-727cb46ad560",
+         "target-node": "9ed77cbf-f248-474f-921a-58c3994f68f6",
+         "source-slot": "Subfolders",
+         "target-slot": "Paths"
+      }
+   ]
+}

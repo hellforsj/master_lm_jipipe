@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline detects lines in an image and outputs a binary mask, which is then smoothed using a Gaussian filter to reduce noise and detail, resulting in a processed image where detected lines are highlighted.",
+   "nodes": {
+      "561e5bb0-edc2-43d3-8d9c-28ca273b84a5": {
+         "name": "ij1-segment-ridge-detector-2d",
+         "description": "A ridge detector that detects lines and outputs a binary mask where lines are detected."
+      },
+      "39fadc76-5f18-4e37-b33c-22af200f3a6e": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "561e5bb0-edc2-43d3-8d9c-28ca273b84a5",
+         "target-node": "39fadc76-5f18-4e37-b33c-22af200f3a6e",
+         "source-slot": "Mask",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline creates annotations for paths based on their names or full paths and then uses these annotated paths to list all subfolders, effectively organizing and processing folder structures in a systematic manner.",
+   "nodes": {
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "target-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies thresholding to images. The main steps are applying thresholding and then filling holes in the thresholded image.",
+   "nodes": {
+      "44fc732c-0b31-4b95-bd91-c18e471b2c94": {
+         "name": "ij1-threshold-manual2d-color-hsb",
+         "description": "Thresholds HSB images."
+      },
+      "b8fcc86f-0ac5-429e-b88b-62548b1a9394": {
+         "name": "ij1-morph-binary-fillholes2d",
+         "description": "Applies a morphological hole filling operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "44fc732c-0b31-4b95-bd91-c18e471b2c94",
+         "target-node": "b8fcc86f-0ac5-429e-b88b-62548b1a9394",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

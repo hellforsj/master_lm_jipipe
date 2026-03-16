@@ -1,0 +1,14 @@
+{
+   "description": "This pipeline annotates an OME image with metadata extracted from the OME metadata and then prettifies/formats the input XML data. The main steps involve annotating the image with OME metadata and prettifying the XML.",
+   "nodes": {
+      "4d007d65-1a71-46a3-ac71-b257f4c5edbf": {
+         "name": "xml-prettify",
+         "description": "Prettifies/formats the input XML data"
+      },
+      "e49cfc5b-6a22-4a8a-9401-92983549b0ac": {
+         "name": "ome-annotate-with-metadata",
+         "description": "Annotates an OME image with metadata extracted from the OME metadata"
+      }
+   },
+   "edges": []
+}

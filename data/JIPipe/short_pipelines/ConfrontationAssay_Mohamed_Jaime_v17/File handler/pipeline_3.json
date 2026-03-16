@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline appears to perform complex image processing tasks, involving various transformations, projections, and analyses on multiple input images, including filtering, stacking, and referencing operations, ultimately generating output images after a series of computational steps.",
+   "nodes": {
+      "37584424-9d11-4542-ab6a-ffa063391a12": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      }
+   },
+   "edges": []
+}

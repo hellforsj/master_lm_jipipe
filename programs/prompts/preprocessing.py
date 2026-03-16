@@ -1,0 +1,3 @@
+FORMAT_JIPIPE_PIPELINE="""The JIPipe pipelines are given in a json format. Each pipeline graph is written down in the following format: graph:{"nodes": {}, "edges": []}
+"nodes" includes all the ids of the nodes present in the pipeline. These ids are unique to an instance of a node. Each entry in "nodes" also include the type of node (given as its name) and a description of the nodes functionality.
+"edges" include all the connections between the nodes. For each entry a target and source node are given."""

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline performs image arithmetic operations and annotates the resulting data based on groupings, allowing for the combination of mathematical calculations between images and subsequent organization of the output data into categorized groups.",
+   "nodes": {
+      "52818e7f-2c19-4352-b7d3-8a47c4dfbafc": {
+         "name": "annotate-with-data",
+         "description": "Annotates the incoming data with the other data.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "fd918b06-f246-4a61-856e-7a6003d6c97a": {
+         "name": "ij1-math-imagecalculator2d",
+         "description": "Applies a mathematical operation between two images. If higher-dimensional data is provided, the filter is applied to each 2D slice. Old implementation that directly uses the one provided by ImageJ. We recommend to use 'Fast image arithmetics' instead.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "fd918b06-f246-4a61-856e-7a6003d6c97a",
+         "target-node": "52818e7f-2c19-4352-b7d3-8a47c4dfbafc",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline imports images via the Bio-Formats plugin and adds data annotations that contain the image properties. It starts by importing images, then annotates these images with their properties.",
+   "nodes": {
+      "12383c00-21a4-4d7e-b4fc-e717083a1c76": {
+         "name": "import-imagej-bioformats",
+         "description": "Imports images via the Bio-Formats plugin"
+      },
+      "6da603a0-2098-4232-a05a-77d9edfcebcf": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "12383c00-21a4-4d7e-b4fc-e717083a1c76",
+         "target-node": "6da603a0-2098-4232-a05a-77d9edfcebcf",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to annotate data with table values and merge annotations. The pipeline starts with a node that annotates data and ends with another node that merges annotations.",
+   "nodes": {
+      "193a4a33-4294-46c3-8567-157684633fe8": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "30041eea-d209-49c4-b866-567eff783485": {
+         "name": "annotation-merge",
+         "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "193a4a33-4294-46c3-8567-157684633fe8",
+         "target-node": "30041eea-d209-49c4-b866-567eff783485",
+         "source-slot": "Annotated data",
+         "target-slot": "Data 2"
+      }
+   ]
+}

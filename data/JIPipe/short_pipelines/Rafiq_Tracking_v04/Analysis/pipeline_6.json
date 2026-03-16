@@ -1,0 +1,37 @@
+{
+   "description": "This pipeline applies a mathematical operation to two images. It takes two images, then applies an image math operation to them.",
+   "nodes": {
+      "3d5ace36-ad45-4f9e-9952-62727246cd74": {
+         "name": "ij1-blur-median2d",
+         "description": "Applies a median filter. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "951c7e2c-debd-46ce-9bd2-4c2b6a12175e": {
+         "name": "ij1-math-imagecalculator2d-expression",
+         "description": "Applies a pixel-wise mathematical operation that produces a single output image. Please note that this node applies an expression for each pixel, which has a considerable performance cost. We recommend to use 'Fast image arithmetics' instead.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "16e5cf20-a05d-45ca-b4f1-e16ca6374c08": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3d5ace36-ad45-4f9e-9952-62727246cd74",
+         "target-node": "951c7e2c-debd-46ce-9bd2-4c2b6a12175e",
+         "source-slot": "Output",
+         "target-slot": "I2"
+      },
+      {
+         "source-node": "16e5cf20-a05d-45ca-b4f1-e16ca6374c08",
+         "target-node": "951c7e2c-debd-46ce-9bd2-4c2b6a12175e",
+         "source-slot": "Data",
+         "target-slot": "I1"
+      },
+      {
+         "source-node": "16e5cf20-a05d-45ca-b4f1-e16ca6374c08",
+         "target-node": "3d5ace36-ad45-4f9e-9952-62727246cd74",
+         "source-slot": "Data",
+         "target-slot": "Input"
+      }
+   ]
+}

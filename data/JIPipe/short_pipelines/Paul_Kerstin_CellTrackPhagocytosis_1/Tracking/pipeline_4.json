@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline performs cell segmentation on input images using pretrained models, generating various outputs such as labels, flows, and probabilities, which are then converted into masks for further processing, allowing for the analysis of cellular structures in biomedical microscopic images.",
+   "nodes": {
+      "662f23ad-21d0-4629-a534-31dfecfe5de2": {
+         "name": "cellpose-inference-2.x",
+         "description": "Runs Cellpose on the input image with the given model(s). This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      },
+      "e90954e8-8dfc-4382-9dbd-0efbc9059ec7": {
+         "name": "ij1-roi-to-mask",
+         "description": "Converts ROI lists to masks. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "4c556a7f-af8e-42fc-a450-09f4cbcef079": {
+         "name": "import-cellpose-2.x-pretrained-model",
+         "description": "Imports one or a selection of pretrained Cellpose 2.x models"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "662f23ad-21d0-4629-a534-31dfecfe5de2",
+         "target-node": "e90954e8-8dfc-4382-9dbd-0efbc9059ec7",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "4c556a7f-af8e-42fc-a450-09f4cbcef079",
+         "target-node": "662f23ad-21d0-4629-a534-31dfecfe5de2",
+         "source-slot": "Output",
+         "target-slot": "Model"
+      }
+   ]
+}

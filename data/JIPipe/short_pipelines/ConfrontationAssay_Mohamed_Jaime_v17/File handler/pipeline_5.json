@@ -1,0 +1,55 @@
+{
+   "description": "This pipeline applies a series of image processing steps to an input image, including filtering and thresholding, and then saves the result. The main steps include applying filters and thresholds to the image and saving the output.",
+   "nodes": {
+      "c6fe2bad-a88e-4872-862d-c0cae03c72fc": {
+         "name": "ij1-dimensions-hyper-stacksplitter",
+         "description": "Splits a hyperstack by a selected dimension into a single or multiple output slots. Multiple output slots can be utilized to split specific indices."
+      },
+      "47c49164-bed6-4aef-87b5-36f5473a4b21": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "af87d5d2-d827-405a-80ea-ea16b61be5f7": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "47c49164-bed6-4aef-87b5-36f5473a4b21",
+         "target-node": "c6fe2bad-a88e-4872-862d-c0cae03c72fc",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6fe2bad-a88e-4872-862d-c0cae03c72fc",
+         "target-node": "af87d5d2-d827-405a-80ea-ea16b61be5f7",
+         "source-slot": "Output",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "c6fe2bad-a88e-4872-862d-c0cae03c72fc",
+         "target-node": "af87d5d2-d827-405a-80ea-ea16b61be5f7",
+         "source-slot": "Output",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "47c49164-bed6-4aef-87b5-36f5473a4b21",
+         "target-node": "c6fe2bad-a88e-4872-862d-c0cae03c72fc",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6fe2bad-a88e-4872-862d-c0cae03c72fc",
+         "target-node": "af87d5d2-d827-405a-80ea-ea16b61be5f7",
+         "source-slot": "Output",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "47c49164-bed6-4aef-87b5-36f5473a4b21",
+         "target-node": "c6fe2bad-a88e-4872-862d-c0cae03c72fc",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      }
+   ]
+}

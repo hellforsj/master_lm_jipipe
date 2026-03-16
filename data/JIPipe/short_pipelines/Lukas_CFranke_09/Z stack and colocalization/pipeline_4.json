@@ -1,0 +1,57 @@
+{
+   "description": "This pipeline is responsible for annotating an image with regions of interest. It begins with a node that takes an input image and applies annotation, then it proceeds to change the properties of the annotations.",
+   "nodes": {
+      "dc48f818-a1ff-4ef5-bd6e-3c903de63840": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f38d555e-c87e-42c5-9ca1-1ad2d51f6938": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f15d4406-c319-4136-86ff-2a0d477cee87": {
+         "name": "ij3d-roi-filter-by-overlap",
+         "description": "Filters the 3D ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c6b94702-a848-4bf1-a08d-65ddd06189c1": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "ef9c716e-4a56-409a-8695-5809611f56ec": {
+         "name": "ij3d-roi-change-properties",
+         "description": "Sets the properties of all 3D ROI"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "dc48f818-a1ff-4ef5-bd6e-3c903de63840",
+         "source-slot": "Measurements",
+         "target-slot": "Table"
+      },
+      {
+         "source-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "target-node": "ef9c716e-4a56-409a-8695-5809611f56ec",
+         "source-slot": "ROI",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "dc48f818-a1ff-4ef5-bd6e-3c903de63840",
+         "source-slot": "Measurements",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "target-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "target-node": "f15d4406-c319-4136-86ff-2a0d477cee87",
+         "source-slot": "ROI",
+         "target-slot": "ROI 1"
+      }
+   ]
+}

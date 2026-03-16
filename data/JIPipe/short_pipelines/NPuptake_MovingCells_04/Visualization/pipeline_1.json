@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline re-calibrates an image's color range for display purposes and applies a correction to compensate for uneven illumination by applying a Gaussian filter and normalizing pixel values, allowing for enhanced visualization and analysis of the image data.",
+   "nodes": {
+      "d470c732-a7a5-49cf-a6fc-5674db9d973c": {
+         "name": "ij1-contrast-calibrate",
+         "description": "Re-calibrates the incoming image, so its color range is displayed differently by ImageJ. This does not change the pixel data. Please note that the displayed contrast is stored into the image itself. If you want to convert to 8-bit or 16-bit where the contrast is applied per slice, use 'Convert image to 8-bit (ImageJ auto-contrast)' or 'Convert image to 16-bit (ImageJ auto-contrast)'. If you want to do the same for 32-bit images, use 'Apply ImageJ auto-contrast per slice'"
+      },
+      "db1adf44-766e-4efb-afb0-f730fac1a0f7": {
+         "name": "ij1-contrast-illumination-correction2d",
+         "description": "Applies a Gaussian filter to the image and extracts the maximum value. Pixel values are then divided by this value.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "db1adf44-766e-4efb-afb0-f730fac1a0f7",
+         "target-node": "d470c732-a7a5-49cf-a6fc-5674db9d973c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

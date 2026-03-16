@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline annotates data with source information and then tracks spots using a tracking algorithm, grouping incoming data based on annotations, before utilizing a Linear Assignment Problem mathematical framework to link spots between frames, handling gap-closing, splitting, and merging events, making it suitable for Brownian motion analysis.",
+   "nodes": {
+      "563dd4fa-3140-41b7-9796-e4fa6ee74fa8": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "864d0fab-1b90-4304-b733-78598a92189c": {
+         "name": "trackmate-create-spot-tracker-sparse-lap-tracker",
+         "description": "This tracker is based on the Linear Assignment Problem mathematical framework. <br>Its implementation is adapted from the following paper: <br><i>Robust single-particle tracking in live-cell time-lapse sequences</i> - <br>Jaqaman <i> et al.</i>, 2008, Nature Methods. <br><p>Tracking happens in 2 steps: First spots are linked from frame to frame to <br>build track segments. These track segments are investigated in a second step <br>for gap-closing (missing detection), splitting and merging events.  <br> <p>Linking costs are proportional to the square distance between source and  <br> target spots, which makes this tracker suitable for Brownian motion.  <br> Penalties can be set to favor linking between spots that have similar  <br> features. <p>Solving the LAP relies on the Jonker-Volgenant solver, and a sparse cost matrix formulation, allowing it to handle very large problems. "
+      }
+   },
+   "edges": [
+      {
+         "source-node": "563dd4fa-3140-41b7-9796-e4fa6ee74fa8",
+         "target-node": "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1",
+         "source-slot": "Annotated data",
+         "target-slot": "Spot tracker"
+      },
+      {
+         "source-node": "864d0fab-1b90-4304-b733-78598a92189c",
+         "target-node": "563dd4fa-3140-41b7-9796-e4fa6ee74fa8",
+         "source-slot": "Spot tracker",
+         "target-slot": "Data"
+      }
+   ]
+}

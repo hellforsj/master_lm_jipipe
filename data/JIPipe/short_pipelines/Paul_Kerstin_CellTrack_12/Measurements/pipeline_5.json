@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes incoming images and tables, first generating a histogram plot from the table data, then exporting the images into a non-native format while supporting various image types, including 2D and 3D images, depending on the chosen output file format.",
+   "nodes": {
+      "19e494f6-ffa1-4d25-b6c0-dfb5573b22d4": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "53e1c070-e876-496c-a0cb-1c8d96f42e1e": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "53e1c070-e876-496c-a0cb-1c8d96f42e1e",
+         "target-node": "19e494f6-ffa1-4d25-b6c0-dfb5573b22d4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,10 @@
+{
+   "description": "Removes LUT information from an image and outputs the result. The pipeline starts with removing the LUT, then proceeds to output the image.",
+   "nodes": {
+      "0d5b26c5-32e5-4aa2-828a-84fb0c7e8f0c": {
+         "name": "ij1-remove-lut",
+         "description": "Removes LUT information from the input image."
+      }
+   },
+   "edges": []
+}

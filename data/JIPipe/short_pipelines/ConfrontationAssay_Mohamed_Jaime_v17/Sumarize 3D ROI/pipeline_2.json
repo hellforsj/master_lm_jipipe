@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to measure ROI statistics. The pipeline starts with a node that measures ROI and ends with another node that annotates data with table values, in between there are other nodes that measure ROI and annotate data.",
+   "nodes": {
+      "284159c5-5ce1-4bfd-831b-ab31f2768a7c": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "061cd3b3-a125-4be5-b2f0-5f2320bafcef": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "061cd3b3-a125-4be5-b2f0-5f2320bafcef",
+         "target-node": "284159c5-5ce1-4bfd-831b-ab31f2768a7c",
+         "source-slot": "Measurements",
+         "target-slot": "Table"
+      }
+   ]
+}

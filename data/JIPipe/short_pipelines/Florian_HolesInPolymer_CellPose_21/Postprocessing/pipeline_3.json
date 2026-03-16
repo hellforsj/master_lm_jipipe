@@ -1,0 +1,97 @@
+{
+   "description": "This pipeline performs image processing and analysis, starting with binary image transformations and morphological operations to extract features and segment objects. It then applies watershed algorithms and connected component labeling to refine the segmentation results. The pipeline also includes steps for converting between different image representations, such as ROI and mask conversions, and visualizing labeled images. Overall, the pipeline aims to identify and characterize objects within images using a combination of filtering, segmentation, and feature extraction techniques.",
+   "nodes": {
+      "984710fe-ef6b-49ff-8b04-91ac4d41e7a0": {
+         "name": "ij1-math-edt2d",
+         "description": "Applies a euclidean distance transform on binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "45b29f60-2fb7-4549-8656-caa323a1deda": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "0089aa79-24a4-42ee-b3b7-af434fd73853": {
+         "name": "ij1-labels-to-rgb",
+         "description": "Visualizes a labels image by assigning a color to each label component"
+      },
+      "a6ab6284-046d-4684-b57c-e20beddac450": {
+         "name": "ij1-feature-maxima-local-2d",
+         "description": "Finds the local maxima of each image. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "6d03873e-2a91-4a72-95bd-6cc5fadde3e8": {
+         "name": "ij1-roi-from-mask",
+         "description": "Converts pixel values equal or higher than the given threshold to a ROI. This will create a single ROI that contains holes. If a higher-dimensional image is provided, the operation is applied for each slice."
+      },
+      "df5f5bdd-a3fa-49fa-bd17-67390ce06225": {
+         "name": "ij1-segment-seeded-watershed",
+         "description": "Performs segmentation via watershed on a 2D or 3D image using flooding simulations. Please note that this node returns labels instead of masks. The markers need to be labels, so apply a connected components labeling if you only have masks.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "724eafa3-89ac-48ff-8313-05eb64fc2a7a": {
+         "name": "ij1-binary-connected-component-labeling-2d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "b674d9ad-c709-46fb-acf8-0a14e58b3dd6": {
+         "name": "ij1-roi-to-mask",
+         "description": "Converts ROI lists to masks. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b77f3b7d-f29f-4414-a15b-ba1b6a6ad237": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "984710fe-ef6b-49ff-8b04-91ac4d41e7a0",
+         "target-node": "a6ab6284-046d-4684-b57c-e20beddac450",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b674d9ad-c709-46fb-acf8-0a14e58b3dd6",
+         "target-node": "df5f5bdd-a3fa-49fa-bd17-67390ce06225",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "df5f5bdd-a3fa-49fa-bd17-67390ce06225",
+         "target-node": "0089aa79-24a4-42ee-b3b7-af434fd73853",
+         "source-slot": "Labels",
+         "target-slot": "Labels"
+      },
+      {
+         "source-node": "b674d9ad-c709-46fb-acf8-0a14e58b3dd6",
+         "target-node": "b77f3b7d-f29f-4414-a15b-ba1b6a6ad237",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "724eafa3-89ac-48ff-8313-05eb64fc2a7a",
+         "target-node": "df5f5bdd-a3fa-49fa-bd17-67390ce06225",
+         "source-slot": "Output",
+         "target-slot": "Markers"
+      },
+      {
+         "source-node": "a6ab6284-046d-4684-b57c-e20beddac450",
+         "target-node": "45b29f60-2fb7-4549-8656-caa323a1deda",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "45b29f60-2fb7-4549-8656-caa323a1deda",
+         "target-node": "724eafa3-89ac-48ff-8313-05eb64fc2a7a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b77f3b7d-f29f-4414-a15b-ba1b6a6ad237",
+         "target-node": "6d03873e-2a91-4a72-95bd-6cc5fadde3e8",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b674d9ad-c709-46fb-acf8-0a14e58b3dd6",
+         "target-node": "984710fe-ef6b-49ff-8b04-91ac4d41e7a0",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

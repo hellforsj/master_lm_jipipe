@@ -1,0 +1,61 @@
+{
+   "description": "This pipeline appears to be designed for image processing and analysis, specifically for recalibrating and converting images, applying corrections, and extracting features from regions of interest. It starts by adjusting the contrast of an input image, followed by a series of operations that apply filters, convert data types, and generate masks from region definitions. The pipeline ultimately produces multiple output products, including compartment outputs and processed images, suggesting its purpose is to facilitate complex image analysis workflows in a flexible and modular manner.",
+   "nodes": {
+      "d470c732-a7a5-49cf-a6fc-5674db9d973c": {
+         "name": "ij1-contrast-calibrate",
+         "description": "Re-calibrates the incoming image, so its color range is displayed differently by ImageJ. This does not change the pixel data. Please note that the displayed contrast is stored into the image itself. If you want to convert to 8-bit or 16-bit where the contrast is applied per slice, use 'Convert image to 8-bit (ImageJ auto-contrast)' or 'Convert image to 16-bit (ImageJ auto-contrast)'. If you want to do the same for 32-bit images, use 'Apply ImageJ auto-contrast per slice'"
+      },
+      "db1adf44-766e-4efb-afb0-f730fac1a0f7": {
+         "name": "ij1-contrast-illumination-correction2d",
+         "description": "Applies a Gaussian filter to the image and extracts the maximum value. Pixel values are then divided by this value.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "a66e039d-2559-4cba-a7ed-3dc8c8267249": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "2e3dd5ee-2e1c-4143-b62a-2369900119c8": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "16efae9b-f03a-4133-8ab1-444c163117c3": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "484e69fe-741c-4360-b62f-d530f7d35e20": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d470c732-a7a5-49cf-a6fc-5674db9d973c",
+         "target-node": "484e69fe-741c-4360-b62f-d530f7d35e20",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "a66e039d-2559-4cba-a7ed-3dc8c8267249",
+         "target-node": "2e3dd5ee-2e1c-4143-b62a-2369900119c8",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "d470c732-a7a5-49cf-a6fc-5674db9d973c",
+         "target-node": "a66e039d-2559-4cba-a7ed-3dc8c8267249",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "a66e039d-2559-4cba-a7ed-3dc8c8267249",
+         "target-node": "16efae9b-f03a-4133-8ab1-444c163117c3",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "db1adf44-766e-4efb-afb0-f730fac1a0f7",
+         "target-node": "d470c732-a7a5-49cf-a6fc-5674db9d973c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

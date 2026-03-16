@@ -1,0 +1,27 @@
+{
+   "description": "This pipeline takes the output of the trackmate-spots-to-roi node, uses this output for further calculations and then outputs it as a compartment, the main steps involve converting spots to ROI, calculating statistics between two sets of ROI which results in measurements and then outputting these measurements",
+   "nodes": {
+      "6d30c68f-8849-4891-bd93-eca41b9a042e": {
+         "name": "ij1-roi-relation-2d",
+         "description": "Extracts all pairwise statistics between the 2D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "18fcdd22-4365-4cdc-933a-3c05a77bfb22": {
+         "name": "trackmate-spots-to-roi",
+         "description": "Converts TrackMate spots into ROI"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "18fcdd22-4365-4cdc-933a-3c05a77bfb22",
+         "target-node": "6d30c68f-8849-4891-bd93-eca41b9a042e",
+         "source-slot": "Output",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "18fcdd22-4365-4cdc-933a-3c05a77bfb22",
+         "target-node": "6d30c68f-8849-4891-bd93-eca41b9a042e",
+         "source-slot": "Output",
+         "target-slot": "ROI 1"
+      }
+   ]
+}

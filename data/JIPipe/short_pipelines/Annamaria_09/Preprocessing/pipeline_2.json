@@ -1,0 +1,305 @@
+{
+   "description": "This pipeline filters data based on annotation values. It takes an annotated image as input, then applies a filter to the annotations.",
+   "nodes": {
+      "a4c3f0bf-432f-4756-a3fe-a8bd59413317": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      },
+      "0681cf12-58ca-4155-bb77-e17addce1bb9": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "824ac6f2-f1d7-4fd2-8696-f6bbd923d903": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "d1dee139-0a70-4031-acee-170317ce1fa3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "5e73ecfc-ce0e-4e10-8fed-16e00d6858fe": {
+         "name": "ij1-dimensions-expression-slicer",
+         "description": "Uses expressions to create custom stacks. There are three expressions, one for each Z, channel and frame plane that return numeric indices of slices that should be generated. You can optionally enable to iterate over all incoming slices of the image to generate multiple stacks. If no iteration is enabled (default), each expression is only executed for z=0,c=0,t=0."
+      },
+      "7e2d243b-3273-4d89-9de3-219bdc539d0e": {
+         "name": "ij1-dimensions-expression-slicer",
+         "description": "Uses expressions to create custom stacks. There are three expressions, one for each Z, channel and frame plane that return numeric indices of slices that should be generated. You can optionally enable to iterate over all incoming slices of the image to generate multiple stacks. If no iteration is enabled (default), each expression is only executed for z=0,c=0,t=0."
+      },
+      "1cd4857a-fa8d-4361-be1a-435d5c317859": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "67b71662-479b-43a4-b78c-6c9f4a6b6279": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "716ab8ea-edff-442f-96e2-338096bb00b6": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      },
+      "b0fa5a9e-d4f6-4c63-9f5d-5569760cfcc6": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      },
+      "ba08b9f2-319e-4e44-b66e-dd3c534415d2": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      },
+      "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "75f1c151-0a06-44f4-bc71-c170f653754b": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "88cf2fd2-a12f-4304-b24f-e77622e82d4a": {
+         "name": "ij1-dimensions-expression-slicer",
+         "description": "Uses expressions to create custom stacks. There are three expressions, one for each Z, channel and frame plane that return numeric indices of slices that should be generated. You can optionally enable to iterate over all incoming slices of the image to generate multiple stacks. If no iteration is enabled (default), each expression is only executed for z=0,c=0,t=0."
+      },
+      "cf528fa7-3ffd-4484-8953-e03ab4f385c3": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "9487bd16-6205-44f0-a9d7-9c9fa3f6eb8e": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "target-node": "7e2d243b-3273-4d89-9de3-219bdc539d0e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "source-slot": "Channel0",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0681cf12-58ca-4155-bb77-e17addce1bb9",
+         "target-node": "88cf2fd2-a12f-4304-b24f-e77622e82d4a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "67b71662-479b-43a4-b78c-6c9f4a6b6279",
+         "source-slot": "Channel1",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "1cd4857a-fa8d-4361-be1a-435d5c317859",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "1cd4857a-fa8d-4361-be1a-435d5c317859",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "1cd4857a-fa8d-4361-be1a-435d5c317859",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "1cd4857a-fa8d-4361-be1a-435d5c317859",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "target-node": "1cd4857a-fa8d-4361-be1a-435d5c317859",
+         "source-slot": "Channel3",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1cd4857a-fa8d-4361-be1a-435d5c317859",
+         "target-node": "5e73ecfc-ce0e-4e10-8fed-16e00d6858fe",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel3"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel3"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel4",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "a4c3f0bf-432f-4756-a3fe-a8bd59413317",
+         "target-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "716ab8ea-edff-442f-96e2-338096bb00b6",
+         "target-node": "824ac6f2-f1d7-4fd2-8696-f6bbd923d903",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b0fa5a9e-d4f6-4c63-9f5d-5569760cfcc6",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Output",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel3",
+         "target-slot": "Channel4"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "a4c3f0bf-432f-4756-a3fe-a8bd59413317",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "ba08b9f2-319e-4e44-b66e-dd3c534415d2",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "716ab8ea-edff-442f-96e2-338096bb00b6",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "824ac6f2-f1d7-4fd2-8696-f6bbd923d903",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "b0fa5a9e-d4f6-4c63-9f5d-5569760cfcc6",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel1",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "ba08b9f2-319e-4e44-b66e-dd3c534415d2",
+         "target-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel1"
+      },
+      {
+         "source-node": "43c29dff-b8ba-4ad9-bcaa-762cdcf661b5",
+         "target-node": "9487bd16-6205-44f0-a9d7-9c9fa3f6eb8e",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "824ac6f2-f1d7-4fd2-8696-f6bbd923d903",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      },
+      {
+         "source-node": "824ac6f2-f1d7-4fd2-8696-f6bbd923d903",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel2",
+         "target-slot": "Channel2"
+      },
+      {
+         "source-node": "cf528fa7-3ffd-4484-8953-e03ab4f385c3",
+         "target-node": "d1dee139-0a70-4031-acee-170317ce1fa3",
+         "source-slot": "Channel0",
+         "target-slot": "Channel0"
+      }
+   ]
+}

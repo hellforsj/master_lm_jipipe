@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline processes image data from a compartment output, applying various operations such as setting the LUT from a predefined color map, and then splits the data into multiple channels, including red, green, and blue, which are then further processed through multiple paths, including image input, reference, and input operations, ultimately resulting in a complex workflow that manipulates and analyzes the image data.",
+   "nodes": {
+      "08ed20fd-66e4-4b72-87be-caf1bcd7af29": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      }
+   },
+   "edges": []
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline converts an image into another image type, splits multichannel images into greyscale images and merges channels. The main steps are: converting image type, splitting channels, merging channels.",
+   "nodes": {
+      "66a0e38a-0a71-4973-bfb6-69b2a1516e1f": {
+         "name": "ij-convert-image",
+         "description": "Converts an image into another image type"
+      },
+      "082caa50-7cfb-4bfe-98d2-f7700559eb02": {
+         "name": "ij1-color-merge-channels",
+         "description": "Merges each greyscale image plane into a multi-channel image. Implements the standard ImageJ algorithm for merging channels that either creates an RGB or a composite image. We recommend to use Blend images for creating renders and Merge channels (composite) that provide more options for the specific use cases.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "66a0e38a-0a71-4973-bfb6-69b2a1516e1f",
+         "target-node": "082caa50-7cfb-4bfe-98d2-f7700559eb02",
+         "source-slot": "Output",
+         "target-slot": "C1"
+      }
+   ]
+}

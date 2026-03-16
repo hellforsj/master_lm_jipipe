@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline creates annotations for folders based on their paths, by first converting the provided folder paths into usable data and then generating annotations from this information.",
+   "nodes": {
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "2693b359-e41d-46c4-94ec-eab333d46e65": {
+         "name": "import-folder-list",
+         "description": "Converts each provided path into folder data."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "2693b359-e41d-46c4-94ec-eab333d46e65",
+         "target-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "source-slot": "Folder paths",
+         "target-slot": "Input folder"
+      }
+   ]
+}

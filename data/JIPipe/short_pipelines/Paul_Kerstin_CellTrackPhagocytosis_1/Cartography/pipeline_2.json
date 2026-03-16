@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline extracts pairwise statistics between the 2D ROI, the main steps involve taking two different sets of ROI and calculating statistics between them which results in measurements",
+   "nodes": {
+      "6d30c68f-8849-4891-bd93-eca41b9a042e": {
+         "name": "ij1-roi-relation-2d",
+         "description": "Extracts all pairwise statistics between the 2D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

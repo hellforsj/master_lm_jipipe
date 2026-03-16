@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline exports input data via a standard exporter, generating a directory containing the output file(s), and then passes this output to another component without modifying it, effectively creating a simple data processing workflow that involves data export and unchanged data transfer.",
+   "nodes": {
+      "eeacc4d5-7635-4651-b01c-2294f8d402d6": {
+         "name": "export-data-by-parameter-v2",
+         "description": "Exports the input data via JIPipe's standard exporter. The output is the directory that contains the generated file(s)."
+      },
+      "cbff27ba-e83f-4323-9a70-d85a2dda8974": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "eeacc4d5-7635-4651-b01c-2294f8d402d6",
+         "target-node": "cbff27ba-e83f-4323-9a70-d85a2dda8974",
+         "source-slot": "Output path",
+         "target-slot": "Data"
+      }
+   ]
+}

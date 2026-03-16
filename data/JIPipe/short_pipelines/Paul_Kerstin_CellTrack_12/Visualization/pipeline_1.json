@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline converts an image to 8-bit and applies a custom ImageJ macro. The main steps involve taking the input image, converting it to 8-bit format using the 'ij-convert-image-to-8-bit' node, and then passing the result to the 'external-imagej-macro' node for further processing.",
+   "nodes": {
+      "209b2ee3-2ce9-498d-b62d-2a42d216b64a": {
+         "name": "ij-convert-image-to-8-bit",
+         "description": "Converts an image into 8-bit"
+      },
+      "adb0a131-44c8-495d-a654-db8a5e7b65a4": {
+         "name": "external-imagej-macro",
+         "description": "Runs a custom ImageJ macro. JIPipe will iterate through the iteration steps and execute operations to convert JIPipe data into their ImageJ equivalent (see JIPipe to ImageJ parameter). Then the macro code is executed, followed by operations to import the result data into JIPipe data (see ImageJ to JIPipe parameter). Please feel free to click the 'Load example' button in the parameters to get started.<br/><br/>Please keep in mind the following remarks:<br/><br/><ul><li>Input images are opened as windows named according to the input slot. You have to select windows with the select() function or comparable functions.</li><li>Output images are extracted by finding a window that is named according to the output slot. Ensure to rename() windows accordingly.</li><li>To extract the 'Results' table output, add an output of type 'Results table' and set the name to 'Results'. Alternatively, you can configure the output in 'JIPipe to ImageJ' and override the name to 'Results'</li><li>To import other tables, use a different slot name or set the appropriate configuration.</li><li>Please note that there is only one ROI manager. This is a restriction of ImageJ.</li><li>Annotations can also be accessed via a function getJIPipeAnnotation(key), which returns the string value of the annotation or an empty string if no value was set.</li><li>You can define variables that are passed from JIPipe to ImageJ. Variables are also created for incoming path-like data, named according to the slot name.</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "209b2ee3-2ce9-498d-b62d-2a42d216b64a",
+         "target-node": "adb0a131-44c8-495d-a654-db8a5e7b65a4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

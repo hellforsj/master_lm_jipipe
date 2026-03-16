@@ -1,0 +1,31 @@
+{
+   "description": "The main objective of this pipeline is to import a folder list, convert each provided path into folder data and list all subfolders. The pipeline starts by importing a folder list, then it converts each path into folder data and finally lists all subfolders.",
+   "nodes": {
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      },
+      "2693b359-e41d-46c4-94ec-eab333d46e65": {
+         "name": "import-folder-list",
+         "description": "Converts each provided path into folder data."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "2693b359-e41d-46c4-94ec-eab333d46e65",
+         "target-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "source-slot": "Folder paths",
+         "target-slot": "Input folder"
+      },
+      {
+         "source-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "target-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

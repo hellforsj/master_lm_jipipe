@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline appears to be designed for converting region of interest lists into masks without requiring a reference image, allowing for flexible output sizing.",
+   "nodes": {
+      "ed0d9cc7-680f-44d3-9dc6-67b08bdc5230": {
+         "name": "ij1-roi-to-mask-unreferenced",
+         "description": "Converts ROI lists to masks. This algorithm does not need a reference image that determines the output size."
+      }
+   },
+   "edges": []
+}

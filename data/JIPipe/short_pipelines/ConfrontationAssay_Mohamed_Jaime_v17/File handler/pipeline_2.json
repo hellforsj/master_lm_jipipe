@@ -1,0 +1,37 @@
+{
+   "description": "This pipeline processes image data by first splitting it based on annotations, then applying two parallel processing paths: one enhancing the contrast of 2D images using histogram normalization methods, and another projecting a 3D stack into a 2D image with extended depth of focus using a Sobel operator, before finally enhancing the contrast of the projected image.",
+   "nodes": {
+      "37584424-9d11-4542-ab6a-ffa063391a12": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "282f0bed-a6ec-49e6-9769-222c97af1475": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "42cdf326-2860-4f73-9156-1b0a06116e05": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "282f0bed-a6ec-49e6-9769-222c97af1475",
+         "target-node": "42cdf326-2860-4f73-9156-1b0a06116e05",
+         "source-slot": "2D",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "282f0bed-a6ec-49e6-9769-222c97af1475",
+         "target-node": "37584424-9d11-4542-ab6a-ffa063391a12",
+         "source-slot": "Z stack",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "37584424-9d11-4542-ab6a-ffa063391a12",
+         "target-node": "42cdf326-2860-4f73-9156-1b0a06116e05",
+         "source-slot": "Destination",
+         "target-slot": "Input"
+      }
+   ]
+}

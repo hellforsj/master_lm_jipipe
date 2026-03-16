@@ -1,0 +1,81 @@
+{
+   "description": "This pipeline removes columns by name from a table and applies an expression per row. The main steps include removing columns by name and applying an expression per row.",
+   "nodes": {
+      "6db70f1b-d2ba-4a02-9ad6-7481e3f9301a": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "96b554ca-475e-4700-b47f-d692126f2f62": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "170ff0ed-2c3a-45c1-bcd1-441bb1d6dae5": {
+         "name": "table-apply-expression-per-row-v2",
+         "description": "Applies an expression for each row. The column values are available as variables."
+      },
+      "3b23d774-3df6-446a-b842-15589482ba8d": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "a9abd72f-3324-4aab-84c9-4343ddb74a3b": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "bf8aa75e-446a-4bfc-9433-e8b1e33d12b1": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "2c671024-8450-4049-be53-282234c7150c": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "994b2186-196a-47b0-a55b-8299b5860fd0": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "a9abd72f-3324-4aab-84c9-4343ddb74a3b",
+         "target-node": "2c671024-8450-4049-be53-282234c7150c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "bf8aa75e-446a-4bfc-9433-e8b1e33d12b1",
+         "target-node": "96b554ca-475e-4700-b47f-d692126f2f62",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3b23d774-3df6-446a-b842-15589482ba8d",
+         "target-node": "6db70f1b-d2ba-4a02-9ad6-7481e3f9301a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "96b554ca-475e-4700-b47f-d692126f2f62",
+         "target-node": "a9abd72f-3324-4aab-84c9-4343ddb74a3b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "994b2186-196a-47b0-a55b-8299b5860fd0",
+         "target-node": "170ff0ed-2c3a-45c1-bcd1-441bb1d6dae5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2c671024-8450-4049-be53-282234c7150c",
+         "target-node": "994b2186-196a-47b0-a55b-8299b5860fd0",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "6db70f1b-d2ba-4a02-9ad6-7481e3f9301a",
+         "target-node": "bf8aa75e-446a-4bfc-9433-e8b1e33d12b1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

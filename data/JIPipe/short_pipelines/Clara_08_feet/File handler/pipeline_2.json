@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline appears to be designed for image processing, specifically for overlaying and blending greyscale or RGB images. It takes multiple input images from different sources, including compartments, and processes them through various connections, ultimately producing output based on the combined data. The pipeline's functionality involves grouping incoming data based on annotations, allowing for flexible and dynamic image manipulation. Overall, its purpose is to facilitate complex image analysis and processing tasks in a biomedical context.",
+   "nodes": {
+      "fb0e60dc-da2e-424c-bca0-b2c1f4de95cb": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

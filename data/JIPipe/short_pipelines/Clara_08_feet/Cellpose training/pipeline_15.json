@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline reads in an image, applies filtering and thresholding and saves the results. The main steps include reading in the image, applying filtering, then applying thresholding, saving the result. The pipeline starts with node 4526f0e4-18c3-41a8-9317-0b37849bb5d1 which reads in the image and ends at node dbb03680-6040-4d2b-95e7-334fb170a797 which saves the results.",
+   "nodes": {
+      "dbb03680-6040-4d2b-95e7-334fb170a797": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

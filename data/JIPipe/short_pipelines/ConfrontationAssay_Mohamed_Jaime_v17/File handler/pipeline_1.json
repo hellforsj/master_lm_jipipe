@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline reads in a folder with files and applies filtering to each file. The main steps include reading the folder, selecting the files, and applying a filter.",
+   "nodes": {
+      "282f0bed-a6ec-49e6-9769-222c97af1475": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      }
+   },
+   "edges": []
+}

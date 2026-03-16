@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to filter 3D ROI by statistics. The pipeline starts with the input ROI, filters them using the ij3d-filter-roi3d-by-statistics node, and finally outputs the filtered ROI.",
+   "nodes": {
+      "bda68d24-2e6a-4d3e-bc69-7c326ef1cb41": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "1cac2d3e-49b7-4447-8cca-b698c66af91d": {
+         "name": "ij3d-filter-roi3d-by-statistics",
+         "description": "Filters the 3D ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "bda68d24-2e6a-4d3e-bc69-7c326ef1cb41",
+         "target-node": "1cac2d3e-49b7-4447-8cca-b698c66af91d",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      }
+   ]
+}

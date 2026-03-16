@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline modifies the specified annotations to the specified values and outputs the annotated images. It starts by modifying the annotations, then it outputs the images.",
+   "nodes": {
+      "349eb848-c055-4adb-8105-c1ede0ca85d9": {
+         "name": "annotate-set",
+         "description": "Modifies the specified annotations to the specified values. Supports expressions to combine existing annotations or generate new values."
+      }
+   },
+   "edges": []
+}

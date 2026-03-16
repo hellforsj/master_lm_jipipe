@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline loads an image via native ImageJ functions and adds data annotations that contain the image properties. The main steps include loading the image using import-imagej-imgplus-from-file node and then adding annotations using image-properties-to-annotation node.",
+   "nodes": {
+      "550dacf6-c9df-4d7e-856b-c70daeb420c2": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "396f4183-84a8-4ec1-b261-7fdef9ecd5a0": {
+         "name": "import-imagej-imgplus-from-file",
+         "description": "Loads an image via the native ImageJ functions."
+      },
+      "d9f290cd-6685-4a25-83c4-80dc6eac060f": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "396f4183-84a8-4ec1-b261-7fdef9ecd5a0",
+         "target-node": "550dacf6-c9df-4d7e-856b-c70daeb420c2",
+         "source-slot": "Image",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "396f4183-84a8-4ec1-b261-7fdef9ecd5a0",
+         "target-node": "d9f290cd-6685-4a25-83c4-80dc6eac060f",
+         "source-slot": "Image",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline handles data output and storage. The main steps include organizing the processed data, saving it to a specified location, and preparing it for further analysis.",
+   "nodes": {
+      "e04fb4cf-ba7f-4bb2-9787-a78fd4ccdafe": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "89e25c32-1711-4e7c-aaa9-a22806cbf785": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "e04fb4cf-ba7f-4bb2-9787-a78fd4ccdafe",
+         "target-node": "89e25c32-1711-4e7c-aaa9-a22806cbf785",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

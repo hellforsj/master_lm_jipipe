@@ -1,0 +1,355 @@
+{
+   "description": "This pipeline processes images through a series of filtering, thresholding, and measurement steps to extract and analyze features such as cell membranes, masks, and distances between objects, ultimately generating results tables and exporting images in various formats, while also performing calibration and formatting operations to prepare the data for further analysis or storage.",
+   "nodes": {
+      "bd8cf641-b46f-4756-8a53-c72ecf83d5d2": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "cf4755cd-fd2e-467f-83c6-c3f6e22db44c": {
+         "name": "ij3d-filter-roi3d-by-statistics",
+         "description": "Filters the 3D ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "73acc40e-8da6-4250-a725-440382bc8d39": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f38d555e-c87e-42c5-9ca1-1ad2d51f6938": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "ebf99ef7-50e8-40cb-84ec-2dc8602d2933": {
+         "name": "ij1-generate-zero-image",
+         "description": "Creates a new image that is black."
+      },
+      "0dcb7500-ba0e-4eca-9428-237901834ea6": {
+         "name": "ij1-blur-median2d",
+         "description": "Applies a median filter. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "ceb9ac4e-0eba-4e32-acdc-179417756f0f": {
+         "name": "ij1-blur-median2d",
+         "description": "Applies a median filter. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "5bd2d21c-05a2-4476-a803-89e0f740b4f1": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8398880e-fa5b-4473-8bba-6006df02eacf": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5c34a56a-0eed-4bce-b864-3e2544f6ea32": {
+         "name": "ij3d-roi-change-properties",
+         "description": "Sets the properties of all 3D ROI"
+      },
+      "fcda7d23-19b6-4378-8c8e-342dfc05ddca": {
+         "name": "ij3d-filter-roi3d-by-statistics",
+         "description": "Filters the 3D ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "bc04081f-9a72-4f2f-a67b-72487a38d027": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "2221e622-981a-40b7-b574-a1593dba2745": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "be88abdc-816d-4297-ab35-07d168377c0b": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "57ecfe51-817e-4ee7-b472-3e5c24eadbca": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b4fa3882-bf0a-47ae-ad1d-90c35c0cc654": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "4d2895c7-fbc3-4260-87d8-03d2c8d7b1f2": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "09ca6e22-bb4b-4a44-b3b4-f11d315f8a48": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5bc7b811-0217-4d99-9a7e-697d4a18844b": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "bda19bde-5bac-4804-8b64-96b2ad809936": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "a0dce42f-035b-475e-8121-7d56c2ff1993": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      },
+      "c6b94702-a848-4bf1-a08d-65ddd06189c1": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "a9629eae-c882-4072-853f-dc4758562c4b": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c1783b84-5c2d-42ff-9196-30b237b4fc11": {
+         "name": "ij1-generate-zero-image",
+         "description": "Creates a new image that is black."
+      },
+      "39720f58-8ec6-46ea-9086-bfe6e01b15f2": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8fb090a2-6cd2-4efd-9dd0-526d590677ff": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      },
+      "9cb44934-fc76-4a41-a4ab-8facdfb879c5": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "ebf99ef7-50e8-40cb-84ec-2dc8602d2933",
+         "source-slot": "Magenta trimmed",
+         "target-slot": "Annotations"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "4d2895c7-fbc3-4260-87d8-03d2c8d7b1f2",
+         "source-slot": "3D labels",
+         "target-slot": "Cell"
+      },
+      {
+         "source-node": "cf4755cd-fd2e-467f-83c6-c3f6e22db44c",
+         "target-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "8fb090a2-6cd2-4efd-9dd0-526d590677ff",
+         "target-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "source-slot": "Output",
+         "target-slot": "Labels"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "be88abdc-816d-4297-ab35-07d168377c0b",
+         "source-slot": "Magenta trimmed",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "bda19bde-5bac-4804-8b64-96b2ad809936",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "2221e622-981a-40b7-b574-a1593dba2745",
+         "source-slot": "Magenta trimmed",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "c1783b84-5c2d-42ff-9196-30b237b4fc11",
+         "target-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "ceb9ac4e-0eba-4e32-acdc-179417756f0f",
+         "target-node": "8fb090a2-6cd2-4efd-9dd0-526d590677ff",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "target-node": "4d2895c7-fbc3-4260-87d8-03d2c8d7b1f2",
+         "source-slot": "Output",
+         "target-slot": "Green"
+      },
+      {
+         "source-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "target-node": "5c34a56a-0eed-4bce-b864-3e2544f6ea32",
+         "source-slot": "ROI",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6b94702-a848-4bf1-a08d-65ddd06189c1",
+         "target-node": "cf4755cd-fd2e-467f-83c6-c3f6e22db44c",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "5c34a56a-0eed-4bce-b864-3e2544f6ea32",
+         "target-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "4d2895c7-fbc3-4260-87d8-03d2c8d7b1f2",
+         "target-node": "b4fa3882-bf0a-47ae-ad1d-90c35c0cc654",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "5bd2d21c-05a2-4476-a803-89e0f740b4f1",
+         "target-node": "ceb9ac4e-0eba-4e32-acdc-179417756f0f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "b4fa3882-bf0a-47ae-ad1d-90c35c0cc654",
+         "source-slot": "Magenta trimmed",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "2221e622-981a-40b7-b574-a1593dba2745",
+         "target-node": "bd8cf641-b46f-4756-8a53-c72ecf83d5d2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "09ca6e22-bb4b-4a44-b3b4-f11d315f8a48",
+         "target-node": "9cb44934-fc76-4a41-a4ab-8facdfb879c5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "5bd2d21c-05a2-4476-a803-89e0f740b4f1",
+         "source-slot": "Green trimmed",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "target-node": "09ca6e22-bb4b-4a44-b3b4-f11d315f8a48",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "73acc40e-8da6-4250-a725-440382bc8d39",
+         "source-slot": "Magenta trimmed",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "be88abdc-816d-4297-ab35-07d168377c0b",
+         "source-slot": "2D cell mask",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "8398880e-fa5b-4473-8bba-6006df02eacf",
+         "target-node": "5bc7b811-0217-4d99-9a7e-697d4a18844b",
+         "source-slot": "Output",
+         "target-slot": "Green"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "fcda7d23-19b6-4378-8c8e-342dfc05ddca",
+         "source-slot": "Magenta trimmed",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "57ecfe51-817e-4ee7-b472-3e5c24eadbca",
+         "target-node": "4d2895c7-fbc3-4260-87d8-03d2c8d7b1f2",
+         "source-slot": "Output",
+         "target-slot": "Magenta"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "cf4755cd-fd2e-467f-83c6-c3f6e22db44c",
+         "source-slot": "Green trimmed",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "bc04081f-9a72-4f2f-a67b-72487a38d027",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "73acc40e-8da6-4250-a725-440382bc8d39",
+         "target-node": "bda19bde-5bac-4804-8b64-96b2ad809936",
+         "source-slot": "Measurements",
+         "target-slot": "Input 1"
+      },
+      {
+         "source-node": "ebf99ef7-50e8-40cb-84ec-2dc8602d2933",
+         "target-node": "57ecfe51-817e-4ee7-b472-3e5c24eadbca",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "be88abdc-816d-4297-ab35-07d168377c0b",
+         "target-node": "0dcb7500-ba0e-4eca-9428-237901834ea6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "source-slot": "Green trimmed",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "b4fa3882-bf0a-47ae-ad1d-90c35c0cc654",
+         "target-node": "39720f58-8ec6-46ea-9086-bfe6e01b15f2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0dcb7500-ba0e-4eca-9428-237901834ea6",
+         "target-node": "a0dce42f-035b-475e-8121-7d56c2ff1993",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "5bc7b811-0217-4d99-9a7e-697d4a18844b",
+         "target-node": "2221e622-981a-40b7-b574-a1593dba2745",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "fcda7d23-19b6-4378-8c8e-342dfc05ddca",
+         "target-node": "73acc40e-8da6-4250-a725-440382bc8d39",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "5bd2d21c-05a2-4476-a803-89e0f740b4f1",
+         "source-slot": "2D cell mask",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "57ecfe51-817e-4ee7-b472-3e5c24eadbca",
+         "target-node": "5bc7b811-0217-4d99-9a7e-697d4a18844b",
+         "source-slot": "Output",
+         "target-slot": "Magenta"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "c1783b84-5c2d-42ff-9196-30b237b4fc11",
+         "source-slot": "Green trimmed",
+         "target-slot": "Annotations"
+      },
+      {
+         "source-node": "37fca9f7-fdd7-423e-b9db-b4d32cde63a7",
+         "target-node": "09ca6e22-bb4b-4a44-b3b4-f11d315f8a48",
+         "source-slot": "Green trimmed",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "73acc40e-8da6-4250-a725-440382bc8d39",
+         "target-node": "a9629eae-c882-4072-853f-dc4758562c4b",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to plot the incoming table(s). The pipeline starts with the node '9785559c-0cfd-4f33-a6e7-fe8f7d6753e4' which plots the tables, then it proceeds to the node '42317820-0054-4a3e-b5bd-7da6cba785f2' which converts the incoming image to RGB.",
+   "nodes": {
+      "9785559c-0cfd-4f33-a6e7-fe8f7d6753e4": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "42317820-0054-4a3e-b5bd-7da6cba785f2": {
+         "name": "ij1-color-to-rgb",
+         "description": "Converts the incoming image to RGB. This applies the LUT if any is set. Compared to the image converter node, this operation renders the image into a representation equivalent to an image viewer, meaning that contrast settings are preserved."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9785559c-0cfd-4f33-a6e7-fe8f7d6753e4",
+         "target-node": "42317820-0054-4a3e-b5bd-7da6cba785f2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

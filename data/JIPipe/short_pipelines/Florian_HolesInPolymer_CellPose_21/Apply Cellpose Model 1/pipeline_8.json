@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline creates annotations for paths based on their names or full paths, utilizing a list of subfolders as input to generate these annotations.",
+   "nodes": {
+      "eb872e43-2214-4902-b9a2-e540a3f3703e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "target-node": "eb872e43-2214-4902-b9a2-e540a3f3703e",
+         "source-slot": "Subfolders",
+         "target-slot": "Paths"
+      }
+   ]
+}

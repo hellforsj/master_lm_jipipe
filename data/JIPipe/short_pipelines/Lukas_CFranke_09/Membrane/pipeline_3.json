@@ -1,0 +1,31 @@
+{
+   "description": "The main objective of this pipeline is to convert a label image into 3D ROI. The pipeline starts with the label image, applies connected component labeling using the ij1-binary-connected-component-labeling-3d node, and finally outputs the 3D ROI.",
+   "nodes": {
+      "bda68d24-2e6a-4d3e-bc69-7c326ef1cb41": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "496d7cb9-ef0c-429a-abdc-76d70da409ae": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      },
+      "7d8b3f8e-a9d1-438e-9c4e-78b63c2f5a41": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "496d7cb9-ef0c-429a-abdc-76d70da409ae",
+         "target-node": "7d8b3f8e-a9d1-438e-9c4e-78b63c2f5a41",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "7d8b3f8e-a9d1-438e-9c4e-78b63c2f5a41",
+         "target-node": "bda68d24-2e6a-4d3e-bc69-7c326ef1cb41",
+         "source-slot": "Output",
+         "target-slot": "Labels"
+      }
+   ]
+}

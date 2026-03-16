@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies contrast enhancement to images. The main steps include reading in images, applying contrast adjustments, and outputting enhanced images.",
+   "nodes": {
+      "f68686bb-cfcf-4194-a2de-76f6bae7abc4": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "6c37d3a8-832c-479a-af9f-8cbe3f54c897": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f68686bb-cfcf-4194-a2de-76f6bae7abc4",
+         "target-node": "6c37d3a8-832c-479a-af9f-8cbe3f54c897",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

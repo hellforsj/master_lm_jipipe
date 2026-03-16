@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline extracts pairwise statistics between 3D ROIs. The main steps involve measuring the statistics of two sets of ROIs and calculating the pairwise statistics.",
+   "nodes": {
+      "981efe86-1d95-46da-b77e-f0bc8df5b387": {
+         "name": "ij3d-measure-pairwise-roi3d",
+         "description": "Extracts all pairwise statistics between the 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

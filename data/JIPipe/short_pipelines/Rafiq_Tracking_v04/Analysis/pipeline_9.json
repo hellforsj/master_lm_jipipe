@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline is designed to track spots in image data, utilizing a simplified tracking algorithm that groups incoming data based on annotations and allows for gap closing based on distance and time conditions, resulting in non-branching tracks.",
+   "nodes": {
+      "68ff1280-125c-4773-b128-b56229bbf0d2": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "25f0c000-a85b-4d8c-a228-0e29b905d935": {
+         "name": "trackmate-create-spot-tracker-simple-sparse-lap-tracker",
+         "description": "This tracker is identical to the sparse LAP tracker present in this trackmate, except that it <br>proposes fewer tuning options. Namely, only gap closing is allowed, based solely on <br>a distance and time condition. Track splitting and merging are not allowed, resulting <br>in having non-branching tracks. "
+      }
+   },
+   "edges": [
+      {
+         "source-node": "25f0c000-a85b-4d8c-a228-0e29b905d935",
+         "target-node": "68ff1280-125c-4773-b128-b56229bbf0d2",
+         "source-slot": "Spot tracker",
+         "target-slot": "Spot tracker"
+      }
+   ]
+}

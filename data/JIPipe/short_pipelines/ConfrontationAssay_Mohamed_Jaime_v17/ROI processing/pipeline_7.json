@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline filters image regions based on their overlap and then outputs the filtered regions into separate compartments for further analysis, allowing for the identification and separation of distinct image features.",
+   "nodes": {
+      "0269e61a-77a3-4950-b73a-1cf29f3f0d19": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

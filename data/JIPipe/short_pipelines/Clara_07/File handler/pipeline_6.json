@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline processes multichannel images by splitting them into multiple greyscale images for each 2D image slice, enabling further analysis or processing of individual channels.",
+   "nodes": {
+      "4be0eeaf-8529-443d-9efe-a4a1718c6b0a": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": []
+}

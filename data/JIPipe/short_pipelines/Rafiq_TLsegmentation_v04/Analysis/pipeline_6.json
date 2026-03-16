@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies local thresholding to an image. It starts with an input image, applies local thresholding, and then outputs the locally thresholded image.",
+   "nodes": {
+      "72161901-b252-4344-baba-79a35f1c0ddd": {
+         "name": "ij1-threshold-manual2d-16u",
+         "description": "Thresholds the image with a manual threshold. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "71e4d00c-6931-4af1-beca-e656d9f5f8ce": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "72161901-b252-4344-baba-79a35f1c0ddd",
+         "target-node": "71e4d00c-6931-4af1-beca-e656d9f5f8ce",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

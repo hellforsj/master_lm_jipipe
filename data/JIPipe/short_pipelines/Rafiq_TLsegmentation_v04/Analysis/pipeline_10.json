@@ -1,0 +1,25 @@
+{
+   "description": "This pipeline takes an image, applies thresholding operations to the image, and then outputs the thresholded image.",
+   "nodes": {
+      "b7c1b866-23f6-4ebc-9df1-5513a0f912b1": {
+         "name": "ij1-transform-set-dimensions",
+         "description": "Sets the exact hyperstack dimensions of the incoming images. If you provide a lower size, planes will be removed. If you provide a larger dimension, planes are either set to black or copied from the slices with the highest index."
+      },
+      "22a0db0d-f1c1-4b14-8ee6-bc59d2c143f5": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "79557da4-9a08-4cf0-b6d5-b21d1f5c544d": {
+         "name": "ij1-threshold-manual2d-16u",
+         "description": "Thresholds the image with a manual threshold. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "22a0db0d-f1c1-4b14-8ee6-bc59d2c143f5",
+         "target-node": "b7c1b866-23f6-4ebc-9df1-5513a0f912b1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,35 @@
+{
+   "description": "This pipeline processes image data by converting regions of interest into label images, removing labels that touch the edges of the image, and then further processing these labels to generate various outputs, including masks and overlays, through a series of transformations and filtering steps.",
+   "nodes": {
+      "4bf090e7-c802-4356-b498-c1b76c278e1b": {
+         "name": "ij1-roi-to-labels-expression",
+         "description": "Converts ROI and an optional reference image into a label image. Each ROI is assigned its own label. Alternatively, the label can be set generated from an expression. If no reference image is provided, the dimensions are estimated from the ROI. The background color (where no ROI is located) is zero.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3f58a7b5-659d-4f6b-946e-2aec5585596c": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExcludeLabelsOnEdges",
+         "description": "Removes all labels from a label map which touch the edges of the image (in X, Y and Z if the image is 3D). <br/><br/>Remaining label elements are renumbered afterwards.<br/><br/>Parameters: Image label_map_input, ByRef Image label_map_destination<br/>Available for: 2D, 3D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "65fccf35-d54e-4d77-91f3-4f73eb7c0675": {
+         "name": "ij1-labels-to-roi",
+         "description": "Converts a label image into a set of ROI. Labels must have a value larger than zero to be detected.If higher-dimensional data is provided, the filter is applied to each 2D slice. The Z/C/T coordinates of the source slices are saved inside the ROI."
+      },
+      "f3e28c71-89b9-49db-89d7-c153cf9b9d58": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3f58a7b5-659d-4f6b-946e-2aec5585596c",
+         "target-node": "65fccf35-d54e-4d77-91f3-4f73eb7c0675",
+         "source-slot": "Label Map Destination",
+         "target-slot": "Labels"
+      },
+      {
+         "source-node": "4bf090e7-c802-4356-b498-c1b76c278e1b",
+         "target-node": "3f58a7b5-659d-4f6b-946e-2aec5585596c",
+         "source-slot": "Labels",
+         "target-slot": "Label Map Input"
+      }
+   ]
+}

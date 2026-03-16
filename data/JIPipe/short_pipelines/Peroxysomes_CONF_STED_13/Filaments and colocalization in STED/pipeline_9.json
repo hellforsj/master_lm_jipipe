@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to read in a file and apply thresholding. The pipeline starts by reading in the file, applies a thresholding operation and then outputs the thresholded image.",
+   "nodes": {
+      "fa10f88d-dd00-46e5-b411-986047ea231b": {
+         "name": "filaments-skeleton-to-filaments-2d",
+         "description": "Applies a simple algorithm that converts a binary skeleton into a filament. This algorithm only supports 2D data and will apply the processing per Z/C/T slice. Please note that by default the Z voxel size is set to zero."
+      },
+      "4d5fdf1b-10ee-4ec6-8af4-ba184d6be7db": {
+         "name": "filaments-filter-components-by-properties",
+         "description": "Filters filament connected components by various properties"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "fa10f88d-dd00-46e5-b411-986047ea231b",
+         "target-node": "4d5fdf1b-10ee-4ec6-8af4-ba184d6be7db",
+         "source-slot": "Filaments",
+         "target-slot": "Input"
+      }
+   ]
+}

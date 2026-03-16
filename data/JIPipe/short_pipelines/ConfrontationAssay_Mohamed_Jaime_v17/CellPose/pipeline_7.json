@@ -1,0 +1,35 @@
+{
+   "description": "This pipeline performs image processing and analysis, specifically focusing on cell segmentation and filtering using various algorithms. It starts by applying a cell segmentation algorithm to an input image, generating multiple outputs such as region of interests, flow information, and probability maps. These outputs are then further processed through several filtering steps, which refine the results based on statistical criteria. The filtered data is then converted into different formats, including masks and overlays, for further analysis or visualization. Ultimately, the pipeline aims to extract meaningful information from microscopic images, enabling detailed analysis of cellular structures and their properties.",
+   "nodes": {
+      "63b0be3d-d405-4453-9f58-2ed86e259a44": {
+         "name": "cellpose-inference-2.x",
+         "description": "Runs Cellpose on the input image with the given model(s). This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      },
+      "3f954807-8366-4520-8ac3-fcc14adadce6": {
+         "name": "ij1-roi-filter-statistics",
+         "description": "Filters the ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "aa26e607-dbb0-4632-81fd-8f5a85ca647f": {
+         "name": "ij1-roi-filter-statistics",
+         "description": "Filters the ROI list elements via statistics.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "ac262820-c594-4ea6-9c9e-a8b8dbaa5aa4": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3f954807-8366-4520-8ac3-fcc14adadce6",
+         "target-node": "ac262820-c594-4ea6-9c9e-a8b8dbaa5aa4",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "63b0be3d-d405-4453-9f58-2ed86e259a44",
+         "target-node": "3f954807-8366-4520-8ac3-fcc14adadce6",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      }
+   ]
+}

@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline visualizes data by grouping incoming information based on annotations, allowing for the output of a specific compartment to be generated from the visualization process.",
+   "nodes": {
+      "df5227e6-3b64-4b39-9c14-72278078aaa6": {
+         "name": "trackmate-visualize-tracks",
+         "description": "Visualizes tracks<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

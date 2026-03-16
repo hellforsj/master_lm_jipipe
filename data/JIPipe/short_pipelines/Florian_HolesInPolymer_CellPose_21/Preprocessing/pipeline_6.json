@@ -1,0 +1,71 @@
+{
+   "description": "This pipeline appears to be designed for image and data processing, specifically for analyzing biomedical microscopic images. It starts by listing folders and files, and then applies various operations such as morphological filtering, region of interest conversion, and masking. The pipeline also involves loading ROI lists from files and creating annotations based on path names or full paths. Additionally, it seems to output the processed data in different formats, including images and masks. Overall, the pipeline aims to automate a complex workflow involving image processing, data analysis, and annotation creation.",
+   "nodes": {
+      "2e1e3ac8-696a-446b-8638-727cb46ad560": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      },
+      "9ed77cbf-f248-474f-921a-58c3994f68f6": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "98e0b62b-bb17-445c-b4d5-f75c67dea6a1": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "662d5d82-16e3-4bf7-97d7-0958b1981a56": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "a0bf636b-fc14-4369-91ae-ff2d9c94748f": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "0edc601c-5d2d-4dcc-b87e-34adc3f13fb0": {
+         "name": "ij1-roi-to-mask",
+         "description": "Converts ROI lists to masks. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9abf4dfa-0bcc-4927-b0e5-be50d661aaac": {
+         "name": "import-imagej-roi-from-file",
+         "description": "Loads a ROI list from a file. The file can be either a single ROI (.roi extension) or a list of ROI (.zip extension)."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "a0bf636b-fc14-4369-91ae-ff2d9c94748f",
+         "target-node": "9abf4dfa-0bcc-4927-b0e5-be50d661aaac",
+         "source-slot": "Files",
+         "target-slot": "Files"
+      },
+      {
+         "source-node": "9abf4dfa-0bcc-4927-b0e5-be50d661aaac",
+         "target-node": "0edc601c-5d2d-4dcc-b87e-34adc3f13fb0",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "0edc601c-5d2d-4dcc-b87e-34adc3f13fb0",
+         "target-node": "662d5d82-16e3-4bf7-97d7-0958b1981a56",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9ed77cbf-f248-474f-921a-58c3994f68f6",
+         "target-node": "a0bf636b-fc14-4369-91ae-ff2d9c94748f",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "9ed77cbf-f248-474f-921a-58c3994f68f6",
+         "target-node": "98e0b62b-bb17-445c-b4d5-f75c67dea6a1",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "2e1e3ac8-696a-446b-8638-727cb46ad560",
+         "target-node": "9ed77cbf-f248-474f-921a-58c3994f68f6",
+         "source-slot": "Subfolders",
+         "target-slot": "Paths"
+      }
+   ]
+}

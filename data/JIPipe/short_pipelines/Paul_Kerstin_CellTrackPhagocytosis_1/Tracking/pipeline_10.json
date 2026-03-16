@@ -1,0 +1,14 @@
+{
+   "description": "This pipeline processes image and data by first outputting it from a compartment, then applying various operations such as tracking spots, setting annotations, and further processing the tracks, ultimately resulting in multiple outputs including tracked data and processed images.",
+   "nodes": {
+      "3399e3f8-346f-488f-b404-207a46b3ec05": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

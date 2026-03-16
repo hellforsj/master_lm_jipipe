@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline generates the visualization of the results. The main steps include generating visualization, preparing for output, and finalizing the results.",
+   "nodes": {
+      "591cf2e3-db9e-4371-821a-36e853d647d3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      }
+   },
+   "edges": []
+}

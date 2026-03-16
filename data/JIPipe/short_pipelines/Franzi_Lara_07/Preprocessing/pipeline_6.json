@@ -1,0 +1,71 @@
+{
+   "description": "This pipeline processes folders and files by first listing their contents, then annotating them based on their paths or names, and filtering them according to specific criteria, ultimately generating annotated data for further analysis or processing.",
+   "nodes": {
+      "eb872e43-2214-4902-b9a2-e540a3f3703e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "dee7af1c-4ffa-4a54-b92f-8aaa9153d6b9": {
+         "name": "path-filter",
+         "description": "Filters the paths (files/folders) by their name or absolute path"
+      },
+      "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "db54ca15-c3c9-470d-90ea-66b8c1ddd28e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      },
+      "41b4dabc-93d7-4898-a119-6da633330e1f": {
+         "name": "import-folder-list",
+         "description": "Converts each provided path into folder data."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "41b4dabc-93d7-4898-a119-6da633330e1f",
+         "target-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "source-slot": "Folder paths",
+         "target-slot": "Input folder"
+      },
+      {
+         "source-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "target-node": "eb872e43-2214-4902-b9a2-e540a3f3703e",
+         "source-slot": "Subfolders",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "target-node": "db54ca15-c3c9-470d-90ea-66b8c1ddd28e",
+         "source-slot": "Files",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "db54ca15-c3c9-470d-90ea-66b8c1ddd28e",
+         "target-node": "dee7af1c-4ffa-4a54-b92f-8aaa9153d6b9",
+         "source-slot": "Annotated paths",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "eb872e43-2214-4902-b9a2-e540a3f3703e",
+         "target-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "target-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

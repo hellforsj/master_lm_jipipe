@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies a series of image processing operations to find local maxima in images and then applies morphological operations to the results, allowing for the analysis of greyscale images through various techniques such as erosion, dilation, and gradient calculations.",
+   "nodes": {
+      "45b29f60-2fb7-4549-8656-caa323a1deda": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "a6ab6284-046d-4684-b57c-e20beddac450": {
+         "name": "ij1-feature-maxima-local-2d",
+         "description": "Finds the local maxima of each image. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "a6ab6284-046d-4684-b57c-e20beddac450",
+         "target-node": "45b29f60-2fb7-4549-8656-caa323a1deda",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

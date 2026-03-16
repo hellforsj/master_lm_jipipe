@@ -1,0 +1,71 @@
+{
+   "description": "This pipeline extracts pairwise statistics between 3D ROIs, plots the measurements as a histogram, and saves the output. The main steps involve calculating pairwise statistics, plotting them, and saving.",
+   "nodes": {
+      "27c84cbe-3bf9-4195-9a11-4fe511b77fb8": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "52c87751-acf8-4733-bbdc-9ec022f69a14": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "1ab0c8e2-f7ad-4be7-aa01-fa041f7cab5f": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "34afbb27-ce2b-4b85-a3fb-2a755f2b58f6": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "d578d12f-8385-4dcf-b8fc-7b3b5d7b32cb": {
+         "name": "ij1-color-to-rgb",
+         "description": "Converts the incoming image to RGB. This applies the LUT if any is set. Compared to the image converter node, this operation renders the image into a representation equivalent to an image viewer, meaning that contrast settings are preserved."
+      },
+      "981efe86-1d95-46da-b77e-f0bc8df5b387": {
+         "name": "ij3d-measure-pairwise-roi3d",
+         "description": "Extracts all pairwise statistics between the 3D ROI<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9bf34e3c-8684-4f09-992f-372fc2cd7c78": {
+         "name": "export-data-by-parameter-v2",
+         "description": "Exports the input data via JIPipe's standard exporter. The output is the directory that contains the generated file(s)."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "52c87751-acf8-4733-bbdc-9ec022f69a14",
+         "target-node": "d578d12f-8385-4dcf-b8fc-7b3b5d7b32cb",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "27c84cbe-3bf9-4195-9a11-4fe511b77fb8",
+         "target-node": "1ab0c8e2-f7ad-4be7-aa01-fa041f7cab5f",
+         "source-slot": "Exported file",
+         "target-slot": "Data 4"
+      },
+      {
+         "source-node": "981efe86-1d95-46da-b77e-f0bc8df5b387",
+         "target-node": "52c87751-acf8-4733-bbdc-9ec022f69a14",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9bf34e3c-8684-4f09-992f-372fc2cd7c78",
+         "target-node": "1ab0c8e2-f7ad-4be7-aa01-fa041f7cab5f",
+         "source-slot": "Output path",
+         "target-slot": "Data 1"
+      },
+      {
+         "source-node": "981efe86-1d95-46da-b77e-f0bc8df5b387",
+         "target-node": "9bf34e3c-8684-4f09-992f-372fc2cd7c78",
+         "source-slot": "Measurements",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "d578d12f-8385-4dcf-b8fc-7b3b5d7b32cb",
+         "target-node": "27c84cbe-3bf9-4195-9a11-4fe511b77fb8",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

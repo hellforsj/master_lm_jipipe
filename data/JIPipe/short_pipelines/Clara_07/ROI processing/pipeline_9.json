@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline filters ROI lists by testing for mutual overlap between two sets of ROIs. It starts with the node '7d033198-0764-4491-81c3-510d770da4f0' which provides one set of ROIs and ends at the node '8aa17086-6f9e-4576-8735-055b61256e08' where the filtered ROI lists are obtained.",
+   "nodes": {
+      "7d033198-0764-4491-81c3-510d770da4f0": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8aa17086-6f9e-4576-8735-055b61256e08": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "7d033198-0764-4491-81c3-510d770da4f0",
+         "target-node": "8aa17086-6f9e-4576-8735-055b61256e08",
+         "source-slot": "ROI 1",
+         "target-slot": "ROI 2"
+      }
+   ]
+}

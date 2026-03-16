@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline creates tracks from image data by identifying and linking spots across frames, allowing for gap closing based on distance and time conditions, and then annotates the resulting data with information about its source, providing a clear origin for the processed data.",
+   "nodes": {
+      "8a5de4ff-8a9e-49be-a158-934cc0eeac95": {
+         "name": "trackmate-create-spot-tracker-simple-sparse-lap-tracker",
+         "description": "This tracker is identical to the sparse LAP tracker present in this trackmate, except that it <br>proposes fewer tuning options. Namely, only gap closing is allowed, based solely on <br>a distance and time condition. Track splitting and merging are not allowed, resulting <br>in having non-branching tracks. "
+      },
+      "a04a95ad-bb78-4381-b3d3-d5afe78dcd72": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "8a5de4ff-8a9e-49be-a158-934cc0eeac95",
+         "target-node": "a04a95ad-bb78-4381-b3d3-d5afe78dcd72",
+         "source-slot": "Spot tracker",
+         "target-slot": "Data"
+      }
+   ]
+}

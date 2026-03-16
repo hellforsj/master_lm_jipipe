@@ -1,0 +1,35 @@
+{
+   "description": "This pipeline processes image data by passing it through various stages, including conversion to label images and grouping based on annotations, ultimately generating visualizations and outputs for further analysis or reference. The data is routed through multiple paths, allowing for the extraction of specific features, such as macrophages and spores, and their associated properties, before being outputted in a suitable format.",
+   "nodes": {
+      "80238cf6-ec46-4034-a4e3-1249a606ef0b": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "591cf2e3-db9e-4371-821a-36e853d647d3": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "bb31c82a-e1ee-4b53-af11-7d7e24fdd10d": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5f6e22d7-5328-44cd-84f8-a4937d35071f": {
+         "name": "ij3d-roi-convert-to-rgb",
+         "description": "Converts 3D ROI lists to a label image. Depending on the number of objects, an 8-bit, 16-bit, or 32-bit label image is generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "bb31c82a-e1ee-4b53-af11-7d7e24fdd10d",
+         "target-node": "5f6e22d7-5328-44cd-84f8-a4937d35071f",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "bb31c82a-e1ee-4b53-af11-7d7e24fdd10d",
+         "target-node": "591cf2e3-db9e-4371-821a-36e853d647d3",
+         "source-slot": "Output",
+         "target-slot": "Data 3"
+      }
+   ]
+}

@@ -1,0 +1,111 @@
+{
+   "description": "This pipeline performs a complex image processing task that involves multiple steps, including filtering, thresholding, segmentation, and visualization. It starts by applying various operations to the input images, such as morphological transformations, projections, and masking. The processed images are then further refined through techniques like watershed segmentation and color conversion. The resulting data is subsequently exported in a suitable format for further analysis or visualization. Throughout the pipeline, the data is transformed and analyzed using a range of algorithms and techniques to extract meaningful information from the original images.",
+   "nodes": {
+      "3820f7c0-b777-41fd-8207-51485e27105d": {
+         "name": "ij1-dimensions-zproject-2",
+         "description": "Performs a Z-Projection. Also supports other axes C-Project/T-Project."
+      },
+      "5b9a2c6e-02cc-426d-a725-8bd923bb8d07": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d5b3825f-f543-4225-82b8-7997e181f11d": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "603b91f3-1aaf-4d8c-a0ad-caf489d8b9c4": {
+         "name": "ij1-labels-to-mask",
+         "description": "Converts a label image to a mask"
+      },
+      "643fc042-53d3-4e97-8d22-a5ed3beea1e6": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "0333971d-7f94-4a16-876e-2edc9bf92555": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3466faea-d7cd-466e-b023-d559a0e347f3": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "d6f6b408-4be1-4e01-9942-f55de1d2edb9": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "4f2ad6aa-09e3-4c69-b871-7b2f85c2f91a": {
+         "name": "ij3d-segmentation-watershed-3d",
+         "description": "The 3D Watershed operation works with two images, one containing the seeds of the objects, that can be obtained from local maxima (see 3D filters), the other image containing signal data. A first threshold1 is used for seeds (only seeds with value > threshold1 will be used). A second threshold is used to cluster voxels with values > threshold2. In this implementation voxels are clustered to seeds in descending order of voxel values.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9575416b-3eaa-4136-8c82-3f478905bc9c": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3ed7fb17-1835-4040-ba8c-7fca697981d2": {
+         "name": "ij1-color-to-rgb",
+         "description": "Converts the incoming image to RGB. This applies the LUT if any is set. Compared to the image converter node, this operation renders the image into a representation equivalent to an image viewer, meaning that contrast settings are preserved."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d6f6b408-4be1-4e01-9942-f55de1d2edb9",
+         "target-node": "3466faea-d7cd-466e-b023-d559a0e347f3",
+         "source-slot": "Output",
+         "target-slot": "Labels"
+      },
+      {
+         "source-node": "4f2ad6aa-09e3-4c69-b871-7b2f85c2f91a",
+         "target-node": "3820f7c0-b777-41fd-8207-51485e27105d",
+         "source-slot": "Labels",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6f6b408-4be1-4e01-9942-f55de1d2edb9",
+         "target-node": "d5b3825f-f543-4225-82b8-7997e181f11d",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "9575416b-3eaa-4136-8c82-3f478905bc9c",
+         "target-node": "0333971d-7f94-4a16-876e-2edc9bf92555",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3820f7c0-b777-41fd-8207-51485e27105d",
+         "target-node": "5b9a2c6e-02cc-426d-a725-8bd923bb8d07",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3ed7fb17-1835-4040-ba8c-7fca697981d2",
+         "target-node": "9575416b-3eaa-4136-8c82-3f478905bc9c",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "5b9a2c6e-02cc-426d-a725-8bd923bb8d07",
+         "target-node": "643fc042-53d3-4e97-8d22-a5ed3beea1e6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4f2ad6aa-09e3-4c69-b871-7b2f85c2f91a",
+         "target-node": "603b91f3-1aaf-4d8c-a0ad-caf489d8b9c4",
+         "source-slot": "Labels",
+         "target-slot": "Labels"
+      },
+      {
+         "source-node": "d5b3825f-f543-4225-82b8-7997e181f11d",
+         "target-node": "3ed7fb17-1835-4040-ba8c-7fca697981d2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4f2ad6aa-09e3-4c69-b871-7b2f85c2f91a",
+         "target-node": "d6f6b408-4be1-4e01-9942-f55de1d2edb9",
+         "source-slot": "Labels",
+         "target-slot": "Input"
+      }
+   ]
+}

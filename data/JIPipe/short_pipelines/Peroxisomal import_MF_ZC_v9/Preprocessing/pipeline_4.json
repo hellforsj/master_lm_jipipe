@@ -1,0 +1,14 @@
+{
+   "description": "This pipeline splits multichannel images into multiple greyscale images and then adds data annotations that contain the image properties. The main steps involve splitting channels using ij1-color-split-channels-2 node and adding annotations using image-properties-to-annotation node.",
+   "nodes": {
+      "550dacf6-c9df-4d7e-856b-c70daeb420c2": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "d9f290cd-6685-4a25-83c4-80dc6eac060f": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      }
+   },
+   "edges": []
+}

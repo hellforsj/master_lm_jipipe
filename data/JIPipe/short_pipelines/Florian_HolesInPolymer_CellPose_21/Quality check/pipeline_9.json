@@ -1,0 +1,141 @@
+{
+   "description": "This pipeline reads in raw data, filters the ROI lists by testing for mutual overlap, and then counts the number of ROIs in each list. The main steps include reading in raw data using '35ba3543-193a-4047-b794-285b0c03fa2d' node, filtering the ROI lists using 'ij1-roi-filter-by-overlap' node, and then counting the ROIs using 'ij1-roi-count' node.",
+   "nodes": {
+      "b39f7ca1-8aed-42a4-97be-e956a34387e8": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "1375f49f-dbaf-4ec5-85a7-8780e3c678cb": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b5fd71a6-72f1-49f2-a5e2-3a8dba75edf2": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f9f0a566-3466-4598-a29c-622eec7858de": {
+         "name": "ij1-roi-count",
+         "description": "Outputs one table that contains the counts for each incoming ROI. Each ROI list produces one column in the output table and contains all annotations of the incoming ROI data. You can add multiple input slots. All output table column is named according to the slot name of the incoming ROI list.This node can merge ROI lists according to their annotations. The sum of the counts within the same iteration step are generated.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "d0a65b1b-8faf-4385-b053-18e37aae348b": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9b5254cd-c811-4023-a063-354899cc0ba2": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "06fff1c6-2a8c-4e75-88a5-bc6ef07284bb": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d86dbb26-86df-4b45-a9bd-d461b52c9139": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "1375f49f-dbaf-4ec5-85a7-8780e3c678cb",
+         "source-slot": "Raw",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "06fff1c6-2a8c-4e75-88a5-bc6ef07284bb",
+         "target-node": "f9f0a566-3466-4598-a29c-622eec7858de",
+         "source-slot": "ROI 1",
+         "target-slot": "False negatives"
+      },
+      {
+         "source-node": "9b5254cd-c811-4023-a063-354899cc0ba2",
+         "target-node": "b39f7ca1-8aed-42a4-97be-e956a34387e8",
+         "source-slot": "ROI 1",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "d86dbb26-86df-4b45-a9bd-d461b52c9139",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "9b5254cd-c811-4023-a063-354899cc0ba2",
+         "target-node": "1375f49f-dbaf-4ec5-85a7-8780e3c678cb",
+         "source-slot": "ROI 2",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "d86dbb26-86df-4b45-a9bd-d461b52c9139",
+         "source-slot": "Raw",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "06fff1c6-2a8c-4e75-88a5-bc6ef07284bb",
+         "target-node": "b5fd71a6-72f1-49f2-a5e2-3a8dba75edf2",
+         "source-slot": "ROI 2",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "06fff1c6-2a8c-4e75-88a5-bc6ef07284bb",
+         "source-slot": "ROI",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "b5fd71a6-72f1-49f2-a5e2-3a8dba75edf2",
+         "source-slot": "Raw",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "b39f7ca1-8aed-42a4-97be-e956a34387e8",
+         "source-slot": "Raw",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "f9f0a566-3466-4598-a29c-622eec7858de",
+         "source-slot": "ROI",
+         "target-slot": "GT ROI"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "9b5254cd-c811-4023-a063-354899cc0ba2",
+         "source-slot": "ROI",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "06fff1c6-2a8c-4e75-88a5-bc6ef07284bb",
+         "target-node": "d0a65b1b-8faf-4385-b053-18e37aae348b",
+         "source-slot": "ROI 1",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "06fff1c6-2a8c-4e75-88a5-bc6ef07284bb",
+         "target-node": "f9f0a566-3466-4598-a29c-622eec7858de",
+         "source-slot": "ROI 2",
+         "target-slot": "False positives"
+      },
+      {
+         "source-node": "9b5254cd-c811-4023-a063-354899cc0ba2",
+         "target-node": "f9f0a566-3466-4598-a29c-622eec7858de",
+         "source-slot": "ROI 1",
+         "target-slot": "GT found"
+      },
+      {
+         "source-node": "9b5254cd-c811-4023-a063-354899cc0ba2",
+         "target-node": "f9f0a566-3466-4598-a29c-622eec7858de",
+         "source-slot": "ROI 2",
+         "target-slot": "True positives"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "d0a65b1b-8faf-4385-b053-18e37aae348b",
+         "source-slot": "Raw",
+         "target-slot": "Image"
+      }
+   ]
+}

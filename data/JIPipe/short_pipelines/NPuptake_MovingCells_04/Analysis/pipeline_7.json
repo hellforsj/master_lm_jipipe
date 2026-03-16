@@ -1,0 +1,14 @@
+{
+   "description": "This pipeline appears to be incomplete as it does not contain any connections between nodes, suggesting that it is a starting point for building a processing workflow rather than a fully functional pipeline. However, based on the available node descriptions, the intended function of this pipeline could involve applying mathematical operations to images and classifying image data using machine learning models.",
+   "nodes": {
+      "cf8ba4f6-d7dc-4545-a748-30a4d9e1550d": {
+         "name": "ij1-math-math2d",
+         "description": "Applies a mathematical operation to each pixel. Supported operations are SET, ADD, SUBTRACT, MULTIPLY, DIVIDE, GAMMA, MINIMUM, MAXIMUM, LOGICAL OR, LOGICAL AND, and LOGICAL XOR. We recommend to use 'Fast image arithmetics' instead."
+      },
+      "b2ed58b3-6c0c-4b9e-82ad-1d7e8189b0e8": {
+         "name": "weka-classification-2d",
+         "description": "Classifies an image with a Weka model. If higher-dimensional data is provided, the classification is applied per slice. To obtain ROI from the generated labels, utilize the 'Labels to ROI' node.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

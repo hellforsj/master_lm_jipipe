@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to copy physical pixel sizes from a source image to a target image and then export the result. The pipeline starts with the node '9575416b-3eaa-4136-8c82-3f478905bc9c' and ends with the node '0333971d-7f94-4a16-876e-2edc9bf92555'. It takes two input images, copies physical pixel sizes using '9575416b-3eaa-4136-8c82-3f478905bc9c', and then exports the result.",
+   "nodes": {
+      "9575416b-3eaa-4136-8c82-3f478905bc9c": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "0333971d-7f94-4a16-876e-2edc9bf92555": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9575416b-3eaa-4136-8c82-3f478905bc9c",
+         "target-node": "0333971d-7f94-4a16-876e-2edc9bf92555",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

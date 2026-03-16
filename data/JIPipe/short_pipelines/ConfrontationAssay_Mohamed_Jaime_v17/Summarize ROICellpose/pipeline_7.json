@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline removes columns from a table through a series of sequential operations, allowing for multiple rounds of column removal to refine the output.",
+   "nodes": {
+      "f450c378-14a4-4e0e-8c6b-96a34f65a400": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "bbd87b00-6621-401c-a770-e475fb9afc79": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "167863ae-c201-4046-a389-ea0e1bf83059": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "167863ae-c201-4046-a389-ea0e1bf83059",
+         "target-node": "f450c378-14a4-4e0e-8c6b-96a34f65a400",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f450c378-14a4-4e0e-8c6b-96a34f65a400",
+         "target-node": "bbd87b00-6621-401c-a770-e475fb9afc79",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

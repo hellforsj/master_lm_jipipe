@@ -1,0 +1,10 @@
+{
+   "description": "The main objective of this pipeline is to export the confinement ratio and save it. The pipeline starts with an input image, calculates the confinement ratio, and finally exports the result.",
+   "nodes": {
+      "ae21ff95-861d-49be-ace5-44df3be81b9a": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

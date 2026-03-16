@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline is responsible for saving the results of image analysis to another folder, the main steps involve receiving fully processed data and then saving it",
+   "nodes": {
+      "6c37d3a8-832c-479a-af9f-8cbe3f54c897": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

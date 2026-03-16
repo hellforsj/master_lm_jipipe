@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline filters image regions based on their overlap, grouping data by annotations and selecting regions that intersect with each other, ultimately outputting categorized results into separate compartments for further analysis or confirmation.",
+   "nodes": {
+      "9ae50c18-8c58-4127-a57e-0245a9f6f9b2": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "17ff7609-3b16-4d76-bfa3-f8257509619e": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9ae50c18-8c58-4127-a57e-0245a9f6f9b2",
+         "target-node": "17ff7609-3b16-4d76-bfa3-f8257509619e",
+         "source-slot": "ROI 1",
+         "target-slot": "ROI 1"
+      }
+   ]
+}

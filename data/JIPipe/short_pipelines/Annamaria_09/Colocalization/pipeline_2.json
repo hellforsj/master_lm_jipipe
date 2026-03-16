@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline performs an analysis on image data, first conducting colocalization measurements via pixel intensity correlation methods and then adding column annotations to the results as new columns, effectively combining statistical analysis with data organization.",
+   "nodes": {
+      "a7237bd4-8935-4bca-a860-e4570dc6d44d": {
+         "name": "table-add-annotation-columns",
+         "description": "Adds column annotations to the table as new columns."
+      },
+      "b20c8d34-ee11-4a59-adee-39cd8d394f4d": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b20c8d34-ee11-4a59-adee-39cd8d394f4d",
+         "target-node": "a7237bd4-8935-4bca-a860-e4570dc6d44d",
+         "source-slot": "Results",
+         "target-slot": "Input"
+      }
+   ]
+}

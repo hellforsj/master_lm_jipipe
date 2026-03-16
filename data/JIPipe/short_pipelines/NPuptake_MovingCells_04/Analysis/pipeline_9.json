@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies morphological operations to greyscale images and then converts the resulting mask into region of interests, generating measurements from the thresholded image, effectively tracing external object boundaries and extracting statistics for each 2D slice in higher-dimensional data.",
+   "nodes": {
+      "817e44be-fd22-4874-80c3-3c370ff24346": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "c7333c3b-b9db-4e1c-9468-c23fb9a7200c": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "817e44be-fd22-4874-80c3-3c370ff24346",
+         "target-node": "c7333c3b-b9db-4e1c-9468-c23fb9a7200c",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      }
+   ]
+}

@@ -1,0 +1,14 @@
+{
+   "description": "This pipeline converts ROI lists to masks, counts the number of ROIs in each list, and then applies an expression to each row of the output table. The main steps include converting the ROIs to masks using 'ij1-roi-to-rgb' node, counting the ROIs using 'ij1-roi-count' node, and then applying an expression to each row using 'table-apply-expression-per-row-v2' node.",
+   "nodes": {
+      "b39f7ca1-8aed-42a4-97be-e956a34387e8": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b8f3ed81-691b-4ced-a84c-751536751717": {
+         "name": "table-apply-expression-per-row-v2",
+         "description": "Applies an expression for each row. The column values are available as variables."
+      }
+   },
+   "edges": []
+}

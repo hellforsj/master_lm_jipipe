@@ -1,0 +1,207 @@
+{
+   "description": "This pipeline processes image data by filtering and merging regions of interest based on overlap and annotations, ultimately producing various outputs such as associated spores, phagocytosed spores, and macrophages with adherent or associated spores, providing a comprehensive analysis of cellular interactions and structures.",
+   "nodes": {
+      "f40fbbb4-be30-4901-aa7b-e39bcbbf6e9d": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c6e17c48-a256-4993-858f-f9f83bfc7947": {
+         "name": "ij1-roi-merge",
+         "description": "Merges multiple ROI lists by using data annotations. By default, ROIs with equivalent annotations are put into the same group and merged into one ROI list for each group. Use the parameters to control how groups are created. To merge all incoming ROI lists into just one list, set the matching strategy to 'Custom' and leave the list of annotation columns empty.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "d79382e6-d8aa-4ffd-a9c6-e20205913715": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "a5eaeaf4-f2b0-4960-b3f2-e385a0099198": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "9ae50c18-8c58-4127-a57e-0245a9f6f9b2": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8aa17086-6f9e-4576-8735-055b61256e08": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "df07ba4f-293f-46ae-bc7a-9092ebc524e8": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "2d684f17-b094-438d-8496-0c95cf44843a": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "17ff7609-3b16-4d76-bfa3-f8257509619e": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "7d033198-0764-4491-81c3-510d770da4f0": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9a96cf17-6c8f-424b-8eb4-6817d55b874e": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "7d033198-0764-4491-81c3-510d770da4f0",
+         "target-node": "8aa17086-6f9e-4576-8735-055b61256e08",
+         "source-slot": "ROI 1",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "17ff7609-3b16-4d76-bfa3-f8257509619e",
+         "source-slot": "Overlay",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "7d033198-0764-4491-81c3-510d770da4f0",
+         "source-slot": "Green spores",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "9a96cf17-6c8f-424b-8eb4-6817d55b874e",
+         "source-slot": "Red spores",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6e17c48-a256-4993-858f-f9f83bfc7947",
+         "target-node": "f40fbbb4-be30-4901-aa7b-e39bcbbf6e9d",
+         "source-slot": "Output",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "c6e17c48-a256-4993-858f-f9f83bfc7947",
+         "target-node": "9ae50c18-8c58-4127-a57e-0245a9f6f9b2",
+         "source-slot": "Output",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "2d684f17-b094-438d-8496-0c95cf44843a",
+         "source-slot": "Macrophages",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "f40fbbb4-be30-4901-aa7b-e39bcbbf6e9d",
+         "source-slot": "Macrophages",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "a5eaeaf4-f2b0-4960-b3f2-e385a0099198",
+         "source-slot": "Overlay",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "9ae50c18-8c58-4127-a57e-0245a9f6f9b2",
+         "source-slot": "Green spores",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "8aa17086-6f9e-4576-8735-055b61256e08",
+         "source-slot": "Macrophages",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "2d684f17-b094-438d-8496-0c95cf44843a",
+         "source-slot": "Blue spores",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "2d684f17-b094-438d-8496-0c95cf44843a",
+         "source-slot": "Overlay",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "7d033198-0764-4491-81c3-510d770da4f0",
+         "source-slot": "Overlay",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "d79382e6-d8aa-4ffd-a9c6-e20205913715",
+         "target-node": "df07ba4f-293f-46ae-bc7a-9092ebc524e8",
+         "source-slot": "4 channels",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "7d033198-0764-4491-81c3-510d770da4f0",
+         "source-slot": "Blue spores",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "17ff7609-3b16-4d76-bfa3-f8257509619e",
+         "source-slot": "Blue spores",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "8aa17086-6f9e-4576-8735-055b61256e08",
+         "target-node": "c6e17c48-a256-4993-858f-f9f83bfc7947",
+         "source-slot": "ROI 2",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8aa17086-6f9e-4576-8735-055b61256e08",
+         "target-node": "d79382e6-d8aa-4ffd-a9c6-e20205913715",
+         "source-slot": "ROI 2",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a5eaeaf4-f2b0-4960-b3f2-e385a0099198",
+         "target-node": "df07ba4f-293f-46ae-bc7a-9092ebc524e8",
+         "source-slot": "4 channels",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "9ae50c18-8c58-4127-a57e-0245a9f6f9b2",
+         "target-node": "17ff7609-3b16-4d76-bfa3-f8257509619e",
+         "source-slot": "ROI 1",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "f40fbbb4-be30-4901-aa7b-e39bcbbf6e9d",
+         "source-slot": "Overlay",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "2d684f17-b094-438d-8496-0c95cf44843a",
+         "target-node": "c6e17c48-a256-4993-858f-f9f83bfc7947",
+         "source-slot": "ROI 2",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9a96cf17-6c8f-424b-8eb4-6817d55b874e",
+         "target-node": "df07ba4f-293f-46ae-bc7a-9092ebc524e8",
+         "source-slot": "4 channels",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "9ae50c18-8c58-4127-a57e-0245a9f6f9b2",
+         "source-slot": "Overlay",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "08e23f81-a964-410c-ba5b-ba42bb01f35b",
+         "target-node": "8aa17086-6f9e-4576-8735-055b61256e08",
+         "source-slot": "Overlay",
+         "target-slot": "Reference"
+      }
+   ]
+}

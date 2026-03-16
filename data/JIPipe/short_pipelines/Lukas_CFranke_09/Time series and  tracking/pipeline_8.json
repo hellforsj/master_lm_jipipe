@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline performs image processing by first applying a projection operation to reduce dimensionality, and then adjusting the resulting image to match the dimensions of a reference image, ensuring consistency in width, height, and hyperstack dimensions.",
+   "nodes": {
+      "ab2f0fd4-8aef-4046-841a-5b4c04f159df": {
+         "name": "ij1-dimensions-zproject-2",
+         "description": "Performs a Z-Projection. Also supports other axes C-Project/T-Project."
+      },
+      "64223f59-d13b-4ecd-93e9-d54f9a94ab4d": {
+         "name": "ij1-transform-equalize-dimensions",
+         "description": "Makes the input image have the same dimensions as the reference image. You can choose to make them equal in width/height, and hyperstack dimensions (Z, C, T)<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "ab2f0fd4-8aef-4046-841a-5b4c04f159df",
+         "target-node": "64223f59-d13b-4ecd-93e9-d54f9a94ab4d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

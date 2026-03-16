@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline extracts properties from ROI lists and stores them as annotations, allowing for optional de-duplication, before setting a single annotation based on determined expressions.",
+   "nodes": {
+      "99ab777e-9eb0-49a1-8359-f4adc8ed526d": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "d4925c9c-577c-4663-b01a-91a9ca448706": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d4925c9c-577c-4663-b01a-91a9ca448706",
+         "target-node": "99ab777e-9eb0-49a1-8359-f4adc8ed526d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

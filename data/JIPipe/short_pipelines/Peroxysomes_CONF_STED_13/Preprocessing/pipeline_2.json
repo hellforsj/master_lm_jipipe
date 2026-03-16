@@ -1,0 +1,97 @@
+{
+   "description": "This pipeline annotates an image with its properties. The main steps are to input an image, extract its properties, and annotate the image with these properties.",
+   "nodes": {
+      "0660eee7-ee6a-4e33-8768-3565de92ee6f": {
+         "name": "ij1-extract-ome-image-xml",
+         "description": "Extracts the OME metadata XML from an OME image"
+      },
+      "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6": {
+         "name": "xml-annotate-with-xml-data",
+         "description": "Extracts a value from the input text data (via XPath) and annotates the data with the result. Please visit https://www.w3schools.com/xml/xpath_intro.asp to learn about XPath."
+      },
+      "8b297ee5-1bdd-489a-be9e-74ade5df3b92": {
+         "name": "import-imagej-bioformats",
+         "description": "Imports images via the Bio-Formats plugin"
+      },
+      "4d007d65-1a71-46a3-ac71-b257f4c5edbf": {
+         "name": "xml-prettify",
+         "description": "Prettifies/formats the input XML data"
+      },
+      "82ecc08c-4de3-48a9-95a9-aaa945119027": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "45c0be04-98c9-42ac-8a72-a1ab6a0ab748": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "c43cbbac-fa45-4dfd-bb3a-0fb9aacfb64b": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "f81cb0da-ad52-4c98-bcba-d596a18fd2c7": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "577ce788-8df3-495a-bbcc-31ecc29dd535": {
+         "name": "annotation-merge",
+         "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "8b297ee5-1bdd-489a-be9e-74ade5df3b92",
+         "target-node": "577ce788-8df3-495a-bbcc-31ecc29dd535",
+         "source-slot": "Output",
+         "target-slot": "Data 2"
+      },
+      {
+         "source-node": "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6",
+         "target-node": "c43cbbac-fa45-4dfd-bb3a-0fb9aacfb64b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8b297ee5-1bdd-489a-be9e-74ade5df3b92",
+         "target-node": "0660eee7-ee6a-4e33-8768-3565de92ee6f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c43cbbac-fa45-4dfd-bb3a-0fb9aacfb64b",
+         "target-node": "82ecc08c-4de3-48a9-95a9-aaa945119027",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "45c0be04-98c9-42ac-8a72-a1ab6a0ab748",
+         "target-node": "577ce788-8df3-495a-bbcc-31ecc29dd535",
+         "source-slot": "Output",
+         "target-slot": "Data 1"
+      },
+      {
+         "source-node": "8b297ee5-1bdd-489a-be9e-74ade5df3b92",
+         "target-node": "f81cb0da-ad52-4c98-bcba-d596a18fd2c7",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "82ecc08c-4de3-48a9-95a9-aaa945119027",
+         "target-node": "45c0be04-98c9-42ac-8a72-a1ab6a0ab748",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "target-node": "02b12d25-d1a4-418e-8b4c-0c8d6abe0ba6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0660eee7-ee6a-4e33-8768-3565de92ee6f",
+         "target-node": "4d007d65-1a71-46a3-ac71-b257f4c5edbf",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

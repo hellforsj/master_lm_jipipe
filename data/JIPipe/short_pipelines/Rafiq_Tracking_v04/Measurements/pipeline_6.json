@@ -1,0 +1,10 @@
+{
+   "description": "Outputs the measured tracks into a compartment by taking the output from trackmate-measure-tracks node and then storing it in the compartment-output node",
+   "nodes": {
+      "d6119ca9-8bba-4e72-88dd-38c511a11886": {
+         "name": "trackmate-measure-tracks",
+         "description": "Measures the tracks and outputs the results into a table"
+      }
+   },
+   "edges": []
+}

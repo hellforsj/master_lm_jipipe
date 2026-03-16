@@ -1,0 +1,421 @@
+{
+   "description": "This pipeline performs a complex series of image processing operations, starting with various filtering and smoothing techniques to enhance and refine the input images. The data is then subjected to multiple thresholding and morphological operations to extract specific features and remove noise. Additionally, the pipeline includes steps for converting image types, applying local variance calculations, and performing watershed transformations to further analyze and segment the images. The output of these processes is then passed through additional filtering and refinement stages to produce a final, highly processed image. Overall, the pipeline appears to be designed for advanced image analysis and feature extraction tasks, likely in a biomedical or scientific context.",
+   "nodes": {
+      "76b3a39a-ee91-48c3-9ffc-02473965d66b": {
+         "name": "ij1-contrast-illumination-correction2d",
+         "description": "Applies a Gaussian filter to the image and extracts the maximum value. Pixel values are then divided by this value.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "970bb8d4-fb16-4bbb-b632-53aca6ced488": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "d70fbbf7-5afd-49ac-8c5e-b2b132a06910": {
+         "name": "ij1-blur-gaussian3d",
+         "description": "Applies convolution with a Gaussian function in 3D space for smoothing. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "80c4f828-fe53-4fc9-8060-07746aa62c5b": {
+         "name": "ij1-blur-median2d",
+         "description": "Applies a median filter. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "73af0425-25e4-4e30-bbce-2a0bc6df9565": {
+         "name": "ij1-blur-gaussian3d",
+         "description": "Applies convolution with a Gaussian function in 3D space for smoothing. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "72aa90c7-8459-4ba9-b1b5-5241e9d30e01": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "79557da4-9a08-4cf0-b6d5-b21d1f5c544d": {
+         "name": "ij1-threshold-manual2d-16u",
+         "description": "Thresholds the image with a manual threshold. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "16c84c9a-8590-4662-b374-75387229dad6": {
+         "name": "ij1-contrast-clahe",
+         "description": "Applies 'Contrast Limited Adaptive Histogram Equalization' (CLAHE) to enhance contrast. Composite color images are converted into their luminance. If higher-dimensional data is provided, the results are generated for each 2D slice."
+      },
+      "8f0b63f1-7f1c-4ea6-8462-8c0c4b3ccea4": {
+         "name": "ij1-morph-binary-fillholes2d",
+         "description": "Applies a morphological hole filling operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "d05e50ce-6389-4cd7-a461-a92bdb7af957": {
+         "name": "ij1-blur-gaussian3d",
+         "description": "Applies convolution with a Gaussian function in 3D space for smoothing. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "01300828-2b4d-407f-86b1-ade0baa31f36": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "ee33a2d1-0319-45be-9ac9-fd46a6debce0": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "c154dce2-67c5-4fe3-a6c7-01d1d3d66e68": {
+         "name": "data-slicer",
+         "description": "Slices the incoming data table into a smaller table with a limited row set according to the selected row."
+      },
+      "fe49d967-e3ec-4e48-a02d-6fa0c1bf415d": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "5f2b5d54-998b-40fc-ace3-53352d4b13cc": {
+         "name": "ij1-convolve-convolve2d-parameter",
+         "description": "Applies a convolution with a user-defined filter kernel. The kernel is defined by a parameter.If higher-dimensional data is provided, the filter is applied to each 2D slice. For the most precise results, we recommend to convert the image to 32-bit before applying a convolution. Otherwise ImageJ will apply conversion from and to 32-bit images itself, which can have unexpected results."
+      },
+      "d81b34dd-0b45-462a-afa2-245fa8dc7cb0": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f426fe52-7a30-4f44-93da-fff470638dbd": {
+         "name": "ij1-noise-removeoutliers2d",
+         "description": "Filter that replaces pixel values by the median if they deviate too much from it. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "a582d9a4-9180-4277-960a-aa3bf3e0bb51": {
+         "name": "ij1-math-hessian2d",
+         "description": "Deprecated: Replace with node with the same name. Computes Hessian the eigenvalues of the Hessian, which can be used for example to discriminate locally between plate-like, line-like, and blob-like image structures.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "425c71f6-c8e6-4e09-9b07-dbe0d48a2e1e": {
+         "name": "ij1-math-hessian2d",
+         "description": "Deprecated: Replace with node with the same name. Computes Hessian the eigenvalues of the Hessian, which can be used for example to discriminate locally between plate-like, line-like, and blob-like image structures.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "e08cc732-72d9-449b-9f77-a797cbc5e2aa": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8a66d877-b5c0-4fb5-9469-d6f5beed01d1": {
+         "name": "ij1-noise-removeoutliers2d",
+         "description": "Filter that replaces pixel values by the median if they deviate too much from it. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "bdef6906-fa8f-47d5-ba56-92f8fd574cc5": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "22a0db0d-f1c1-4b14-8ee6-bc59d2c143f5": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "1f234adb-c7d5-451c-8851-ddfb8e15b785": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "908669ce-0713-4865-a4a5-31782b477cfa": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f02a69ab-5a4e-43ae-8450-1c28d755b715": {
+         "name": "ij1-math-local-variance3d",
+         "description": "Calculates the local variance around each pixel. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 3D slice."
+      },
+      "b7c1b866-23f6-4ebc-9df1-5513a0f912b1": {
+         "name": "ij1-transform-set-dimensions",
+         "description": "Sets the exact hyperstack dimensions of the incoming images. If you provide a lower size, planes will be removed. If you provide a larger dimension, planes are either set to black or copied from the slices with the highest index."
+      },
+      "2d021e1b-9187-4170-8c2e-833f3fc82ff4": {
+         "name": "ij1-noise-removeoutliers2d",
+         "description": "Filter that replaces pixel values by the median if they deviate too much from it. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "1307341d-8b22-462c-a02d-c383855ed98c": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "a0d25926-3afd-46d5-bfe0-a40a12a95670": {
+         "name": "ij1-morph-binary-fillholes2d",
+         "description": "Applies a morphological hole filling operation to binary images.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "954fc80e-8175-4a56-9e2e-156de453d61f": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "5e3888a6-b365-4b47-8585-a4cd99881878": {
+         "name": "ij1-convolve-convolve2d-parameter",
+         "description": "Applies a convolution with a user-defined filter kernel. The kernel is defined by a parameter.If higher-dimensional data is provided, the filter is applied to each 2D slice. For the most precise results, we recommend to convert the image to 32-bit before applying a convolution. Otherwise ImageJ will apply conversion from and to 32-bit images itself, which can have unexpected results."
+      },
+      "71e4d00c-6931-4af1-beca-e656d9f5f8ce": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "2e20c4fc-f7e7-4c8f-a012-2f72f83c8c60": {
+         "name": "ij1-threshold-local-auto2d-sauvola",
+         "description": "Applies a local auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "803747a9-475c-47de-a5db-ff85487f4577": {
+         "name": "ij1-sharpen-laplacian2d",
+         "description": "Applies a 3x3 sharpening filter. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "7963d848-8646-445f-b3ae-0075fe374f39": {
+         "name": "ij1-math-hessian2d",
+         "description": "Deprecated: Replace with node with the same name. Computes Hessian the eigenvalues of the Hessian, which can be used for example to discriminate locally between plate-like, line-like, and blob-like image structures.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "72161901-b252-4344-baba-79a35f1c0ddd": {
+         "name": "ij1-threshold-manual2d-16u",
+         "description": "Thresholds the image with a manual threshold. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "2ea0cf7e-6327-4aaf-970b-be4bd7ddaddf": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "525e791c-858a-4fee-b6d9-d83b804d1163": {
+         "name": "ij1-noise-removeoutliers2d",
+         "description": "Filter that replaces pixel values by the median if they deviate too much from it. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "d8bc92f3-ea17-4a87-b04f-4d5f8471ec8d": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "d740bafa-99c9-4545-aa53-28248f1410b1": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "607807de-ee0c-4559-9e09-bc9e5f19fc25": {
+         "name": "ij-convert-image",
+         "description": "Converts an image into another image type"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "d70fbbf7-5afd-49ac-8c5e-b2b132a06910",
+         "target-node": "2e20c4fc-f7e7-4c8f-a012-2f72f83c8c60",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "76b3a39a-ee91-48c3-9ffc-02473965d66b",
+         "target-node": "970bb8d4-fb16-4bbb-b632-53aca6ced488",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "5f2b5d54-998b-40fc-ace3-53352d4b13cc",
+         "target-node": "f02a69ab-5a4e-43ae-8450-1c28d755b715",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "80c4f828-fe53-4fc9-8060-07746aa62c5b",
+         "target-node": "607807de-ee0c-4559-9e09-bc9e5f19fc25",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "5e3888a6-b365-4b47-8585-a4cd99881878",
+         "target-node": "5f2b5d54-998b-40fc-ace3-53352d4b13cc",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "76b3a39a-ee91-48c3-9ffc-02473965d66b",
+         "target-node": "803747a9-475c-47de-a5db-ff85487f4577",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c154dce2-67c5-4fe3-a6c7-01d1d3d66e68",
+         "target-node": "5e3888a6-b365-4b47-8585-a4cd99881878",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1307341d-8b22-462c-a02d-c383855ed98c",
+         "target-node": "a582d9a4-9180-4277-960a-aa3bf3e0bb51",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a582d9a4-9180-4277-960a-aa3bf3e0bb51",
+         "target-node": "73af0425-25e4-4e30-bbce-2a0bc6df9565",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d81b34dd-0b45-462a-afa2-245fa8dc7cb0",
+         "target-node": "bdef6906-fa8f-47d5-ba56-92f8fd574cc5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d70fbbf7-5afd-49ac-8c5e-b2b132a06910",
+         "target-node": "908669ce-0713-4865-a4a5-31782b477cfa",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "76b3a39a-ee91-48c3-9ffc-02473965d66b",
+         "target-node": "1307341d-8b22-462c-a02d-c383855ed98c",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "2e20c4fc-f7e7-4c8f-a012-2f72f83c8c60",
+         "target-node": "d05e50ce-6389-4cd7-a461-a92bdb7af957",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "73af0425-25e4-4e30-bbce-2a0bc6df9565",
+         "target-node": "d81b34dd-0b45-462a-afa2-245fa8dc7cb0",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ee33a2d1-0319-45be-9ac9-fd46a6debce0",
+         "target-node": "c154dce2-67c5-4fe3-a6c7-01d1d3d66e68",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "76b3a39a-ee91-48c3-9ffc-02473965d66b",
+         "target-node": "ee33a2d1-0319-45be-9ac9-fd46a6debce0",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "bdef6906-fa8f-47d5-ba56-92f8fd574cc5",
+         "target-node": "80c4f828-fe53-4fc9-8060-07746aa62c5b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d05e50ce-6389-4cd7-a461-a92bdb7af957",
+         "target-node": "22a0db0d-f1c1-4b14-8ee6-bc59d2c143f5",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "16c84c9a-8590-4662-b374-75387229dad6",
+         "target-node": "d70fbbf7-5afd-49ac-8c5e-b2b132a06910",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "22a0db0d-f1c1-4b14-8ee6-bc59d2c143f5",
+         "target-node": "b7c1b866-23f6-4ebc-9df1-5513a0f912b1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f02a69ab-5a4e-43ae-8450-1c28d755b715",
+         "target-node": "16c84c9a-8590-4662-b374-75387229dad6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "01300828-2b4d-407f-86b1-ade0baa31f36",
+         "target-node": "d8bc92f3-ea17-4a87-b04f-4d5f8471ec8d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "525e791c-858a-4fee-b6d9-d83b804d1163",
+         "target-node": "01300828-2b4d-407f-86b1-ade0baa31f36",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f426fe52-7a30-4f44-93da-fff470638dbd",
+         "target-node": "954fc80e-8175-4a56-9e2e-156de453d61f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8a66d877-b5c0-4fb5-9469-d6f5beed01d1",
+         "target-node": "f426fe52-7a30-4f44-93da-fff470638dbd",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "72aa90c7-8459-4ba9-b1b5-5241e9d30e01",
+         "target-node": "1f234adb-c7d5-451c-8851-ddfb8e15b785",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "2d021e1b-9187-4170-8c2e-833f3fc82ff4",
+         "target-node": "525e791c-858a-4fee-b6d9-d83b804d1163",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "71e4d00c-6931-4af1-beca-e656d9f5f8ce",
+         "target-node": "8f0b63f1-7f1c-4ea6-8462-8c0c4b3ccea4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d740bafa-99c9-4545-aa53-28248f1410b1",
+         "target-node": "e08cc732-72d9-449b-9f77-a797cbc5e2aa",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "1f234adb-c7d5-451c-8851-ddfb8e15b785",
+         "target-node": "72161901-b252-4344-baba-79a35f1c0ddd",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "803747a9-475c-47de-a5db-ff85487f4577",
+         "target-node": "7963d848-8646-445f-b3ae-0075fe374f39",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "954fc80e-8175-4a56-9e2e-156de453d61f",
+         "target-node": "2ea0cf7e-6327-4aaf-970b-be4bd7ddaddf",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8f0b63f1-7f1c-4ea6-8462-8c0c4b3ccea4",
+         "target-node": "8a66d877-b5c0-4fb5-9469-d6f5beed01d1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "803747a9-475c-47de-a5db-ff85487f4577",
+         "target-node": "425c71f6-c8e6-4e09-9b07-dbe0d48a2e1e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "72161901-b252-4344-baba-79a35f1c0ddd",
+         "target-node": "71e4d00c-6931-4af1-beca-e656d9f5f8ce",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "425c71f6-c8e6-4e09-9b07-dbe0d48a2e1e",
+         "target-node": "d740bafa-99c9-4545-aa53-28248f1410b1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a0d25926-3afd-46d5-bfe0-a40a12a95670",
+         "target-node": "2d021e1b-9187-4170-8c2e-833f3fc82ff4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "e08cc732-72d9-449b-9f77-a797cbc5e2aa",
+         "target-node": "79557da4-9a08-4cf0-b6d5-b21d1f5c544d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "79557da4-9a08-4cf0-b6d5-b21d1f5c544d",
+         "target-node": "fe49d967-e3ec-4e48-a02d-6fa0c1bf415d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "7963d848-8646-445f-b3ae-0075fe374f39",
+         "target-node": "72aa90c7-8459-4ba9-b1b5-5241e9d30e01",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "fe49d967-e3ec-4e48-a02d-6fa0c1bf415d",
+         "target-node": "a0d25926-3afd-46d5-bfe0-a40a12a95670",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

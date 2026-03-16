@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline filters data based on specific conditions, allowing for selective processing of files and folders according to their characteristics.",
+   "nodes": {
+      "143fc6d8-836c-41e1-b5ea-8879fa41faf3": {
+         "name": "path-filter",
+         "description": "Filters the paths (files/folders) by their name or absolute path"
+      }
+   },
+   "edges": []
+}

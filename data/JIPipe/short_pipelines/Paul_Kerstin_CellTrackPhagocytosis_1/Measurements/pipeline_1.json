@@ -1,0 +1,519 @@
+{
+   "description": "This pipeline processes image and data by applying various operations such as tracking, confinement ratio calculation, histogram generation, and data annotation. It starts with input data, applies multiple processing steps including filtering, conversion, and analysis, and finally exports the results in different formats, providing a comprehensive overview of the processed data.",
+   "nodes": {
+      "643c20dc-8134-4f26-a9a3-10a85a2b1fcf": {
+         "name": "data-batch-slicer",
+         "description": "Merges the incoming data into merging iteration steps. Only outputs the items according to the index range. You can use this to remove duplicates. Annotations are not modified (merged annotations are not copied into the output).<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "3763e9ff-e0e7-49f1-b138-0108ac38970b": {
+         "name": "iji-export-table-as-xlsx-v2",
+         "description": "Exports a results table to XLSX. Merge multiple tables into the same batch to create a multi-sheet table.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "3fad3143-6d5e-4ce3-9297-bc19d37709bc": {
+         "name": "table-process-columns",
+         "description": "Applies an expression function to all column values. The result of the operation is stored in the same or a new column. It is now recommended to use 'Apply expression to table (columns)' instead of this node."
+      },
+      "0418a65d-83b3-418f-b9fb-0f9d5e1dd367": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "007b91b8-f237-434a-9574-b5aa33b743f2": {
+         "name": "trackmate-measure-spots",
+         "description": "Measures the spots and outputs the results into a table. If tracked spots are provided, the track ID will also be added."
+      },
+      "73ad3d40-a248-4a26-94c5-c7d72281623e": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f26525e4-a431-4768-82e9-d38c1a1ead85": {
+         "name": "table-add-columns-generate",
+         "description": "Adds a new column. By default no changes are applied if the column already exists. Can be optionally configured to replace existing columns."
+      },
+      "5404062c-3f36-4fe4-9876-f7f4c6306a2d": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "db41cbee-3f59-48ca-b195-9e6f14b622cd": {
+         "name": "trackmate-measure-edges",
+         "description": "Measures the edges and outputs the results into a table"
+      },
+      "0c772072-2eda-4c74-bd36-aa26149aab18": {
+         "name": "table-process-columns",
+         "description": "Applies an expression function to all column values. The result of the operation is stored in the same or a new column. It is now recommended to use 'Apply expression to table (columns)' instead of this node."
+      },
+      "7b582973-2ad0-4850-bef9-1af43d0a6493": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "98f21997-7810-447d-8348-180e4cbabee3": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "d6119ca9-8bba-4e72-88dd-38c511a11886": {
+         "name": "trackmate-measure-tracks",
+         "description": "Measures the tracks and outputs the results into a table"
+      },
+      "0b07b7bb-9306-4c66-b3da-0b787f2542ca": {
+         "name": "table-process-columns",
+         "description": "Applies an expression function to all column values. The result of the operation is stored in the same or a new column. It is now recommended to use 'Apply expression to table (columns)' instead of this node."
+      },
+      "2194fdb2-c7a5-452e-a0c2-505d3b684b76": {
+         "name": "table-add-columns-generate",
+         "description": "Adds a new column. By default no changes are applied if the column already exists. Can be optionally configured to replace existing columns."
+      },
+      "4280f734-061d-4863-a359-e45a083e1880": {
+         "name": "table-convert-to-histogram",
+         "description": "Deprecated. Replace with a new node with the same name. Generates a histogram of table column values. Also supports weighting the values via an additional column."
+      },
+      "ae21ff95-861d-49be-ace5-44df3be81b9a": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "bb0ad36a-6fff-4eec-803b-67f444a86375": {
+         "name": "iji-export-table-as-xlsx-v2",
+         "description": "Exports a results table to XLSX. Merge multiple tables into the same batch to create a multi-sheet table.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "5154e82f-4516-416d-872e-631ec6ecddac": {
+         "name": "iji-export-table-as-xlsx-v2",
+         "description": "Exports a results table to XLSX. Merge multiple tables into the same batch to create a multi-sheet table.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "29654c33-973e-4f85-811b-8fcde11f15eb": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "55f8f050-434e-440f-8dca-1e5c6b850da1": {
+         "name": "plot-table:plot-xy-line",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart XY line plot."
+      },
+      "05aadd56-e78b-4549-9056-76f56e5a3906": {
+         "name": "table-process-columns",
+         "description": "Applies an expression function to all column values. The result of the operation is stored in the same or a new column. It is now recommended to use 'Apply expression to table (columns)' instead of this node."
+      },
+      "8e8fc7bc-b42b-425e-bff6-8992cebee9db": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "da2befc6-204a-4dcf-9673-6bcd79e3ad96": {
+         "name": "table-process-columns",
+         "description": "Applies an expression function to all column values. The result of the operation is stored in the same or a new column. It is now recommended to use 'Apply expression to table (columns)' instead of this node."
+      },
+      "40776e77-defe-4c1d-b410-27d34928c7db": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "582962ab-afd2-4866-99b9-698496202cc9": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "53e1c070-e876-496c-a0cb-1c8d96f42e1e": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "de85d661-524d-4e41-8011-7ee5ed12b3ea": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "9d87dc79-ee85-4090-afce-f1eeb3bab685": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "a14bcfe2-1db6-4bb3-abb9-52fb31da5d5a": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "061a4d74-00f2-4d79-b406-3f5ac829a46b": {
+         "name": "plot-table:plot-xy-line",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart XY line plot."
+      },
+      "352b8a99-195d-46b6-a95e-931b6e579389": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "376d79c2-36e3-4086-989b-57ac4652ca34": {
+         "name": "iji-export-table-as-xlsx-v2",
+         "description": "Exports a results table to XLSX. Merge multiple tables into the same batch to create a multi-sheet table.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "b35d8421-c399-4392-8ad5-051c687be4ad": {
+         "name": "iji-export-table-as-xlsx-v2",
+         "description": "Exports a results table to XLSX. Merge multiple tables into the same batch to create a multi-sheet table.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "5f3baad8-1420-4e77-80c1-03e45902601f": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "189a96de-f1e2-401f-9a2d-761a1f6a3b93": {
+         "name": "table-add-columns-generate",
+         "description": "Adds a new column. By default no changes are applied if the column already exists. Can be optionally configured to replace existing columns."
+      },
+      "7c3c4831-9f7a-4bcc-8a5f-6d5f794be032": {
+         "name": "table-add-columns-generate",
+         "description": "Adds a new column. By default no changes are applied if the column already exists. Can be optionally configured to replace existing columns."
+      },
+      "083f8c65-c71f-4a74-af9a-8bb173602ab9": {
+         "name": "iji-export-table-as-xlsx-v2",
+         "description": "Exports a results table to XLSX. Merge multiple tables into the same batch to create a multi-sheet table.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "1d72b038-5f4a-4535-9142-891375a684fe": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8cd283d6-7885-49de-b1a7-a016f44f1bbb": {
+         "name": "table-add-columns-generate",
+         "description": "Adds a new column. By default no changes are applied if the column already exists. Can be optionally configured to replace existing columns."
+      },
+      "7621ab9b-7d75-458c-9d97-44c8ddb8584e": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b17f46d7-8b1d-47aa-9468-cc70362b20ef": {
+         "name": "table-add-columns-generate",
+         "description": "Adds a new column. By default no changes are applied if the column already exists. Can be optionally configured to replace existing columns."
+      },
+      "19e494f6-ffa1-4d25-b6c0-dfb5573b22d4": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3bf9e18e-23b2-46f2-9f40-4129d5cc3b8a": {
+         "name": "iji-export-table-as-xlsx-v2",
+         "description": "Exports a results table to XLSX. Merge multiple tables into the same batch to create a multi-sheet table.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "9f70fa42-d7b7-409d-93b5-64ee65c44262": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "a0b9f358-fc91-4bff-bf9b-1e96851b4491": {
+         "name": "table-convert-to-histogram",
+         "description": "Deprecated. Replace with a new node with the same name. Generates a histogram of table column values. Also supports weighting the values via an additional column."
+      },
+      "29640fcc-e5dc-4444-a5b8-044cfab0d3c6": {
+         "name": "table-process-columns",
+         "description": "Applies an expression function to all column values. The result of the operation is stored in the same or a new column. It is now recommended to use 'Apply expression to table (columns)' instead of this node."
+      },
+      "d99c63c1-698e-433e-b121-3d25a940bc29": {
+         "name": "data-batch-slicer",
+         "description": "Merges the incoming data into merging iteration steps. Only outputs the items according to the index range. You can use this to remove duplicates. Annotations are not modified (merged annotations are not copied into the output).<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "44af48de-1802-40e8-b3d5-ba3dc278af8b": {
+         "name": "iji-export-table-as-xlsx-v2",
+         "description": "Exports a results table to XLSX. Merge multiple tables into the same batch to create a multi-sheet table.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "3fb6d1ae-2c94-4b57-bb43-c728ee6fdc0e": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "de85d661-524d-4e41-8011-7ee5ed12b3ea",
+         "target-node": "5404062c-3f36-4fe4-9876-f7f4c6306a2d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f26525e4-a431-4768-82e9-d38c1a1ead85",
+         "target-node": "9f70fa42-d7b7-409d-93b5-64ee65c44262",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "05aadd56-e78b-4549-9056-76f56e5a3906",
+         "target-node": "40776e77-defe-4c1d-b410-27d34928c7db",
+         "source-slot": "Output",
+         "target-slot": "Table"
+      },
+      {
+         "source-node": "d6119ca9-8bba-4e72-88dd-38c511a11886",
+         "target-node": "29640fcc-e5dc-4444-a5b8-044cfab0d3c6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0e5d8c35-3bca-42ec-9308-586b446da73e",
+         "target-node": "007b91b8-f237-434a-9574-b5aa33b743f2",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a0b9f358-fc91-4bff-bf9b-1e96851b4491",
+         "target-node": "061a4d74-00f2-4d79-b406-3f5ac829a46b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "643c20dc-8134-4f26-a9a3-10a85a2b1fcf",
+         "target-node": "de85d661-524d-4e41-8011-7ee5ed12b3ea",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d99c63c1-698e-433e-b121-3d25a940bc29",
+         "target-node": "3fad3143-6d5e-4ce3-9297-bc19d37709bc",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d99c63c1-698e-433e-b121-3d25a940bc29",
+         "target-node": "05aadd56-e78b-4549-9056-76f56e5a3906",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "05aadd56-e78b-4549-9056-76f56e5a3906",
+         "target-node": "40776e77-defe-4c1d-b410-27d34928c7db",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "3fad3143-6d5e-4ce3-9297-bc19d37709bc",
+         "target-node": "352b8a99-195d-46b6-a95e-931b6e579389",
+         "source-slot": "Output",
+         "target-slot": "Table"
+      },
+      {
+         "source-node": "55f8f050-434e-440f-8dca-1e5c6b850da1",
+         "target-node": "1d72b038-5f4a-4535-9142-891375a684fe",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0e5d8c35-3bca-42ec-9308-586b446da73e",
+         "target-node": "d6119ca9-8bba-4e72-88dd-38c511a11886",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "582962ab-afd2-4866-99b9-698496202cc9",
+         "target-node": "a0b9f358-fc91-4bff-bf9b-1e96851b4491",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "da2befc6-204a-4dcf-9673-6bcd79e3ad96",
+         "target-node": "f26525e4-a431-4768-82e9-d38c1a1ead85",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4280f734-061d-4863-a359-e45a083e1880",
+         "target-node": "55f8f050-434e-440f-8dca-1e5c6b850da1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8cd283d6-7885-49de-b1a7-a016f44f1bbb",
+         "target-node": "582962ab-afd2-4866-99b9-698496202cc9",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0c772072-2eda-4c74-bd36-aa26149aab18",
+         "target-node": "2194fdb2-c7a5-452e-a0c2-505d3b684b76",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "582962ab-afd2-4866-99b9-698496202cc9",
+         "target-node": "3763e9ff-e0e7-49f1-b138-0108ac38970b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "643c20dc-8134-4f26-a9a3-10a85a2b1fcf",
+         "target-node": "0b07b7bb-9306-4c66-b3da-0b787f2542ca",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b17f46d7-8b1d-47aa-9468-cc70362b20ef",
+         "target-node": "8e8fc7bc-b42b-425e-bff6-8992cebee9db",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8e8fc7bc-b42b-425e-bff6-8992cebee9db",
+         "target-node": "bb0ad36a-6fff-4eec-803b-67f444a86375",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4280f734-061d-4863-a359-e45a083e1880",
+         "target-node": "3bf9e18e-23b2-46f2-9f40-4129d5cc3b8a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "643c20dc-8134-4f26-a9a3-10a85a2b1fcf",
+         "target-node": "29654c33-973e-4f85-811b-8fcde11f15eb",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "7c3c4831-9f7a-4bcc-8a5f-6d5f794be032",
+         "target-node": "9d87dc79-ee85-4090-afce-f1eeb3bab685",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0b07b7bb-9306-4c66-b3da-0b787f2542ca",
+         "target-node": "7c3c4831-9f7a-4bcc-8a5f-6d5f794be032",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "40776e77-defe-4c1d-b410-27d34928c7db",
+         "target-node": "b17f46d7-8b1d-47aa-9468-cc70362b20ef",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3fad3143-6d5e-4ce3-9297-bc19d37709bc",
+         "target-node": "352b8a99-195d-46b6-a95e-931b6e579389",
+         "source-slot": "Output",
+         "target-slot": "Data"
+      },
+      {
+         "source-node": "2194fdb2-c7a5-452e-a0c2-505d3b684b76",
+         "target-node": "98f21997-7810-447d-8348-180e4cbabee3",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9d87dc79-ee85-4090-afce-f1eeb3bab685",
+         "target-node": "44af48de-1802-40e8-b3d5-ba3dc278af8b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6119ca9-8bba-4e72-88dd-38c511a11886",
+         "target-node": "0418a65d-83b3-418f-b9fb-0f9d5e1dd367",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "98f21997-7810-447d-8348-180e4cbabee3",
+         "target-node": "b35d8421-c399-4392-8ad5-051c687be4ad",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "29654c33-973e-4f85-811b-8fcde11f15eb",
+         "target-node": "7621ab9b-7d75-458c-9d97-44c8ddb8584e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "7b582973-2ad0-4850-bef9-1af43d0a6493",
+         "target-node": "083f8c65-c71f-4a74-af9a-8bb173602ab9",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "061a4d74-00f2-4d79-b406-3f5ac829a46b",
+         "target-node": "a14bcfe2-1db6-4bb3-abb9-52fb31da5d5a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "9f70fa42-d7b7-409d-93b5-64ee65c44262",
+         "target-node": "376d79c2-36e3-4086-989b-57ac4652ca34",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3fb6d1ae-2c94-4b57-bb43-c728ee6fdc0e",
+         "target-node": "ae21ff95-861d-49be-ace5-44df3be81b9a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d99c63c1-698e-433e-b121-3d25a940bc29",
+         "target-node": "3fb6d1ae-2c94-4b57-bb43-c728ee6fdc0e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8e8fc7bc-b42b-425e-bff6-8992cebee9db",
+         "target-node": "4280f734-061d-4863-a359-e45a083e1880",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "53e1c070-e876-496c-a0cb-1c8d96f42e1e",
+         "target-node": "19e494f6-ffa1-4d25-b6c0-dfb5573b22d4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6119ca9-8bba-4e72-88dd-38c511a11886",
+         "target-node": "d99c63c1-698e-433e-b121-3d25a940bc29",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "29640fcc-e5dc-4444-a5b8-044cfab0d3c6",
+         "target-node": "189a96de-f1e2-401f-9a2d-761a1f6a3b93",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6119ca9-8bba-4e72-88dd-38c511a11886",
+         "target-node": "53e1c070-e876-496c-a0cb-1c8d96f42e1e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6119ca9-8bba-4e72-88dd-38c511a11886",
+         "target-node": "0c772072-2eda-4c74-bd36-aa26149aab18",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "643c20dc-8134-4f26-a9a3-10a85a2b1fcf",
+         "target-node": "da2befc6-204a-4dcf-9673-6bcd79e3ad96",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0e5d8c35-3bca-42ec-9308-586b446da73e",
+         "target-node": "db41cbee-3f59-48ca-b195-9e6f14b622cd",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d6119ca9-8bba-4e72-88dd-38c511a11886",
+         "target-node": "643c20dc-8134-4f26-a9a3-10a85a2b1fcf",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "352b8a99-195d-46b6-a95e-931b6e579389",
+         "target-node": "8cd283d6-7885-49de-b1a7-a016f44f1bbb",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "a0b9f358-fc91-4bff-bf9b-1e96851b4491",
+         "target-node": "5154e82f-4516-416d-872e-631ec6ecddac",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "189a96de-f1e2-401f-9a2d-761a1f6a3b93",
+         "target-node": "7b582973-2ad0-4850-bef9-1af43d0a6493",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "5f3baad8-1420-4e77-80c1-03e45902601f",
+         "target-node": "73ad3d40-a248-4a26-94c5-c7d72281623e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "d99c63c1-698e-433e-b121-3d25a940bc29",
+         "target-node": "5f3baad8-1420-4e77-80c1-03e45902601f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

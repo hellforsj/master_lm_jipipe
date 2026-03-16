@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline trains a model using preprocessed images and saves the trained model. The main steps include reading in the preprocessed images, training a model, and then saving the trained model.",
+   "nodes": {
+      "8406ea93-7531-433e-9a1c-6712a198e2db": {
+         "name": "weka-classification-2d",
+         "description": "Classifies an image with a Weka model. If higher-dimensional data is provided, the classification is applied per slice. To obtain ROI from the generated labels, utilize the 'Labels to ROI' node.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "ec7b2439-232e-48fc-979b-ca7c7450d642": {
+         "name": "weka-training-roi-2d",
+         "description": "Trains a Weka model on 2D image data. The inputs are ROI that are assigned to the classes and trained on the input image. Can only train on a single image. Please convert ROI to labels/masks and use the appropriate nodes if you want to train on multiple images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "ec7b2439-232e-48fc-979b-ca7c7450d642",
+         "target-node": "8406ea93-7531-433e-9a1c-6712a198e2db",
+         "source-slot": "Trained model",
+         "target-slot": "Model"
+      }
+   ]
+}

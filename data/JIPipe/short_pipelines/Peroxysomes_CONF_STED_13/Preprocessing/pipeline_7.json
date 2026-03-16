@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline adds data annotations containing image properties to an image and then sets specific annotations based on determined expressions, creating a processed output with enhanced metadata.",
+   "nodes": {
+      "f81cb0da-ad52-4c98-bcba-d596a18fd2c7": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "39b6dd86-517f-401f-938a-3bb00ace618a": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f81cb0da-ad52-4c98-bcba-d596a18fd2c7",
+         "target-node": "39b6dd86-517f-401f-938a-3bb00ace618a",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      }
+   ]
+}

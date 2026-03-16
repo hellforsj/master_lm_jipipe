@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline generates annotations for files based on their names or full paths by first listing all files in a given input folder, and then creating corresponding annotations for each file path.",
+   "nodes": {
+      "db54ca15-c3c9-470d-90ea-66b8c1ddd28e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "target-node": "db54ca15-c3c9-470d-90ea-66b8c1ddd28e",
+         "source-slot": "Files",
+         "target-slot": "Paths"
+      }
+   ]
+}

@@ -1,0 +1,1468 @@
+{
+   "2D ImageJ FFT Image": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ FFT Image",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "3D ImageJ FFT Image",
+         "4D ImageJ FFT Image",
+         "5D ImageJ FFT Image"
+      ]
+   },
+   "2D ImageJ Image (Color)": {
+      "to (trivial)": [
+         "2D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "2D ImageJ image (HSB)",
+         "2D ImageJ image (LAB)",
+         "2D ImageJ image (RGB)"
+      ]
+   },
+   "2D ImageJ image": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "2D ImageJ Image (Color)",
+         "2D ImageJ image (16 bit)",
+         "2D ImageJ image (8 bit)",
+         "2D ImageJ image (HSB)",
+         "2D ImageJ image (LAB)",
+         "2D ImageJ image (RGB)",
+         "2D ImageJ image (float)",
+         "2D ImageJ image (greyscale)",
+         "2D ImageJ image (mask)"
+      ]
+   },
+   "2D ImageJ image (16 bit)": {
+      "to (trivial)": [
+         "2D ImageJ image",
+         "2D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "2D ImageJ image (8 bit)": {
+      "to (trivial)": [
+         "2D ImageJ image",
+         "2D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "2D ImageJ image (mask)"
+      ]
+   },
+   "2D ImageJ image (HSB)": {
+      "to (trivial)": [
+         "2D ImageJ Image (Color)",
+         "2D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "2D ImageJ image (LAB)": {
+      "to (trivial)": [
+         "2D ImageJ Image (Color)",
+         "2D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "2D ImageJ image (RGB)": {
+      "to (trivial)": [
+         "2D ImageJ Image (Color)",
+         "2D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "2D ImageJ image (float)": {
+      "to (trivial)": [
+         "2D ImageJ image",
+         "2D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "2D ImageJ image (greyscale)": {
+      "to (trivial)": [
+         "2D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "2D ImageJ image (16 bit)",
+         "2D ImageJ image (8 bit)",
+         "2D ImageJ image (float)",
+         "2D ImageJ image (mask)"
+      ]
+   },
+   "2D ImageJ image (mask)": {
+      "to (trivial)": [
+         "2D ImageJ image",
+         "2D ImageJ image (8 bit)",
+         "2D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "3D ImageJ FFT Image": {
+      "to (trivial)": [
+         "2D ImageJ FFT Image",
+         "Data",
+         "ImageJ FFT Image",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "3D ImageJ Image (Color)": {
+      "to (trivial)": [
+         "3D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "3D ImageJ image (HSB)",
+         "3D ImageJ image (LAB)",
+         "3D ImageJ image (RGB)"
+      ]
+   },
+   "3D ImageJ image": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "3D ImageJ Image (Color)",
+         "3D ImageJ image (16 bit)",
+         "3D ImageJ image (8 bit)",
+         "3D ImageJ image (HSB)",
+         "3D ImageJ image (LAB)",
+         "3D ImageJ image (RGB)",
+         "3D ImageJ image (float)",
+         "3D ImageJ image (greyscale)",
+         "3D ImageJ image (mask)"
+      ]
+   },
+   "3D ImageJ image (16 bit)": {
+      "to (trivial)": [
+         "3D ImageJ image",
+         "3D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "3D ImageJ image (8 bit)": {
+      "to (trivial)": [
+         "3D ImageJ image",
+         "3D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "3D ImageJ image (mask)"
+      ]
+   },
+   "3D ImageJ image (HSB)": {
+      "to (trivial)": [
+         "3D ImageJ Image (Color)",
+         "3D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "3D ImageJ image (LAB)": {
+      "to (trivial)": [
+         "3D ImageJ Image (Color)",
+         "3D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "3D ImageJ image (RGB)": {
+      "to (trivial)": [
+         "3D ImageJ Image (Color)",
+         "3D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "3D ImageJ image (float)": {
+      "to (trivial)": [
+         "3D ImageJ image",
+         "3D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "3D ImageJ image (greyscale)": {
+      "to (trivial)": [
+         "3D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "3D ImageJ image (16 bit)",
+         "3D ImageJ image (8 bit)",
+         "3D ImageJ image (float)",
+         "3D ImageJ image (mask)"
+      ]
+   },
+   "3D ImageJ image (mask)": {
+      "to (trivial)": [
+         "3D ImageJ image",
+         "3D ImageJ image (8 bit)",
+         "3D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "3D scene": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "4D ImageJ FFT Image": {
+      "to (trivial)": [
+         "2D ImageJ FFT Image",
+         "Data",
+         "ImageJ FFT Image",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "4D ImageJ Image (Color)": {
+      "to (trivial)": [
+         "4D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "4D ImageJ image (HSB)",
+         "4D ImageJ image (LAB)",
+         "4D ImageJ image (RGB)"
+      ]
+   },
+   "4D ImageJ image": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "4D ImageJ Image (Color)",
+         "4D ImageJ image (16 bit)",
+         "4D ImageJ image (8 bit)",
+         "4D ImageJ image (HSB)",
+         "4D ImageJ image (LAB)",
+         "4D ImageJ image (RGB)",
+         "4D ImageJ image (float)",
+         "4D ImageJ image (greyscale)",
+         "4D ImageJ image (mask)"
+      ]
+   },
+   "4D ImageJ image (16 bit)": {
+      "to (trivial)": [
+         "4D ImageJ image",
+         "4D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "4D ImageJ image (8 bit)": {
+      "to (trivial)": [
+         "4D ImageJ image",
+         "4D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "4D ImageJ image (mask)"
+      ]
+   },
+   "4D ImageJ image (HSB)": {
+      "to (trivial)": [
+         "4D ImageJ Image (Color)",
+         "4D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "4D ImageJ image (LAB)": {
+      "to (trivial)": [
+         "4D ImageJ Image (Color)",
+         "4D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "4D ImageJ image (RGB)": {
+      "to (trivial)": [
+         "4D ImageJ Image (Color)",
+         "4D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "4D ImageJ image (float)": {
+      "to (trivial)": [
+         "4D ImageJ image",
+         "4D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "4D ImageJ image (greyscale)": {
+      "to (trivial)": [
+         "4D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "4D ImageJ image (16 bit)",
+         "4D ImageJ image (8 bit)",
+         "4D ImageJ image (float)",
+         "4D ImageJ image (mask)"
+      ]
+   },
+   "4D ImageJ image (mask)": {
+      "to (trivial)": [
+         "4D ImageJ image",
+         "4D ImageJ image (8 bit)",
+         "4D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "5D ImageJ FFT Image": {
+      "to (trivial)": [
+         "2D ImageJ FFT Image",
+         "Data",
+         "ImageJ FFT Image",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "5D ImageJ image": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "5D ImageJ image (16 bit)",
+         "5D ImageJ image (8 bit)",
+         "5D ImageJ image (Color)",
+         "5D ImageJ image (HSB)",
+         "5D ImageJ image (LAB)",
+         "5D ImageJ image (RGB)",
+         "5D ImageJ image (float)",
+         "5D ImageJ image (greyscale)",
+         "5D ImageJ image (mask)"
+      ]
+   },
+   "5D ImageJ image (16 bit)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "5D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "5D ImageJ image (8 bit)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "5D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "5D ImageJ image (mask)"
+      ]
+   },
+   "5D ImageJ image (Color)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "5D ImageJ image (HSB)",
+         "5D ImageJ image (LAB)",
+         "5D ImageJ image (RGB)"
+      ]
+   },
+   "5D ImageJ image (HSB)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "5D ImageJ image (Color)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "5D ImageJ image (LAB)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "5D ImageJ image (Color)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "5D ImageJ image (RGB)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "5D ImageJ image (Color)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "5D ImageJ image (float)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "5D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "5D ImageJ image (greyscale)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "5D ImageJ image (16 bit)",
+         "5D ImageJ image (8 bit)",
+         "5D ImageJ image (float)",
+         "5D ImageJ image (mask)"
+      ]
+   },
+   "5D ImageJ image (mask)": {
+      "to (trivial)": [
+         "5D ImageJ image",
+         "5D ImageJ image (8 bit)",
+         "5D ImageJ image (greyscale)",
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": []
+   },
+   "Annotation table": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ table"
+      ],
+      "from (trivial)": []
+   },
+   "Boolean input form": {
+      "to (trivial)": [
+         "Data",
+         "Form"
+      ],
+      "from (trivial)": []
+   },
+   "Cellpose model": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Cellpose size model": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Data": {
+      "to (trivial)": [],
+      "from (trivial)": [
+         "2D ImageJ FFT Image",
+         "2D ImageJ Image (Color)",
+         "2D ImageJ image",
+         "2D ImageJ image (16 bit)",
+         "2D ImageJ image (8 bit)",
+         "2D ImageJ image (HSB)",
+         "2D ImageJ image (LAB)",
+         "2D ImageJ image (RGB)",
+         "2D ImageJ image (float)",
+         "2D ImageJ image (greyscale)",
+         "2D ImageJ image (mask)",
+         "3D ImageJ FFT Image",
+         "3D ImageJ Image (Color)",
+         "3D ImageJ image",
+         "3D ImageJ image (16 bit)",
+         "3D ImageJ image (8 bit)",
+         "3D ImageJ image (HSB)",
+         "3D ImageJ image (LAB)",
+         "3D ImageJ image (RGB)",
+         "3D ImageJ image (float)",
+         "3D ImageJ image (greyscale)",
+         "3D ImageJ image (mask)",
+         "3D scene",
+         "4D ImageJ FFT Image",
+         "4D ImageJ Image (Color)",
+         "4D ImageJ image",
+         "4D ImageJ image (16 bit)",
+         "4D ImageJ image (8 bit)",
+         "4D ImageJ image (HSB)",
+         "4D ImageJ image (LAB)",
+         "4D ImageJ image (RGB)",
+         "4D ImageJ image (float)",
+         "4D ImageJ image (greyscale)",
+         "4D ImageJ image (mask)",
+         "5D ImageJ FFT Image",
+         "5D ImageJ image",
+         "5D ImageJ image (16 bit)",
+         "5D ImageJ image (8 bit)",
+         "5D ImageJ image (Color)",
+         "5D ImageJ image (HSB)",
+         "5D ImageJ image (LAB)",
+         "5D ImageJ image (RGB)",
+         "5D ImageJ image (float)",
+         "5D ImageJ image (greyscale)",
+         "5D ImageJ image (mask)",
+         "Annotation table",
+         "Boolean input form",
+         "Cellpose model",
+         "Cellpose model",
+         "Cellpose size model",
+         "Cellpose size model",
+         "Data table",
+         "Empty data",
+         "Empty thumbnail",
+         "Filaments 3D",
+         "File",
+         "Folder",
+         "Form",
+         "GPU image",
+         "Grid thumbnail",
+         "Group header form",
+         "IJ2 Border Out Of Bounds factory",
+         "IJ2 Centered Rectangle Shape",
+         "IJ2 Constant Byte Out Of Bounds factory",
+         "IJ2 Constant Double Out Of Bounds factory",
+         "IJ2 Constant Float Out Of Bounds factory",
+         "IJ2 Constant Integer Out Of Bounds factory",
+         "IJ2 Constant Long Out Of Bounds factory",
+         "IJ2 Constant Short Out Of Bounds factory",
+         "IJ2 Dataset",
+         "IJ2 Diamond Shape",
+         "IJ2 Diamond Tips Shape",
+         "IJ2 Empty Out Of Bounds factory",
+         "IJ2 Empty Shape",
+         "IJ2 Horizontal Line Shape",
+         "IJ2 Hypersphere Shape",
+         "IJ2 Mirror Out Of Bounds factory",
+         "IJ2 Out Of Bounds factory",
+         "IJ2 Pair Of Points Shape",
+         "IJ2 Periodic Line Shape",
+         "IJ2 Periodic Out Of Bounds factory",
+         "IJ2 Rectangle Shape",
+         "IJ2 Shape",
+         "IMP Image",
+         "Ilastik project",
+         "Image thumbnail",
+         "ImageJ 2D ROI list",
+         "ImageJ 3D ROI list",
+         "ImageJ FFT Image",
+         "ImageJ Image",
+         "ImageJ Image (16 bit)",
+         "ImageJ Image (8 bit)",
+         "ImageJ Image (Color)",
+         "ImageJ Image (HSB)",
+         "ImageJ Image (LAB)",
+         "ImageJ Image (RGB)",
+         "ImageJ Image (float)",
+         "ImageJ Image (greyscale)",
+         "ImageJ Image (mask)",
+         "ImageJ table",
+         "Integer input form",
+         "Iteration step status",
+         "JFreeChart 2D pie plot",
+         "JFreeChart 3D pie plot",
+         "JFreeChart Bar category plot",
+         "JFreeChart Box plot",
+         "JFreeChart Histogram plot",
+         "JFreeChart Line category plot",
+         "JFreeChart Plot",
+         "JFreeChart Stacked bar category plot",
+         "JFreeChart Statistical bar category plot",
+         "JFreeChart Statistical line category plot",
+         "JFreeChart XY line plot",
+         "JFreeChart XY scatter plot",
+         "JIPipe output",
+         "Json",
+         "LUT",
+         "Number input form",
+         "Numeric table column",
+         "OME ImageJ Image",
+         "OME XML",
+         "OMERO Annotation",
+         "OMERO Dataset",
+         "OMERO Group",
+         "OMERO Image",
+         "OMERO Plate",
+         "OMERO Project",
+         "OMERO Screen",
+         "OMERO Well",
+         "OpenCV Image",
+         "Output data",
+         "Parameters",
+         "Path",
+         "Path input form",
+         "Row index table column",
+         "Selection input form",
+         "String",
+         "String table column",
+         "Table column",
+         "Text input form",
+         "Text thumbnail",
+         "TrackMate model",
+         "TrackMate spot detector",
+         "TrackMate spot tracker",
+         "TrackMate spots",
+         "TrackMate tracks",
+         "URI",
+         "Weak data reference",
+         "Weka model",
+         "XML",
+         "Zero table column"
+      ]
+   },
+   "Data table": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Empty data": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Empty thumbnail": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Filaments 3D": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "File": {
+      "to (trivial)": [
+         "Data",
+         "Path"
+      ],
+      "from (trivial)": []
+   },
+   "Folder": {
+      "to (trivial)": [
+         "Data",
+         "Path"
+      ],
+      "from (trivial)": [
+         "JIPipe output"
+      ]
+   },
+   "Form": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "Boolean input form",
+         "Group header form",
+         "Integer input form",
+         "Number input form",
+         "Path input form",
+         "Selection input form",
+         "Text input form"
+      ]
+   },
+   "GPU image": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Grid thumbnail": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Group header form": {
+      "to (trivial)": [
+         "Data",
+         "Form"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Border Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Centered Rectangle Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Constant Byte Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Constant Double Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Constant Float Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Constant Integer Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Constant Long Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Constant Short Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Dataset": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Diamond Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Diamond Tips Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Empty Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Empty Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Horizontal Line Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Hypersphere Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Mirror Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "IJ2 Border Out Of Bounds factory",
+         "IJ2 Constant Byte Out Of Bounds factory",
+         "IJ2 Constant Double Out Of Bounds factory",
+         "IJ2 Constant Float Out Of Bounds factory",
+         "IJ2 Constant Integer Out Of Bounds factory",
+         "IJ2 Constant Long Out Of Bounds factory",
+         "IJ2 Constant Short Out Of Bounds factory",
+         "IJ2 Empty Out Of Bounds factory",
+         "IJ2 Mirror Out Of Bounds factory",
+         "IJ2 Periodic Out Of Bounds factory"
+      ]
+   },
+   "IJ2 Pair Of Points Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Periodic Line Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Periodic Out Of Bounds factory": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Out Of Bounds factory"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Rectangle Shape": {
+      "to (trivial)": [
+         "Data",
+         "IJ2 Shape"
+      ],
+      "from (trivial)": []
+   },
+   "IJ2 Shape": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "IJ2 Centered Rectangle Shape",
+         "IJ2 Diamond Shape",
+         "IJ2 Diamond Tips Shape",
+         "IJ2 Empty Shape",
+         "IJ2 Horizontal Line Shape",
+         "IJ2 Hypersphere Shape",
+         "IJ2 Pair Of Points Shape",
+         "IJ2 Periodic Line Shape",
+         "IJ2 Rectangle Shape"
+      ]
+   },
+   "IMP Image": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Ilastik project": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Image thumbnail": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ 2D ROI list": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ 3D ROI list": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ FFT Image": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "2D ImageJ FFT Image",
+         "3D ImageJ FFT Image",
+         "4D ImageJ FFT Image",
+         "5D ImageJ FFT Image"
+      ]
+   },
+   "ImageJ Image": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "2D ImageJ FFT Image",
+         "2D ImageJ Image (Color)",
+         "2D ImageJ image",
+         "2D ImageJ image (16 bit)",
+         "2D ImageJ image (8 bit)",
+         "2D ImageJ image (HSB)",
+         "2D ImageJ image (LAB)",
+         "2D ImageJ image (RGB)",
+         "2D ImageJ image (float)",
+         "2D ImageJ image (greyscale)",
+         "2D ImageJ image (mask)",
+         "3D ImageJ FFT Image",
+         "3D ImageJ Image (Color)",
+         "3D ImageJ image",
+         "3D ImageJ image (16 bit)",
+         "3D ImageJ image (8 bit)",
+         "3D ImageJ image (HSB)",
+         "3D ImageJ image (LAB)",
+         "3D ImageJ image (RGB)",
+         "3D ImageJ image (float)",
+         "3D ImageJ image (greyscale)",
+         "3D ImageJ image (mask)",
+         "4D ImageJ FFT Image",
+         "4D ImageJ Image (Color)",
+         "4D ImageJ image",
+         "4D ImageJ image (16 bit)",
+         "4D ImageJ image (8 bit)",
+         "4D ImageJ image (HSB)",
+         "4D ImageJ image (LAB)",
+         "4D ImageJ image (RGB)",
+         "4D ImageJ image (float)",
+         "4D ImageJ image (greyscale)",
+         "4D ImageJ image (mask)",
+         "5D ImageJ FFT Image",
+         "5D ImageJ image",
+         "5D ImageJ image (16 bit)",
+         "5D ImageJ image (8 bit)",
+         "5D ImageJ image (Color)",
+         "5D ImageJ image (HSB)",
+         "5D ImageJ image (LAB)",
+         "5D ImageJ image (RGB)",
+         "5D ImageJ image (float)",
+         "5D ImageJ image (greyscale)",
+         "5D ImageJ image (mask)",
+         "ImageJ FFT Image",
+         "ImageJ Image (16 bit)",
+         "ImageJ Image (8 bit)",
+         "ImageJ Image (Color)",
+         "ImageJ Image (HSB)",
+         "ImageJ Image (LAB)",
+         "ImageJ Image (RGB)",
+         "ImageJ Image (float)",
+         "ImageJ Image (greyscale)",
+         "ImageJ Image (mask)"
+      ]
+   },
+   "ImageJ Image (16 bit)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image",
+         "ImageJ Image (greyscale)"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ Image (8 bit)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image",
+         "ImageJ Image (greyscale)"
+      ],
+      "from (trivial)": [
+         "ImageJ Image (mask)"
+      ]
+   },
+   "ImageJ Image (Color)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "ImageJ Image (HSB)",
+         "ImageJ Image (LAB)",
+         "ImageJ Image (RGB)"
+      ]
+   },
+   "ImageJ Image (HSB)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image",
+         "ImageJ Image (Color)"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ Image (LAB)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image",
+         "ImageJ Image (Color)"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ Image (RGB)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image",
+         "ImageJ Image (Color)"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ Image (float)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image",
+         "ImageJ Image (greyscale)"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ Image (greyscale)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image"
+      ],
+      "from (trivial)": [
+         "ImageJ Image (16 bit)",
+         "ImageJ Image (8 bit)",
+         "ImageJ Image (float)",
+         "ImageJ Image (mask)"
+      ]
+   },
+   "ImageJ Image (mask)": {
+      "to (trivial)": [
+         "Data",
+         "ImageJ Image",
+         "ImageJ Image (8 bit)",
+         "ImageJ Image (greyscale)"
+      ],
+      "from (trivial)": []
+   },
+   "ImageJ table": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "Annotation table"
+      ]
+   },
+   "Integer input form": {
+      "to (trivial)": [
+         "Data",
+         "Form"
+      ],
+      "from (trivial)": []
+   },
+   "Iteration step status": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart 2D pie plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart 3D pie plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart Bar category plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart Box plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart Histogram plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart Line category plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart Plot": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "JFreeChart 2D pie plot",
+         "JFreeChart 3D pie plot",
+         "JFreeChart Bar category plot",
+         "JFreeChart Box plot",
+         "JFreeChart Histogram plot",
+         "JFreeChart Line category plot",
+         "JFreeChart Stacked bar category plot",
+         "JFreeChart Statistical bar category plot",
+         "JFreeChart Statistical line category plot",
+         "JFreeChart XY line plot",
+         "JFreeChart XY scatter plot"
+      ]
+   },
+   "JFreeChart Stacked bar category plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart Statistical bar category plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart Statistical line category plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart XY line plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JFreeChart XY scatter plot": {
+      "to (trivial)": [
+         "Data",
+         "JFreeChart Plot"
+      ],
+      "from (trivial)": []
+   },
+   "JIPipe output": {
+      "to (trivial)": [
+         "Data",
+         "Folder",
+         "Path"
+      ],
+      "from (trivial)": []
+   },
+   "Json": {
+      "to (trivial)": [
+         "Data",
+         "String"
+      ],
+      "from (trivial)": []
+   },
+   "LUT": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Number input form": {
+      "to (trivial)": [
+         "Data",
+         "Form"
+      ],
+      "from (trivial)": []
+   },
+   "Numeric table column": {
+      "to (trivial)": [
+         "Data",
+         "Table column"
+      ],
+      "from (trivial)": []
+   },
+   "OME ImageJ Image": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OME XML": {
+      "to (trivial)": [
+         "Data",
+         "String",
+         "XML"
+      ],
+      "from (trivial)": []
+   },
+   "OMERO Annotation": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OMERO Dataset": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OMERO Group": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OMERO Image": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OMERO Plate": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OMERO Project": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OMERO Screen": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OMERO Well": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "OpenCV Image": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Output data": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Parameters": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Path": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "File",
+         "Folder",
+         "JIPipe output"
+      ]
+   },
+   "Path input form": {
+      "to (trivial)": [
+         "Data",
+         "Form"
+      ],
+      "from (trivial)": []
+   },
+   "Row index table column": {
+      "to (trivial)": [
+         "Data",
+         "Table column"
+      ],
+      "from (trivial)": []
+   },
+   "Selection input form": {
+      "to (trivial)": [
+         "Data",
+         "Form"
+      ],
+      "from (trivial)": []
+   },
+   "String": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "Json",
+         "OME XML",
+         "URI",
+         "XML"
+      ]
+   },
+   "String table column": {
+      "to (trivial)": [
+         "Data",
+         "Table column"
+      ],
+      "from (trivial)": []
+   },
+   "Table column": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "Numeric table column",
+         "Row index table column",
+         "String table column",
+         "Zero table column"
+      ]
+   },
+   "Text input form": {
+      "to (trivial)": [
+         "Data",
+         "Form"
+      ],
+      "from (trivial)": []
+   },
+   "Text thumbnail": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "TrackMate model": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": [
+         "TrackMate spots",
+         "TrackMate tracks"
+      ]
+   },
+   "TrackMate spot detector": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "TrackMate spot tracker": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "TrackMate spots": {
+      "to (trivial)": [
+         "Data",
+         "TrackMate model"
+      ],
+      "from (trivial)": [
+         "TrackMate tracks"
+      ]
+   },
+   "TrackMate tracks": {
+      "to (trivial)": [
+         "Data",
+         "TrackMate model",
+         "TrackMate spots"
+      ],
+      "from (trivial)": []
+   },
+   "URI": {
+      "to (trivial)": [
+         "Data",
+         "String"
+      ],
+      "from (trivial)": []
+   },
+   "Weak data reference": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "Weka model": {
+      "to (trivial)": [
+         "Data"
+      ],
+      "from (trivial)": []
+   },
+   "XML": {
+      "to (trivial)": [
+         "Data",
+         "String"
+      ],
+      "from (trivial)": [
+         "OME XML"
+      ]
+   },
+   "Zero table column": {
+      "to (trivial)": [
+         "Data",
+         "Table column"
+      ],
+      "from (trivial)": []
+   }
+}

@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline merges multiple ROI lists by using data annotations. It starts with the node 'f40fbbb4-be30-4901-aa7b-e39bcbbf6e9d' which provides one set of ROIs and ends at the node 'c41368ef-146c-41a6-a41b-00e6a2e45b0a' where the merged ROI list is obtained.",
+   "nodes": {
+      "f40fbbb4-be30-4901-aa7b-e39bcbbf6e9d": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

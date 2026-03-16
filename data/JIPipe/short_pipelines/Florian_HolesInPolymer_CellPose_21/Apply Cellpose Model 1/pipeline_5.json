@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline takes an image, applies contrast enhancement, and then outputs the enhanced image. The main steps include enhancing the contrast of the image and outputting the result.",
+   "nodes": {
+      "05fe8c97-7077-401a-8010-16155e9ec23a": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "4672dfd4-f997-441d-8b7e-13bff8dc7598": {
+         "name": "ij1-math-imagecalculator2d",
+         "description": "Applies a mathematical operation between two images. If higher-dimensional data is provided, the filter is applied to each 2D slice. Old implementation that directly uses the one provided by ImageJ. We recommend to use 'Fast image arithmetics' instead.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "05fe8c97-7077-401a-8010-16155e9ec23a",
+         "target-node": "4672dfd4-f997-441d-8b7e-13bff8dc7598",
+         "source-slot": "Output",
+         "target-slot": "Input 2"
+      }
+   ]
+}

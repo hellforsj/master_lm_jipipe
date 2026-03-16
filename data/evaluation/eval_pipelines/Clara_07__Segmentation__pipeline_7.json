@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline saves images to a folder. The main steps include importing the images and saving them to a folder.",
+   "nodes": {
+      "bd229ac9-c112-4b66-b8c5-2da23c0ebd90": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      },
+      "b363a0cf-90b5-425c-b4e1-d997e3cef6cc": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b363a0cf-90b5-425c-b4e1-d997e3cef6cc",
+         "target-node": "bd229ac9-c112-4b66-b8c5-2da23c0ebd90",
+         "source-slot": "Output",
+         "target-slot": "Mask"
+      }
+   ]
+}

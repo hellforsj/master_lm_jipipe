@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline loads images from files, crops them, and then converts ROI lists to masks. The main steps include loading images, applying cropping operations, and converting ROIs to masks for further analysis.",
+   "nodes": {
+      "2e00b3e1-fe27-41b2-9bb8-315d04ac169f": {
+         "name": "import-imagej-imgplus-from-file",
+         "description": "Loads an image via the native ImageJ functions."
+      },
+      "ae487dbb-ce46-4923-a7bc-d3a3bae90061": {
+         "name": "ij1-transform-crop2d",
+         "description": "Crops a 2D image. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "0edc601c-5d2d-4dcc-b87e-34adc3f13fb0": {
+         "name": "ij1-roi-to-mask",
+         "description": "Converts ROI lists to masks. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "2e00b3e1-fe27-41b2-9bb8-315d04ac169f",
+         "target-node": "ae487dbb-ce46-4923-a7bc-d3a3bae90061",
+         "source-slot": "Image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ae487dbb-ce46-4923-a7bc-d3a3bae90061",
+         "target-node": "0edc601c-5d2d-4dcc-b87e-34adc3f13fb0",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      }
+   ]
+}

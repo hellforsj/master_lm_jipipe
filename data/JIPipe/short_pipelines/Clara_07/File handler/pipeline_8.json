@@ -1,0 +1,113 @@
+{
+   "description": "This pipeline applies advanced image filtering techniques. The main steps involve applying complex filters to enhance the quality of the images.",
+   "nodes": {
+      "df211e35-e21b-4838-96c9-300cbe383df1": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "171152f8-bd5c-4928-a708-e30be2f69731": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "5bdfe07d-7c7e-4fc2-ac8d-999b8370867e": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "08ed20fd-66e4-4b72-87be-caf1bcd7af29": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "41743a52-4f84-40ea-a178-f39a2088d970": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "89e25c32-1711-4e7c-aaa9-a22806cbf785": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "e04fb4cf-ba7f-4bb2-9787-a78fd4ccdafe": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "0d54836c-e43d-495e-b36f-b6f3490291ac": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "4f92dc7e-1087-43c3-969b-7b55bf25ac03": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "3dce7e6d-1a7b-4dd7-94a9-a668a42402bc": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3dce7e6d-1a7b-4dd7-94a9-a668a42402bc",
+         "target-node": "41743a52-4f84-40ea-a178-f39a2088d970",
+         "source-slot": "Z stack",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "171152f8-bd5c-4928-a708-e30be2f69731",
+         "target-node": "08ed20fd-66e4-4b72-87be-caf1bcd7af29",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4f92dc7e-1087-43c3-969b-7b55bf25ac03",
+         "target-node": "3dce7e6d-1a7b-4dd7-94a9-a668a42402bc",
+         "source-slot": "Blue",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4f92dc7e-1087-43c3-969b-7b55bf25ac03",
+         "target-node": "df211e35-e21b-4838-96c9-300cbe383df1",
+         "source-slot": "Green",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "5bdfe07d-7c7e-4fc2-ac8d-999b8370867e",
+         "target-node": "171152f8-bd5c-4928-a708-e30be2f69731",
+         "source-slot": "Destination",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "df211e35-e21b-4838-96c9-300cbe383df1",
+         "target-node": "171152f8-bd5c-4928-a708-e30be2f69731",
+         "source-slot": "2D",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3dce7e6d-1a7b-4dd7-94a9-a668a42402bc",
+         "target-node": "e04fb4cf-ba7f-4bb2-9787-a78fd4ccdafe",
+         "source-slot": "2D",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "41743a52-4f84-40ea-a178-f39a2088d970",
+         "target-node": "e04fb4cf-ba7f-4bb2-9787-a78fd4ccdafe",
+         "source-slot": "Destination",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "e04fb4cf-ba7f-4bb2-9787-a78fd4ccdafe",
+         "target-node": "89e25c32-1711-4e7c-aaa9-a22806cbf785",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "df211e35-e21b-4838-96c9-300cbe383df1",
+         "target-node": "5bdfe07d-7c7e-4fc2-ac8d-999b8370867e",
+         "source-slot": "Z stack",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "4f92dc7e-1087-43c3-969b-7b55bf25ac03",
+         "target-node": "0d54836c-e43d-495e-b36f-b6f3490291ac",
+         "source-slot": "TL",
+         "target-slot": "Input"
+      }
+   ]
+}

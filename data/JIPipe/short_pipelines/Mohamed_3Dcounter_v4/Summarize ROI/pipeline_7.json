@@ -1,0 +1,61 @@
+{
+   "description": "This pipeline appears to perform a series of data processing operations, specifically removing columns from tables and modifying them through custom scripts, ultimately resulting in transformed tables after passing through multiple filtering and modification steps.",
+   "nodes": {
+      "cf616205-fe5e-4b9a-b355-f713677dd15f": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "0795d64a-ecda-42e9-ac52-e7c55dade186": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "f578fe7d-6167-44f0-b11a-1050c4ffc962": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "103d159f-424f-4d9b-a45b-6b5fec8c6991": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "6dc397e7-5d3f-4e20-906b-bfaa63dd377e": {
+         "name": "modify-tables",
+         "description": "Executes a Python-script for each table. Each table is passed as dictionary 'table' with the column name as key and values being an array of strings or doubles. The number of input rows can be accessed via the 'nrow' variable."
+      },
+      "25ad4dcd-72cf-4862-a784-b77e3423e36f": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "cf616205-fe5e-4b9a-b355-f713677dd15f",
+         "target-node": "f578fe7d-6167-44f0-b11a-1050c4ffc962",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0795d64a-ecda-42e9-ac52-e7c55dade186",
+         "target-node": "25ad4dcd-72cf-4862-a784-b77e3423e36f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "f578fe7d-6167-44f0-b11a-1050c4ffc962",
+         "target-node": "0795d64a-ecda-42e9-ac52-e7c55dade186",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "103d159f-424f-4d9b-a45b-6b5fec8c6991",
+         "target-node": "cf616205-fe5e-4b9a-b355-f713677dd15f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "25ad4dcd-72cf-4862-a784-b77e3423e36f",
+         "target-node": "6dc397e7-5d3f-4e20-906b-bfaa63dd377e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

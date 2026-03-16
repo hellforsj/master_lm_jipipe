@@ -1,0 +1,27 @@
+{
+   "description": "This pipeline processes image data by first generating 3D ROI statistics and then annotating the data with values from a table based on these measurements, allowing for further analysis and output of compartment results, including simulated data and statistical information.",
+   "nodes": {
+      "dc48f818-a1ff-4ef5-bd6e-3c903de63840": {
+         "name": "annotate-data-with-table-values",
+         "description": "Annotates the incoming data with values from the input table<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "f38d555e-c87e-42c5-9ca1-1ad2d51f6938": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "dc48f818-a1ff-4ef5-bd6e-3c903de63840",
+         "source-slot": "Measurements",
+         "target-slot": "Table"
+      },
+      {
+         "source-node": "f38d555e-c87e-42c5-9ca1-1ad2d51f6938",
+         "target-node": "dc48f818-a1ff-4ef5-bd6e-3c903de63840",
+         "source-slot": "Measurements",
+         "target-slot": "Data"
+      }
+   ]
+}

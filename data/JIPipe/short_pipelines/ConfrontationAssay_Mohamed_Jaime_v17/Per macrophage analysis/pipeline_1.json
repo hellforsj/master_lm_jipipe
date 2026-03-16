@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline annotates incoming data with information about its source and then exports the annotated data into a non-JIPipe image format, grouping the data based on the annotations before export.",
+   "nodes": {
+      "72f31be8-e4ae-4922-98a1-16ec12c56f55": {
+         "name": "annotate-with-source-slot",
+         "description": "Annotates the data with the name or custom label of the source slot. Please note that this node cannot resolve multiple input slots, as, for optimization purposes, the information where data is coming from is deleted."
+      },
+      "a86659bb-90bc-4c3b-abf8-6c2817159084": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "72f31be8-e4ae-4922-98a1-16ec12c56f55",
+         "target-node": "a86659bb-90bc-4c3b-abf8-6c2817159084",
+         "source-slot": "Annotated data",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,39 @@
+{
+   "description": "This pipeline processes image data by converting region of interest lists to masks, utilizing reference images for output sizing, and grouping incoming data based on annotations, ultimately producing visual representations of specific features within the images.",
+   "nodes": {
+      "469fc63a-2aa0-4873-9a9c-5a49de3ce74e": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "a89c8d06-e94c-4c37-944e-926075045712": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "a89c8d06-e94c-4c37-944e-926075045712",
+         "source-slot": "Substack",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "a89c8d06-e94c-4c37-944e-926075045712",
+         "source-slot": "Phagocytosed bacteria",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "469fc63a-2aa0-4873-9a9c-5a49de3ce74e",
+         "source-slot": "Macrophages with phagocytosed bacteria",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "1089ba38-1286-4323-ae8d-4ffa43a36336",
+         "target-node": "469fc63a-2aa0-4873-9a9c-5a49de3ce74e",
+         "source-slot": "Substack",
+         "target-slot": "Image"
+      }
+   ]
+}

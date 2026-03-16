@@ -1,0 +1,21 @@
+{
+   "description": "Applies an expression for each row of a table. This pipeline starts with '170ff0ed-2c3a-45c1-bcd1-441bb1d6dae5' node, which represents the input data, then it is processed by '6feb136d-815f-4d33-a53c-cff76abff0db' node to apply the expression, finally ending at 'fe9083bc-7514-46fc-886a-2340f25fadca' node.",
+   "nodes": {
+      "6feb136d-815f-4d33-a53c-cff76abff0db": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "170ff0ed-2c3a-45c1-bcd1-441bb1d6dae5": {
+         "name": "table-apply-expression-per-row-v2",
+         "description": "Applies an expression for each row. The column values are available as variables."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "170ff0ed-2c3a-45c1-bcd1-441bb1d6dae5",
+         "target-node": "6feb136d-815f-4d33-a53c-cff76abff0db",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

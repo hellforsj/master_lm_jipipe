@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes an image by first setting all its pixels to a specified color, and then converting a label image to a mask, allowing for further analysis or processing of the resulting masked image.",
+   "nodes": {
+      "3bd31644-b8de-491c-86d8-f5a5df306dbe": {
+         "name": "ij1-labels-to-mask",
+         "description": "Converts a label image to a mask"
+      },
+      "b43f33cb-c93a-416e-826e-5a7d68952dc0": {
+         "name": "ij1-color-set-to-color",
+         "description": "Sets all pixels of the input image to the specified color. If the image is grayscale, the provided color is converted to its equivalent grayscale value.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b43f33cb-c93a-416e-826e-5a7d68952dc0",
+         "target-node": "3bd31644-b8de-491c-86d8-f5a5df306dbe",
+         "source-slot": "Output",
+         "target-slot": "Labels"
+      }
+   ]
+}

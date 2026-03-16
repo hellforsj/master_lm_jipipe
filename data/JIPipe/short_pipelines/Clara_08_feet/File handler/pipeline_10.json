@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline reads in a folder, applies image enhancement and thresholding, and saves the results. The main steps include reading in the folder, applying enhancement and thresholding to each file, and saving the resulting images.",
+   "nodes": {
+      "58ab36da-0797-49d1-82ce-948eb0f49ef2": {
+         "name": "ij1-set-lut-from-color-map",
+         "description": "Sets the LUT of the image from a predefined color map. This does not change the pixel data."
+      },
+      "0d7c9952-d60f-42c1-9d2e-1aba861b0620": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "0d7c9952-d60f-42c1-9d2e-1aba861b0620",
+         "target-node": "58ab36da-0797-49d1-82ce-948eb0f49ef2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

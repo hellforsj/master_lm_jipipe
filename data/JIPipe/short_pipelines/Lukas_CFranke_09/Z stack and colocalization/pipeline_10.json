@@ -1,0 +1,5 @@
+{
+   "description": "This pipeline is responsible for visualizing image data. It begins with a node that takes an input image, and then it proceeds to display the image.",
+   "nodes": {},
+   "edges": []
+}

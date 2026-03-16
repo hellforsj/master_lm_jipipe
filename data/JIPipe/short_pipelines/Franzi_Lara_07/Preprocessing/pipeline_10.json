@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline annotates a path with its name and outputs the annotated path. The main steps include annotating the path and outputting the result.",
+   "nodes": {
+      "eb872e43-2214-4902-b9a2-e540a3f3703e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "eb872e43-2214-4902-b9a2-e540a3f3703e",
+         "target-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

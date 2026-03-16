@@ -1,0 +1,27 @@
+{
+   "description": "This pipeline reads in a folder with files and proceeds to filter each of the files. The main steps include reading in the folder, filtering the images, and preparing them for further analysis.",
+   "nodes": {
+      "75f1c151-0a06-44f4-bc71-c170f653754b": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "ba08b9f2-319e-4e44-b66e-dd3c534415d2": {
+         "name": "annotate-filter-by-annotation",
+         "description": "Filters data based on the annotation value."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "ba08b9f2-319e-4e44-b66e-dd3c534415d2",
+         "target-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ba08b9f2-319e-4e44-b66e-dd3c534415d2",
+         "target-node": "75f1c151-0a06-44f4-bc71-c170f653754b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,51 @@
+{
+   "description": "This pipeline processes biomedical microscopic images by importing them, applying various corrections and enhancements, such as contrast correction and illumination correction, and then splitting the image into specific dimensions for further analysis, ultimately producing an annotated output with enhanced features.",
+   "nodes": {
+      "c6fe2bad-a88e-4872-862d-c0cae03c72fc": {
+         "name": "ij1-dimensions-hyper-stacksplitter",
+         "description": "Splits a hyperstack by a selected dimension into a single or multiple output slots. Multiple output slots can be utilized to split specific indices."
+      },
+      "47c49164-bed6-4aef-87b5-36f5473a4b21": {
+         "name": "image-properties-to-annotation",
+         "description": "Adds data annotations that contain the image properties."
+      },
+      "01038088-d332-4d67-9c18-483e81cc4165": {
+         "name": "import-imagej-bioformats",
+         "description": "Imports images via the Bio-Formats plugin"
+      },
+      "af87d5d2-d827-405a-80ea-ea16b61be5f7": {
+         "name": "clij:plugin:net.haesleinhuepf.clij2.plugins.ExtendedDepthOfFocusSobelProjection",
+         "description": "Extended depth of focus projection maximizing intensity in the local sobel image.<br/><br/>The sigma parameter allows controlling an Gaussian blur which should smooth the altitude map.<br/><br/>Parameters: Image source, ByRef Image destination, Number sigma<br/>Available for: 3D -> 2D<br/><br/><br/><br/><strong>Please be aware that this node was generated automatically by JIPipe from existing interfaces provided by CLIJ. Please contact the JIPipe developers if you find any issues.</strong>"
+      },
+      "5aafdcbd-80d4-4ddf-8db7-82c7368f3911": {
+         "name": "ij1-contrast-illumination-correction2d",
+         "description": "Applies a Gaussian filter to the image and extracts the maximum value. Pixel values are then divided by this value.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "af87d5d2-d827-405a-80ea-ea16b61be5f7",
+         "target-node": "5aafdcbd-80d4-4ddf-8db7-82c7368f3911",
+         "source-slot": "Destination",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "47c49164-bed6-4aef-87b5-36f5473a4b21",
+         "target-node": "c6fe2bad-a88e-4872-862d-c0cae03c72fc",
+         "source-slot": "Annotated image",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c6fe2bad-a88e-4872-862d-c0cae03c72fc",
+         "target-node": "af87d5d2-d827-405a-80ea-ea16b61be5f7",
+         "source-slot": "Output",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "01038088-d332-4d67-9c18-483e81cc4165",
+         "target-node": "47c49164-bed6-4aef-87b5-36f5473a4b21",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      }
+   ]
+}

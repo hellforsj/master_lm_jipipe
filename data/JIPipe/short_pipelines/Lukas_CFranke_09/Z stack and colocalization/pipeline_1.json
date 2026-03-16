@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline performs image processing and analysis, starting with the application of auto-thresholding algorithms to input data, followed by connected component labeling and various masking operations to extract specific features from the images. The pipeline then proceeds to apply multiple processing steps, including overlay creation, region of interest (ROI) extraction, and further filtering, ultimately generating a range of output images that highlight different aspects of the original data, such as segmented regions, labeled components, and overlays of distinct image channels.",
+   "nodes": {
+      "5bd2d21c-05a2-4476-a803-89e0f740b4f1": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "8fb090a2-6cd2-4efd-9dd0-526d590677ff": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "5bd2d21c-05a2-4476-a803-89e0f740b4f1",
+         "target-node": "8fb090a2-6cd2-4efd-9dd0-526d590677ff",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

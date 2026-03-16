@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline processes folders by listing their subfolders, creating annotations for each path based on its name or full path, and then filtering these paths according to specific criteria, resulting in a filtered set of annotated paths.",
+   "nodes": {
+      "6af06756-70fd-4ed8-a03f-26aacc9a03f1": {
+         "name": "path-filter",
+         "description": "Filters the paths (files/folders) by their name or absolute path"
+      },
+      "b93acb2a-015e-4739-8255-931dcca12a60": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      },
+      "437b6dd8-3185-4886-8d54-1d58d3824f7e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b93acb2a-015e-4739-8255-931dcca12a60",
+         "target-node": "437b6dd8-3185-4886-8d54-1d58d3824f7e",
+         "source-slot": "Subfolders",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "437b6dd8-3185-4886-8d54-1d58d3824f7e",
+         "target-node": "6af06756-70fd-4ed8-a03f-26aacc9a03f1",
+         "source-slot": "Annotated paths",
+         "target-slot": "Input"
+      }
+   ]
+}

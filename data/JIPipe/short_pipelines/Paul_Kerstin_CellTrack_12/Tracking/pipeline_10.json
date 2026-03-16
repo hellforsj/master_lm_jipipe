@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline tracks spots using TrackMate and filters tracks. The main steps include tracking the spots with the trackmate-tracking node, then filtering the tracks with the trackmate-filter-tracks node.",
+   "nodes": {
+      "7e3f1b95-c942-4769-96f1-65b8584f2d55": {
+         "name": "trackmate-filter-tracks",
+         "description": "Filter TrackMate spots via expressions"
+      },
+      "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1": {
+         "name": "trackmate-tracking",
+         "description": "Track spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "20f5d3ad-76fb-4b8b-8c5c-ebe8564c6ed1",
+         "target-node": "7e3f1b95-c942-4769-96f1-65b8584f2d55",
+         "source-slot": "Tracks",
+         "target-slot": "Input"
+      }
+   ]
+}

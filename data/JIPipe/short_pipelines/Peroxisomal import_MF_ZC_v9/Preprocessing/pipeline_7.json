@@ -1,0 +1,61 @@
+{
+   "description": "This pipeline processes folders and files by first listing their contents, then filtering and annotating them based on their names or paths, and finally organizing them into a structured output, allowing for efficient analysis and processing of the data.",
+   "nodes": {
+      "eb872e43-2214-4902-b9a2-e540a3f3703e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32": {
+         "name": "folder-list-files",
+         "description": "Lists all files in the input folder"
+      },
+      "db54ca15-c3c9-470d-90ea-66b8c1ddd28e": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "89849824-53a6-437f-ab06-9ef6aa51f091": {
+         "name": "path-to-annotation-simple",
+         "description": "Creates an annotation for each path based on its name or its full path."
+      },
+      "7a346d86-2162-4c73-9952-7a1b1699f851": {
+         "name": "folder-list-subfolders",
+         "description": "Lists all subfolders"
+      },
+      "1095c2b6-331f-453d-bf06-811bc113e710": {
+         "name": "path-filter",
+         "description": "Filters the paths (files/folders) by their name or absolute path"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "db54ca15-c3c9-470d-90ea-66b8c1ddd28e",
+         "target-node": "1095c2b6-331f-453d-bf06-811bc113e710",
+         "source-slot": "Annotated paths",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "89849824-53a6-437f-ab06-9ef6aa51f091",
+         "target-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      },
+      {
+         "source-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "target-node": "db54ca15-c3c9-470d-90ea-66b8c1ddd28e",
+         "source-slot": "Files",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "7a346d86-2162-4c73-9952-7a1b1699f851",
+         "target-node": "eb872e43-2214-4902-b9a2-e540a3f3703e",
+         "source-slot": "Subfolders",
+         "target-slot": "Paths"
+      },
+      {
+         "source-node": "eb872e43-2214-4902-b9a2-e540a3f3703e",
+         "target-node": "afbae2e1-e93a-4b6c-96ff-d0acf23c7d32",
+         "source-slot": "Annotated paths",
+         "target-slot": "Folders"
+      }
+   ]
+}

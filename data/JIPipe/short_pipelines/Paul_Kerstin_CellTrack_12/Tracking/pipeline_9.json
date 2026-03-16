@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline detects spots in images by grouping incoming data based on annotations and creating connected regions from black and white masks, allowing for the identification and analysis of objects within the images.",
+   "nodes": {
+      "c40e5d98-8142-4c15-be31-ed779b2fc246": {
+         "name": "trackmate-detector",
+         "description": "Detect spots using TrackMate<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "3dee5b09-60cc-44eb-8e3f-1d680bcf065f": {
+         "name": "trackmate-create-spot-detector-mask-detector",
+         "description": "This detector creates spots from a black and white mask.<p>More precisely, all the pixels in the designated channel that have a value strictly larger than 0 are considered as part of the foreground, and used to build connected regions. In 2D, spots are created with the (possibly simplified) contour of the region. In 3D, a spherical spot is created for each region in its center, with a volume equal to the region volume.<p>The spot quality stores the object area or volume in pixels."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3dee5b09-60cc-44eb-8e3f-1d680bcf065f",
+         "target-node": "c40e5d98-8142-4c15-be31-ed779b2fc246",
+         "source-slot": "Spot detector",
+         "target-slot": "Spot detector"
+      }
+   ]
+}

@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline applies a series of image processing operations to perform morphological transformations, background subtraction, and thresholding on input images, ultimately generating processed output images with enhanced features and segmented regions of interest.",
+   "nodes": {
+      "3f5fbaf4-01a4-4d86-b01c-b0ac977dae3a": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "28554603-bdbe-42e3-9ce8-dccce9089c30": {
+         "name": "cellpose-2",
+         "description": "Deprecated. Use the node with the same name.<br/><br/>Runs Cellpose on the input image. This node supports both segmentation in 3D and executing Cellpose for each 2D image plane. This node can generate a multitude of outputs, although only ROI is activated by default. Go to the 'Outputs' parameter section to enable the other outputs.<ul><li><b>Labels:</b> A grayscale image where each connected component is assigned a unique value.</li><li><b>Flows XY:</b> An RGB image that indicates the x and y flow of each pixel</li><li><b>Flows Z:</b> Flows in Z direction (black for non-3D images)</li><li><b>Flows d:</b> Multi-channel image that contains the flows [dZ, dY, dX, cell probability] (3D images) / [dY, dX, cell probability] (2D images)</li><li><b>Probabilities:</b> An image indicating the cell probabilities for each pixel</li><li><b>ROI:</b> ROI of the segmented areas.</li></ul>Please note that you need to setup a valid Python environment with Cellpose installed. You can find the setting in Project &gt; Application settings &gt; Extensions &gt; Cellpose.<br/><br/>This algorithm merges all annotations and data annotations. Use the iteration step settings to determine how annotations and data annotations are merged"
+      },
+      "fc2178f1-9e27-4664-9db5-ba339026ccad": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "493ea08b-9ad2-4788-a31e-036bfb848181": {
+         "name": "ij1-background-rollingball2d",
+         "description": "Finds or subtracts the background of a 2D slice via a rolling-ball or paraboloid algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3f5fbaf4-01a4-4d86-b01c-b0ac977dae3a",
+         "target-node": "493ea08b-9ad2-4788-a31e-036bfb848181",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "3f5fbaf4-01a4-4d86-b01c-b0ac977dae3a",
+         "target-node": "28554603-bdbe-42e3-9ce8-dccce9089c30",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "493ea08b-9ad2-4788-a31e-036bfb848181",
+         "target-node": "fc2178f1-9e27-4664-9db5-ba339026ccad",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

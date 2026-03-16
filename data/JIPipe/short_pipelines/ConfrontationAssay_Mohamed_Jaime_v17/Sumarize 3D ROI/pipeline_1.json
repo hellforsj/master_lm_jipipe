@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to remove columns from a table. The pipeline starts with a node that removes columns and ends with another node that also removes columns, in between there are other nodes that remove columns as well.",
+   "nodes": {
+      "aa44a267-3b43-4739-b1c5-880bc0fe2b1b": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      },
+      "47096b5f-db67-4f23-b72f-1de4dc50ae0d": {
+         "name": "table-remove-columns",
+         "description": "Removes one or multiple columns by name"
+      }
+   },
+   "edges": [
+      {
+         "source-node": "47096b5f-db67-4f23-b72f-1de4dc50ae0d",
+         "target-node": "aa44a267-3b43-4739-b1c5-880bc0fe2b1b",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

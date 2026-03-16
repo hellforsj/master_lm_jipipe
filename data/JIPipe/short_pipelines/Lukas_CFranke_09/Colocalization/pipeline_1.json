@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes an input image by first setting all its pixels to a specified color, handling grayscale images by converting the color to its equivalent grayscale value, and then normalizing the resulting grayscale pixel values by dividing them by the global maximum across all slices.",
+   "nodes": {
+      "b43f33cb-c93a-416e-826e-5a7d68952dc0": {
+         "name": "ij1-color-set-to-color",
+         "description": "Sets all pixels of the input image to the specified color. If the image is grayscale, the provided color is converted to its equivalent grayscale value.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "ae798227-cc72-4dd7-b479-8d870001c88f": {
+         "name": "ij1-math-divide-by-maximum",
+         "description": "Divides greyscale pixel values by the global maximum across all slices."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b43f33cb-c93a-416e-826e-5a7d68952dc0",
+         "target-node": "ae798227-cc72-4dd7-b479-8d870001c88f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

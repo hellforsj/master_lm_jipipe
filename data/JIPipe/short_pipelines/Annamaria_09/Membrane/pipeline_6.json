@@ -1,0 +1,21 @@
+{
+   "description": "The main objective of this pipeline is to apply a Gaussian blur operation and then extract orientation-related features. The pipeline starts with the node '32cc7528-583a-4b89-bc99-ba1fe3580a1b' and ends with the node '9d5ad965-d63c-47bf-b890-61c50c4eb98f'. It takes the input image, applies a median filter using '32cc7528-583a-4b89-bc99-ba1fe3580a1b', and then applies the Gaussian blur operation.",
+   "nodes": {
+      "32cc7528-583a-4b89-bc99-ba1fe3580a1b": {
+         "name": "ij1-blur-median2d",
+         "description": "Applies a median filter. If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "9d5ad965-d63c-47bf-b890-61c50c4eb98f": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "32cc7528-583a-4b89-bc99-ba1fe3580a1b",
+         "target-node": "9d5ad965-d63c-47bf-b890-61c50c4eb98f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

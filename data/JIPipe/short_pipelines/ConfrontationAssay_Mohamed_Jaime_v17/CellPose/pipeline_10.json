@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline reads in a folder with files, applies filtering and thresholding to each file, and then saves the results. The main steps are reading in the files, applying filtering and thresholding, and saving the results.",
+   "nodes": {
+      "85425fc1-c3ab-4778-9b74-dd365f9c431b": {
+         "name": "import-cellpose-model",
+         "description": "Imports a Cellpose model from a file"
+      },
+      "e2d578ab-95c2-4093-b8b9-b22cf240d9c2": {
+         "name": "import-file-list",
+         "description": "Converts each provided path into file data."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "e2d578ab-95c2-4093-b8b9-b22cf240d9c2",
+         "target-node": "85425fc1-c3ab-4778-9b74-dd365f9c431b",
+         "source-slot": "Filenames",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline extracts properties from lists of regions of interest and stores them as annotations, then merges these annotations to group related data items together, allowing for a consolidated output with combined annotation values.",
+   "nodes": {
+      "fc16ce02-e634-4c1a-a0cb-b49f66e90766": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "1d128a57-9909-444f-b53d-e085e8a56603": {
+         "name": "annotation-merge",
+         "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "fc16ce02-e634-4c1a-a0cb-b49f66e90766",
+         "target-node": "1d128a57-9909-444f-b53d-e085e8a56603",
+         "source-slot": "Output",
+         "target-slot": "Phagocytosing macrophages"
+      }
+   ]
+}

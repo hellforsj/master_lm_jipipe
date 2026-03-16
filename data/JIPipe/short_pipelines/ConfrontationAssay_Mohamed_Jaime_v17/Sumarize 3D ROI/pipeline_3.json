@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline processes data by first executing custom modifications, then merging multiple tables into one, and finally exporting the results to a file while also saving specific output for further analysis or storage. The processing involves grouping incoming data based on annotations, allowing for flexible handling of multiple data items per group, and creating new columns as needed. Overall, the pipeline appears to be designed for managing and transforming tabular data into a suitable format for export or further processing.",
+   "nodes": {
+      "e2c3c7a8-ea46-49f0-a664-eee36ff0718d": {
+         "name": "iji-export-table-v2",
+         "description": "Exports a results table to CSV/XLSX<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "da751847-b501-4139-a46d-e9c9db9167d7": {
+         "name": "table-merge-tables",
+         "description": "Merges multiple tables into one table by merging the list of rows. Columns are automatically created if they do not exist.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of multiple data items. If you want to group all data into one output, set the matching strategy to 'Custom' and leave 'Data set matching annotations' empty."
+      },
+      "2ab77df2-0aed-4826-91f3-3858bb58bb56": {
+         "name": "modify-tables",
+         "description": "Executes a Python-script for each table. Each table is passed as dictionary 'table' with the column name as key and values being an array of strings or doubles. The number of input rows can be accessed via the 'nrow' variable."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "2ab77df2-0aed-4826-91f3-3858bb58bb56",
+         "target-node": "da751847-b501-4139-a46d-e9c9db9167d7",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "da751847-b501-4139-a46d-e9c9db9167d7",
+         "target-node": "e2c3c7a8-ea46-49f0-a664-eee36ff0718d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

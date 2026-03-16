@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes image data by first converting region of interest lists to masks, and then applying a morphological operation to the resulting greyscale images, allowing for various transformations such as erosion, dilation, and filtering to be performed.",
+   "nodes": {
+      "891faee4-2337-4387-9eb9-b0eccd67cc09": {
+         "name": "ij1-roi-to-mask",
+         "description": "Converts ROI lists to masks. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "a2758ddd-c075-4ff6-b6a5-71bae69689e4": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "891faee4-2337-4387-9eb9-b0eccd67cc09",
+         "target-node": "a2758ddd-c075-4ff6-b6a5-71bae69689e4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

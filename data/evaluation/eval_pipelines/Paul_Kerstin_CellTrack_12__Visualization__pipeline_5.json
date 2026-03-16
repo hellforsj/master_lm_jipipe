@@ -1,0 +1,91 @@
+{
+   "description": "This pipeline takes the raw input, converts it to 8-bit, applies a custom ImageJ macro, and then visualizes spots. The main steps involve taking the raw image, converting it to 8-bit format using 'ij-convert-image-to-8-bit', applying further processing with 'external-imagej-macro', and finally visualizing spots with 'trackmate-visualize-spots'.",
+   "nodes": {
+      "7802c79b-e08f-416d-a1ff-d83f7d1ebb0d": {
+         "name": "trackmate-visualize-spots",
+         "description": "Visualizes spots<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "adb0a131-44c8-495d-a654-db8a5e7b65a4": {
+         "name": "external-imagej-macro",
+         "description": "Runs a custom ImageJ macro. JIPipe will iterate through the iteration steps and execute operations to convert JIPipe data into their ImageJ equivalent (see JIPipe to ImageJ parameter). Then the macro code is executed, followed by operations to import the result data into JIPipe data (see ImageJ to JIPipe parameter). Please feel free to click the 'Load example' button in the parameters to get started.<br/><br/>Please keep in mind the following remarks:<br/><br/><ul><li>Input images are opened as windows named according to the input slot. You have to select windows with the select() function or comparable functions.</li><li>Output images are extracted by finding a window that is named according to the output slot. Ensure to rename() windows accordingly.</li><li>To extract the 'Results' table output, add an output of type 'Results table' and set the name to 'Results'. Alternatively, you can configure the output in 'JIPipe to ImageJ' and override the name to 'Results'</li><li>To import other tables, use a different slot name or set the appropriate configuration.</li><li>Please note that there is only one ROI manager. This is a restriction of ImageJ.</li><li>Annotations can also be accessed via a function getJIPipeAnnotation(key), which returns the string value of the annotation or an empty string if no value was set.</li><li>You can define variables that are passed from JIPipe to ImageJ. Variables are also created for incoming path-like data, named according to the slot name.</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "209b2ee3-2ce9-498d-b62d-2a42d216b64a": {
+         "name": "ij-convert-image-to-8-bit",
+         "description": "Converts an image into 8-bit"
+      },
+      "6bd2b6b6-e3a9-49cb-a9b9-787cb8b4f6bb": {
+         "name": "trackmate-visualize-tracks",
+         "description": "Visualizes tracks<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "df5227e6-3b64-4b39-9c14-72278078aaa6": {
+         "name": "trackmate-visualize-tracks",
+         "description": "Visualizes tracks<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c2f77656-f722-44ab-95b2-64012cbf0d28": {
+         "name": "trackmate-visualize-spots",
+         "description": "Visualizes spots<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "209b2ee3-2ce9-498d-b62d-2a42d216b64a",
+         "target-node": "adb0a131-44c8-495d-a654-db8a5e7b65a4",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0e5d8c35-3bca-42ec-9308-586b446da73e",
+         "target-node": "c2f77656-f722-44ab-95b2-64012cbf0d28",
+         "source-slot": "Tracks",
+         "target-slot": "Spots"
+      },
+      {
+         "source-node": "0e5d8c35-3bca-42ec-9308-586b446da73e",
+         "target-node": "7802c79b-e08f-416d-a1ff-d83f7d1ebb0d",
+         "source-slot": "Tracks",
+         "target-slot": "Spots"
+      },
+      {
+         "source-node": "0e5d8c35-3bca-42ec-9308-586b446da73e",
+         "target-node": "6bd2b6b6-e3a9-49cb-a9b9-787cb8b4f6bb",
+         "source-slot": "Tracks",
+         "target-slot": "Tracks"
+      },
+      {
+         "source-node": "6bd2b6b6-e3a9-49cb-a9b9-787cb8b4f6bb",
+         "target-node": "7802c79b-e08f-416d-a1ff-d83f7d1ebb0d",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "adb0a131-44c8-495d-a654-db8a5e7b65a4",
+         "target-node": "6bd2b6b6-e3a9-49cb-a9b9-787cb8b4f6bb",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "0e5d8c35-3bca-42ec-9308-586b446da73e",
+         "target-node": "209b2ee3-2ce9-498d-b62d-2a42d216b64a",
+         "source-slot": "Raw",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0e5d8c35-3bca-42ec-9308-586b446da73e",
+         "target-node": "df5227e6-3b64-4b39-9c14-72278078aaa6",
+         "source-slot": "Tracks",
+         "target-slot": "Tracks"
+      },
+      {
+         "source-node": "c2f77656-f722-44ab-95b2-64012cbf0d28",
+         "target-node": "df5227e6-3b64-4b39-9c14-72278078aaa6",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      },
+      {
+         "source-node": "adb0a131-44c8-495d-a654-db8a5e7b65a4",
+         "target-node": "c2f77656-f722-44ab-95b2-64012cbf0d28",
+         "source-slot": "Output",
+         "target-slot": "Image"
+      }
+   ]
+}

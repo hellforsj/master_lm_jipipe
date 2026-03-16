@@ -1,0 +1,25 @@
+{
+   "description": "This pipeline reads in files from a folder and applies filtering to them. The main steps are reading in the files, converting file paths into file data, and then applying morphological operations.",
+   "nodes": {
+      "85425fc1-c3ab-4778-9b74-dd365f9c431b": {
+         "name": "import-cellpose-model",
+         "description": "Imports a Cellpose model from a file"
+      },
+      "e2d578ab-95c2-4093-b8b9-b22cf240d9c2": {
+         "name": "import-file-list",
+         "description": "Converts each provided path into file data."
+      },
+      "8c4b1a2e-a1d0-4461-92ae-d1caffa78361": {
+         "name": "ij1-morph-operation2d",
+         "description": "Applies a morphological operation to greyscale images. Following operations are included: Erosion, Dilation, Opening, Closing, White Top Hat, Black Top Hat, Gradient, Laplacian, Internal Gradient, and External Gradient. More information (including examples) can be found at https://imagej.net/MorphoLibJ.html<br/>If a multi-channel image is provided, the operation is applied to each channel. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "e2d578ab-95c2-4093-b8b9-b22cf240d9c2",
+         "target-node": "85425fc1-c3ab-4778-9b74-dd365f9c431b",
+         "source-slot": "Filenames",
+         "target-slot": "Input"
+      }
+   ]
+}

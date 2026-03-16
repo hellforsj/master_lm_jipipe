@@ -1,0 +1,51 @@
+{
+   "description": "This pipeline runs a Python script that iterates through each iteration step in the input slots. The main steps involve running the Python script on the measurements from two different nodes.",
+   "nodes": {
+      "96d3838e-d093-4bb8-9f20-50765c0a796f": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "b8b564a4-834d-4d9a-911c-3848425d6697": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "02ca0d22-c907-4550-a8e9-c295655e94a3": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "4a20cc31-f6f7-4946-9382-6faf5f8245cc": {
+         "name": "ij3d-measure-roi3d",
+         "description": "Generates a results table containing 3D ROI statistics. If a reference image is provided, the statistics are calculated for the reference image. Otherwise, NaN is returned.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "d5d915ce-8aee-4d23-9fef-6a9b9715ac3e": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "4a20cc31-f6f7-4946-9382-6faf5f8245cc",
+         "target-node": "02ca0d22-c907-4550-a8e9-c295655e94a3",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "4a20cc31-f6f7-4946-9382-6faf5f8245cc",
+         "target-node": "d5d915ce-8aee-4d23-9fef-6a9b9715ac3e",
+         "source-slot": "Measurements",
+         "target-slot": "Input 1"
+      },
+      {
+         "source-node": "b8b564a4-834d-4d9a-911c-3848425d6697",
+         "target-node": "96d3838e-d093-4bb8-9f20-50765c0a796f",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b8b564a4-834d-4d9a-911c-3848425d6697",
+         "target-node": "d5d915ce-8aee-4d23-9fef-6a9b9715ac3e",
+         "source-slot": "Measurements",
+         "target-slot": "Input"
+      }
+   ]
+}

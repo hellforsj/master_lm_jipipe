@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline extracts properties of ROI lists and stores them into annotations, then merges the annotations. The main steps include extracting ROI properties, storing them into annotations, and merging the annotations.",
+   "nodes": {
+      "94879c03-338b-4d5b-a512-499236118ee4": {
+         "name": "annotation-merge",
+         "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c2c8943f-1bfc-4a71-9efe-92752e47fde8": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "c2c8943f-1bfc-4a71-9efe-92752e47fde8",
+         "target-node": "94879c03-338b-4d5b-a512-499236118ee4",
+         "source-slot": "Output",
+         "target-slot": "Adherent spores"
+      }
+   ]
+}

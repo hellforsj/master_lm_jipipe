@@ -1,0 +1,10 @@
+{
+   "description": "This pipeline processes input data by iterating through each step and grouping it based on annotations, ultimately producing output that can be used for further analysis or processing, such as calculating distances.",
+   "nodes": {
+      "a9629eae-c882-4072-853f-dc4758562c4b": {
+         "name": "cpython-script-iterating",
+         "description": "Runs a Python script that iterates through each iteration step in the input slots. This node uses an existing dedicated Python interpreter that must be set up in the application settings.<br/><br/>To learn more about the JIPipe Python API, visit https://jipipe.hki-jena.de/apidocs/python-current/index.html<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": []
+}

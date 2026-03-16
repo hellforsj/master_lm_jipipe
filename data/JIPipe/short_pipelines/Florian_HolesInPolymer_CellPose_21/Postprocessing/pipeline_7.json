@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies a binary distance transform watershed algorithm and then converts pixel values equal or higher than the given threshold to a ROI. The main steps involve applying the binary distance transform watershed algorithm, which calculates the distance of each pixel to the nearest non-zero pixel and then applies the watershed algorithm, and then converting the pixel values to ROIs.",
+   "nodes": {
+      "b77f3b7d-f29f-4414-a15b-ba1b6a6ad237": {
+         "name": "ij1-binary-dtwatershed2d",
+         "description": "Applies an euclidean distance transform on binary images. Then applies a watershed algorithm.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "6d03873e-2a91-4a72-95bd-6cc5fadde3e8": {
+         "name": "ij1-roi-from-mask",
+         "description": "Converts pixel values equal or higher than the given threshold to a ROI. This will create a single ROI that contains holes. If a higher-dimensional image is provided, the operation is applied for each slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b77f3b7d-f29f-4414-a15b-ba1b6a6ad237",
+         "target-node": "6d03873e-2a91-4a72-95bd-6cc5fadde3e8",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

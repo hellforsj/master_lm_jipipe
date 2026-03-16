@@ -1,0 +1,73 @@
+{
+   "description": "This pipeline processes image data to identify and analyze the interaction between macrophages and bacteria, filtering regions of interest based on overlap and grouping data by annotations to extract specific information about phagocytosed, adherent, and associated bacteria.",
+   "nodes": {
+      "c0e914a8-715d-4c35-8b1e-4676c8a04f0a": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "5bb80c76-a3fe-4d1c-871c-091bc35547cb": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "635f05ac-e9a3-4ad2-932a-dde786fcf5b8": {
+         "name": "ij1-roi-filter-by-overlap",
+         "description": "Filters the ROI lists by testing for mutual overlap. The ROI1 output contains all ROI1 input ROI that overlap with any of ROI2. The ROI2 output contains all ROI2 input ROI that overlap with a ROI1 ROI.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "5bb80c76-a3fe-4d1c-871c-091bc35547cb",
+         "source-slot": "Macrophage ROIs",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "c0e914a8-715d-4c35-8b1e-4676c8a04f0a",
+         "source-slot": "Macrophage ROIs",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "635f05ac-e9a3-4ad2-932a-dde786fcf5b8",
+         "source-slot": "Macrophage ROIs",
+         "target-slot": "ROI 1"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "c0e914a8-715d-4c35-8b1e-4676c8a04f0a",
+         "source-slot": "Bacteria ROIs",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "5bb80c76-a3fe-4d1c-871c-091bc35547cb",
+         "source-slot": "Bacteria ROIs",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "635f05ac-e9a3-4ad2-932a-dde786fcf5b8",
+         "source-slot": "Bacteria ROIs",
+         "target-slot": "ROI 2"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "5bb80c76-a3fe-4d1c-871c-091bc35547cb",
+         "source-slot": "Substack",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "c0e914a8-715d-4c35-8b1e-4676c8a04f0a",
+         "source-slot": "Substack",
+         "target-slot": "Reference"
+      },
+      {
+         "source-node": "35ba3543-193a-4047-b794-285b0c03fa2d",
+         "target-node": "635f05ac-e9a3-4ad2-932a-dde786fcf5b8",
+         "source-slot": "Substack",
+         "target-slot": "Reference"
+      }
+   ]
+}

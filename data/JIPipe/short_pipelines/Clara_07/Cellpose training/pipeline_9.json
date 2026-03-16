@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes image data by first converting mask images into regions of interest and generating measurements, and then further processing these regions of interest to create masks based on their properties, ultimately producing output sizes based on a reference image.",
+   "nodes": {
+      "7a176584-e163-46d8-a153-e9832c1608dc": {
+         "name": "ij1-roi-to-rgb",
+         "description": "Converts ROI lists to masks. The line and fill color is stored within the ROI themselves. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "2817e4fd-eafb-456f-9190-1876208d4b4c": {
+         "name": "ij1-analyze-find-particles2d",
+         "description": "Converts mask images into ROI by applying a connected components algorithm and generates measurements. Please note that this algorithm will always trace the external object boundaries and convert them into polygonal ROIs. This means that holes will be closed. This node requires a thresholded image as input and will extract measurements from the thresholded image. If you already have ROI available and want measurements, use 'Extract ROI statistics'.If higher-dimensional data is provided, the results are generated for each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "2817e4fd-eafb-456f-9190-1876208d4b4c",
+         "target-node": "7a176584-e163-46d8-a153-e9832c1608dc",
+         "source-slot": "ROI",
+         "target-slot": "ROI"
+      }
+   ]
+}

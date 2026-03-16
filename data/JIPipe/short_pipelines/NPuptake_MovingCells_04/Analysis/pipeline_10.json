@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline applies data augmentation to input images and saves the augmented images. The main steps include augmenting the images, refining the augmented images, and then saving the augmented images.",
+   "nodes": {
+      "b9993bb2-1832-435b-852d-a798a1d2303c": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "96fc2483-1424-4a27-b75d-500a2d13775f": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "96fc2483-1424-4a27-b75d-500a2d13775f",
+         "target-node": "b9993bb2-1832-435b-852d-a798a1d2303c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

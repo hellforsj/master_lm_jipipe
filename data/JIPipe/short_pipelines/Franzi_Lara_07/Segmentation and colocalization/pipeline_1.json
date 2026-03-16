@@ -1,0 +1,179 @@
+{
+   "description": "This pipeline performs image processing and analysis, applying various filters and algorithms to input images, including smoothing, thresholding, and colocalization analysis, and ultimately producing output images and data that have been processed and transformed through a series of steps, resulting in multiple outputs such as overlaid images, colocalization results, and filtered data.",
+   "nodes": {
+      "0a8433e3-3b72-4fbf-a7d6-89b54791b64f": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "013806c0-672a-4334-9c6f-d897a8dc0905": {
+         "name": "io-interface",
+         "description": "Passes its input to its output without changes."
+      },
+      "460dc1f6-5c08-4c0e-a9c8-2401546f0bd2": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "bed57151-dabb-4f1b-b997-37045bba8125": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "d2b98925-40e8-4285-a962-6452d166485c": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "86517240-1885-4cf2-8640-004fc61cc507": {
+         "name": "ij1-color-blend-images",
+         "description": "Overlays greyscale or RGB images.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "cb453f14-db00-44b9-9f56-77e2c0dfa38f": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "e90d6ff7-3639-4531-bc1a-0b0d89b0341f": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "10aac5ca-291b-460a-9975-bf5aa3906b34": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "e2c0c53d-9ccf-4201-b8e4-bc377d3f85f1": {
+         "name": "annotate-split-by-annotation",
+         "description": "Splits the input data by a specified annotation or filters data based on the annotation value."
+      },
+      "7ea384fd-6ec3-4553-9880-9ac9f900cfda": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "c06227c9-283a-49cf-95ea-001f3a2ccb4b": {
+         "name": "annotate-filter-by-annotation-if-else",
+         "description": "Filters data based on the annotation value. Has two outputs, one that contains the data that matches the filter, and another output that contains all data that does not match the filter"
+      },
+      "12c4c8db-de60-4784-a287-a643db98f34a": {
+         "name": "ij1-threshold-auto2d",
+         "description": "Applies an auto-thresholding algorithm. If higher-dimensional data is provided, the filter is applied to each 2D slice.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "e2c0c53d-9ccf-4201-b8e4-bc377d3f85f1",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output 2",
+         "target-slot": "Channel 2"
+      },
+      {
+         "source-node": "10aac5ca-291b-460a-9975-bf5aa3906b34",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output 2",
+         "target-slot": "Channel 2"
+      },
+      {
+         "source-node": "cb453f14-db00-44b9-9f56-77e2c0dfa38f",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output 2",
+         "target-slot": "Channel 2"
+      },
+      {
+         "source-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "target-node": "013806c0-672a-4334-9c6f-d897a8dc0905",
+         "source-slot": "Results",
+         "target-slot": "Coloc raw images"
+      },
+      {
+         "source-node": "c06227c9-283a-49cf-95ea-001f3a2ccb4b",
+         "target-node": "7ea384fd-6ec3-4553-9880-9ac9f900cfda",
+         "source-slot": "Matched",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "460dc1f6-5c08-4c0e-a9c8-2401546f0bd2",
+         "target-node": "d2b98925-40e8-4285-a962-6452d166485c",
+         "source-slot": "Output",
+         "target-slot": "Channel 1"
+      },
+      {
+         "source-node": "c06227c9-283a-49cf-95ea-001f3a2ccb4b",
+         "target-node": "bed57151-dabb-4f1b-b997-37045bba8125",
+         "source-slot": "Unmatched",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "0a8433e3-3b72-4fbf-a7d6-89b54791b64f",
+         "target-node": "460dc1f6-5c08-4c0e-a9c8-2401546f0bd2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c06227c9-283a-49cf-95ea-001f3a2ccb4b",
+         "target-node": "86517240-1885-4cf2-8640-004fc61cc507",
+         "source-slot": "Unmatched",
+         "target-slot": "Red"
+      },
+      {
+         "source-node": "bed57151-dabb-4f1b-b997-37045bba8125",
+         "target-node": "10aac5ca-291b-460a-9975-bf5aa3906b34",
+         "source-slot": "Output",
+         "target-slot": "Input 1"
+      },
+      {
+         "source-node": "bed57151-dabb-4f1b-b997-37045bba8125",
+         "target-node": "e2c0c53d-9ccf-4201-b8e4-bc377d3f85f1",
+         "source-slot": "Output",
+         "target-slot": "Input 1"
+      },
+      {
+         "source-node": "bed57151-dabb-4f1b-b997-37045bba8125",
+         "target-node": "cb453f14-db00-44b9-9f56-77e2c0dfa38f",
+         "source-slot": "Output",
+         "target-slot": "Input 1"
+      },
+      {
+         "source-node": "e2c0c53d-9ccf-4201-b8e4-bc377d3f85f1",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output 1",
+         "target-slot": "Channel 1"
+      },
+      {
+         "source-node": "10aac5ca-291b-460a-9975-bf5aa3906b34",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output 1",
+         "target-slot": "Channel 1"
+      },
+      {
+         "source-node": "cb453f14-db00-44b9-9f56-77e2c0dfa38f",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output 1",
+         "target-slot": "Channel 1"
+      },
+      {
+         "source-node": "e2c0c53d-9ccf-4201-b8e4-bc377d3f85f1",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "10aac5ca-291b-460a-9975-bf5aa3906b34",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "cb453f14-db00-44b9-9f56-77e2c0dfa38f",
+         "target-node": "e90d6ff7-3639-4531-bc1a-0b0d89b0341f",
+         "source-slot": "Output",
+         "target-slot": "ROI"
+      },
+      {
+         "source-node": "12c4c8db-de60-4784-a287-a643db98f34a",
+         "target-node": "0a8433e3-3b72-4fbf-a7d6-89b54791b64f",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "c06227c9-283a-49cf-95ea-001f3a2ccb4b",
+         "target-node": "12c4c8db-de60-4784-a287-a643db98f34a",
+         "source-slot": "Unmatched",
+         "target-slot": "Input"
+      }
+   ]
+}

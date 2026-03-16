@@ -1,0 +1,41 @@
+{
+   "description": "This pipeline processes images by first splitting multichannel images into individual greyscale channels, which are then further processed and filtered to extract specific information, such as maximum values after applying a Gaussian filter. The processed channels are then merged back together to form a composite image, with optional conversion of the image type during the process.",
+   "nodes": {
+      "cfc5808b-552f-46b6-8534-15b391012c47": {
+         "name": "ij1-contrast-illumination-correction2d",
+         "description": "Applies a Gaussian filter to the image and extracts the maximum value. Pixel values are then divided by this value.If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      },
+      "66a0e38a-0a71-4973-bfb6-69b2a1516e1f": {
+         "name": "ij-convert-image",
+         "description": "Converts an image into another image type"
+      },
+      "54992ce8-f63d-4ff3-8976-47a1b4904844": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "082caa50-7cfb-4bfe-98d2-f7700559eb02": {
+         "name": "ij1-color-merge-channels",
+         "description": "Merges each greyscale image plane into a multi-channel image. Implements the standard ImageJ algorithm for merging channels that either creates an RGB or a composite image. We recommend to use Blend images for creating renders and Merge channels (composite) that provide more options for the specific use cases.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "54992ce8-f63d-4ff3-8976-47a1b4904844",
+         "target-node": "cfc5808b-552f-46b6-8534-15b391012c47",
+         "source-slot": "TL",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "66a0e38a-0a71-4973-bfb6-69b2a1516e1f",
+         "target-node": "082caa50-7cfb-4bfe-98d2-f7700559eb02",
+         "source-slot": "Output",
+         "target-slot": "C1"
+      },
+      {
+         "source-node": "54992ce8-f63d-4ff3-8976-47a1b4904844",
+         "target-node": "66a0e38a-0a71-4973-bfb6-69b2a1516e1f",
+         "source-slot": "FLSC",
+         "target-slot": "Input"
+      }
+   ]
+}

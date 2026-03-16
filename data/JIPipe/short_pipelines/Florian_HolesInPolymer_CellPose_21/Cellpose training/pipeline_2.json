@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline performs image enhancement by first applying a smoothing filter to reduce noise and blur the image, and then adjusting the contrast using histogram normalization methods to improve the overall visibility of the image features.",
+   "nodes": {
+      "28e586d2-8078-4128-8a06-802433368e4e": {
+         "name": "ij1-contrast-histogram-enhancer",
+         "description": "Implementation of the ImageJ contrast enhancer feature that uses histograms and normalization methods."
+      },
+      "5263b3cc-afc1-4ce1-8bf6-b6bba179d8eb": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "5263b3cc-afc1-4ce1-8bf6-b6bba179d8eb",
+         "target-node": "28e586d2-8078-4128-8a06-802433368e4e",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline splits the ROI in a ROI list into individual ROI lists and then extracts properties of the ROI lists and stores them into annotations. The main steps involve splitting the ROI, and then extracting the properties.",
+   "nodes": {
+      "d4925c9c-577c-4663-b01a-91a9ca448706": {
+         "name": "ij1-roi-to-annotations",
+         "description": "Extracts properties of the ROI lists and stores them into annotations. This will create a list of annotation values if there are multiple ROI per list, unless you choose the option to only return the first entry. By default, one value per ROI is generated. Enable de-duplication to disable this behavior."
+      },
+      "71f1f03a-260b-4866-a367-6116055ed514": {
+         "name": "ij1-roi-explode",
+         "description": "Splits the ROI in a ROI list into individual ROI lists."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "71f1f03a-260b-4866-a367-6116055ed514",
+         "target-node": "d4925c9c-577c-4663-b01a-91a9ca448706",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

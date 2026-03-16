@@ -1,0 +1,95 @@
+{
+   "description": "This pipeline appears to be designed for annotating and processing image data, likely from biomedical microscopic images. It starts by setting individual annotations based on expressions, then merges and further modifies these annotations through a series of connected operations. The pipeline also involves outputting annotated images from compartments and merging annotations from multiple data items. Overall, its function seems to revolve around the detailed annotation and organization of image data for potentially complex analysis tasks.",
+   "nodes": {
+      "3526d65f-bf02-4d2e-81cd-8760b1cfcc7c": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "ce64cab5-813b-4145-8ae4-91f8e90b8908": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "917a91d0-cf34-45f7-9e9c-e1a47cea3f09": {
+         "name": "ome-annotate-with-metadata",
+         "description": "Annotates an OME image with metadata extracted from the OME metadata"
+      },
+      "39b6dd86-517f-401f-938a-3bb00ace618a": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "349eb848-c055-4adb-8105-c1ede0ca85d9": {
+         "name": "annotate-set",
+         "description": "Modifies the specified annotations to the specified values. Supports expressions to combine existing annotations or generate new values."
+      },
+      "8173bdbd-9cbd-4265-b114-c6f914a643a1": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "ee133ee8-5c8d-4b59-aee1-471ed699061a": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "180d7765-e2ea-4cb7-a058-639478515146": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "791b0f4a-c65c-4e4e-a131-e389da976d25": {
+         "name": "annotate-set-single",
+         "description": "Sets a single annotation. The name and the value are determined by expressions"
+      },
+      "577ce788-8df3-495a-bbcc-31ecc29dd535": {
+         "name": "annotation-merge",
+         "description": "Merges the annotations of all incoming data and outputs the same data with those merged annotations.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "3526d65f-bf02-4d2e-81cd-8760b1cfcc7c",
+         "target-node": "917a91d0-cf34-45f7-9e9c-e1a47cea3f09",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "39b6dd86-517f-401f-938a-3bb00ace618a",
+         "target-node": "ce64cab5-813b-4145-8ae4-91f8e90b8908",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "180d7765-e2ea-4cb7-a058-639478515146",
+         "target-node": "349eb848-c055-4adb-8105-c1ede0ca85d9",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ce64cab5-813b-4145-8ae4-91f8e90b8908",
+         "target-node": "791b0f4a-c65c-4e4e-a131-e389da976d25",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "ee133ee8-5c8d-4b59-aee1-471ed699061a",
+         "target-node": "8173bdbd-9cbd-4265-b114-c6f914a643a1",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "8173bdbd-9cbd-4265-b114-c6f914a643a1",
+         "target-node": "180d7765-e2ea-4cb7-a058-639478515146",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "917a91d0-cf34-45f7-9e9c-e1a47cea3f09",
+         "target-node": "ee133ee8-5c8d-4b59-aee1-471ed699061a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "791b0f4a-c65c-4e4e-a131-e389da976d25",
+         "target-node": "3526d65f-bf02-4d2e-81cd-8760b1cfcc7c",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline processes image data by first generating a histogram plot from incoming tables, then converting the resulting image to RGB format while preserving contrast settings, and finally exporting the output as an image file in a non-JIPipe format, such as PNG, JPEG, or TIFF, after grouping the data based on annotations.",
+   "nodes": {
+      "55d3a541-e16d-4308-a47e-a688fd4146b2": {
+         "name": "iji-export-image-v2",
+         "description": "Exports incoming images into a non-JIPipe format (PNG, JPEG, BMP, AVI, TIFF). Please note support for input images depending on the file format: <ul><li>PNG, JPEG, BMP: 2D images only</li><li>AVI: 2D or 3D images only</li><li>TIFF: All images supported</li></ul><br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "34afbb27-ce2b-4b85-a3fb-2a755f2b58f6": {
+         "name": "plot-table:plot-histogram",
+         "description": "Plots the incoming table(s). This node will create a JFreeChart Histogram plot."
+      },
+      "b122b8c7-afb3-4300-a0df-5de98a1ad6a6": {
+         "name": "ij1-color-to-rgb",
+         "description": "Converts the incoming image to RGB. This applies the LUT if any is set. Compared to the image converter node, this operation renders the image into a representation equivalent to an image viewer, meaning that contrast settings are preserved."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "34afbb27-ce2b-4b85-a3fb-2a755f2b58f6",
+         "target-node": "b122b8c7-afb3-4300-a0df-5de98a1ad6a6",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "b122b8c7-afb3-4300-a0df-5de98a1ad6a6",
+         "target-node": "55d3a541-e16d-4308-a47e-a688fd4146b2",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

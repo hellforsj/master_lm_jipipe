@@ -1,0 +1,21 @@
+{
+   "description": "This pipeline processes image data by first converting region of interest lists to masks, utilizing a reference image to determine output sizes, and then applies a smoothing filter to the resulting data through convolution with a Gaussian function, which is applied to each 2D slice in higher-dimensional data.",
+   "nodes": {
+      "b3cc4464-f9b4-4073-8efe-604fc87db162": {
+         "name": "ij1-roi-to-mask",
+         "description": "Converts ROI lists to masks. This algorithm needs a reference image that provides the output sizes. If you do not have a reference image, you can use the unreferenced variant.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "eef6b307-271f-4128-9d07-ce822cb7988a": {
+         "name": "ij1-blur-gaussian2d",
+         "description": "Applies convolution with a Gaussian function for smoothing. If higher-dimensional data is provided, the filter is applied to each 2D slice."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "b3cc4464-f9b4-4073-8efe-604fc87db162",
+         "target-node": "eef6b307-271f-4128-9d07-ce822cb7988a",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

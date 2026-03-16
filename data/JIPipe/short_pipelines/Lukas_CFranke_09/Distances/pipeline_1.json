@@ -1,0 +1,31 @@
+{
+   "description": "This pipeline processes image data by applying connected component labeling, followed by copying physical pixel sizes, and finally converting labeled images into 3D regions of interest, enabling the extraction and analysis of specific features from the input data.",
+   "nodes": {
+      "f833f9f1-e4e8-40a6-8575-1adf1df0073c": {
+         "name": "ij3d-labels-to-roi",
+         "description": "Converts a label image into 3D ROI"
+      },
+      "95bd30e1-b239-4387-a4f5-6e441801a368": {
+         "name": "ij1-calibration-copy-physical-dimensions",
+         "description": "Copies the phyiscal pixel sizes from the source to the target<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "9e59676d-af47-4da3-81f8-1f26800bfe2f": {
+         "name": "ij1-binary-connected-component-labeling-3d",
+         "description": "Applies a connected components labeling on a mask. Each connected component is assigned a unique value in the output label image. If the image is non-binary, the connected components are generated per-input value. If 3D data is supplied, the connected components are extracted in 3D."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "9e59676d-af47-4da3-81f8-1f26800bfe2f",
+         "target-node": "95bd30e1-b239-4387-a4f5-6e441801a368",
+         "source-slot": "Output",
+         "target-slot": "Target"
+      },
+      {
+         "source-node": "95bd30e1-b239-4387-a4f5-6e441801a368",
+         "target-node": "f833f9f1-e4e8-40a6-8575-1adf1df0073c",
+         "source-slot": "Output",
+         "target-slot": "Labels"
+      }
+   ]
+}

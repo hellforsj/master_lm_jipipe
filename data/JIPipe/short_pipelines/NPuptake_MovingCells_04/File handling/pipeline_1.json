@@ -1,0 +1,31 @@
+{
+   "description": "Imports images via Bio-Formats and splits multichannel images into multiple greyscale images. The pipeline starts with importing imagej bioformats, then proceeds to split channels and finally outputs the result.",
+   "nodes": {
+      "806be249-e2a0-4c14-9530-2de9c817ecdc": {
+         "name": "import-imagej-bioformats",
+         "description": "Imports images via the Bio-Formats plugin"
+      },
+      "99c9ad43-ceb4-4d62-8682-9897d2204355": {
+         "name": "ij1-color-split-channels-2",
+         "description": "Splits multichannel images into multiple greyscale images. This operation is applied for each 2D image slice."
+      },
+      "790338ea-dbae-4f94-9b3c-b1c70bb96b5d": {
+         "name": "ij1-dimensions-expression-slicer",
+         "description": "Uses expressions to create custom stacks. There are three expressions, one for each Z, channel and frame plane that return numeric indices of slices that should be generated. You can optionally enable to iterate over all incoming slices of the image to generate multiple stacks. If no iteration is enabled (default), each expression is only executed for z=0,c=0,t=0."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "790338ea-dbae-4f94-9b3c-b1c70bb96b5d",
+         "target-node": "99c9ad43-ceb4-4d62-8682-9897d2204355",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "806be249-e2a0-4c14-9530-2de9c817ecdc",
+         "target-node": "790338ea-dbae-4f94-9b3c-b1c70bb96b5d",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      }
+   ]
+}

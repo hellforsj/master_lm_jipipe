@@ -1,0 +1,67 @@
+{
+   "description": "This pipeline performs image processing and analysis by applying various operations such as colocalization, annotation copying, pixel value division, and color setting. It starts by annotating images with regions of interest, then copies these annotations to target data, followed by modifying pixel values through division and color adjustment. The results are further analyzed using colocalization methods to study the spatial relationships between different image components.",
+   "nodes": {
+      "b20c8d34-ee11-4a59-adee-39cd8d394f4d": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "57ed0e38-c202-41f1-b17e-382b80587cf4": {
+         "name": "overwrite-annotations",
+         "description": "Copies annotations from the source data into the target data.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "0531c47e-8e4b-44c7-85a8-55177e5b9cc9": {
+         "name": "overwrite-annotations",
+         "description": "Copies annotations from the source data into the target data.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "ead8d638-9465-45a0-97ae-37cf629cdc88": {
+         "name": "ij1-math-divide-by-maximum",
+         "description": "Divides greyscale pixel values by the global maximum across all slices."
+      },
+      "b43f33cb-c93a-416e-826e-5a7d68952dc0": {
+         "name": "ij1-color-set-to-color",
+         "description": "Sets all pixels of the input image to the specified color. If the image is grayscale, the provided color is converted to its equivalent grayscale value.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "dacda200-195c-488b-92f8-5988b8771951": {
+         "name": "ij1-color-set-to-color",
+         "description": "Sets all pixels of the input image to the specified color. If the image is grayscale, the provided color is converted to its equivalent grayscale value.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "88199726-07de-49c6-bf33-544a58150aa3",
+         "target-node": "0531c47e-8e4b-44c7-85a8-55177e5b9cc9",
+         "source-slot": "Annotated with ROI",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "0531c47e-8e4b-44c7-85a8-55177e5b9cc9",
+         "target-node": "dacda200-195c-488b-92f8-5988b8771951",
+         "source-slot": "Target",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "57ed0e38-c202-41f1-b17e-382b80587cf4",
+         "target-node": "b43f33cb-c93a-416e-826e-5a7d68952dc0",
+         "source-slot": "Target",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "dacda200-195c-488b-92f8-5988b8771951",
+         "target-node": "ead8d638-9465-45a0-97ae-37cf629cdc88",
+         "source-slot": "Output",
+         "target-slot": "Input"
+      },
+      {
+         "source-node": "88199726-07de-49c6-bf33-544a58150aa3",
+         "target-node": "57ed0e38-c202-41f1-b17e-382b80587cf4",
+         "source-slot": "Annotated with ROI",
+         "target-slot": "Source"
+      },
+      {
+         "source-node": "ead8d638-9465-45a0-97ae-37cf629cdc88",
+         "target-node": "b20c8d34-ee11-4a59-adee-39cd8d394f4d",
+         "source-slot": "Output",
+         "target-slot": "Channel 2"
+      }
+   ]
+}

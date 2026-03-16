@@ -1,0 +1,25 @@
+{
+   "description": "This pipeline divides the greyscale pixel values by the global maximum across all slices and then sets all pixels of the input image to a specified color. The main steps involve dividing by maximum and setting the color.",
+   "nodes": {
+      "de944f23-c575-4408-9173-22d445112c15": {
+         "name": "ij1-colocalization-coloc2",
+         "description": "Colocalization analysis via the pixel intensity correlation over space methods of Pearson, Manders, Costes, Li and more, for scatterplots, analysis, automatic thresholding and statistical significance testing. Coloc 2 does NOT perform object based colocalization measurements, where objects are first segmented from the image, then their spatial relationships like overlap etc. are measured. This complementary approach is implemented in many ways elsewhere.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "dacda200-195c-488b-92f8-5988b8771951": {
+         "name": "ij1-color-set-to-color",
+         "description": "Sets all pixels of the input image to the specified color. If the image is grayscale, the provided color is converted to its equivalent grayscale value.<br/><br/>This algorithm groups the incoming data based on the annotations. Those groups can consist of one data item per slot."
+      },
+      "46845d00-46a2-4d3d-9ac9-a8cf66f58976": {
+         "name": "ij1-math-divide-by-maximum",
+         "description": "Divides greyscale pixel values by the global maximum across all slices."
+      }
+   },
+   "edges": [
+      {
+         "source-node": "46845d00-46a2-4d3d-9ac9-a8cf66f58976",
+         "target-node": "de944f23-c575-4408-9173-22d445112c15",
+         "source-slot": "Output",
+         "target-slot": "Channel 1"
+      }
+   ]
+}
